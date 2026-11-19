@@ -20,7 +20,7 @@
 # all; `npm ci` refuses a tree that disagrees with it. `npm ci` runs the root
 # `prepare` (scripts/install-hooks.mjs), which no-ops without a .git dir but
 # must exist for node to load.
-FROM node:26-slim@sha256:193fe51b64e77981119c98c2002c9e32a70e2f006fb4d25068ce0558998917f0 AS deps
+FROM node:26-slim@sha256:e6bedef217677b276c591795e169840edd9096dbf13f29df8ef8d1856b8820bc AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 COPY apps/api/package.json      apps/api/package.json
@@ -39,7 +39,7 @@ RUN --mount=type=cache,target=/root/.npm \
 # needs the root's @types/node, which this stage leaves out. The client imports
 # nothing from apps/api or apps/ai, so they are not copied here: they change on
 # nearly every commit and would rebuild the client each time.
-FROM node:26-slim@sha256:193fe51b64e77981119c98c2002c9e32a70e2f006fb4d25068ce0558998917f0 AS web
+FROM node:26-slim@sha256:e6bedef217677b276c591795e169840edd9096dbf13f29df8ef8d1856b8820bc AS web
 WORKDIR /app
 COPY package.json package-lock.json ./
 COPY apps/api/package.json      apps/api/package.json
@@ -62,7 +62,7 @@ RUN npm run prebuild --workspace @bob/ui-v2 \
 # A static tini, a pinned release file checked against its sha256 by
 # scripts/fetch-verified.mjs with node's own fetch. No apt-get. tini's hashes
 # are the tini-static-<arch>.sha256sum files (github.com/krallin/tini/releases).
-FROM node:26-slim@sha256:193fe51b64e77981119c98c2002c9e32a70e2f006fb4d25068ce0558998917f0 AS tools
+FROM node:26-slim@sha256:e6bedef217677b276c591795e169840edd9096dbf13f29df8ef8d1856b8820bc AS tools
 ARG TINI_VERSION=0.19.0
 ARG TINI_SHA256_AMD64=c5b0666b4cb676901f90dfcb37106783c5fe2077b04590973b885950611b30ee
 ARG TINI_SHA256_ARM64=eae1d3aa50c48fb23b8cbdf4e369d0910dfc538566bfd09df89a774aa84a48b9
@@ -85,14 +85,14 @@ RUN arch="$(dpkg --print-architecture)" \
 # supabase/migrations (apps/api/src/web-health.ts). Only the names matter, so the
 # runtime gets an empty file per migration, never the SQL. .dockerignore lets
 # nothing else from supabase/ into the context.
-FROM node:26-slim@sha256:193fe51b64e77981119c98c2002c9e32a70e2f006fb4d25068ce0558998917f0 AS migrations
+FROM node:26-slim@sha256:e6bedef217677b276c591795e169840edd9096dbf13f29df8ef8d1856b8820bc AS migrations
 COPY supabase/migrations /tmp/migrations
 RUN mkdir -p /out \
     && for f in /tmp/migrations/*.sql; do : > "/out/$(basename "$f")"; done
 
 # ---- runtime stage ---------------------------------------------------------
 # Only what the API needs at runtime, as a non-root user.
-FROM node:26-slim@sha256:193fe51b64e77981119c98c2002c9e32a70e2f006fb4d25068ce0558998917f0 AS runtime
+FROM node:26-slim@sha256:e6bedef217677b276c591795e169840edd9096dbf13f29df8ef8d1856b8820bc AS runtime
 WORKDIR /app
 
 ENV NODE_ENV=production \
