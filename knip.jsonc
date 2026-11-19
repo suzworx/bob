@@ -1,0 +1,35 @@
+{
+  // Dead-code gate (epic #611, #614). `npm run lint:dead` runs in `npm run validate`.
+  // Tests are entry points: an export used only by a test is a test seam and stays.
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "workspaces": {
+    ".": {
+      // email/preview.ts is a Deno dev tool (docs/email-catalog.md), run by hand.
+      "entry": ["scripts/**/*.{mjs,ts}", "supabase/functions/*/index.ts", "supabase/functions/**/*.test.ts", "supabase/functions/_shared/email/preview.ts"],
+      "project": ["scripts/**/*.{mjs,ts}", "supabase/functions/**/*.ts"]
+    },
+    "apps/api": {
+      "entry": ["scripts/*", "tests/**/*.{ts,mjs}"],
+      "project": ["src/**/*.ts", "scripts/**/*", "tests/**/*.ts"]
+    },
+    "apps/ai": {
+      // eval-runner.ts is the backend seam every suite imports; its exported
+      // types are the cross-file contract, consumed via inference.
+      "entry": ["evals/*.eval.ts", "evals/eval-runner.ts", "tests/**/*.ts"],
+      "project": ["src/**/*.ts", "evals/**/*.ts", "tests/**/*.ts"]
+    },
+    "apps/ui-v2": {
+      // Playwright's config imports @playwright/test, which is not installed in every checkout, so knip
+      // must not load it; the e2e files are entries by hand instead.
+      "entry": ["e2e/**/*.ts", "playwright.config.ts", "scripts/*.{mjs,ts}"],
+      "project": ["src/**/*.{ts,tsx}", "e2e/**/*.ts", "scripts/*.{mjs,ts}"],
+      "playwright": false
+    }
+  },
+  // Deno `jsr:`/`npm:` imports in supabase/functions are not npm dependencies. Everything else must be declared.
+  // @biomejs/biome is run by scripts/check-quality.mjs through node_modules/.bin, which knip cannot see.
+  // @babel/parser, @babel/traverse, and playwright are loaded via createRequire in ui-catalog scripts.
+  "ignoreDependencies": ["jsr", "npm", "@biomejs/biome", "@babel/parser", "@babel/traverse", "playwright"],
+  // External tools, not npm packages: the OS/CLI tools scripts shell out to.
+  "ignoreBinaries": ["wmic", "netstat", "rg", "py"]
+}

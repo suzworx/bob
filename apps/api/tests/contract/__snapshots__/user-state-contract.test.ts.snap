@@ -1,0 +1,1079 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HTTP pointer routes > GET /api/active, POST activate, DELETE conversation > HTTP: active, activate, delete 1`] = `
+{
+  "DELETE active conversation": {
+    "body": null,
+    "status": 204,
+  },
+  "DELETE foreign": {
+    "body": null,
+    "status": 204,
+  },
+  "GET active": {
+    "body": {
+      "active": {
+        "changed_at": "<epoch-ms>",
+        "conversation_id": "cnv_<uuid-1>",
+        "surface": "activate",
+        "title": "Garden",
+      },
+    },
+    "status": 200,
+  },
+  "GET active after delete": {
+    "body": {
+      "active": {
+        "changed_at": "<epoch-ms>",
+        "conversation_id": null,
+        "surface": "activate",
+        "title": null,
+      },
+    },
+    "status": 200,
+  },
+  "GET active after foreign delete": {
+    "body": {
+      "active": {
+        "changed_at": "<epoch-ms>",
+        "conversation_id": "cnv_<uuid-1>",
+        "surface": "activate",
+        "title": "Garden",
+      },
+    },
+    "status": 200,
+  },
+  "GET active, b": {
+    "body": {
+      "active": null,
+    },
+    "status": 200,
+  },
+  "GET active, no pointer": {
+    "body": {
+      "active": null,
+    },
+    "status": 200,
+  },
+  "activate": {
+    "body": {
+      "conversation_id": "cnv_<uuid-1>",
+      "title": "Garden",
+    },
+    "status": 200,
+  },
+  "activate, bad body": {
+    "body": {
+      "error": {
+        "code": "invalid_request",
+      },
+    },
+    "status": 400,
+  },
+  "activate, foreign": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "activate, unknown": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+}
+`;
+
+exports[`HTTP pointer routes > PUT /api/devices/active-conversation: 409, 202, 200, 400, 404 > HTTP: active-conversation 1`] = `
+{
+  "GET active (cleared)": {
+    "body": {
+      "active": {
+        "changed_at": "<epoch-ms>",
+        "conversation_id": null,
+        "surface": "activate",
+        "title": null,
+      },
+    },
+    "status": 200,
+  },
+  "GET active (offline write)": {
+    "body": {
+      "active": {
+        "changed_at": "<epoch-ms>",
+        "conversation_id": "cnv_<uuid-1>",
+        "surface": "activate",
+        "title": "Notes",
+      },
+    },
+    "status": 200,
+  },
+  "GET active (thread)": {
+    "body": {
+      "active": {
+        "changed_at": "<epoch-ms>",
+        "conversation_id": "thr_<uuid-3>",
+        "surface": "activate",
+        "title": "Rota",
+      },
+    },
+    "status": 200,
+  },
+  "GET devices": {
+    "body": {
+      "active_conversation": null,
+      "active_space": null,
+      "devices": [
+        {
+          "active_conversation_id": null,
+          "active_space_id": null,
+          "connected": true,
+          "id": "<uuid-4>",
+          "last_seen_at": null,
+          "live": {
+            "battery_pct": null,
+            "charging": null,
+            "connected": true,
+            "fw_version": null,
+          },
+          "model": "M5Stack Cardputer",
+          "name": "Desk",
+          "paired_at": "<epoch-ms>",
+          "pending": false,
+          "ring_settings_supported": false,
+          "settings": {
+            "dnd": false,
+            "mode": "ptt",
+            "muted": false,
+            "ring_seconds": 30,
+            "ring_sound": "classic",
+            "volume": 6,
+            "wake_word": "bob",
+          },
+          "settings_supported": false,
+          "wake_word_supported": false,
+        },
+        {
+          "active_conversation_id": null,
+          "active_space_id": null,
+          "connected": false,
+          "id": "<uuid-5>",
+          "last_seen_at": null,
+          "live": {
+            "battery_pct": null,
+            "charging": null,
+            "connected": false,
+            "fw_version": null,
+          },
+          "model": "M5Stack Cardputer",
+          "name": "Desk",
+          "paired_at": "<epoch-ms>",
+          "pending": false,
+          "ring_settings_supported": false,
+          "settings": {
+            "dnd": false,
+            "mode": "ptt",
+            "muted": false,
+            "ring_seconds": 30,
+            "ring_sound": "classic",
+            "volume": 6,
+            "wake_word": "bob",
+          },
+          "settings_supported": false,
+          "wake_word_supported": false,
+        },
+      ],
+    },
+    "status": 200,
+  },
+  "clear both": {
+    "body": {
+      "active_conversation": null,
+      "active_space": null,
+    },
+    "status": 200,
+  },
+  "conversation and space": {
+    "body": {
+      "active_conversation": {
+        "id": "cnv_<uuid-1>",
+        "title": "Notes",
+      },
+      "active_space": {
+        "id": "<uuid-2>",
+        "name": "Home",
+      },
+    },
+    "status": 200,
+  },
+  "device offline": {
+    "body": {
+      "status": "pending",
+    },
+    "status": 202,
+  },
+  "foreign conversation": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "foreign space": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "missing space_id": {
+    "body": {
+      "error": {
+        "code": "invalid_request",
+      },
+    },
+    "status": 400,
+  },
+  "no device": {
+    "body": {
+      "error": {
+        "code": "no_device",
+      },
+    },
+    "status": 409,
+  },
+  "thread": {
+    "body": {
+      "active_conversation": {
+        "id": "thr_<uuid-3>",
+        "title": "Rota",
+      },
+      "active_space": {
+        "id": "<uuid-2>",
+        "name": "Home",
+      },
+    },
+    "status": 200,
+  },
+  "thread in another space": {
+    "body": {
+      "error": {
+        "code": "invalid_request",
+      },
+    },
+    "status": 400,
+  },
+  "thread with a conversation id": {
+    "body": {
+      "error": {
+        "code": "invalid_request",
+      },
+    },
+    "status": 400,
+  },
+  "unknown thread": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+}
+`;
+
+exports[`HTTP pointer routes > PUT /api/devices/active-space and GET /api/devices > HTTP: active-space 1`] = `
+{
+  "GET devices": {
+    "body": {
+      "active_conversation": null,
+      "active_space": {
+        "id": "<uuid-1>",
+        "name": "Family",
+      },
+      "devices": [],
+    },
+    "status": 200,
+  },
+  "GET devices after refusals": {
+    "body": {
+      "active_conversation": null,
+      "active_space": null,
+      "devices": [],
+    },
+    "status": 200,
+  },
+  "GET devices, none": {
+    "body": {
+      "active_conversation": null,
+      "active_space": null,
+      "devices": [],
+    },
+    "status": 200,
+  },
+  "PUT bad uuid": {
+    "body": {
+      "error": {
+        "code": "invalid_request",
+      },
+    },
+    "status": 400,
+  },
+  "PUT extra key": {
+    "body": {
+      "error": {
+        "code": "invalid_request",
+      },
+    },
+    "status": 400,
+  },
+  "PUT foreign space": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "PUT null": {
+    "body": {
+      "active_space": null,
+    },
+    "status": 200,
+  },
+  "PUT space": {
+    "body": {
+      "active_space": {
+        "id": "<uuid-1>",
+        "name": "Family",
+      },
+    },
+    "status": 200,
+  },
+  "PUT unknown space": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+}
+`;
+
+exports[`collaboration/spaces/active.ts > a stale pointer (archived space) is nulled on read > active space: archived 1`] = `
+{
+  "first": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": true,
+      "name": null,
+      "spaceId": null,
+    },
+  },
+  "second": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "name": null,
+      "spaceId": null,
+    },
+  },
+}
+`;
+
+exports[`collaboration/spaces/active.ts > no row, private, shared, refused, cleared > active space: module 1`] = `
+{
+  "b get": {
+    "ok": null,
+  },
+  "clearIf bad uuid": {
+    "ok": null,
+  },
+  "clearIf other space": {
+    "ok": null,
+  },
+  "clearIf this space": {
+    "ok": "<epoch-ms>",
+  },
+  "get after clearIf": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "name": null,
+      "spaceId": null,
+    },
+  },
+  "get after refusals": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "name": "Family",
+      "spaceId": "<uuid-2>",
+    },
+  },
+  "get cleared": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "name": null,
+      "spaceId": null,
+    },
+  },
+  "get private": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "name": "Private",
+      "spaceId": "<uuid-1>",
+    },
+  },
+  "get shared": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "name": "Family",
+      "spaceId": "<uuid-2>",
+    },
+  },
+  "none": {
+    "ok": null,
+  },
+  "set malformed": {
+    "error": {
+      "class": "StoreNotFoundError",
+      "message": "space not found",
+    },
+  },
+  "set null": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "name": null,
+    },
+  },
+  "set private": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "name": "Private",
+    },
+  },
+  "set shared (device)": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "name": "Family",
+    },
+  },
+  "set space a is not in": {
+    "error": {
+      "class": "StoreNotFoundError",
+      "message": "space not found",
+    },
+  },
+  "set unknown uuid": {
+    "error": {
+      "class": "StoreNotFoundError",
+      "message": "space not found",
+    },
+  },
+}
+`;
+
+exports[`conversations/active.ts > clearActiveThread and clearActiveThreadInSpace, archived space > active conversation: clear helpers and archive 1`] = `
+{
+  "after clearActiveThread": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": null,
+      "kind": null,
+      "spaceId": null,
+      "surface": "device",
+      "threadId": null,
+      "title": null,
+    },
+  },
+  "after clearActiveThreadInSpace": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": null,
+      "kind": null,
+      "spaceId": null,
+      "surface": "device",
+      "threadId": null,
+      "title": null,
+    },
+  },
+  "bad uuid space": {
+    "ok": null,
+  },
+  "bad uuid thread": {
+    "ok": null,
+  },
+  "clearActiveThread": {
+    "ok": "<epoch-ms>",
+  },
+  "clearActiveThreadInSpace": {
+    "ok": "<epoch-ms>",
+  },
+  "get after space archived": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": true,
+      "conversationId": null,
+      "kind": null,
+      "spaceId": null,
+      "surface": "device",
+      "threadId": null,
+      "title": null,
+    },
+  },
+  "get again": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": null,
+      "kind": null,
+      "spaceId": null,
+      "surface": "device",
+      "threadId": null,
+      "title": null,
+    },
+  },
+  "no row thread": {
+    "ok": null,
+  },
+  "other space": {
+    "ok": null,
+  },
+  "pointer is a conversation: clearActiveThread": {
+    "ok": null,
+  },
+  "pointer is a conversation: in space": {
+    "ok": null,
+  },
+  "still thread": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": "thr_<uuid-1>",
+      "kind": "thread",
+      "spaceId": "<uuid-2>",
+      "surface": "device",
+      "threadId": "<uuid-1>",
+      "title": "Rota",
+    },
+  },
+}
+`;
+
+exports[`conversations/active.ts > no row, then a pointer set from every surface > active conversation: no row, then each surface 1`] = `
+{
+  "get after activate": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": "cnv_<uuid-1>",
+      "kind": "conversation",
+      "spaceId": null,
+      "surface": "activate",
+      "threadId": null,
+      "title": "Kitchen",
+    },
+  },
+  "get after device": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": "cnv_<uuid-1>",
+      "kind": "conversation",
+      "spaceId": null,
+      "surface": "device",
+      "threadId": null,
+      "title": "Kitchen",
+    },
+  },
+  "get after picker": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": "cnv_<uuid-1>",
+      "kind": "conversation",
+      "spaceId": null,
+      "surface": "picker",
+      "threadId": null,
+      "title": "Kitchen",
+    },
+  },
+  "get after web_text": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": "cnv_<uuid-1>",
+      "kind": "conversation",
+      "spaceId": null,
+      "surface": "web_text",
+      "threadId": null,
+      "title": "Kitchen",
+    },
+  },
+  "get after web_voice": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": "cnv_<uuid-1>",
+      "kind": "conversation",
+      "spaceId": null,
+      "surface": "web_voice",
+      "threadId": null,
+      "title": "Kitchen",
+    },
+  },
+  "none": {
+    "ok": null,
+  },
+  "set activate": {
+    "ok": "<epoch-ms>",
+  },
+  "set device": {
+    "ok": "<epoch-ms>",
+  },
+  "set picker": {
+    "ok": "<epoch-ms>",
+  },
+  "set web_text": {
+    "ok": "<epoch-ms>",
+  },
+  "set web_voice": {
+    "ok": "<epoch-ms>",
+  },
+}
+`;
+
+exports[`conversations/active.ts > refs: unknown cnv_, malformed, thread, foreign thread; clear; delete sets null > active conversation: refs, clear, delete 1`] = `
+{
+  "b get": {
+    "ok": null,
+  },
+  "b sets a thread": {
+    "error": {
+      "class": "StoreNotFoundError",
+      "message": "thread not found",
+    },
+  },
+  "clear": {
+    "ok": "<epoch-ms>",
+  },
+  "get after conversation deleted": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": null,
+      "kind": null,
+      "spaceId": null,
+      "surface": "web_voice",
+      "threadId": null,
+      "title": null,
+    },
+  },
+  "get cleared": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": null,
+      "kind": null,
+      "spaceId": null,
+      "surface": "picker",
+      "threadId": null,
+      "title": null,
+    },
+  },
+  "get thread": {
+    "ok": {
+      "changedAt": "<epoch-ms>",
+      "cleared": false,
+      "conversationId": "thr_<uuid-1>",
+      "kind": "thread",
+      "spaceId": "<uuid-2>",
+      "surface": "device",
+      "threadId": "<uuid-1>",
+      "title": "Weekend",
+    },
+  },
+  "set conversation": {
+    "ok": "<epoch-ms>",
+  },
+  "set malformed": {
+    "error": {
+      "class": "StoreNotFoundError",
+      "message": "thread not found",
+    },
+  },
+  "set thread": {
+    "ok": "<epoch-ms>",
+  },
+  "set unknown cnv_": {
+    "error": {
+      "code": "23503",
+    },
+  },
+}
+`;
+
+exports[`voice/games-store.ts game settings > defaults, then every field non-default, partial patch, dedupe, quiet hours reset > game settings: defaults and upserts 1`] = `
+{
+  "defaults": {
+    "ok": {
+      "allowedGames": [
+        "animal_riddles",
+        "simon_says",
+        "family_quiz",
+        "twenty_questions",
+        "silly_stories",
+      ],
+      "dailyLimitMinutes": 45,
+      "enabled": true,
+      "kidsMode": true,
+      "maxBand": "kid",
+      "quietHours": null,
+    },
+  },
+  "empty allowedGames": {
+    "ok": {
+      "allowedGames": [],
+      "dailyLimitMinutes": 1,
+      "enabled": false,
+      "kidsMode": false,
+      "maxBand": "little",
+      "quietHours": null,
+    },
+  },
+  "empty patch": {
+    "ok": {
+      "allowedGames": [],
+      "dailyLimitMinutes": 1,
+      "enabled": false,
+      "kidsMode": false,
+      "maxBand": "little",
+      "quietHours": null,
+    },
+  },
+  "get": {
+    "ok": {
+      "allowedGames": [
+        "simon_says",
+        "family_quiz",
+      ],
+      "dailyLimitMinutes": 600,
+      "enabled": false,
+      "kidsMode": false,
+      "maxBand": "grown",
+      "quietHours": {
+        "end": "07:00",
+        "start": "21:30",
+      },
+    },
+  },
+  "patch one field": {
+    "ok": {
+      "allowedGames": [
+        "simon_says",
+        "family_quiz",
+      ],
+      "dailyLimitMinutes": 1,
+      "enabled": false,
+      "kidsMode": false,
+      "maxBand": "little",
+      "quietHours": {
+        "end": "07:00",
+        "start": "21:30",
+      },
+    },
+  },
+  "quiet hours back to null": {
+    "ok": {
+      "allowedGames": [
+        "simon_says",
+        "family_quiz",
+      ],
+      "dailyLimitMinutes": 1,
+      "enabled": false,
+      "kidsMode": false,
+      "maxBand": "little",
+      "quietHours": null,
+    },
+  },
+  "upsert all fields": {
+    "ok": {
+      "allowedGames": [
+        "simon_says",
+        "family_quiz",
+      ],
+      "dailyLimitMinutes": 600,
+      "enabled": false,
+      "kidsMode": false,
+      "maxBand": "grown",
+      "quietHours": {
+        "end": "07:00",
+        "start": "21:30",
+      },
+    },
+  },
+}
+`;
+
+exports[`voice/games-store.ts game settings > rejects: schema paths through upsert, check constraints through SQL > game settings: rejects 1`] = `
+{
+  "after rejects, still defaults": {
+    "ok": {
+      "allowedGames": [
+        "animal_riddles",
+        "simon_says",
+        "family_quiz",
+        "twenty_questions",
+        "silly_stories",
+      ],
+      "dailyLimitMinutes": 45,
+      "enabled": true,
+      "kidsMode": true,
+      "maxBand": "kid",
+      "quietHours": null,
+    },
+  },
+  "band": {
+    "error": {
+      "class": "StoreError",
+      "message": "invalid game settings",
+    },
+  },
+  "game id": {
+    "error": {
+      "class": "StoreError",
+      "message": "invalid game settings",
+    },
+  },
+  "limit 0": {
+    "error": {
+      "class": "StoreError",
+      "message": "invalid game settings",
+    },
+  },
+  "limit 601": {
+    "error": {
+      "class": "StoreError",
+      "message": "invalid game settings",
+    },
+  },
+  "limit fraction": {
+    "error": {
+      "class": "StoreError",
+      "message": "invalid game settings",
+    },
+  },
+  "quiet clock": {
+    "error": {
+      "class": "StoreError",
+      "message": "invalid game settings",
+    },
+  },
+  "sql allowed_games": {
+    "error": {
+      "code": "23514",
+    },
+  },
+  "sql daily 0": {
+    "error": {
+      "code": "23514",
+    },
+  },
+  "sql daily 601": {
+    "error": {
+      "code": "23514",
+    },
+  },
+  "sql max_band": {
+    "error": {
+      "code": "23514",
+    },
+  },
+  "sql quiet_start format": {
+    "error": {
+      "code": "23514",
+    },
+  },
+  "sql quiet_start without quiet_end": {
+    "error": {
+      "code": "23514",
+    },
+  },
+  "unknown key": {
+    "error": {
+      "class": "StoreError",
+      "message": "invalid game settings",
+    },
+  },
+}
+`;
+
+exports[`web export and two-account isolation > account B never sees account A pointers or settings > isolation: account B sees nothing of A 1`] = `
+{
+  "GET /api/active": {
+    "body": {
+      "active": null,
+    },
+    "status": 200,
+  },
+  "GET /api/devices": {
+    "body": {
+      "active_conversation": null,
+      "active_space": null,
+      "devices": [],
+    },
+    "status": 200,
+  },
+  "active": {
+    "ok": null,
+  },
+  "activeSpace": {
+    "ok": null,
+  },
+  "export": {
+    "game_settings": [],
+    "sections": [
+      "spaces",
+      "group_chats",
+      "group_chat_links",
+      "conversations",
+      "memories",
+      "tasks",
+      "notes",
+      "events",
+      "reminders",
+      "timers",
+      "action_items",
+      "game_sessions",
+      "game_settings",
+      "game_usage",
+      "google_accounts",
+      "google_operations",
+      "google_calendar_selections",
+      "google_operation_slots",
+      "routines",
+      "routine_runs",
+      "insights",
+      "routine_results",
+      "tool_preferences",
+      "bob_apps",
+      "bob_app_schedules",
+      "bob_app_runs",
+    ],
+  },
+  "settings": {
+    "ok": {
+      "allowedGames": [
+        "animal_riddles",
+        "simon_says",
+        "family_quiz",
+        "twenty_questions",
+        "silly_stories",
+      ],
+      "dailyLimitMinutes": 45,
+      "enabled": true,
+      "kidsMode": true,
+      "maxBand": "kid",
+      "quietHours": null,
+    },
+  },
+}
+`;
+
+exports[`web export and two-account isolation > export sections with no rows and with rows > export: game_settings and absent active sections 1`] = `
+{
+  "empty": {
+    "game_settings": [],
+    "sections": [
+      "spaces",
+      "group_chats",
+      "group_chat_links",
+      "conversations",
+      "memories",
+      "tasks",
+      "notes",
+      "events",
+      "reminders",
+      "timers",
+      "action_items",
+      "game_sessions",
+      "game_settings",
+      "game_usage",
+      "google_accounts",
+      "google_operations",
+      "google_calendar_selections",
+      "google_operation_slots",
+      "routines",
+      "routine_runs",
+      "insights",
+      "routine_results",
+      "tool_preferences",
+      "bob_apps",
+      "bob_app_schedules",
+      "bob_app_runs",
+    ],
+  },
+  "with rows": {
+    "game_settings": [
+      {
+        "allowed_games": [
+          "animal_riddles",
+          "simon_says",
+          "family_quiz",
+          "twenty_questions",
+          "silly_stories",
+        ],
+        "daily_limit_minutes": 45,
+        "enabled": true,
+        "kids_mode": false,
+        "max_band": "grown",
+        "quiet_end": "06:30",
+        "quiet_start": "22:00",
+        "updated_at": "<iso>",
+      },
+    ],
+    "sections": [
+      "spaces",
+      "group_chats",
+      "group_chat_links",
+      "conversations",
+      "memories",
+      "tasks",
+      "notes",
+      "events",
+      "reminders",
+      "timers",
+      "action_items",
+      "game_sessions",
+      "game_settings",
+      "game_usage",
+      "google_accounts",
+      "google_operations",
+      "google_calendar_selections",
+      "google_operation_slots",
+      "routines",
+      "routine_runs",
+      "insights",
+      "routine_results",
+      "tool_preferences",
+      "bob_apps",
+      "bob_app_schedules",
+      "bob_app_runs",
+    ],
+  },
+}
+`;

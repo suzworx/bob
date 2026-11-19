@@ -1,0 +1,91 @@
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { z } from 'zod';
+import { tool } from 'ai';
+import { asDb, addAccount, closeTestDb, createTestDb, type TestDb } from '../support/test-db.ts';
+import type { Db } from '../../src/platform/db/db.ts';
+import { getEffectiveTools, setToolPreference } from '../../src/tools/store.ts';
+import { assertToolEnabled, prepareToolPolicyFilter } from '../../src/tools/policy.ts';
+import { addMember, createSpace, revokeMember } from '../../src/spaces/store.ts';
+import { createThread } from '../../src/conversations/thread-store.ts';
+import { addGoogleAccount } from '../../src/integrations/google-store.ts';
+import { withUser } from '../../src/platform/db/db.ts';
+import { createConversation } from '../../src/conversations/store.ts';
+
+describe('tool policy ownership and fresh execution', () => {
+  let pg: TestDb;
+  let db: Db;
+  beforeAll(async () => { pg = await createTestDb(); db = asDb(pg); });
+  afterAll(async () => { await closeTestDb(pg); });
+  it('a conversation enable cannot undo an account denial, and reset restores inheritance', async () => {
+    const owner = await addAccount(pg);
+    const conversation = await createConversation(db, owner.userId, 'Policy');
+    await setToolPreference(db, owner.userId, { scope: 'account', toolId: 'create_task', enabled: false });
+    const result = await setToolPreference(db, owner.userId, { scope: 'conversation', scopeId: conversation.id, toolId: 'create_task', enabled: true });
+    expect(result.tools.find((item) => item.id === 'create_task')).toMatchObject({ enabled: false, preference: true, blockedBy: [{ scope: 'account', scopeId: owner.userId }] });
+    await setToolPreference(db, owner.userId, { scope: 'account', toolId: 'create_task', enabled: null });
+    await expect(assertToolEnabled(db, owner.userId, 'create_task', { conversationId: conversation.id })).resolves.toBeUndefined();
+  });
+  it('cannot read or change another account or conversation and rejects unknown tool IDs', async () => {
+    const owner = await addAccount(pg);
+    const other = await addAccount(pg);
+    const conversation = await createConversation(db, owner.userId, 'Private');
+    await expect(getEffectiveTools(db, other.userId, { conversationId: conversation.id })).rejects.toThrow('tool_scope_not_found');
+    await expect(setToolPreference(db, other.userId, { scope: 'account', scopeId: owner.userId, toolId: 'create_task', enabled: false })).rejects.toThrow('tool_scope_not_found');
+    await expect(setToolPreference(db, owner.userId, { scope: 'account', toolId: 'invented', enabled: true })).rejects.toThrow('tool_not_found');
+    await expect(assertToolEnabled(db, owner.userId, 'invented')).rejects.toThrow('tool_disabled');
+  });
+  it('rechecks captured execution after preference changes and fails closed on outage', async () => {
+    const owner = await addAccount(pg);
+    let called = false;
+    const filter = await prepareToolPolicyFilter(db, owner.userId);
+    const tools = filter({ create_task: tool({ inputSchema: z.object({}), execute: async () => { called = true; return 'created'; } }) });
+    await setToolPreference(db, owner.userId, { scope: 'account', toolId: 'create_task', enabled: false });
+    await expect(tools.create_task?.execute?.({}, { toolCallId: 'one', messages: [], context: undefined })).rejects.toThrow('tool_disabled');
+    expect(called).toBe(false);
+    const refreshed = await prepareToolPolicyFilter(db, owner.userId);
+    expect(refreshed(tools)).toEqual({});
+    const broken: Db = { query: async () => { throw new Error('offline'); }, tx: async () => { throw new Error('offline'); } };
+    await expect(assertToolEnabled(broken, owner.userId, 'create_task')).rejects.toThrow('tool_policy_unavailable');
+  });
+  it('enforces space administration, inherited denial, revoked membership and RLS direct writes', async () => {
+    const owner = await addAccount(pg);
+    const member = await addAccount(pg);
+    const admin = await addAccount(pg);
+    const space = await createSpace(db, owner.userId, { kind: 'group', name: 'Tools' });
+    await addMember(db, owner.userId, space.id, member.userId, 'member');
+    await addMember(db, owner.userId, space.id, admin.userId, 'admin');
+    const thread = await createThread(db, member.userId, { spaceId: space.id, title: 'Shared' });
+    await setToolPreference(db, admin.userId, { scope: 'space', scopeId: space.id, toolId: 'create_task', enabled: false });
+    await expect(setToolPreference(db, member.userId, { scope: 'space', scopeId: space.id, toolId: 'create_task', enabled: true })).rejects.toThrow('tool_scope_not_found');
+    await expect(withUser(db, member.userId, (tx) => tx.query('insert into bob.tool_preferences(scope,scope_id,tool_id,enabled,space_id) values($1,$2,$3,true,$2)', ['space', space.id, 'read_note']))).rejects.toThrow();
+    const result = await setToolPreference(db, member.userId, { scope: 'conversation', scopeId: thread.id, toolId: 'create_task', enabled: true });
+    expect(result.tools.find((item) => item.id === 'create_task')?.enabled).toBe(false);
+    expect(result.tools.find((item) => item.id === 'google_gmail_search')).toMatchObject({ enabled: false, availability: 'unavailable' });
+    await revokeMember(db, owner.userId, space.id, member.userId);
+    await expect(getEffectiveTools(db, member.userId, { conversationId: thread.id })).rejects.toThrow('tool_scope_not_found');
+    await expect(assertToolEnabled(db, member.userId, 'read_note', { spaceId: space.id })).rejects.toThrow('tool_policy_unavailable');
+  });
+  it('integration settings are owner-only and intersect account settings for the resolved account', async () => {
+    const owner = await addAccount(pg);
+    const other = await addAccount(pg);
+    const account = await addGoogleAccount(db, owner.userId, { installationId: 'policy', accountId: 'policy', email: 'policy@example.test' });
+    await setToolPreference(db, owner.userId, { scope: 'integration', scopeId: account.id, toolId: 'google_gmail_search', enabled: false });
+    await expect(assertToolEnabled(db, owner.userId, 'google_gmail_search', { integrationId: account.id })).rejects.toThrow('tool_disabled');
+    await expect(assertToolEnabled(db, owner.userId, 'google_gmail_read_thread', { integrationId: account.id })).resolves.toBeUndefined();
+    await expect(getEffectiveTools(db, other.userId, { integrationId: account.id })).rejects.toThrow('tool_scope_not_found');
+    await expect(setToolPreference(db, owner.userId, { scope: 'integration', scopeId: account.id, toolId: 'create_task', enabled: false })).rejects.toThrow('tool_not_found');
+    await setToolPreference(db, owner.userId, { scope: 'account', toolId: 'google_gmail_read_thread', enabled: false });
+    const result = await setToolPreference(db, owner.userId, { scope: 'integration', scopeId: account.id, toolId: 'google_gmail_read_thread', enabled: true });
+    expect(result.tools.find((item) => item.id === 'google_gmail_read_thread')?.enabled).toBe(false);
+    expect(result.tools.every((item) => item.integrationKind === 'google')).toBe(true);
+    expect(result.tools.some((item) => item.id === 'google_list_accounts')).toBe(false);
+    await expect(setToolPreference(db, owner.userId, { scope: 'integration', scopeId: account.id, toolId: 'google_list_accounts', enabled: false })).rejects.toThrow('tool_not_found');
+  });  it('RLS hides foreign rows and rejects malformed ownership combinations even outside HTTP', async () => {
+    const owner = await addAccount(pg);
+    const other = await addAccount(pg);
+    await setToolPreference(db, owner.userId, { scope: 'account', toolId: 'read_note', enabled: false });
+    const foreign = await withUser(db, other.userId, (tx) => tx.query('select * from bob.tool_preferences where scope_id=$1', [owner.userId]));
+    expect(foreign).toEqual([]);
+    await expect(withUser(db, owner.userId, (tx) => tx.query('insert into bob.tool_preferences(scope,scope_id,tool_id,enabled,owner_user_id) values($1,$2,$3,false,$4)', ['account', other.userId, 'create_note', owner.userId]))).rejects.toThrow();
+    await expect(withUser(db, owner.userId, (tx) => tx.query('insert into bob.tool_preferences(scope,scope_id,tool_id,enabled) values($1,$2,$3,false)', ['account', owner.userId, 'create_note']))).rejects.toThrow();
+  });});

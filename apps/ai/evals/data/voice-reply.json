@@ -1,0 +1,17 @@
+[
+  { "input": "What time is it right now?" },
+  { "input": "Can you tell me a fun fact about octopuses?" },
+  { "input": "What is the weather like today?" },
+  { "input": "Remind me to buy milk on the way home." },
+  { "input": "How many kilometers is a marathon?" },
+  { "input": "What is the capital of Australia?" },
+  { "input": "Can you say that again?" },
+  { "input": "What is two hundred and thirty seven plus forty eight?" },
+  { "input": "Tell me a short joke." },
+  { "input": "What day comes after Tuesday?" },
+  { "input": "Who are you?" },
+  { "input": "What are you?" },
+  { "input": "Tell me about yourself" },
+  { "input": "What can you do?" },
+  { "input": "How helpful are you? What all can you do?" }
+]

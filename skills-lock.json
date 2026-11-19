@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "skills": {
+    "ai-sdk": {
+      "source": "vercel/ai",
+      "sourceType": "github",
+      "skillPath": "skills/use-ai-sdk/SKILL.md",
+      "computedHash": "da25c27a274ef2b71017c255f95a26350d2519765a75cb54ee1a37872b121dab"
+    },
+    "animate": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "skillPath": "skills/animate/SKILL.md",
+      "computedHash": "fb0a18403891238d4ce4fc80f891689678766c29092de1e3aadc0c917133ee5d"
+    },
+    "apple-design": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "skillPath": "skills/apple-design/SKILL.md",
+      "computedHash": "f3f1d2cbc8f3e79ccddff05f4e42d34d995f057fb30ff670e4edf8c87d568b69"
+    },
+    "emil-design-eng": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "skillPath": "skills/emil-design-eng/SKILL.md",
+      "computedHash": "77853cec799207f80868c611374c6ed5fdf34a55355c5ab544b59e791c63ad98"
+    },
+    "epic-breakdown-advisor": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/epic-breakdown-advisor/SKILL.md",
+      "computedHash": "aac2638afbe1807e0ad2ae68a504cf2d98a8c33ee77566e8ebea839164a470fd"
+    },
+    "esp32-firmware-engineer": {
+      "source": "adamlipecz/esp32-firmware-engineer-skill",
+      "sourceType": "github",
+      "skillPath": "esp32-firmware-engineer/SKILL.md",
+      "computedHash": "648876c56ccba5f8c2fd37979e3d254745e4c4d5fd76572a2c790af90fa2a2f5"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "4eabc66183767153e404b39d1b839b1c37f2d82d86f0a0d7e880a579d8d62336"
+    },
+    "html-architecture-diagrams": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-architecture-diagrams/SKILL.md",
+      "computedHash": "7c1182607043bb3b8b4d6edd97fb716eae20eb5b4bbcca3690c63d903473bfe6"
+    },
+    "html-brainstorm-grid": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-brainstorm-grid/SKILL.md",
+      "computedHash": "341ed8d3fc38fbcd8e6aa248bc8ee1233852257a43dfbcda1ed32d90e8120443"
+    },
+    "html-code-review": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-code-review/SKILL.md",
+      "computedHash": "e1d78cc1fb287adce95f4cc69d672e4926a73a985274a1328d4dad54724ae1a8"
+    },
+    "html-comparison-matrix": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-comparison-matrix/SKILL.md",
+      "computedHash": "d485e79568423f25c9fdb2ab0b397af185648ad51c2da165cfd9fe3428cf8ff3"
+    },
+    "html-data-explorer": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-data-explorer/SKILL.md",
+      "computedHash": "018118220c0a8b2ca364adfa2dfa4300ff014170913c7beb222029e9ffb2756e"
+    },
+    "html-design-prototypes": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-design-prototypes/SKILL.md",
+      "computedHash": "2a89367fce0d66bea247d78365a8575f06cbb8602d60596e06970f179dcbd98f"
+    },
+    "html-design-tokens": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-design-tokens/SKILL.md",
+      "computedHash": "838afbfa40e991ce4a054b3f3a235a5cd9b5bc93109aea780bcb3418c8dfbdb1"
+    },
+    "html-erd-explorer": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-erd-explorer/SKILL.md",
+      "computedHash": "9781fc2540a817d53fe5600335a79058de82672ae36b6374f7a20b355e705da2"
+    },
+    "html-interactive-playground": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-interactive-playground/SKILL.md",
+      "computedHash": "65767068a0a97e86da4dff02620fef0b0a50bf49e77002be0fd87020efbf19f0"
+    },
+    "html-mind-map": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-mind-map/SKILL.md",
+      "computedHash": "382b538ab5c83d49a2b02aa5d5b14d321334abf42b7225817f9a4d3888201d60"
+    },
+    "html-research-reports": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-research-reports/SKILL.md",
+      "computedHash": "25fd1d4e29feda752c5dac773ab3ee15863ca74204f9b3a108dbeba65787d013"
+    },
+    "html-skills-listen": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-skills-listen/SKILL.md",
+      "computedHash": "9b6c9c2f1c3e8619473df45299902796f71b3e6194e4d994395e2ce188d82ede"
+    },
+    "html-skills-stop": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-skills-stop/SKILL.md",
+      "computedHash": "be79faed518430b8ad2ea0b050a9382aceb221e3200c20a50308208a77ba9f55"
+    },
+    "html-slideshow-deck": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-slideshow-deck/SKILL.md",
+      "computedHash": "5f4a9b2872692b1d00f1dff9219b6e17b295096970f29f586c87579b29476867"
+    },
+    "html-spec-planning": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-spec-planning/SKILL.md",
+      "computedHash": "af9008da3f7afa05f323fbc52ae91168a38f59b8ab44d5a7855033fb20e34499"
+    },
+    "html-svg-diagrams": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-svg-diagrams/SKILL.md",
+      "computedHash": "7438f8f95553e01c08c3f32a467bcb6f7d2ece4f1246f8d1816454d37cba6c61"
+    },
+    "html-testing-checklist": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-testing-checklist/SKILL.md",
+      "computedHash": "4d3eb5015f8c9937d26c5f2af7b02ed0523a6a6126a91100ff8f7c1015450cb0"
+    },
+    "html-throwaway-editor": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-throwaway-editor/SKILL.md",
+      "computedHash": "2776f0499a71aaa5ddb1a46c63f924bea4db665915aeece8332e31b64171ec54"
+    },
+    "html-timeline-roadmap": {
+      "source": "f-labs-io/agent-html-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/html-skills/skills/html-timeline-roadmap/SKILL.md",
+      "computedHash": "d8e400737a557ed48734f6068b686f9500dc628fce86062e1ed8ba5b69c96160"
+    },
+    "review-animations": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "skillPath": "skills/review-animations/SKILL.md",
+      "computedHash": "8c2befeb28bb484bf2de7b2fc228774857e266d32a65d76895e78651a536d8cf"
+    },
+    "use-findskill": {
+      "source": "alentodorov/findskill-meta-skill",
+      "sourceType": "github",
+      "skillPath": "use-findskill/SKILL.md",
+      "computedHash": "f7a29b012a313d327616a47463174e147c8bc58e96e1442e26217acbee530e2a"
+    },
+    "user-story-splitting": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/user-story-splitting/SKILL.md",
+      "computedHash": "fa074bdda1336ae30bdb186a86ef07770957d5166184b8196fe5b85a1c5b54d5"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "computedHash": "ca7b0c0c6e5f2750043f7f0cd72d16ac4e2abc48f9b5500d047a4b77a2506212"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
+    },
+    "websocket-development": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "skillPath": "websocket-development/SKILL.md",
+      "computedHash": "1ef400093361674085068a0798e8ddb65ef02d04ed5f6192094ed1aca47d4e56"
+    }
+  }
+}

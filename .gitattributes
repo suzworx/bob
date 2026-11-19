@@ -1,0 +1,9 @@
+# Text files are LF everywhere, including Windows checkouts with core.autocrlf=true:
+# CRLF working copies broke tests that parse docs (supabase-report-sql) and made
+# every test run rewrite snapshots and catalogs with line-ending-only diffs.
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.png binary
+*.ico binary
+*.tflite binary
+*.pem -text

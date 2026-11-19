@@ -1,0 +1,16 @@
+# Keeps the pins fresh. Third-party actions are pinned to a commit SHA and the
+# node base image to a digest, so nothing moves under a build by itself; these
+# weekly PRs are how updates arrive, one reviewable change at a time.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ['*']
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly

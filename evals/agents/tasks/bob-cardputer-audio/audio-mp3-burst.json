@@ -1,0 +1,18 @@
+{
+  "id": "audio-mp3-burst",
+  "agent": "bob-cardputer-audio",
+  "commit": "8055bd2e",
+  "base": "8055bd2e^",
+  "prompt": "The Cardputer sometimes plays nothing at all for a reply. It happens when the whole reply arrives in one burst, before the MP3 decoder has started, which is exactly how production sends replies. The serial log shows the ring as ready with all the data and end-of-stream set, then the decoder's begin reports failure and the reply is dropped silently. The cause is that the end-of-playback message closes the ring buffer source, and the decoder refuses to begin on a source that is not open. Fix it so the end-of-playback message only marks the end of the data and leaves the source open; only abort and stop should close it, so a stopped reply still returns cleanly to Ready. Move the ring buffer source, unchanged, into its own header so host tests can drive it, and keep flash growth tiny.",
+  "hiddenTests": [
+    "apps/cardputer/test/host/test_mp3_ring_source.cpp",
+    "apps/cardputer/test/host/shim/AudioFileSource.h",
+    "apps/cardputer/test/host/shim/freertos/FreeRTOS.h",
+    "apps/cardputer/test/host/shim/freertos/semphr.h",
+    "apps/cardputer/test/host/shim/freertos/task.h"
+  ],
+  "gates": [
+    "npm run test:firmware"
+  ],
+  "maxBudgetUsd": 3
+}

@@ -1,0 +1,1487 @@
+{
+  "findings": {
+    "H1": "RESOLVED 2026-10-16: ArchivedSpacesDialog is hosted by the stable Shell; mobile drawer dismissal regression passes. Owner-only restore, failure and native navigation have scoped tests.",
+    "H2": "RESOLVED 2026-10-16: one notification state/poll/dialog host survives mobile drawer dismissal. Browser checks cover inbox, settings, back and Escape at 320px.",
+    "H3": "HISTORICAL / not reverified 2026-10-16: Phone: the thread's Cardputer bar is 499px wide on a 375px screen.",
+    "H4": "NOT REPRODUCED 2026-10-16 at 390px: all five space tabs including Members visible. 375px and long labels still need coverage.",
+    "H5": "RESOLVED 2026-10-16: personal and space chat share Composer; Bob assistant labels/help are branded while serialized @bob and real member handles remain unchanged.",
+    "H6": "RESOLVED 2026-10-16: native h1 in LayoutHeaderWithActions, shrinkable StackItem and existing device controls; 320px long-title test checks complete accessible name, 12px insets and visible device options.",
+    "H7": "HISTORICAL / not reverified 2026-10-16: Calendar and Agenda disagree: week start, overdue shown or not, New reminder vs New event.",
+    "H8": "PARTLY RESOLVED: SpacesPage now renders explicit failed state at line99; Gmail error copy not yet reverified.",
+    "M1": "HISTORICAL / not reverified 2026-10-16: Request fan-out: Devices fires about 3N requests; every space's members load at startup.",
+    "M2": "RESOLVED 2026-10-16: duplicate shell padding removed. Browser assertions measure Memory and Calendar headings at x=24 on mobile; Account retains its own settings template inset.",
+    "M3": "HISTORICAL / not reverified 2026-10-16: Landing composer inset 12px from the heading.",
+    "M4": "RESOLVED in current source/render: Account uses settings-sidebar InfoRow/ExpandableRow and mobile drill-in navigation. General extra shell gutter tracked separately M2.",
+    "M5": "PARTLY RESOLVED: Devices now uses list/detail and EmptyState; populated 19-device scenario and offline statuses not covered by empty fixture.",
+    "M6": "PARTLY RESOLVED / historical remainder unverified: current notifications use Timestamp and unread StatusDot. Inbox/settings/mobile lifetime verified; richer descriptions and badge spoken phrasing were not independently audited.",
+    "M7": "RESOLVED in source 2026-10-16: palette includes Today, Connectors, Account and Usage alongside existing destinations.",
+    "M8": "HISTORICAL / not reverified 2026-10-16: Tablet: the 300px sidebar stays open, leaving 468px for content.",
+    "M9": "HISTORICAL / not reverified 2026-10-16: Small targets: Memory's 'View conversation' is 17px tall (WCAG 2.5.8 AA needs 24).",
+    "M10": "RESOLVED: account-page.tsx397 AlertDialog confirms Sign out everywhere before handler.",
+    "M11": "HISTORICAL / not reverified 2026-10-16: Dead ends: /reset and an invalid invite offer no way out.",
+    "M12": "PARTLY RESOLVED: Memory, Devices, Gmail, Today, Calendar, Usage and Spaces use visible EmptyState. Space Threads still autofocus first-thread field; Tasks/Notes use inline empty text and add fields.",
+    "M13": "HISTORICAL / not reverified 2026-10-16: Destructive actions too prominent: trash on every row, Delete all under the list, a sole owner offered Leave.",
+    "M14": "HISTORICAL / not reverified 2026-10-16: Phone add-task row wraps to three rows; placeholder truncated.",
+    "M15": "RESOLVED shared-gutter defect 2026-10-16; Pair retains its existing Card padding8 after visual review. No additional Pair redesign is approved.",
+    "L1": "HISTORICAL / not reverified 2026-10-16: Look-alike names: two 'Home' spaces, repeated conversation titles with no date.",
+    "L2": "HISTORICAL / not reverified 2026-10-16: 'Memories' repeats the 'Memory' title.",
+    "L3": "HISTORICAL / not reverified 2026-10-16: Phone menu button on the right, drawer opens on the left.",
+    "L4": "NOT A DEFECT 2026-10-16: standard ai-chat-landing centers its greeting/composer; 320px preview retains all controls without horizontal overflow.",
+    "L5": "HISTORICAL / not reverified 2026-10-16: Members: no heading, avatar or email; assignee shown as a handle.",
+    "L6": "HISTORICAL / not reverified 2026-10-16: Conversation menu: no divider before Delete.",
+    "L7": "HISTORICAL / not reverified 2026-10-16: Tool calls show raw names such as list_agenda.",
+    "L8": "HISTORICAL / not reverified 2026-10-16: Phone calendar rows truncate titles behind three tags.",
+    "L9": "RESOLVED 2026-10-16: greeting is a paragraph; the landing primary heading is native h1.",
+    "L10": "HISTORICAL / not reverified 2026-10-16: Appearance expands about 170px inline in the sidebar footer.",
+    "L11": "RESOLVED for shell, conversation and spaces navigation 2026-10-16: native href with ordinary SPA click handling; modified and middle clicks stay native. Disclosure and row actions remain independent.",
+    "N1": "HISTORICAL / not reverified 2026-10-16: Tasks with no open items: 'Completed (1)' sits above the add-task row and there is no empty state.",
+    "N2": "HISTORICAL / not reverified 2026-10-16: Dead duplicate: space-actions.tsx repeats the Rename/Archive dialogs that space-header.tsx actually uses.",
+    "N3": "HISTORICAL / not reverified 2026-10-16: Duplicate DayLabel in calendar-page.tsx:58 and agenda-panel.tsx:71 (Agenda adds Unscheduled); one shared formatter would stop H7 drift.",
+    "BOB1": "NOT REPRODUCED: clean Bob theme renders cream/sky/yellow light and navy dark across 52 baseline captures, actual AppShell/nav computed backgrounds and Nunito correct. Preserve explicitly selected alternatives.",
+    "BOB2": "RESOLVED in source 2026-10-16: thread help directs people to choose Bob from @ mentions; serialized @bob remains unchanged. Existing Bob copy preserved."
+  },
+  "pages": [
+    {
+      "id": "insights",
+      "title": "Insights",
+      "route": "/insights/future",
+      "states": [
+        "loading",
+        "empty",
+        "error",
+        "future",
+        "reflections",
+        "past",
+        "partial"
+      ],
+      "files": [
+        "src/features/insights/insights-page.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "settings",
+          "fit": "Partial"
+        },
+        {
+          "slug": "TabListTabsWithActions",
+          "fit": "Strong"
+        }
+      ],
+      "verdict": "Source-grounded reports in the shared PAGE_WIDTH frame. URL-backed category navigation, private saved results and provenance; no fabricated empty-state forecasts. Rendered at 1280px desktop and 390px mobile with real local routes, stores and queue over synthetic provider data; see docs/development/routines-demo.md and docs/demos/routines/.",
+      "ops": []
+    },
+    {
+      "id": "routines",
+      "title": "Routines",
+      "route": "/routines",
+      "states": [
+        "loading",
+        "empty",
+        "error",
+        "active",
+        "paused",
+        "create",
+        "edit",
+        "delete",
+        "runs",
+        "reconnect"
+      ],
+      "files": [
+        "src/features/routines/routines-page.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/routines/routine-runs.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "settings",
+          "fit": "Strong"
+        },
+        {
+          "slug": "DialogFormDialog",
+          "fit": "Strong"
+        },
+        {
+          "slug": "ListBasicList",
+          "fit": "Strong"
+        }
+      ],
+      "verdict": "Capped settings frame and wrapping row actions. Creation requires an explicit account and scheduled-read consent; next run, pause/resume, revision-safe edits, delete confirmation and saved-result links are visible. Rendered at 1280px desktop and 390px mobile with real local routes, stores and queue over synthetic provider data; see docs/development/routines-demo.md and docs/demos/routines/.",
+      "ops": []
+    },
+    {
+      "id": "landing",
+      "title": "Chat landing",
+      "route": "/",
+      "states": [
+        "landing"
+      ],
+      "files": [
+        "src/features/chat/chat-landing.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "ai-chat-landing",
+          "fit": "Strong"
+        },
+        {
+          "slug": "side-gallery",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Already close to ai-chat-landing. Three small corrections.",
+      "ops": [
+        {
+          "text": "Put the 12px inset on the suggestion grid instead of the composer, and set PAGE_WIDTH to 848 so the composer stays 800px.",
+          "use": "VStack paddingInline on Grid",
+          "ref": "ai-chat-landing page.tsx:434",
+          "where": "chat-landing.tsx:81",
+          "fixes": "M3",
+          "effort": "S"
+        },
+        {
+          "text": "Historical proposal; resolved by current implementation (see finding L9). Show the greeting as a small supporting label, so 'Where should we start?' is the only heading.",
+          "use": "Text type=supporting",
+          "ref": "side-gallery page.tsx:106-113",
+          "where": "chat-landing.tsx:62",
+          "fixes": "L9",
+          "effort": "S"
+        },
+        {
+          "text": "The empty space above the phone composer comes from the template's own vAlign=center. Leave it, or make it a product decision.",
+          "use": "-",
+          "ref": "ai-chat-landing page.tsx:42,310",
+          "where": "chat-landing.tsx:58",
+          "fixes": "L4",
+          "effort": "-"
+        }
+      ]
+    },
+    {
+      "id": "conversation",
+      "title": "Conversation",
+      "route": "/c/<id>",
+      "states": [
+        "conversation",
+        "conversation-menu"
+      ],
+      "files": [
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/chat/tool-calls.ts"
+      ],
+      "templates": [
+        {
+          "slug": "ai-chat",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Same ChatLayout frame as ai-chat. Missing the title bar and readable tool calls.",
+      "ops": [
+        {
+          "text": "Historical proposal; resolved by current implementation (see finding H6). Title bar: a Toolbar with the conversation title as the h1, the Cardputer control and a MoreMenu of conversation actions at the end.",
+          "use": "Toolbar + Heading level=1 + MoreMenu",
+          "ref": "ai-chat page.tsx:703-728",
+          "where": "chat-surface.tsx:553-559",
+          "fixes": "H6",
+          "effort": "M"
+        },
+        {
+          "text": "On phone, fold the header actions (Cardputer included) into one MoreMenu with sections.",
+          "use": "MoreMenu sections",
+          "ref": "ai-chat page.tsx:207-228",
+          "where": "chat-surface.tsx:555-557",
+          "fixes": "H3",
+          "effort": "S"
+        },
+        {
+          "text": "Give tool calls a verb and a target ('Checked agenda · This week') instead of the function name.",
+          "use": "ChatToolCalls target",
+          "ref": "ai-chat page.tsx:394-417",
+          "where": "tool-calls.ts:39-44",
+          "fixes": "L7",
+          "effort": "S"
+        },
+        {
+          "text": "Day dividers in long conversations.",
+          "use": "ChatSystemMessage variant=divider",
+          "ref": "ai-chat page.tsx:357-359",
+          "where": "chat-surface.tsx:579",
+          "fixes": "L1",
+          "effort": "S"
+        },
+        {
+          "text": "Divider before Delete in the conversation menu.",
+          "use": "MoreMenu {type:'divider'}",
+          "ref": "ai-chat page.tsx:222",
+          "where": "conversation-nav.tsx:160",
+          "fixes": "L6",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "thread",
+      "title": "Space thread",
+      "route": "/spaces/<id>/threads/<id>",
+      "states": [
+        "space-thread",
+        "space-new-thread"
+      ],
+      "files": [
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/spaces/thread-reader.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "shell-nav",
+          "fit": "Partial"
+        },
+        {
+          "slug": "ai-chat",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Must be the same surface as the conversation. Share the title bar and composer rules.",
+      "ops": [
+        {
+          "text": "One placeholder rule for every composer: 'Message <destination>'. Drop the 'press @' hint.",
+          "use": "Composer placeholder prop",
+          "ref": "messaging-shell page.tsx:548",
+          "where": "thread-reader.tsx:398, chat-surface.tsx:564",
+          "fixes": "H5",
+          "effort": "S"
+        },
+        {
+          "text": "Move the audience line out of the composer stack into the title bar as a one-line subtitle; use the same Toolbar as the conversation.",
+          "use": "Toolbar + Heading + Text maxLines=1",
+          "ref": "messaging-shell page.tsx:524-531",
+          "where": "thread-panel.tsx:205, thread-reader.tsx:390",
+          "fixes": "H5, H3",
+          "effort": "S"
+        },
+        {
+          "text": "Below 768px drop DeviceHeaderControl from the bar; the thread MoreMenu already has the same items.",
+          "use": "useMediaQuery",
+          "ref": "messaging-shell page.tsx:379-380",
+          "where": "thread-panel.tsx:283-287",
+          "fixes": "H3",
+          "effort": "S"
+        },
+        {
+          "text": "New thread: the empty state's action is a Button that opens /threads/new, not an auto-focused form inside the EmptyState.",
+          "use": "EmptyState actions",
+          "ref": "table-inbox page.tsx:2601-2612",
+          "where": "thread-panel.tsx:101-107",
+          "fixes": "M12",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "shell",
+      "title": "Shell, sidebar and drawer",
+      "route": "every page",
+      "states": [
+        "landing",
+        "drawer",
+        "appearance",
+        "account-menu"
+      ],
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/spaces/spaces-nav.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "shell-side-nav",
+          "fit": "Strong"
+        },
+        {
+          "slug": "shell-nav",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Already the shell-side-nav template, plus one extra padding wrapper that causes the double gutter.",
+      "ops": [
+        {
+          "text": "Delete the shell's VStack padding={6}; each page's Layout owns the gutter.",
+          "use": "Layout padding (page-owned)",
+          "ref": "shell-side-nav page.tsx:165,212-216",
+          "where": "shell.tsx:708",
+          "fixes": "M2, M15",
+          "effort": "S"
+        },
+        {
+          "text": "Historical proposal; resolved by current implementation (see finding L11). Give nav rows an href (keep onClick for client routing) so they are links.",
+          "use": "SideNavItem href",
+          "ref": "shell-side-nav page.tsx:138,179-186",
+          "where": "shell.tsx:641-663, spaces-nav.tsx, conversation-nav.tsx",
+          "fixes": "L11",
+          "effort": "S"
+        },
+        {
+          "text": "Footer = account row + a Settings item linking to /account. Appearance moves to the Account page.",
+          "use": "SideNavItem",
+          "ref": "shell-side-nav page.tsx:177-181",
+          "where": "shell.tsx:221-226",
+          "fixes": "L10",
+          "effort": "S"
+        },
+        {
+          "text": "When Spaces fail to load, show a disabled row saying so instead of nothing.",
+          "use": "SideNavItem isDisabled",
+          "ref": "shell-side-nav page.tsx:189-209",
+          "where": "spaces-nav.tsx:127",
+          "fixes": "H8",
+          "effort": "S"
+        },
+        {
+          "text": "Collapse to the icon rail below 1024px through the already-controlled navCollapsed.",
+          "use": "SideNav collapsible + useMediaQuery",
+          "ref": "shell-side-nav page.tsx:168",
+          "where": "shell.tsx:263,595",
+          "fixes": "M8",
+          "effort": "S"
+        },
+        {
+          "text": "Show the palette shortcut on the Search row.",
+          "use": "Kbd keys=mod+k",
+          "ref": "shell-nav page.tsx:219-221",
+          "where": "shell.tsx:623-627",
+          "fixes": "new",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "palette",
+      "title": "Command palette",
+      "route": "Search / Ctrl+K",
+      "states": [
+        "palette"
+      ],
+      "files": [
+        "src/features/chat/command-palette.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "shell-nav",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Right component, incomplete destinations.",
+      "ops": [
+        {
+          "text": "Historical proposal; resolved by current implementation (see finding M7). Build Go to from the sidebar's NAV_ITEMS (DRY), plus Account and one item per space.",
+          "use": "CommandPalette createStaticSource",
+          "ref": "shell-nav page.tsx:167-183",
+          "where": "command-palette.tsx:50-60",
+          "fixes": "M7",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "notifications",
+      "title": "Notifications",
+      "route": "footer bell",
+      "states": [
+        "notifications"
+      ],
+      "files": [
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/notifications/notification-rows.ts",
+        "src/features/notifications/notification-settings.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "shell-nav",
+          "fit": "Partial"
+        },
+        {
+          "slug": "table-filter",
+          "fit": "Partial"
+        },
+        {
+          "slug": "table-grouped",
+          "fit": "Strong"
+        },
+        {
+          "slug": "dashboard-alert-rail",
+          "fit": "Strong"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Rows carry too little, and the dialog lives in the wrong place.",
+      "ops": [
+        {
+          "text": "Historical proposal; resolved by current implementation (see finding H2). Mount the dialog beside AppShell, opened by an event like the palette; use a BottomSheet on phone.",
+          "use": "Dialog / BottomSheet",
+          "ref": "shell-nav page.tsx:312-318; table-filter page.tsx:4311-4319",
+          "where": "notifications-menu.tsx:193-284",
+          "fixes": "H2",
+          "effort": "M"
+        },
+        {
+          "text": "Group rows by type with a count: 21 'Security notice' rows become one 'Security notice (21)'.",
+          "use": "Collapsible + count",
+          "ref": "table-grouped page.tsx:977-1010",
+          "where": "notifications-menu.tsx:246-256",
+          "fixes": "M6",
+          "effort": "S"
+        },
+        {
+          "text": "Add a relative time to every row (needs created_at in the API DTO; the store already has it).",
+          "use": "Timestamp format=relative",
+          "ref": "incident-console page.tsx:363-375",
+          "where": "notifications-menu.tsx:251; api notifications/http.ts:59",
+          "fixes": "M6",
+          "effort": "S"
+        },
+        {
+          "text": "Badge reads '8 unread' to screen readers.",
+          "use": "Badge + VisuallyHidden",
+          "ref": "table-inbox page.tsx:2550-2572",
+          "where": "notifications-menu.tsx:190",
+          "fixes": "M6",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "calendar",
+      "title": "Calendar and Agenda",
+      "route": "/calendar, /spaces/<id>/agenda",
+      "states": [
+        "calendar",
+        "space-agenda",
+        "reminder-dialog",
+        "event-dialog"
+      ],
+      "files": [
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/reminder-dialog.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "dashboard-alert-rail",
+          "fit": "Strong"
+        },
+        {
+          "slug": "dashboard-progress",
+          "fit": "Partial"
+        },
+        {
+          "slug": "contact-form",
+          "fit": "Partial"
+        },
+        {
+          "slug": "detail-page",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Two views of the same data that use different words, markers and week starts.",
+      "ops": [
+        {
+          "text": "One overdue marker everywhere: a red Token over a relative Timestamp, stacked in endContent.",
+          "use": "Token + Timestamp",
+          "ref": "dashboard-alert-rail page.tsx:997-1008",
+          "where": "calendar-page.tsx:300-306, agenda-panel.tsx:125-134, tasks, memory-page.tsx:120-125",
+          "fixes": "H7, L8",
+          "effort": "S"
+        },
+        {
+          "text": "Overdue group first, then days; a compact 'All clear' empty state.",
+          "use": "List groups + EmptyState isCompact",
+          "ref": "dashboard-alert-rail page.tsx:952-1013",
+          "where": "calendar-page.tsx:162-168,230-255",
+          "fixes": "H7",
+          "effort": "M"
+        },
+        {
+          "text": "Same week start (weekStartsOn=mon) and one label for the primary action on both surfaces.",
+          "use": "Calendar weekStartsOn",
+          "ref": "-",
+          "where": "calendar-page.tsx:198 vs agenda-panel.tsx:209",
+          "fixes": "H7",
+          "effort": "S"
+        },
+        {
+          "text": "Event dialog: pair Starts/Ends in a responsive Grid and divide the groups.",
+          "use": "Grid columns={{minWidth:260}} + Divider",
+          "ref": "contact-form page.tsx:147-170,197",
+          "where": "event-dialog.tsx:285-322",
+          "fixes": "new",
+          "effort": "S"
+        },
+        {
+          "text": "Read-only event view: label When / Where / Notes.",
+          "use": "MetadataList",
+          "ref": "detail-page page.tsx:361-400",
+          "where": "event-dialog.tsx:963-969",
+          "fixes": "new",
+          "effort": "S"
+        },
+        {
+          "text": "One DayLabel shared by Calendar and Agenda instead of two copies.",
+          "use": "-",
+          "ref": "-",
+          "where": "calendar-page.tsx:58, agenda-panel.tsx:71",
+          "fixes": "N3, H7",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "tasks",
+      "title": "Space tasks",
+      "route": "/spaces/<id>/tasks",
+      "states": [
+        "space-tasks",
+        "task-edit"
+      ],
+      "files": [
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/productivity/task-checklist.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "table-grouped",
+          "fit": "Strong"
+        },
+        {
+          "slug": "work-item-detail",
+          "fit": "Strong"
+        },
+        {
+          "slug": "form-wizard-dialog",
+          "fit": "Strong"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Right list, wrong row actions and grouping.",
+      "ops": [
+        {
+          "text": "One MoreMenu per row (Edit, divider, Delete) instead of pencil + trash.",
+          "use": "MoreMenu presentation=adaptive",
+          "ref": "table-grouped page.tsx:1073-1120",
+          "where": "tasks-panel.tsx:417-432",
+          "fixes": "M13",
+          "effort": "S"
+        },
+        {
+          "text": "Group Overdue (n) / Open (n) / Completed (n) and mark overdue rows.",
+          "use": "Collapsible + StatusDot",
+          "ref": "table-grouped page.tsx:968-1022",
+          "where": "tasks-panel.tsx:270-296",
+          "fixes": "H7, N1",
+          "effort": "S"
+        },
+        {
+          "text": "Quick-add is title only; due date and assignee live in the task dialog.",
+          "use": "TextInput + Button; reuse TaskEditDialog",
+          "ref": "table-filter page.tsx:2121-2190",
+          "where": "tasks-panel.tsx:324-359",
+          "fixes": "M14",
+          "effort": "S"
+        },
+        {
+          "text": "Checklist progress and followers as avatars in the task dialog; fullscreen on phone.",
+          "use": "ProgressBar, CheckboxListItem, AvatarGroup, Dialog variant=fullscreen",
+          "ref": "work-item-detail page.tsx:518-560,777-784,879-893",
+          "where": "task-checklist.tsx:61-110, task-edit-dialog.tsx:171,197-205",
+          "fixes": "L5",
+          "effort": "M"
+        },
+        {
+          "text": "Every form dialog: Layout height=fill and one FormLayout; validate on submit instead of a disabled Save.",
+          "use": "FormLayout + FieldStatus",
+          "ref": "form-wizard-dialog page.tsx:291-302,350-363,557-579",
+          "where": "task-edit-dialog.tsx:267-319 and the event, reminder and new-space dialogs",
+          "fixes": "new",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "title": "Space notes",
+      "route": "/spaces/<id>/notes",
+      "states": [
+        "space-notes"
+      ],
+      "files": [
+        "src/features/productivity/notes-panel.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "table-page",
+          "fit": "Partial"
+        },
+        {
+          "slug": "table-inbox",
+          "fit": "Strong"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Fine data, buried editor.",
+      "ops": [
+        {
+          "text": "Notes/Trash switch and search on one wrapping row.",
+          "use": "HStack wrap + SegmentedControl + TextInput",
+          "ref": "table-page page.tsx:893-916",
+          "where": "notes-panel.tsx:214-253",
+          "fixes": "M14",
+          "effort": "S"
+        },
+        {
+          "text": "Open a note in place of the list with a '← Notes' Toolbar back button.",
+          "use": "Toolbar + Button",
+          "ref": "table-inbox page.tsx:1384-1399",
+          "where": "notes-panel.tsx:329-341",
+          "fixes": "new",
+          "effort": "M"
+        }
+      ]
+    },
+    {
+      "id": "members",
+      "title": "Space header and members",
+      "route": "/spaces/<id>/members",
+      "states": [
+        "space-members",
+        "space-actions",
+        "space-rename",
+        "space-archive"
+      ],
+      "files": [
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/all-spaces-page.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "detail-page",
+          "fit": "Partial"
+        },
+        {
+          "slug": "work-item-detail",
+          "fit": "Strong"
+        },
+        {
+          "slug": "shell-nav",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Tabs overflow on phone, archive can't be undone, member rows say too little.",
+      "ops": [
+        {
+          "text": "On narrow screens keep the first tabs and put the rest under 'More'.",
+          "use": "TabMenu",
+          "ref": "detail-page page.tsx:254-269",
+          "where": "space-header.tsx:255-257",
+          "fixes": "H4",
+          "effort": "S"
+        },
+        {
+          "text": "Historical proposal; resolved by current implementation (see finding H1). Mount the existing ArchivedSpaces list (spaces nav or Account) so an owner can restore.",
+          "use": "ArchivedSpaces (List)",
+          "ref": "-",
+          "where": "archived-spaces.tsx:15",
+          "fixes": "H1",
+          "effort": "S"
+        },
+        {
+          "text": "Delete the dead space-actions.tsx; space-header.tsx already owns the Rename/Archive dialogs.",
+          "use": "-",
+          "ref": "-",
+          "where": "space-actions.tsx:173",
+          "fixes": "N2",
+          "effort": "S"
+        },
+        {
+          "text": "Member rows: Avatar, email or handle as description, Remove/Leave/Make owner in a MoreMenu; a heading with Invite as its action.",
+          "use": "ListItem + Avatar + MoreMenu",
+          "ref": "work-item-detail page.tsx:336-360,603-607",
+          "where": "members-panel.tsx:68-89,303,347",
+          "fixes": "L5, M13",
+          "effort": "S"
+        },
+        {
+          "text": "New space: a visible, explained choice of kind.",
+          "use": "Field isGroupLabel + SegmentedControl (or SelectableCard)",
+          "ref": "form-wizard-dialog page.tsx:403-418; form-wizard page.tsx:596-624",
+          "where": "create-space-controls.tsx:69-74",
+          "fixes": "new",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "title": "Memory",
+      "route": "/memory",
+      "states": [
+        "memory"
+      ],
+      "files": [
+        "src/features/memory/memory-page.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "dashboard-alert-rail",
+          "fit": "Strong"
+        },
+        {
+          "slug": "kanban-board",
+          "fit": "Partial"
+        },
+        {
+          "slug": "table-page",
+          "fit": "Partial"
+        },
+        {
+          "slug": "dashboard-composition",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Hand-built rows with too many visible actions.",
+      "ops": [
+        {
+          "text": "Rows as List/ListItem: description 'kind · source · time', whole row links to its conversation.",
+          "use": "List density=compact + ListItem href",
+          "ref": "incident-console page.tsx:347-352; dashboard-composition page.tsx:636-650",
+          "where": "memory-page.tsx:111-116,287-329",
+          "fixes": "M9",
+          "effort": "M"
+        },
+        {
+          "text": "Row actions into one MoreMenu; 'Delete all' into the header menu after a divider.",
+          "use": "MoreMenu",
+          "ref": "kanban-board page.tsx:309-318,669-718",
+          "where": "memory-page.tsx:280-298,958",
+          "fixes": "M13",
+          "effort": "S"
+        },
+        {
+          "text": "No-match state with a Clear filter action; partial results as a warning Banner with Load more.",
+          "use": "EmptyState actions + Banner",
+          "ref": "table-page page.tsx:919-930,972-985",
+          "where": "memory-page.tsx:949-956",
+          "fixes": "M12",
+          "effort": "S"
+        },
+        {
+          "text": "Section headings carry a hint and a count instead of repeating the page title.",
+          "use": "Heading + Text",
+          "ref": "dashboard-progress page.tsx:524-551",
+          "where": "memory-page.tsx:110,322",
+          "fixes": "L2",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "devices",
+      "title": "Devices and pairing",
+      "route": "/devices, /pair",
+      "states": [
+        "devices",
+        "pair"
+      ],
+      "files": [
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/now-talking-card.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "table-inbox",
+          "fit": "Strong"
+        },
+        {
+          "slug": "dashboard-alert-rail",
+          "fit": "Strong"
+        },
+        {
+          "slug": "dashboard-alert-rail",
+          "fit": "Strong"
+        },
+        {
+          "slug": "settings-sidebar",
+          "fit": "Strong"
+        },
+        {
+          "slug": "form-wizard-inline",
+          "fit": "Strong"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. The biggest single win: a list that opens one device, instead of every device fully open.",
+      "ops": [
+        {
+          "text": "A device list (name, model · last seen, StatusDot, MoreMenu) that drills into the existing DeviceHome with a back Toolbar. PAGE_WIDTH 872 is below the template's 900px split, so drill-in at every width.",
+          "use": "List/ListItem + StatusDot + Toolbar",
+          "ref": "incident-console page.tsx:347-380; table-inbox page.tsx:1384-1411,2587-2593",
+          "where": "devices-page.tsx:384-419",
+          "fixes": "M5, M1",
+          "effort": "M"
+        },
+        {
+          "text": "Online/Offline as a StatusDot (Badge is for counts); 'Now talking in' as a secondary label, not accent red.",
+          "use": "StatusDot + Text color=secondary",
+          "ref": "dashboard-alert-rail page.tsx:857-865",
+          "where": "devices-page.tsx:151, now-talking-card.tsx:83",
+          "fixes": "M5",
+          "effort": "S"
+        },
+        {
+          "text": "Device facts as a labelled list.",
+          "use": "MetadataList",
+          "ref": "incident-console page.tsx:423-439",
+          "where": "devices-page.tsx:168-178",
+          "fixes": "M5",
+          "effort": "S"
+        },
+        {
+          "text": "Empty state offers 'Pair a device'.",
+          "use": "EmptyState actions",
+          "ref": "table-inbox page.tsx:2601-2612",
+          "where": "devices-page.tsx:376-383",
+          "fixes": "M12",
+          "effort": "S"
+        },
+        {
+          "text": "/pair: remove the Card now; then a vertical inline Stepper (Code → Look up → Approve) with a MetadataList review.",
+          "use": "Stepper orientation=vertical + MetadataList",
+          "ref": "form-wizard page.tsx:412-415; form-wizard-inline page.tsx:650-747,869-898",
+          "where": "pair-page.tsx:171-262",
+          "fixes": "M15",
+          "effort": "S then M"
+        }
+      ]
+    },
+    {
+      "id": "connectors",
+      "title": "Google accounts (Settings)",
+      "route": "/settings#accounts",
+      "states": [
+        "connectors",
+        "gmail"
+      ],
+      "files": [
+        "src/features/integrations/google-accounts-section.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "documentation",
+          "fit": "Partial"
+        },
+        {
+          "slug": "library",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. One connector today; shape it so the catalog can grow (#584) without a redesign.",
+      "ops": [
+        {
+          "text": "Each connector a ClickableCard in a Grid; the whole tile is the target.",
+          "use": "ClickableCard + Grid",
+          "ref": "documentation page.tsx:238-262",
+          "where": "connectors-page.tsx:20-27",
+          "fixes": "new",
+          "effort": "S"
+        },
+        {
+          "text": "Search and category filters only once there are more than about 8 connectors (YAGNI).",
+          "use": "TextInput + ToggleButtonGroup + OverflowList",
+          "ref": "library page.tsx:434-494",
+          "where": "-",
+          "fixes": "future",
+          "effort": "M"
+        },
+        {
+          "text": "Gmail rows: a labelled 'Disconnect' ghost button instead of a trash icon; correct read-failure copy.",
+          "use": "Button variant=ghost",
+          "ref": "settings-dialog page.tsx:1968-1973",
+          "where": "google-accounts-page.tsx:49,81",
+          "fixes": "M13, H8",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "account",
+      "title": "Account",
+      "route": "/account",
+      "states": [
+        "account"
+      ],
+      "files": [
+        "src/features/account/account-page.tsx",
+        "src/features/account/account-delete-section.tsx",
+        "src/app/appearance-control.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "settings-sidebar",
+          "fit": "Strong"
+        },
+        {
+          "slug": "settings",
+          "fit": "Partial"
+        },
+        {
+          "slug": "settings-dialog",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Use the settings-sidebar row pattern: show the value, edit in place.",
+      "ops": [
+        {
+          "text": "Historical proposal; resolved by current implementation (see finding M4). Name and time zone as rows that show the value and expand to the field with Save/Cancel; no always-on Save.",
+          "use": "ListItem-style row + TextInput + Button",
+          "ref": "settings-sidebar page.tsx:150-195",
+          "where": "account-page.tsx:121-139,182-202",
+          "fixes": "M4",
+          "effort": "M"
+        },
+        {
+          "text": "Historical proposal; resolved by current implementation (see finding M4). Password, Export and Devices as one-line rows with a small action, separated by Dividers.",
+          "use": "HStack row + Button size=sm + Divider",
+          "ref": "settings-sidebar page.tsx:121-138",
+          "where": "account-page.tsx:232-326",
+          "fixes": "M4",
+          "effort": "S"
+        },
+        {
+          "text": "Historical proposal; resolved by current implementation (see finding M10). 'Sign out everywhere' moves here as a row, confirmed by AlertDialog.",
+          "use": "AlertDialog",
+          "ref": "settings-dialog page.tsx:922-970",
+          "where": "shell.tsx:216",
+          "fixes": "M10",
+          "effort": "S"
+        },
+        {
+          "text": "Delete account as a row; the typed confirm only appears once expanded.",
+          "use": "Row + AlertDialog",
+          "ref": "settings-sidebar page.tsx:399-420",
+          "where": "account-delete-section.tsx:51-73",
+          "fixes": "M13",
+          "effort": "S"
+        },
+        {
+          "text": "Appearance section here, System/Light/Dark as a SegmentedControl.",
+          "use": "SegmentedControl",
+          "ref": "settings-dialog page.tsx:1269-1345",
+          "where": "appearance-control.tsx:62-78",
+          "fixes": "L10",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "auth",
+      "title": "Sign-in, reset and invite",
+      "route": "/, /reset, /invite/<token>",
+      "states": [
+        "sign-in",
+        "reset",
+        "invite-invalid"
+      ],
+      "files": [
+        "src/features/account/sign-in.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/spaces/invite-page.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "login-card",
+          "fit": "Strong"
+        },
+        {
+          "slug": "login-sso",
+          "fit": "Partial"
+        },
+        {
+          "slug": "login-split",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Historical assessment; consult dated findings for current status. Three different shells for one kind of screen, and two dead ends.",
+      "ops": [
+        {
+          "text": "Reset and invite reuse sign-in's AuthShell (mark + Card) instead of their own shells.",
+          "use": "AuthShell (Card)",
+          "ref": "login page.tsx:45-56",
+          "where": "reset-page.tsx:35-51, invite-page.tsx:54-66",
+          "fixes": "DRY",
+          "effort": "S"
+        },
+        {
+          "text": "Every terminal state gets a ghost exit: Cancel, Back to sign in, Go to Bob, Use a different account.",
+          "use": "Button variant=ghost",
+          "ref": "login-sso page.tsx:209-214,271-276",
+          "where": "reset-page.tsx:128-191, invite-page.tsx:111-127",
+          "fixes": "M11",
+          "effort": "S"
+        },
+        {
+          "text": "Invalid invite: one heading plus supporting text, not a heading and a Banner saying the same thing.",
+          "use": "Heading + Text",
+          "ref": "login-sso page.tsx:177-185",
+          "where": "invite-page.tsx:111-118",
+          "fixes": "M11",
+          "effort": "S"
+        },
+        {
+          "text": "Sign-in: an 'Or' divider before the alternatives; a wrong password shown on the field.",
+          "use": "Divider label + TextInput status",
+          "ref": "login-card page.tsx:133-166",
+          "where": "sign-in.tsx:311,346-351",
+          "fixes": "new",
+          "effort": "S"
+        }
+      ]
+    },
+    {
+      "id": "usage",
+      "title": "Usage",
+      "route": "/settings#usage",
+      "states": [
+        "empty",
+        "loading",
+        "error",
+        "populated"
+      ],
+      "files": [
+        "src/features/usage/usage-section.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "dashboard",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "Empty light/dark desktop/mobile visually coherent with standard EmptyState and range control; shared gutter M2. Other states pending.",
+      "ops": []
+    },
+    {
+      "id": "metrics",
+      "title": "Operator metrics",
+      "route": "/admin/monitoring",
+      "states": [
+        "access-denied",
+        "loading",
+        "error",
+        "populated"
+      ],
+      "files": [
+        "src/features/metrics/metrics-page.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "dashboard",
+          "fit": "Strong"
+        }
+      ],
+      "verdict": "Access-denied light/dark desktop/mobile coherent; operator populated state not represented by fictional ordinary account.",
+      "ops": []
+    },
+    {
+      "id": "voice",
+      "title": "Converse and voice controls",
+      "route": "/",
+      "states": [
+        "idle",
+        "permission-denied",
+        "unsupported",
+        "listening",
+        "speaking"
+      ],
+      "files": [
+        "src/features/voice/voice-mode-bar.tsx",
+        "src/features/voice/spoken-reply-player.tsx",
+        "src/features/chat/composer.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "ai-chat",
+          "fit": "Strong"
+        }
+      ],
+      "verdict": "No standalone Converse route; controls live in shared chat. Requires mocked browser permission/transport states, no actual microphone or production requests.",
+      "ops": []
+    },
+    {
+      "id": "admin",
+      "title": "Administration",
+      "route": "/admin",
+      "states": [
+        "access-denied",
+        "loading",
+        "error",
+        "populated",
+        "confirmation"
+      ],
+      "files": [
+        "src/features/admin/admin-page.tsx",
+        "src/features/admin/account-management.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "settings",
+          "fit": "Strong"
+        },
+        {
+          "slug": "table",
+          "fit": "Partial"
+        }
+      ],
+      "verdict": "2026-10-17: fictional populated directory and confirmation verified at320/359/390/1280 light/dark. Counts distinguish enabled/disabled and confirmation subset. No production mutations.",
+      "ops": []
+    },
+    {
+      "id": "bob-apps",
+      "title": "My Apps",
+      "route": "/apps",
+      "states": [
+        "loading",
+        "empty",
+        "error",
+        "draft",
+        "active",
+        "archived",
+        "records",
+        "dashboard",
+        "slides",
+        "revision-preview",
+        "revision-conflict",
+        "refresh-consent",
+        "refresh-history",
+        "marketing-installation",
+        "marketing-network-context",
+        "marketing-composer",
+        "marketing-channel-previews",
+        "marketing-draft-conflict",
+        "marketing-pending-edits",
+        "marketing-save-retry",
+        "marketing-read-refresh",
+        "marketing-config-preview",
+        "marketing-config-history",
+        "marketing-paused",
+        "marketing-unavailable"
+      ],
+      "files": [
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/marketing-install.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/bob-apps/marketing-config.tsx"
+      ],
+      "templates": [
+        {
+          "slug": "library",
+          "fit": "Partial"
+        },
+        {
+          "slug": "dashboard",
+          "fit": "Strong"
+        },
+        {
+          "slug": "FormLayoutMixedControls",
+          "fit": "Strong"
+        }
+      ],
+      "verdict": "Astryx library header and dashboard spacing in the shared PAGE_WIDTH frame. Native allowlisted JSON views share saved records; schema changes preview before apply, record editors preserve conflicts, scheduled task-table replacement requires consent. Marketing reuses ChatSurface and its composer with network and distinct post/campaign intent, native draft cards, workspace-scoped pending edits, locked in-flight saves, stable retries, conflict-preserving forms, typed configuration preview and explicit apply/history. Manual reload refreshes Marketing reads without remounting pending edits. Schedule and metrics remain unavailable. Marketing browser verification is tracked in bob-apps-marketing.e2e.ts; generic app coverage remains in bob-apps.e2e.ts.",
+      "ops": []
+    }
+  ],
+  "components": {
+    "Composer": {
+      "rec": "ChatComposer with one placeholder rule; same props in chat and thread",
+      "kind": "component",
+      "fixes": "H5"
+    },
+    "ChatSurface": {
+      "rec": "ai-chat: Toolbar title bar with Heading h1",
+      "kind": "template",
+      "fixes": "H6"
+    },
+    "ChatLanding": {
+      "rec": "ai-chat-landing: inset the cards, not the composer",
+      "kind": "template",
+      "fixes": "M3, L9"
+    },
+    "MessageView": {
+      "rec": "ChatToolCalls with target; ChatSystemMessage day dividers",
+      "kind": "component",
+      "fixes": "L7"
+    },
+    "ConversationNav": {
+      "rec": "SideNavItem href; MoreMenu divider before Delete",
+      "kind": "component",
+      "fixes": "L11, L6"
+    },
+    "AccountFooter": {
+      "rec": "shell-side-nav footer: account row + Settings link; Sign out everywhere moves to Account",
+      "kind": "template",
+      "fixes": "L10, M10"
+    },
+    "AppearanceControl": {
+      "rec": "SegmentedControl on the Account page",
+      "kind": "component",
+      "fixes": "L10"
+    },
+    "CommandPalette": {
+      "rec": "Go to built from NAV_ITEMS + spaces",
+      "kind": "component",
+      "fixes": "M7"
+    },
+    "PaletteDialog": {
+      "rec": "Go to built from NAV_ITEMS + spaces",
+      "kind": "component",
+      "fixes": "M7"
+    },
+    "SpacesNav": {
+      "rec": "Disabled SideNavItem when loading fails; href rows",
+      "kind": "component",
+      "fixes": "H8, L11"
+    },
+    "SpaceHeader": {
+      "rec": "TabMenu 'More' for overflow tabs on phone",
+      "kind": "component",
+      "fixes": "H4"
+    },
+    "ThreadPanel": {
+      "rec": "Same Toolbar title bar as the conversation; hide device control below 768px",
+      "kind": "template",
+      "fixes": "H3, H5"
+    },
+    "ThreadReader": {
+      "rec": "Audience in the title bar; shared composer placeholder rule",
+      "kind": "component",
+      "fixes": "H5"
+    },
+    "MembersPanel": {
+      "rec": "ListItem + Avatar + MoreMenu; heading with Invite action",
+      "kind": "component",
+      "fixes": "L5, M13"
+    },
+    "MemberRow": {
+      "rec": "ListItem startContent=Avatar, description=email",
+      "kind": "component",
+      "fixes": "L5"
+    },
+    "TasksPanel": {
+      "rec": "table-grouped: one MoreMenu per row, Overdue group, title-only quick add",
+      "kind": "template",
+      "fixes": "M13, H7, M14, N1"
+    },
+    "TaskEditDialog": {
+      "rec": "work-item-detail sections; FormLayout; Dialog fullscreen on phone",
+      "kind": "template",
+      "fixes": "L5"
+    },
+    "TaskChecklist": {
+      "rec": "ProgressBar + CheckboxListItem",
+      "kind": "component",
+      "fixes": "new"
+    },
+    "NotesPanel": {
+      "rec": "One-row filter; editor drills in with a back Toolbar",
+      "kind": "template",
+      "fixes": "M14"
+    },
+    "AgendaPanel": {
+      "rec": "Shared overdue Token; weekStartsOn matches Calendar",
+      "kind": "component",
+      "fixes": "H7"
+    },
+    "CalendarPage": {
+      "rec": "dashboard-alert-rail: Overdue group first, shared Token",
+      "kind": "template",
+      "fixes": "H7, L8"
+    },
+    "EventDialog": {
+      "rec": "Grid for Starts/Ends; MetadataList for the read view; FormLayout",
+      "kind": "component",
+      "fixes": "new"
+    },
+    "ReminderDialog": {
+      "rec": "Show errors only after a save attempt; FormLayout",
+      "kind": "component",
+      "fixes": "new"
+    },
+    "MemoryPage": {
+      "rec": "incident-console rows; MoreMenu actions; EmptyState with Clear filter",
+      "kind": "template",
+      "fixes": "M9, M13, M12, L2"
+    },
+    "DevicesPage": {
+      "rec": "table-inbox drill-in list + incident-console rows",
+      "kind": "template",
+      "fixes": "M5, M1, M12"
+    },
+    "NowTalkingCard": {
+      "rec": "Secondary label instead of accent; uses the page's one conversation list",
+      "kind": "component",
+      "fixes": "M5, M1"
+    },
+    "DeviceRecent": {
+      "rec": "Fetch only for the open device",
+      "kind": "component",
+      "fixes": "M1"
+    },
+    "DeviceSettingsGroups": {
+      "rec": "Keep (already the expandable-row idea); Revoke as the last row",
+      "kind": "component",
+      "fixes": "M13"
+    },
+    "ResetPage": {
+      "rec": "Reuse AuthShell; add a Cancel exit",
+      "kind": "template",
+      "fixes": "M11"
+    },
+    "ResetCard": {
+      "rec": "Replace with AuthShell (DRY)",
+      "kind": "duplicate",
+      "fixes": "M11"
+    },
+    "InvitePage": {
+      "rec": "Reuse AuthShell; exits on every terminal state",
+      "kind": "template",
+      "fixes": "M11"
+    },
+    "ShellCard": {
+      "rec": "Replace with AuthShell (DRY)",
+      "kind": "duplicate",
+      "fixes": "M11"
+    },
+    "SignIn": {
+      "rec": "login-card: 'Or' divider, field-level error",
+      "kind": "template",
+      "fixes": "new"
+    },
+    "CreateSpaceDialog": {
+      "rec": "Field label + SegmentedControl for the kind",
+      "kind": "component",
+      "fixes": "new"
+    },
+    "DeleteAccountSection": {
+      "rec": "One row; typed confirm only when expanded; AlertDialog",
+      "kind": "component",
+      "fixes": "M13"
+    },
+    "DayLabel": {
+      "rec": "One shared DayLabel for Calendar and Agenda",
+      "kind": "duplicate",
+      "fixes": "N3, H7"
+    },
+    "RenameDialog": {
+      "rec": "Space rename/create share SpaceNameDialog (#1240)",
+      "kind": "duplicate",
+      "fixes": "N2"
+    },
+    "NotificationSettingsSection": {
+      "rec": "Settings #notifications: one Switch per kind, security always on (#1240)",
+      "kind": "component",
+      "fixes": "M6"
+    },
+    "SettingsPage": {
+      "rec": "One scrolling settings page in PAGE_WIDTH, hash sections (#1240)",
+      "kind": "template",
+      "fixes": "M4, M10, M13"
+    },
+    "DeviceDetail": {
+      "rec": "/devices/:id only; list at /devices (#1240)",
+      "kind": "template",
+      "fixes": "M5, M1"
+    },
+    "SpaceNameDialog": {
+      "rec": "One name dialog for create and rename (#1240)",
+      "kind": "component",
+      "fixes": "N2"
+    }
+  },
+  "future": [
+    {
+      "need": "Connector, skill and game catalog (platform epic #584)",
+      "template": "library",
+      "why": "A searchable, filterable card grid with a real empty state, sized for many entries.",
+      "when": "Once there are more than about 8 connectors or skills."
+    },
+    {
+      "need": "A connector or skill detail page ('install' page)",
+      "template": "product-detail",
+      "why": "Media, description, one primary action and details, the shape of a store listing.",
+      "when": "When the catalog opens items in their own page."
+    },
+    {
+      "need": "Connect-a-service flow (OAuth consent, pick an account, choose scopes)",
+      "template": "form-wizard-dialog",
+      "why": "Two to four short steps over the page that launched them, with a review step.",
+      "when": "The second connector after Gmail."
+    },
+    {
+      "need": "First-run onboarding (name, time zone, pair a Cardputer, first space)",
+      "template": "form-wizard-inline",
+      "why": "Steps that collapse to a summary you can edit, with machine steps (pairing) shown inline.",
+      "when": "Before inviting non-developer users."
+    },
+    {
+      "need": "Device fleet health (many Cardputers in one home)",
+      "template": "dashboard-alert-rail",
+      "why": "Status tiles and a worst-first list: offline, low battery, outdated firmware.",
+      "when": "When an account routinely has more than about 5 devices."
+    },
+    {
+      "need": "Settings hub as preferences grow (notifications, privacy, voice, appearance)",
+      "template": "settings-dialog",
+      "why": "Searchable sections in one place without leaving the page.",
+      "when": "When Account grows past about 6 sections."
+    },
+    {
+      "need": "Assistant replies that produce a document (plans, lists, drafts)",
+      "template": "ai-chat",
+      "why": "Its artifact card and resizable side panel keep generated output beside the conversation.",
+      "when": "When Bob starts producing documents rather than short answers."
+    },
+    {
+      "need": "Help and Cardputer setup guide in the app",
+      "template": "documentation-technical",
+      "why": "Numbered steps with callouts, the shape of docs/cardputer setup guides.",
+      "when": "When the setup guide moves from docs/ into the product."
+    },
+    {
+      "need": "Subscriptions and billing (a $500 product)",
+      "template": "payment-form",
+      "why": "A sectioned billing form beside a running summary.",
+      "when": "Only if Bob sells in-app."
+    },
+    {
+      "need": "Tasks with more than open/done states",
+      "template": "kanban-board",
+      "why": "Status lanes with a MoreMenu per card.",
+      "when": "Only if tasks gain states like 'in progress'. Today it would be YAGNI."
+    }
+  ],
+  "auditEvidence": {
+    "date": "2026-10-16",
+    "scope": "Fictional local-only API fixtures; no production writes or microphone capture",
+    "regression": "apps/ui-v2/e2e/bob-post-login.e2e.ts: 6 Playwright tests passed against local preview, including native modified-click popup navigation with context-wide API interception",
+    "rendered": [
+      "320px light/dark home, long title and notification inbox: data/bob-post-login-audit/reviewed-focus.json",
+      "390px light/dark populated space tasks, notes and agenda: data/bob-post-login-audit/verified-spaces.json",
+      "390px light/dark Memory and Devices loading/error plus mocked permission denial/unsupported voice: data/bob-post-login-audit/verified-states.json",
+      "390px dark populated device/settings, memory, usage, reliability metrics and account panels: data/bob-post-login-audit/verified-populated.json"
+    ],
+    "limitations": [
+      "Live microphone, voice listening/speaking and audio playback were not exercised; permission denial and unavailable media APIs were simulated.",
+      "Operator AI/devices/features metric lenses were not fixture-verified; reliability lens was.",
+      "No production auth sends, destructive account operations, real device commands or email delivery checks.",
+      "Undated catalog findings and recommendations are historical hypotheses unless explicitly resolved or reverified here."
+    ]
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "fixtures": [
+    {
+      "id": "mem_sister_berlin",
+      "turns": [
+        { "user": "My sister Priya lives in Berlin.", "assistant": "Noted." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User's sister Priya lives in Berlin.", "confidence": 0.9 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "sister Priya lives in Berlin" }
+      ],
+      "recall": [
+        { "question": "Where does my sister live?", "expected": ["Priya lives in Berlin"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_coffee_dark_roast",
+      "turns": [
+        { "user": "I only drink dark roast coffee.", "assistant": "Dark roast it is." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "preference", "content": "User prefers dark roast coffee.", "confidence": 0.92 }
+      ],
+      "expected_memories": [
+        { "kind": "preference", "content_contains": "dark roast coffee" }
+      ],
+      "recall": [
+        { "question": "What kind of coffee do I like?", "expected": ["dark roast coffee"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_email_dana_friday",
+      "turns": [
+        { "user": "Remind me to email Dana on Friday.", "assistant": "I will." }
+      ],
+      "recorded_ops": [],
+      "expected_memories": [],
+      "recall": [],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_dog_biscuit",
+      "turns": [
+        { "user": "My dog's name is Biscuit.", "assistant": "Biscuit is a great name." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User's dog is named Biscuit.", "confidence": 0.9 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "dog is named Biscuit" }
+      ],
+      "recall": [
+        { "question": "What is my dog called?", "expected": ["named Biscuit"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_sister_berlin_update",
+      "turns": [
+        { "user": "Actually my sister Priya moved to Munich.", "assistant": "Updated." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User's sister Priya lives in Munich.", "confidence": 0.88 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "Priya lives in Munich" }
+      ],
+      "recall": [
+        { "question": "Where does Priya live now?", "expected": ["Priya lives in Munich"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_language_spanish",
+      "turns": [
+        { "user": "I am learning Spanish.", "assistant": "Good luck!" }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User is learning Spanish.", "confidence": 0.85 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "learning Spanish" }
+      ],
+      "recall": [
+        { "question": "What language am I learning?", "expected": ["learning Spanish"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_meeting_friday",
+      "turns": [
+        { "user": "I have a meeting on Friday at 3pm.", "assistant": "Got it." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User has a meeting Friday at 3pm.", "confidence": 0.9 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "meeting Friday at 3pm" }
+      ],
+      "recall": [
+        { "question": "When is my meeting?", "expected": ["meeting Friday at 3pm"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_tea_over_coffee",
+      "turns": [
+        { "user": "I prefer tea over coffee.", "assistant": "Tea it is." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "preference", "content": "User prefers tea over coffee.", "confidence": 0.9 }
+      ],
+      "expected_memories": [
+        { "kind": "preference", "content_contains": "prefers tea over coffee" }
+      ],
+      "recall": [
+        { "question": "Do I prefer tea or coffee?", "expected": ["prefers tea over coffee"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_wfh_fridays",
+      "turns": [
+        { "user": "I work from home on Fridays.", "assistant": "Noted." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User works from home on Fridays.", "confidence": 0.9 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "works from home on Fridays" }
+      ],
+      "recall": [
+        { "question": "Do I work from home any days?", "expected": ["works from home on Fridays"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_buy_oat_milk",
+      "turns": [
+        { "user": "Add buy oat milk to my errands.", "assistant": "Done." }
+      ],
+      "recorded_ops": [],
+      "expected_memories": [],
+      "recall": [],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_run_mornings",
+      "turns": [
+        { "user": "I like to run in the mornings.", "assistant": "Great habit." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "preference", "content": "User likes running in the mornings.", "confidence": 0.85 }
+      ],
+      "expected_memories": [
+        { "kind": "preference", "content_contains": "running in the mornings" }
+      ],
+      "recall": [
+        { "question": "When do I like running?", "expected": ["running in the mornings"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_proj_deadline",
+      "turns": [
+        { "user": "The project deadline is the end of the month.", "assistant": "Noted." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "Project deadline is end of the month.", "confidence": 0.9 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "deadline is end of the month" }
+      ],
+      "recall": [
+        { "question": "When is the project due?", "expected": ["deadline is end of the month"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_food_habit_veggie",
+      "turns": [
+        { "user": "I am vegetarian.", "assistant": "Noted." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User is vegetarian.", "confidence": 0.9 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "vegetarian" }
+      ],
+      "recall": [
+        { "question": "Am I vegetarian?", "expected": ["vegetarian"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_flight_6am",
+      "turns": [
+        { "user": "My flight leaves at 6am tomorrow.", "assistant": "Early start." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User's flight leaves at 6am tomorrow.", "confidence": 0.9 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "flight leaves at 6am" }
+      ],
+      "recall": [
+        { "question": "What time does my flight leave?", "expected": ["flight leaves at 6am"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    },
+    {
+      "id": "mem_neg_health_peanut_auto",
+      "turns": [
+        { "user": "I am allergic to peanuts.", "assistant": "Understood." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User is allergic to peanuts.", "confidence": 0.9 }
+      ],
+      "expected_memories": [],
+      "recall": [],
+      "expect_dropped": { "secret": 0, "sensitive": 1 }
+    },
+    {
+      "id": "mem_neg_finance_salary",
+      "turns": [
+        { "user": "My salary is 90000 per year.", "assistant": "Understood." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User's salary is 90000 per year.", "confidence": 0.9 }
+      ],
+      "expected_memories": [],
+      "recall": [],
+      "expect_dropped": { "secret": 0, "sensitive": 1 }
+    },
+    {
+      "id": "mem_neg_account_username",
+      "turns": [
+        { "user": "My login id is sunbeam42.", "assistant": "Understood." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User's login id is sunbeam42.", "confidence": 0.9 }
+      ],
+      "expected_memories": [],
+      "recall": [],
+      "expect_dropped": { "secret": 0, "sensitive": 1 }
+    },
+    {
+      "id": "mem_neg_secret_pin",
+      "turns": [
+        { "user": "My ATM pin is __PIN__.", "assistant": "Understood." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "My ATM pin is __PIN__.", "confidence": 0.9 }
+      ],
+      "expected_memories": [],
+      "recall": [],
+      "expect_dropped": { "secret": 1, "sensitive": 0 }
+    },
+    {
+      "id": "mem_neg_secret_password",
+      "turns": [
+        { "user": "My wifi password is __PASSWORD__.", "assistant": "Understood." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "My wifi password is __PASSWORD__.", "confidence": 0.9 }
+      ],
+      "expected_memories": [],
+      "recall": [],
+      "expect_dropped": { "secret": 1, "sensitive": 0 }
+    },
+    {
+      "id": "mem_explicit_peanut_remember",
+      "explicit": true,
+      "turns": [
+        { "user": "Please remember that I am allergic to peanuts.", "assistant": "Remembered, and I will flag it as sensitive." }
+      ],
+      "recorded_ops": [
+        { "op": "add", "kind": "fact", "content": "User is allergic to peanuts.", "confidence": 0.95 }
+      ],
+      "expected_memories": [
+        { "kind": "fact", "content_contains": "allergic to peanuts" }
+      ],
+      "recall": [
+        { "question": "What am I allergic to?", "expected": ["allergic to peanuts"] }
+      ],
+      "expect_dropped": { "secret": 0, "sensitive": 0 }
+    }
+  ]
+}

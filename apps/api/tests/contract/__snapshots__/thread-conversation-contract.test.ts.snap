@@ -1,0 +1,560 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`/api/conversations and /api/chat contract > a /api/chat turn on the stub AI streams UI-message SSE > POST /api/chat (stub) 1`] = `
+{
+  "contentType": "text/event-stream",
+  "events": [
+    {
+      "data": {
+        "source": "system-test",
+      },
+      "type": "data-stub",
+    },
+    {
+      "id": "system-test",
+      "type": "text-start",
+    },
+    {
+      "delta": "System test response",
+      "id": "system-test",
+      "type": "text-delta",
+    },
+    {
+      "id": "system-test",
+      "type": "text-end",
+    },
+    "[DONE]",
+  ],
+  "status": 200,
+}
+`;
+
+exports[`/api/conversations and /api/chat contract > list and detail (ConversationDetailSchema) of a seeded conversation > GET /api/conversations 1`] = `
+{
+  "body": {
+    "conversations": [
+      {
+        "archived": false,
+        "createdAt": "<epoch-ms>",
+        "id": "cnv_<uuid-1>",
+        "pinned": false,
+        "title": "Trip plan",
+        "updatedAt": "<epoch-ms>",
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/conversations and /api/chat contract > list and detail (ConversationDetailSchema) of a seeded conversation > GET /api/conversations/:id 1`] = `
+{
+  "body": {
+    "createdAt": "<epoch-ms>",
+    "id": "cnv_<uuid-1>",
+    "messages": [
+      {
+        "createdAt": "<epoch-ms>",
+        "id": "msg_<uuid-2>",
+        "origin": "web_text",
+        "position": 0,
+        "role": "user",
+        "versions": [
+          {
+            "id": "ver_<uuid-3>",
+            "parts": [
+              {
+                "text": "When do we leave?",
+                "type": "text",
+              },
+            ],
+            "selected": true,
+            "versionIndex": 0,
+          },
+        ],
+      },
+      {
+        "createdAt": "<epoch-ms>",
+        "id": "msg_<uuid-4>",
+        "origin": "web_text",
+        "position": 1,
+        "role": "assistant",
+        "versions": [
+          {
+            "id": "ver_<uuid-5>",
+            "parts": [
+              {
+                "text": "At 8.",
+                "type": "text",
+              },
+            ],
+            "selected": true,
+            "versionIndex": 0,
+          },
+        ],
+      },
+    ],
+    "title": "Trip plan",
+    "updatedAt": "<epoch-ms>",
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/devices/active-conversation contract > device ref format: cnv_ passes through, thr_ wraps a lower-cased uuid > device-conversation-ref 1`] = `
+{
+  "parsedBadThread": null,
+  "parsedConversation": {
+    "conversationId": "cnv_abcdefgh",
+    "kind": "conversation",
+  },
+  "parsedEmpty": null,
+  "parsedThread": {
+    "kind": "thread",
+    "threadId": "550e8400-e29b-41d4-a716-446655440000",
+  },
+  "threadRef": "thr_550e8400-e29b-41d4-a716-446655440000",
+}
+`;
+
+exports[`/api/devices/active-conversation contract > pointing the Cardputer at a private cnv_ conversation > GET /api/active (cnv_) 1`] = `
+{
+  "body": {
+    "active": {
+      "changed_at": "<epoch-ms>",
+      "conversation_id": "cnv_<uuid-1>",
+      "surface": "activate",
+      "title": "Private notes",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/devices/active-conversation contract > pointing the Cardputer at a private cnv_ conversation > PUT active-conversation (cnv_) 1`] = `
+{
+  "body": {
+    "active_conversation": {
+      "id": "cnv_<uuid-1>",
+      "title": "Private notes",
+    },
+    "active_space": null,
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/devices/active-conversation contract > pointing the Cardputer at a space thread > GET /api/active (thread) 1`] = `
+{
+  "body": {
+    "active": {
+      "changed_at": "<epoch-ms>",
+      "conversation_id": "thr_<uuid-1>",
+      "surface": "activate",
+      "title": "Weekend",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/devices/active-conversation contract > pointing the Cardputer at a space thread > GET /api/devices (thread) 1`] = `
+{
+  "body": {
+    "active_conversation": {
+      "id": "thr_<uuid-1>",
+      "title": "Weekend",
+    },
+    "active_space": {
+      "id": "<uuid-2>",
+      "name": "Family",
+    },
+    "devices": [
+      {
+        "active_conversation_id": "thr_<uuid-1>",
+        "active_space_id": "<uuid-2>",
+        "connected": true,
+        "id": "<uuid-3>",
+        "last_seen_at": null,
+        "live": {
+          "battery_pct": null,
+          "charging": null,
+          "connected": true,
+          "fw_version": null,
+        },
+        "model": "M5Stack Cardputer",
+        "name": "Desk",
+        "paired_at": "<epoch-ms>",
+        "pending": false,
+        "ring_settings_supported": false,
+        "settings": {
+          "dnd": false,
+          "mode": "ptt",
+          "muted": false,
+          "ring_seconds": 30,
+          "ring_sound": "classic",
+          "volume": 6,
+          "wake_word": "bob",
+        },
+        "settings_supported": false,
+        "wake_word_supported": false,
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/devices/active-conversation contract > pointing the Cardputer at a space thread > PUT active-conversation (thread) 1`] = `
+{
+  "body": {
+    "active_conversation": {
+      "id": "thr_<uuid-1>",
+      "title": "Weekend",
+    },
+    "active_space": {
+      "id": "<uuid-2>",
+      "name": "Family",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > create, list (ThreadSummary) and read a thread > GET /api/spaces/:id/threads 1`] = `
+{
+  "body": {
+    "threads": [
+      {
+        "archived_at": null,
+        "created_at": "<epoch-ms>",
+        "created_by": "<uuid-3>",
+        "id": "<uuid-4>",
+        "last_sequence": 0,
+        "space_id": "<uuid-2>",
+        "title": "School run",
+        "unread_count": 0,
+        "updated_at": "<epoch-ms>",
+      },
+      {
+        "archived_at": null,
+        "created_at": "<epoch-ms>",
+        "created_by": "<uuid-3>",
+        "id": "<uuid-1>",
+        "last_sequence": 0,
+        "space_id": "<uuid-2>",
+        "title": "Groceries",
+        "unread_count": 0,
+        "updated_at": "<epoch-ms>",
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > create, list (ThreadSummary) and read a thread > POST /api/spaces/:id/threads 1`] = `
+{
+  "body": {
+    "archived_at": null,
+    "created_at": "<epoch-ms>",
+    "created_by": "<uuid-3>",
+    "id": "<uuid-1>",
+    "last_sequence": 0,
+    "space_id": "<uuid-2>",
+    "title": "Groceries",
+    "unread_count": 0,
+    "updated_at": "<epoch-ms>",
+  },
+  "status": 201,
+}
+`;
+
+exports[`/api/threads contract > invocation: 202, invocation state, assistant message with author_user_id null > GET invocation 1`] = `
+{
+  "body": {
+    "error_code": null,
+    "id": "<uuid-1>",
+    "result_message_id": "<uuid-4>",
+    "space_id": "<uuid-3>",
+    "state": "completed",
+    "thread_id": "<uuid-2>",
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > invocation: 202, invocation state, assistant message with author_user_id null > GET messages (assistant reply) 1`] = `
+{
+  "body": {
+    "messages": [
+      {
+        "author_user_id": "<uuid-6>",
+        "body": "@bob add milk",
+        "client_message_id": "i-1",
+        "created_at": "<epoch-ms>",
+        "id": "<uuid-5>",
+        "origin": "web_text",
+        "reply_to_message_id": null,
+        "revision": 1,
+        "sequence": 1,
+        "space_id": "<uuid-3>",
+        "thread_id": "<uuid-2>",
+        "tombstoned_at": null,
+        "tombstoned_by": null,
+        "updated_at": "<epoch-ms>",
+      },
+      {
+        "author_user_id": null,
+        "body": "System test response",
+        "client_message_id": "bob:<uuid-1>",
+        "created_at": "<epoch-ms>",
+        "id": "<uuid-4>",
+        "origin": "web_text",
+        "reply_to_message_id": null,
+        "revision": 1,
+        "sequence": 2,
+        "space_id": "<uuid-3>",
+        "thread_id": "<uuid-2>",
+        "tombstoned_at": null,
+        "tombstoned_by": null,
+        "updated_at": "<epoch-ms>",
+      },
+    ],
+    "next_cursor": null,
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > invocation: 202, invocation state, assistant message with author_user_id null > POST invocations 1`] = `
+{
+  "body": {
+    "invocation_id": "<uuid-1>",
+  },
+  "status": 202,
+}
+`;
+
+exports[`/api/threads contract > mark read moves unread_count from 1 to 0 > PUT read 1`] = `
+{
+  "body": {
+    "last_read_sequence": 1,
+    "thread_id": "<uuid-1>",
+    "updated_at": "<epoch-ms>",
+    "user_id": "<uuid-4>",
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > mark read moves unread_count from 1 to 0 > member list after read 1`] = `
+{
+  "body": {
+    "threads": [
+      {
+        "archived_at": null,
+        "created_at": "<epoch-ms>",
+        "created_by": "<uuid-3>",
+        "id": "<uuid-1>",
+        "last_sequence": 1,
+        "space_id": "<uuid-2>",
+        "title": "News",
+        "unread_count": 0,
+        "updated_at": "<epoch-ms>",
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > mark read moves unread_count from 1 to 0 > member list before read 1`] = `
+{
+  "body": {
+    "threads": [
+      {
+        "archived_at": null,
+        "created_at": "<epoch-ms>",
+        "created_by": "<uuid-3>",
+        "id": "<uuid-1>",
+        "last_sequence": 1,
+        "space_id": "<uuid-2>",
+        "title": "News",
+        "unread_count": 1,
+        "updated_at": "<epoch-ms>",
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > post, idempotent re-post, list, edit, stale revision, revisions, tombstone > DELETE message (tombstone) 1`] = `
+{
+  "body": {
+    "author_user_id": "<uuid-4>",
+    "body": "",
+    "client_message_id": "c-1",
+    "created_at": "<epoch-ms>",
+    "id": "<uuid-1>",
+    "origin": "web_text",
+    "reply_to_message_id": null,
+    "revision": 2,
+    "sequence": 1,
+    "space_id": "<uuid-3>",
+    "thread_id": "<uuid-2>",
+    "tombstoned_at": "<epoch-ms>",
+    "tombstoned_by": "<uuid-4>",
+    "updated_at": "<epoch-ms>",
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > post, idempotent re-post, list, edit, stale revision, revisions, tombstone > GET messages (one, no duplicate) 1`] = `
+{
+  "body": {
+    "messages": [
+      {
+        "author_user_id": "<uuid-4>",
+        "body": "Buy milk",
+        "client_message_id": "c-1",
+        "created_at": "<epoch-ms>",
+        "id": "<uuid-1>",
+        "origin": "web_text",
+        "reply_to_message_id": null,
+        "revision": 1,
+        "sequence": 1,
+        "space_id": "<uuid-3>",
+        "thread_id": "<uuid-2>",
+        "tombstoned_at": null,
+        "tombstoned_by": null,
+        "updated_at": "<epoch-ms>",
+      },
+    ],
+    "next_cursor": null,
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > post, idempotent re-post, list, edit, stale revision, revisions, tombstone > GET messages (tombstone rendering) 1`] = `
+{
+  "body": {
+    "messages": [
+      {
+        "author_user_id": "<uuid-4>",
+        "body": "",
+        "client_message_id": "c-1",
+        "created_at": "<epoch-ms>",
+        "id": "<uuid-1>",
+        "origin": "web_text",
+        "reply_to_message_id": null,
+        "revision": 2,
+        "sequence": 1,
+        "space_id": "<uuid-3>",
+        "thread_id": "<uuid-2>",
+        "tombstoned_at": "<epoch-ms>",
+        "tombstoned_by": "<uuid-4>",
+        "updated_at": "<epoch-ms>",
+      },
+    ],
+    "next_cursor": null,
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > post, idempotent re-post, list, edit, stale revision, revisions, tombstone > GET revisions 1`] = `
+{
+  "body": {
+    "revisions": [
+      {
+        "author_user_id": "<uuid-4>",
+        "body": "Buy milk and eggs",
+        "revision": 2,
+        "updated_at": "<epoch-ms>",
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > post, idempotent re-post, list, edit, stale revision, revisions, tombstone > PATCH message (revision 2) 1`] = `
+{
+  "body": {
+    "author_user_id": "<uuid-4>",
+    "body": "Buy milk and eggs",
+    "client_message_id": "c-1",
+    "created_at": "<epoch-ms>",
+    "id": "<uuid-1>",
+    "origin": "web_text",
+    "reply_to_message_id": null,
+    "revision": 2,
+    "sequence": 1,
+    "space_id": "<uuid-3>",
+    "thread_id": "<uuid-2>",
+    "tombstoned_at": null,
+    "tombstoned_by": null,
+    "updated_at": "<epoch-ms>",
+  },
+  "status": 200,
+}
+`;
+
+exports[`/api/threads contract > post, idempotent re-post, list, edit, stale revision, revisions, tombstone > PATCH message with stale revision 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`/api/threads contract > post, idempotent re-post, list, edit, stale revision, revisions, tombstone > POST messages (new) 1`] = `
+{
+  "body": {
+    "author_user_id": "<uuid-4>",
+    "body": "Buy milk",
+    "client_message_id": "c-1",
+    "created_at": "<epoch-ms>",
+    "id": "<uuid-1>",
+    "origin": "web_text",
+    "reply_to_message_id": null,
+    "revision": 1,
+    "sequence": 1,
+    "space_id": "<uuid-3>",
+    "thread_id": "<uuid-2>",
+    "tombstoned_at": null,
+    "tombstoned_by": null,
+    "updated_at": "<epoch-ms>",
+  },
+  "status": 201,
+}
+`;
+
+exports[`/api/threads contract > post, idempotent re-post, list, edit, stale revision, revisions, tombstone > POST messages (same client_message_id) 1`] = `
+{
+  "body": {
+    "author_user_id": "<uuid-4>",
+    "body": "Buy milk",
+    "client_message_id": "c-1",
+    "created_at": "<epoch-ms>",
+    "id": "<uuid-1>",
+    "origin": "web_text",
+    "reply_to_message_id": null,
+    "revision": 1,
+    "sequence": 1,
+    "space_id": "<uuid-3>",
+    "thread_id": "<uuid-2>",
+    "tombstoned_at": null,
+    "tombstoned_by": null,
+    "updated_at": "<epoch-ms>",
+  },
+  "status": 200,
+}
+`;

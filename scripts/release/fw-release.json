@@ -1,0 +1,9 @@
+{
+  "product": "bob-cardputer",
+  "boards": ["cardputer", "cardputer-adv"],
+  "min_from": "0.0.0",
+  "allow_downgrade": false,
+  "rollback_safe": true,
+  "settings_schema": 1,
+  "requires_bootloader": "arduino-esp32-2.0.17"
+}

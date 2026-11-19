@@ -1,0 +1,20 @@
+{
+  "name": "@bob/cardputer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "compile": "node scripts/run-pio.mjs build",
+    "free-port": "node scripts/free-serial-port.mjs",
+    "flash": "node scripts/free-serial-port.mjs && node scripts/run-pio.mjs upload",
+    "monitor": "node scripts/free-serial-port.mjs && node scripts/run-pio.mjs monitor",
+    "run": "node scripts/free-serial-port.mjs && node scripts/run-pio.mjs run",
+    "debug": "node scripts/run-pio.mjs monitor",
+    "ca-roots": "node scripts/gen-ca-roots.mjs",
+    "ca-roots:check": "node scripts/gen-ca-roots.mjs --check",
+    "test:firmware": "node test/host/run.mjs",
+    "budget": "node ../../scripts/firmware-budget.mjs --check",
+    "screenshot": "node scripts/screenshot.mjs",
+    "test:device": "node scripts/device-test.mjs",
+    "test:device:integration": "node scripts/device-test.mjs --server=real"
+  }
+}

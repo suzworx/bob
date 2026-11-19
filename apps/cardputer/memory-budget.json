@@ -1,0 +1,77 @@
+{
+  "comment": "Memory budget for env m5stack-cardputer-v2-poc (ESP32-S3, no PSRAM). `static` is enforced by scripts/firmware-budget.mjs against the PlatformIO size summary: over limitBytes fails, growth over baselineBytes by more than growthWarnBytes warns. Re-base baselineBytes in the PR that intentionally grows the firmware. `runtimeHeap` is the documented heap plan, not enforced; see docs/cardputer/testing.md.",
+  "env": "m5stack-cardputer-v2-poc",
+  "measuredAt": "2026-09-29",
+  "static": {
+    "ram": {
+      "totalBytes": 327680,
+      "baselineBytes": 63656,
+      "limitBytes": 65536,
+      "growthWarnBytes": 2048,
+      "why": "Static .data/.bss comes straight out of the heap the playback buffer, MP3 decoder and TLS need at runtime. 64 KiB (20% of DRAM) was set at 52,484 B (16.0%); re-based after the Space picker and wake-word module (#331, #312) to 54,492 B (16.6%), leaving ~10.8 KiB of headroom. Re-based to 61,292 B (18.7%) for epic #311 firmware (#378: settings, cards, earcons, wake wiring) and the control queue (+3,104 B), leaving ~4.2 KiB under the limit — the next static growth needs a deliberate budget decision. Re-based to 63,656 B (19.4%) for epic #669 (on-device Wi-Fi, server profiles, resets; #691), leaving ~1.8 KiB under the limit. The #669 flash trim found no safe static-RAM cut (the large .bss is Wi-Fi/lwIP/coredump in the prebuilt core and deliberately static buffers), so the baseline and limit stand."
+    },
+    "flash": {
+      "totalBytes": 3342336,
+      "baselineBytes": 1577213,
+      "limitBytes": 1740800,
+      "growthWarnBytes": 16384,
+      "why": "Set at 1.5 MiB with the baseline at 1,226,157 B (36.7%); the Space picker and wake-word module (#331, #312) added ~171 KiB, re-based to 1,401,121 B (41.9%), then to 1,446,653 B (43.3%) for epic #311 (#378). Epic #669 (#691: settings store, connection manager, Settings/Setup UI, server profiles, resets) brought it to 1,586,257 B (47.5%); the owner approved a 1,600 KiB limit (2026-09-29). The #669 flash trim (CORE_DEBUG_LEVEL 3 -> 1, -9,436 B) re-based to 1,577,213 B (47.2%) with the limit at 1,568 KiB (1,605,632 B), ~27.8 KiB of headroom. Raised to 1,700 KiB (1,740,800 B, 52.1% of the slot) for OTA (#343, OTA-1): the OTA slots (ota_0/ota_1, default_8MB.csv) are 3,342,336 B each, so the old under-half-the-partition rationale no longer applies; the headroom (~159 KiB over the baseline) is reserved for the OTA client, the signature verify and the progress UI, ~20-60 KB estimated."
+    }
+  },
+  "runtimeHeap": [
+    {
+      "name": "PCM ring and speaker chunks",
+      "bytes": 61440,
+      "source": "include/config.h:88 (kPcmRingBufferBytes, 49152 B) and :94 (kPcmChunkSamples, 3 x 2048 x 2 = 12288 B); PcmState allocated at src/audio_playback.cpp:346",
+      "note": "PCM path only, per reply: allocated at playback_start, freed at playback_completed (#674). Two blocks: the 48 KB ring (malloc) and the ~12 KB PcmState with the chunks. Replaces the 320 KB (160 KB retry) whole-reply buffer, which never fit the 159732 B largest free block (heap-per-mode, every mode), so every PCM reply was dropped. Allocation failure journals playback_buffer_failed free=,largest=."
+    },
+    {
+      "name": "MP3 ring buffer",
+      "bytes": 49152,
+      "source": "include/config.h:74 (kMp3RingBufferBytes); src/audio_playback.cpp:358",
+      "note": "MP3 path only; about 3 s at 128 kbps."
+    },
+    {
+      "name": "MP3 decode free-heap floor",
+      "bytes": 32768,
+      "source": "include/config.h:78 (kMp3MinDecodeHeapBytes); checked at src/audio_playback.cpp:542",
+      "note": "Decoding does not start below this; the decoder's per-frame mallocs null-deref otherwise."
+    },
+    {
+      "name": "WebSocket RX frame (per queued event)",
+      "bytes": 16384,
+      "source": "include/config.h:102 (kMaxRxFrameBytes); malloc per frame at src/network.cpp:92",
+      "note": "Bigger frames are dropped before allocation. Worst case in flight is event queue depth x this."
+    },
+    {
+      "name": "Network event queue",
+      "bytes": 288,
+      "source": "src/network.cpp:27 (kEventQueueDepth = 24) x sizeof(NetEvent) = 12 B, created at src/network.cpp:75",
+      "note": "Queue storage only; each queued event also owns its malloc'd payload (the row above)."
+    },
+    {
+      "name": "Network task stack (ws_net)",
+      "bytes": 6144,
+      "source": "src/network.cpp:124 (xTaskCreatePinnedToCore)",
+      "note": "Watch the ws_stack watermark the device journals (src/audio_playback.cpp:825)."
+    },
+    {
+      "name": "Internet probe task stack (net_probe)",
+      "bytes": 7168,
+      "source": "src/wifi_manager.cpp:263 (kProbeTaskStackBytes)",
+      "note": "Short-lived, Production only: one per Wi-Fi join or 5-minute re-check, never alongside a socket TLS handshake (#710). Measured peak 5056 B (net_probe stack= 1088-1304 B unused on 6144 B, 3 boots); the net_probe line keeps journaling stack=."
+    },
+    {
+      "name": "TLS session (wss://)",
+      "bytes": null,
+      "source": "include/config.h:23 (V2_USE_TLS); src/network.cpp:163 (beginSslWithCA)",
+      "note": "Not measured. mbedTLS commonly needs tens of KiB during the handshake; measure with the heap free/largest journal line (turn_heap, src/state_core.cpp journalTurnHeap) before enabling TLS by default."
+    },
+    {
+      "name": "Control message build buffer (stack)",
+      "bytes": 512,
+      "source": "src/protocol.cpp:14 (kControlBufferBytes)",
+      "note": "Per builder call, on the caller's stack; output is truncated, never overflowed (test/host/test_builders.cpp)."
+    }
+  ]
+}

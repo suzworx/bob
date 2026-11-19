@@ -1,0 +1,249 @@
+{
+  "Account/ProfileView.swift": {
+    "system-grey": 5
+  },
+  "Account/UsageView.swift": {
+    "raw-font": 1,
+    "system-grey": 4
+  },
+  "Account/YourDataView.swift": {
+    "system-grey": 2
+  },
+  "Account/YouRows.swift": {
+    "raw-font": 1,
+    "system-grey": 1
+  },
+  "Admin/AdminView.swift": {
+    "system-grey": 8
+  },
+  "Admin/OperatorMetricsView.swift": {
+    "system-grey": 4
+  },
+  "Apps/BobAppDetailView.swift": {
+    "system-grey": 2
+  },
+  "Apps/BobAppImprovementView.swift": {
+    "raw-font": 1,
+    "system-grey": 1
+  },
+  "Apps/BobAppRefreshView.swift": {
+    "system-grey": 3
+  },
+  "Apps/BobAppRenderer.swift": {
+    "system-grey": 3
+  },
+  "Apps/BobAppsView.swift": {
+    "system-grey": 4
+  },
+  "Calendar/CalendarView.swift": {
+    "system-grey": 4
+  },
+  "Calendar/EventEditorSheet.swift": {
+    "system-grey": 4
+  },
+  "Calendar/EventPeopleSection.swift": {
+    "system-grey": 4
+  },
+  "Calendar/MonthGridView.swift": {
+    "system-grey": 1
+  },
+  "Calendar/RunningTimersSection.swift": {
+    "system-grey": 5
+  },
+  "Chat/ChatAttachmentPicker.swift": {
+    "raw-font": 1
+  },
+  "Chat/ChatComposer.swift": {
+    "raw-font": 2,
+    "system-grey": 4,
+    "literal-radius": 3,
+    "raw-haptic": 1
+  },
+  "Chat/ChatMarkdownView.swift": {
+    "system-grey": 4,
+    "literal-radius": 1
+  },
+  "Chat/ChatMessageRow.swift": {
+    "raw-font": 2,
+    "system-grey": 4,
+    "literal-radius": 1,
+    "raw-animation": 1
+  },
+  "Chat/ChatReplyView.swift": {
+    "system-grey": 5,
+    "literal-radius": 2,
+    "raw-animation": 1
+  },
+  "Chat/ChatView.swift": {
+    "raw-font": 1,
+    "system-grey": 4,
+    "raw-animation": 2
+  },
+  "Chat/ConversationListView.swift": {
+    "raw-font": 4,
+    "system-grey": 2
+  },
+  "Devices/DeviceDetailView.swift": {
+    "raw-font": 1,
+    "system-grey": 10
+  },
+  "Devices/DeviceHandoffSheet.swift": {
+    "system-grey": 3
+  },
+  "Devices/DevicesView.swift": {
+    "system-grey": 2
+  },
+  "Health/HealthView.swift": {
+    "raw-color": 1,
+    "system-grey": 2
+  },
+  "Insights/ActivityTimelineView.swift": {
+    "system-grey": 7
+  },
+  "Insights/InsightPreparationView.swift": {
+    "system-grey": 2
+  },
+  "Insights/InsightsView.swift": {
+    "system-grey": 7
+  },
+  "Integrations/GoogleCalendarsView.swift": {
+    "system-grey": 6
+  },
+  "Integrations/IntegrationsView.swift": {
+    "raw-font": 1,
+    "system-grey": 11
+  },
+  "Intents/SiriShortcutsView.swift": {
+    "system-grey": 2
+  },
+  "Marketing/MarketingCatalogView.swift": {
+    "system-grey": 4
+  },
+  "Marketing/MarketingConfigView.swift": {
+    "system-grey": 9
+  },
+  "Marketing/MarketingCreativeView.swift": {
+    "raw-color": 2,
+    "system-grey": 1,
+    "literal-radius": 1
+  },
+  "Marketing/MarketingDraftView.swift": {
+    "raw-font": 3,
+    "system-grey": 6,
+    "literal-radius": 1
+  },
+  "Marketing/MarketingReviewView.swift": {
+    "system-grey": 16
+  },
+  "Marketing/MarketingWorkspaceView.swift": {
+    "system-grey": 8
+  },
+  "Memory/MemoryView.swift": {
+    "system-grey": 6
+  },
+  "Notifications/NotificationsView.swift": {
+    "raw-font": 1,
+    "system-grey": 2
+  },
+  "Productivity/HomeDashboard.swift": {
+    "raw-font": 15,
+    "system-grey": 8,
+    "literal-radius": 2
+  },
+  "Productivity/NoteDetailView.swift": {
+    "system-grey": 6
+  },
+  "Productivity/NoteEditorSheet.swift": {
+    "system-grey": 2
+  },
+  "Productivity/NotesView.swift": {
+    "system-grey": 2
+  },
+  "Productivity/ProductivityUI.swift": {
+    "raw-animation": 1
+  },
+  "Productivity/ReminderEditorSheet.swift": {
+    "system-grey": 5
+  },
+  "Productivity/RemindersView.swift": {
+    "system-grey": 1
+  },
+  "Productivity/SpacesBrowserView.swift": {
+    "raw-font": 2,
+    "system-grey": 1
+  },
+  "Productivity/TasksView.swift": {
+    "raw-font": 1,
+    "system-grey": 3
+  },
+  "Routines/RoutineFormView.swift": {
+    "system-grey": 1
+  },
+  "Routines/RoutineRunsView.swift": {
+    "system-grey": 5
+  },
+  "Routines/RoutinesView.swift": {
+    "system-grey": 5
+  },
+  "Search/SearchView.swift": {
+    "system-grey": 1
+  },
+  "Shell/AppShell.swift": {
+    "literal-radius": 1
+  },
+  "Shell/BobDock.swift": {
+    "raw-font": 1,
+    "raw-haptic": 1
+  },
+  "Shell/MomentPlaceholderView.swift": {
+    "system-grey": 1
+  },
+  "Shell/YouView.swift": {
+    "raw-font": 3,
+    "system-grey": 8
+  },
+  "SignIn/SignInCodeField.swift": {
+    "raw-font": 1,
+    "literal-radius": 2
+  },
+  "SignIn/SignInParts.swift": {
+    "raw-font": 3,
+    "system-grey": 3
+  },
+  "SignIn/SignInView.swift": {
+    "raw-font": 1,
+    "system-grey": 2,
+    "raw-haptic": 1
+  },
+  "Spaces/RoomScreens.swift": {
+    "raw-font": 1,
+    "system-grey": 4
+  },
+  "Spaces/SpaceAgendaView.swift": {
+    "raw-font": 1,
+    "system-grey": 4
+  },
+  "Spaces/SpaceSheets.swift": {
+    "raw-font": 1,
+    "system-grey": 2
+  },
+  "Spaces/SpaceViews.swift": {
+    "raw-font": 1,
+    "system-grey": 10
+  },
+  "Today/TodaySections.swift": {
+    "system-grey": 2
+  },
+  "Today/TodayView.swift": {
+    "raw-font": 3,
+    "system-grey": 8
+  },
+  "Tools/ToolsView.swift": {
+    "system-grey": 5
+  },
+  "Voice/VoiceMomentView.swift": {
+    "raw-font": 6,
+    "system-grey": 5,
+    "raw-haptic": 1
+  }
+}

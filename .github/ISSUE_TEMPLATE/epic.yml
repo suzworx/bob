@@ -1,0 +1,21 @@
+name: Epic
+description: A measurable product outcome spanning multiple stories
+title: "[Epic] "
+labels: ["type: epic"]
+body:
+  - type: textarea
+    id: outcome
+    attributes: { label: Outcome, description: What measurable user or operator outcome changes? }
+    validations: { required: true }
+  - type: textarea
+    id: scope
+    attributes: { label: Scope and non-goals, description: State boundaries explicitly. }
+    validations: { required: true }
+  - type: textarea
+    id: exit
+    attributes: { label: Exit criteria, description: List observable conditions required to close the epic. }
+    validations: { required: true }
+  - type: textarea
+    id: children
+    attributes: { label: Child issues and dependencies, description: Link the dependency-ordered issue set. }
+

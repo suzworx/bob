@@ -1,0 +1,12 @@
+{
+  "name": "bob-device",
+  "version": "0.1.0",
+  "description": "Bob's portable device core (ADR 0004): tokens, emotion, move and scene tables, motion, the rig compositor, the ring spec and the scene clocks, behind a small board HAL. No Arduino or M5 includes.",
+  "license": "UNLICENSED",
+  "frameworks": "*",
+  "platforms": "*",
+  "build": {
+    "srcDir": "src",
+    "includeDir": "src"
+  }
+}

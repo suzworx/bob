@@ -1,0 +1,3 @@
+interface:
+  display_name: "Runpod TTS Batch"
+  short_description: "Generate and validate speech batches on Runpod"

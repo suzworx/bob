@@ -1,0 +1,65 @@
+# Version control
+.git
+.gitignore
+
+# Dependencies (rebuilt in-image), at any depth
+node_modules
+**/node_modules
+
+# Local secrets and state — never in the image
+.env
+.env.*
+!.env.example
+
+# Runtime data, certs, logs (npm workspace runs write apps/api/data)
+data
+apps/api/data
+certs
+*.log
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+
+# Cardputer firmware sources (scripts-only workspace — excluded from the image),
+# but keep its package.json: the root lockfile references it as a workspace member.
+apps/cardputer/*
+!apps/cardputer/package.json
+
+# Capacitor iOS shell: out of the image, but keep its package.json (lockfile workspace member).
+apps/mobile/*
+!apps/mobile/package.json
+
+# Agent tooling and planning artifacts. The Dockerfile COPYs explicit paths, so
+# none of this reached the image, but all of it was uploaded as build context.
+.flywheel
+.omo
+opencode
+.opencode
+.agents
+.claude
+.cursor
+.specify
+.githooks
+.github
+specs
+skills-lock.json
+AGENTS.md
+CLAUDE.md
+TASKS.md
+README.md
+
+# Local Supabase stack config, seed, functions and env: never in the context.
+# Only the migration .sql files come back in: the Dockerfile's `migrations` stage
+# keeps just their NAMES, from which /health derives the schema it expects.
+supabase/*
+!supabase/migrations
+supabase/migrations/*
+!supabase/migrations/*.sql
+
+# Documentation (the runbook lives in docs/; not needed in the image)
+docs
+
+# Build output (apps/ui-v2/dist is produced in-image)
+**/dist
+**/*.tsbuildinfo

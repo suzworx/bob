@@ -1,0 +1,14 @@
+{
+  "id": "platform-cors",
+  "agent": "bob-platform",
+  "commit": "410fdef8",
+  "base": "410fdef8^",
+  "prompt": "The API sends no cross-origin headers, and there is no way to allow a separately hosted client without editing code. Sending none is still the right default, because the web app is served by the same server, the dev server proxies the API and the mobile shell loads the production site. Add an explicit allow-list setting for cross-origin access: when it is unset, no CORS header is sent at all. When it holds a comma-separated list of exact origins, those origins get their origin echoed back with a Vary on Origin, and preflight requests answer 204. An origin that is not on the list just gets no header, never a 403. Don't add a dependency, and make sure preflights are handled before the rate limiter, since a preflight carries no auth header.",
+  "hiddenTests": [
+    "apps/api/tests/cors.test.ts"
+  ],
+  "gates": [
+    "npx vitest run --root apps/api tests/cors.test.ts"
+  ],
+  "maxBudgetUsd": 3
+}

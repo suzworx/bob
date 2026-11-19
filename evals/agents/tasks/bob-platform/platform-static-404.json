@@ -1,0 +1,14 @@
+{
+  "id": "platform-static-404",
+  "agent": "bob-platform",
+  "commit": "d9d6b9c0",
+  "base": "d9d6b9c0^",
+  "prompt": "After a deploy, the web app sometimes goes completely white. The browser still asks for a script from the old build, the server's single-page-app fallback answers that missing file with the index page (200, text/html), and the browser rejects it as a module. Requests for missing files must get a 404 instead: anything under the assets path, or any path with a file extension. Extensionless client routes must keep the fallback to the index page. Serve the hashed build assets as immutable, and serve the index page with no-cache so a reload always picks up the new build.",
+  "hiddenTests": [
+    "apps/api/tests/static-ui.test.ts"
+  ],
+  "gates": [
+    "npx vitest run --root apps/api tests/static-ui.test.ts"
+  ],
+  "maxBudgetUsd": 3
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<style>.dark{display:none}@media (prefers-color-scheme:dark){.light{display:none}.dark{display:inline}}</style>
+<g class="light">
+  <defs><linearGradient id="bg-light" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf6"/><stop offset="1" stop-color="#efe6d2"/></linearGradient><radialGradient id="glow-light"><stop offset="0" stop-color="#ff6b4a" stop-opacity=".3"/><stop offset="1" stop-color="#ff6b4a" stop-opacity="0"/></radialGradient><clipPath id="tile-light"><rect width="512" height="512" rx="112"/></clipPath></defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg-light)"/>
+  <g clip-path="url(#tile-light)">
+    <circle cx="256" cy="256" r="186" fill="none" stroke="#1c2924" stroke-width="12" stroke-opacity=".35"/>
+    <circle cx="256" cy="256" r="118" fill="none" stroke="#1c2924" stroke-width="54"/>
+    <circle cx="398.5" cy="136.4" r="80" fill="url(#glow-light)"/>
+    <circle cx="398.5" cy="136.4" r="34" fill="#ff6b4a"/>
+  </g>
+</g>
+<g class="dark">
+  <defs><linearGradient id="bg-dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d2a58"/><stop offset="1" stop-color="#060a14"/></linearGradient><radialGradient id="glow-dark"><stop offset="0" stop-color="#d3f56a" stop-opacity=".9"/><stop offset="1" stop-color="#d3f56a" stop-opacity="0"/></radialGradient><clipPath id="tile-dark"><rect width="512" height="512" rx="112"/></clipPath></defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg-dark)"/>
+  <g clip-path="url(#tile-dark)">
+    <circle cx="256" cy="256" r="186" fill="none" stroke="#d3f56a" stroke-width="12" stroke-opacity="0.4"/>
+    <circle cx="256" cy="256" r="118" fill="none" stroke="#fff9ee" stroke-width="54"/>
+    <circle cx="398.5" cy="136.4" r="80" fill="url(#glow-dark)"/>
+    <circle cx="398.5" cy="136.4" r="34" fill="#d3f56a"/>
+  </g>
+</g>
+</svg>

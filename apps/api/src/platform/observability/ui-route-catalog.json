@@ -1,0 +1,8 @@
+[
+  "/", "/apps", "/apps/:appId", "/groups/:chatId", "/join-chat/:token", "/c/:conversationId", "/spaces", "/spaces/:spaceId",
+  "/spaces/:spaceId/threads", "/spaces/:spaceId/threads/new", "/spaces/:spaceId/threads/:threadId",
+  "/spaces/:spaceId/tasks", "/spaces/:spaceId/notes", "/spaces/:spaceId/agenda", "/spaces/:spaceId/members", "/spaces/:spaceId/apps",
+  "/today", "/calendar", "/memory", "/admin", "/devices", "/devices/pair", "/devices/:deviceId",
+  "/invite/:token", "/reset", "/settings", "/integrations",
+  "/insights", "/insights/future", "/insights/reflections", "/insights/past", "/routines", "/timeline", "/tools", "other"
+]

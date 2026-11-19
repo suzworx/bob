@@ -1,0 +1,358 @@
+<title>Bob UI Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a reference tool. Sticky tab bar; each tab is a stack of evidence blocks (screens side by side, then a change table).
+   Brand from apps/ui-v2/src/app/bob-theme.ts: ember accent, ink text, Manrope + DM Mono. */
+:root {
+  --bg: #f6f5f3;
+  --surface: #ffffff;
+  --surface-2: #efedea;
+  --line: #e1ddd8;
+  --ink: #1c2924;
+  --muted: #5d6763;
+  --ember: #ff6b4a;
+  --ember-text: #b42812;
+  --ember-wash: #ff6b4a1f;
+  --ok: #1f7a4d;
+  --ok-wash: #1f7a4d1a;
+  --warn: #8a5a00;
+  --warn-wash: #c78a001f;
+  --bad: #b3261e;
+  --bad-wash: #b3261e17;
+  --info: #285e8f;
+  --info-wash: #285e8f17;
+  --shadow: 0 1px 2px #1c292414, 0 4px 14px #1c29240d;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  --r: 10px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151a18; --surface: #1d2321; --surface-2: #252c29; --line: #343c39; --ink: #e9ede9; --muted: #a2aca8;
+    --ember: #ff8a6e; --ember-text: #ff8a6e; --ember-wash: #ff8a6e24; --ok: #6fcf9c; --ok-wash: #6fcf9c1f;
+    --warn: #e6b450; --warn-wash: #e6b4501f; --bad: #ff8a80; --bad-wash: #ff8a801c; --info: #8ab8e6; --info-wash: #8ab8e61c;
+    --shadow: 0 1px 2px #0006, 0 6px 18px #0004; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151a18; --surface: #1d2321; --surface-2: #252c29; --line: #343c39; --ink: #e9ede9; --muted: #a2aca8;
+  --ember: #ff8a6e; --ember-text: #ff8a6e; --ember-wash: #ff8a6e24; --ok: #6fcf9c; --ok-wash: #6fcf9c1f;
+  --warn: #e6b450; --warn-wash: #e6b4501f; --bad: #ff8a80; --bad-wash: #ff8a801c; --info: #8ab8e6; --info-wash: #8ab8e61c;
+  --shadow: 0 1px 2px #0006, 0 6px 18px #0004; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.55 var(--font-body); }
+.wrap { max-width: 1320px; margin: 0 auto; padding-inline: max(16px, 3vw); }
+h1, h2, h3 { text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+code, .mono { font-family: var(--font-mono); font-size: 0.86em; }
+a { color: var(--ember-text); }
+:focus-visible { outline: 2px solid var(--ember-text); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+header.top { padding-block: 28px 18px; display: grid; gap: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.mark { width: 26px; height: 26px; border-radius: 50%; border: 5px solid var(--ink); position: relative; flex: none; }
+.mark::after { content: ""; position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--ember); top: -6px; right: -6px; }
+header.top h1 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; }
+header.top p { margin: 0; color: var(--muted); max-width: 78ch; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px 22px; padding-top: 4px; }
+.stat { display: grid; }
+.stat b { font-size: 20px; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+nav.tabs button { font: 600 14px var(--font-body); color: var(--muted); background: none; border: 0; padding: 12px 12px 10px; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; }
+nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ember); }
+nav.tabs button .n { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 4px; }
+
+main { padding-block: 22px 60px; }
+section.tab { display: grid; gap: 22px; }
+.lede { color: var(--muted); max-width: 80ch; margin: 0; }
+
+.block { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: clamp(14px, 2vw, 22px); display: grid; gap: 16px; min-width: 0; }
+.block-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.block-head h2 { font-size: 20px; font-weight: 800; }
+.route { font: 500 12px var(--font-mono); color: var(--muted); }
+.verdict { margin: 0; font-weight: 600; }
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 16px; }
+.side { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.side-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 600 12px var(--font-body); border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.screens { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.36fr); gap: 10px; align-items: start; }
+.shot { margin: 0; display: grid; gap: 4px; min-width: 0; }
+.shot img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); cursor: zoom-in; }
+.shot figcaption { font-size: 11px; color: var(--muted); }
+.missing { border: 1px dashed var(--line); border-radius: 8px; color: var(--muted); font-size: 12px; display: grid; place-items: center; min-height: 120px; padding: 12px; text-align: center; background: var(--surface-2); }
+
+.fit { font: 700 10px var(--font-body); text-transform: uppercase; letter-spacing: .06em; padding: 2px 7px; border-radius: 999px; }
+.fit.Strong { background: var(--ok-wash); color: var(--ok); }
+.fit.Partial { background: var(--warn-wash); color: var(--warn); }
+.fit.None { background: var(--surface-2); color: var(--muted); }
+
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--surface-2); font-weight: 700; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.change { min-width: 260px; max-width: 46ch; }
+td .mono { color: var(--muted); }
+.fx { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.fid { font: 500 11px var(--font-mono); padding: 1px 6px; border-radius: 4px; background: var(--surface-2); color: var(--ink); text-decoration: none; white-space: nowrap; }
+.fid.H { background: var(--bad-wash); color: var(--bad); }
+.fid.M { background: var(--warn-wash); color: var(--warn); }
+.fid.L { background: var(--info-wash); color: var(--info); }
+.fid.N { background: var(--ember-wash); color: var(--ember-text); }
+.eff { font: 600 11px var(--font-mono); white-space: nowrap; }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.toolbar input { font: 14px var(--font-body); padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); min-width: 0; flex: 1 1 240px; max-width: 360px; }
+.count { color: var(--muted); font-size: 13px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card .thumb { height: 150px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
+.card .thumb img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; }
+.card .thumb.none { font-size: 12px; color: var(--muted); padding: 10px; text-align: center; }
+.card h3 { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.card .where { font: 12px var(--font-mono); color: var(--muted); overflow-wrap: anywhere; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; font-size: 12px; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; overflow-wrap: anywhere; }
+.tag { font: 500 11px var(--font-mono); padding: 1px 6px; border-radius: 4px; background: var(--surface-2); white-space: nowrap; display: inline-block; margin: 0 3px 3px 0; }
+.tag.ax { background: var(--info-wash); color: var(--info); }
+.rec { border-left: 3px solid var(--ember); background: var(--ember-wash); padding: 7px 10px; border-radius: 0 6px 6px 0; font-size: 13px; display: grid; gap: 4px; }
+.pill { font: 700 10px var(--font-body); text-transform: uppercase; letter-spacing: .06em; padding: 2px 7px; border-radius: 999px; background: var(--surface-2); color: var(--muted); }
+.pill.dead, .pill.duplicate { background: var(--bad-wash); color: var(--bad); }
+.pill.used { background: var(--ok-wash); color: var(--ok); }
+.pill.next { background: var(--ember-wash); color: var(--ember-text); }
+.pill.template { background: var(--info-wash); color: var(--info); }
+.pill.component { background: var(--warn-wash); color: var(--warn); }
+
+.meter { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--surface-2); }
+.meter i { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); }
+.legend b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; vertical-align: 0; }
+
+.find-group { display: grid; gap: 8px; }
+.find { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.find:last-child { border-bottom: 0; }
+.find .refs { font-size: 12px; color: var(--muted); }
+
+dialog.zoom { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 94vh; }
+dialog.zoom::backdrop { background: #0b0f0dcc; }
+dialog.zoom img { max-width: 96vw; max-height: 90vh; display: block; border-radius: 8px; }
+dialog.zoom p { color: #e9ede9; font-size: 12px; margin: 6px 0 0; text-align: center; }
+@media (max-width: 640px) {
+  .screens { grid-template-columns: 1fr; }
+  .screens .shot.phone { max-width: 220px; }
+}
+</style>
+
+<header class="top wrap">
+  <div class="brand"><span class="mark" aria-hidden="true"></span><h1>Bob UI Catalog</h1></div>
+  <p>Every screen and component of the Bob web client (apps/ui-v2), shown as it renders today, next to the Astryx component or template it uses or should use. Captured from the running app with seed data; Astryx from its 0.6.2 templates and Storybook.</p>
+  <div class="stats" id="stats"></div>
+</header>
+<nav class="tabs" aria-label="Catalog sections"><div class="wrap" role="tablist" id="tablist"></div></nav>
+<main class="wrap" id="main"></main>
+<dialog class="zoom" id="zoom" aria-label="Enlarged screenshot"><img id="zoom-img" alt=""><p id="zoom-cap"></p></dialog>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(() => {
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const fids = (s) => String(s || '').split(/[,\s]+/).filter(Boolean).map((id) => /^[HMLN]\d+$/.test(id)
+    ? `<a class="fid ${id[0]}" href="#findings" data-goto="findings" title="${esc(D.findings[id] || '')}">${id}</a>`
+    : `<span class="fid">${esc(id)}</span>`).join('');
+  const img = (src, alt, cls = '') => src ? `<img src="${src}" alt="${esc(alt)}" loading="lazy" class="${cls}">` : '';
+
+  // Stats
+  const ax = Object.entries(D.astryx);
+  const used = ax.filter(([, v]) => v.files > 0).length;
+  const next = ax.filter(([, v]) => !v.files && v.recommended).length;
+  const flagged = D.components.filter((c) => c.kind === 'dead' || c.kind === 'duplicate').length;
+  const fCount = Object.keys(D.findings).length;
+  $('#stats').innerHTML = [
+    [D.pages.length, 'screens compared'], [D.components.length, 'Bob components'], [D.components.filter((c) => c.img).length, 'rendered here'],
+    [`${used}/${ax.length}`, 'Astryx used'], [next, 'Astryx to adopt'], [flagged, 'dead or duplicate'], [fCount, 'findings'],
+  ].map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('') + `<div class="stat"><b class="mono">${esc(D.astryxVersion)}</b><span>Astryx · ${esc(D.generatedAt)}</span></div>`;
+
+  const TABS = [
+    ['pages', 'Pages', D.pages.length], ['components', 'Components', D.components.length], ['astryx', 'Astryx', ax.length],
+    ['templates', 'Templates', D.templatesAll.length], ['future', 'Future', D.future.length], ['findings', 'Findings', fCount],
+  ];
+  $('#tablist').innerHTML = TABS.map(([id, label, n]) => `<button role="tab" id="t-${id}" aria-controls="p-${id}" data-tab="${id}">${label}<span class="n">${n}</span></button>`).join('');
+  $('#main').innerHTML = TABS.map(([id]) => `<section class="tab" role="tabpanel" id="p-${id}" aria-labelledby="t-${id}" hidden></section>`).join('');
+
+  // Pages
+  const shotFig = (src, cap, cls) => src ? `<figure class="shot ${cls}">${img(src, cap)}<figcaption>${esc(cap)}</figcaption></figure>` : `<div class="missing">${esc(cap)}: not captured</div>`;
+  const pageBlock = (p, i) => {
+    const s0 = p.shots[0];
+    const t0 = p.templates.find((t) => t.desktop) || p.templates[0];
+    return `<article class="block" id="page-${p.id}">
+      <div class="block-head"><h2>${esc(p.title)}</h2><span class="route">${esc(p.route)}</span></div>
+      <p class="verdict">${esc(p.verdict)}</p>
+      <div class="compare">
+        <div class="side" data-side="bob" data-page="${i}">
+          <div class="side-label">Bob today <span class="chips">${p.shots.map((s, j) => `<button class="chip" aria-pressed="${j === 0}" data-state="${j}">${esc(s.state)}</button>`).join('')}</span></div>
+          <div class="screens">${shotFig(s0.desktop, `${s0.state} · desktop 1440`, 'desk')}${shotFig(s0.phone, `${s0.state} · phone 375`, 'phone')}</div>
+        </div>
+        <div class="side" data-side="astryx" data-page="${i}">
+          <div class="side-label">Astryx reference <span class="chips">${p.templates.map((t, j) => `<button class="chip" aria-pressed="${t === t0}" data-tpl="${j}">${esc(t.name || t.slug)} <span class="fit ${t.fit}">${t.fit}</span></button>`).join('')}</span></div>
+          <div class="screens">${shotFig(t0.desktop, `${t0.name || t0.slug} · desktop`, 'desk')}${shotFig(t0.phone, `${t0.name || t0.slug} · phone`, 'phone')}</div>
+        </div>
+      </div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Change</th><th>Astryx</th><th>Pattern in template</th><th>Bob code</th><th>Fixes</th><th>Effort</th></tr></thead>
+        <tbody>${p.ops.map((o) => `<tr><td class="change">${esc(o.text)}</td><td><code>${esc(o.use)}</code></td><td><span class="mono">${esc(o.ref)}</span></td><td><span class="mono">${esc(o.where)}</span></td><td><span class="fx">${fids(o.fixes)}</span></td><td class="eff">${esc(o.effort)}</td></tr>`).join('')}</tbody>
+      </table></div>
+      <div class="route">Files: ${p.files.map((f) => `<code>${esc(f)}</code>`).join(' · ')}</div>
+    </article>`;
+  };
+  $('#p-pages').innerHTML = `<p class="lede">Each Bob screen as it renders today (desktop and phone), beside the Astryx template that should shape it. Pick a state or a template with the chips. The table lists every change that uses only the template's own components, with the line in the template that shows the pattern.</p>` + D.pages.map(pageBlock).join('');
+  $('#p-pages').addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip'); if (!chip) return;
+    const side = chip.closest('.side'); const p = D.pages[+side.dataset.page];
+    side.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+    const screens = $('.screens', side);
+    if (side.dataset.side === 'bob') { const s = p.shots[+chip.dataset.state]; screens.innerHTML = shotFig(s.desktop, `${s.state} · desktop 1440`, 'desk') + shotFig(s.phone, `${s.state} · phone 375`, 'phone'); }
+    else { const t = p.templates[+chip.dataset.tpl]; screens.innerHTML = shotFig(t.desktop, `${t.name || t.slug} · desktop`, 'desk') + shotFig(t.phone, `${t.name || t.slug} · phone`, 'phone'); }
+  });
+
+  // Components
+  const folder = (f) => f.replace(/^src\//, '').replace(/\/[^/]+$/, '');
+  const firstFour = (xs) => esc(xs.slice(0, 4).join(', ')) + (xs.length > 4 ? ` +${xs.length - 4}` : '');
+  const compThumb = (c) => {
+    if (c.img) return img(c.img, `${c.name} as rendered in ${c.shotState}`);
+    return c.mounted.length ? 'Mounted but not visible in a captured state' : 'Not on screen in the captured states';
+  };
+  const usedBy = (c) => {
+    if (c.renderedBy.length) return firstFour(c.renderedBy.map((r) => r.split(' (')[0]));
+    return /Page$/.test(c.name) || c.name === 'App' ? 'route (lazy)' : '<b>nothing</b>';
+  };
+  const tags = (xs, cls) => xs.map((a) => `<span class="${cls}">${esc(a)}</span>`).join('');
+  const compCard = (c) => `<article class="card" data-name="${esc(c.name.toLowerCase())}" data-file="${esc(c.file.toLowerCase())}">
+    <div class="thumb ${c.img ? '' : 'none'}">${compThumb(c)}</div>
+    <h3>${esc(c.name)} ${c.kind ? `<span class="pill ${c.kind}">${c.kind}</span>` : ''}</h3>
+    <div class="where">${esc(c.file)}:${c.line} · ${c.lines} lines${c.exported ? ' · exported' : ''}</div>
+    <dl class="kv">
+      <dt>Astryx</dt><dd>${c.astryx.length ? tags(c.astryx, 'tag ax') : '<span class="tag">none</span>'}</dd>
+      ${c.local.length ? `<dt>Bob</dt><dd>${tags(c.local, 'tag')}</dd>` : ''}
+      <dt>Used by</dt><dd>${usedBy(c)}</dd>
+      ${c.mounted.length ? `<dt>Seen on</dt><dd>${firstFour(c.mounted)}</dd>` : ''}
+    </dl>
+    ${c.rec ? `<div class="rec"><span>${esc(c.rec)}</span><span class="fx">${fids(c.fixes)}</span></div>` : ''}
+  </article>`;
+  const groups = {};
+  for (const c of D.components) {
+    const g = folder(c.file);
+    groups[g] ??= [];
+    groups[g].push(c);
+  }
+  $('#p-components').innerHTML = `<p class="lede">All ${D.components.length} Bob React components, found by parsing the source, each rendered from the live app where it was on screen. "Astryx" lists the Astryx modules it renders today; the highlighted note is the Astryx component or template it should use instead, and why.</p>
+    <div class="toolbar"><input id="cq" type="search" placeholder="Filter by name or file" aria-label="Filter components">
+      <span class="chips" id="cf">${[['all', 'All'], ['rec', 'Has a change'], ['flag', 'Dead or duplicate'], ['img', 'Rendered'], ['noimg', 'Not rendered']].map(([k, l], i) => `<button class="chip" data-f="${k}" aria-pressed="${i === 0}">${l}</button>`).join('')}</span>
+      <span class="count" id="cc"></span></div>` +
+    Object.entries(groups).sort().map(([g, list]) => `<div class="comp-group" data-group="${esc(g)}"><h2 style="font-size:15px;margin-block:6px 10px" class="mono">${esc(g)}/</h2><div class="grid">${list.map(compCard).join('')}</div></div>`).join('');
+  let cFilter = 'all';
+  const applyComp = () => {
+    const q = $('#cq').value.trim().toLowerCase(); let n = 0;
+    document.querySelectorAll('#p-components .card').forEach((el, i) => {
+      const c = D.components.find((x) => x.name.toLowerCase() === el.dataset.name && x.file.toLowerCase() === el.dataset.file);
+      const ok = (!q || el.dataset.name.includes(q) || el.dataset.file.includes(q)) &&
+        (cFilter === 'all' || (cFilter === 'rec' && c.rec) || (cFilter === 'flag' && (c.kind === 'dead' || c.kind === 'duplicate')) || (cFilter === 'img' && c.img) || (cFilter === 'noimg' && !c.img));
+      el.hidden = !ok; if (ok) n++;
+    });
+    document.querySelectorAll('#p-components .comp-group').forEach((g) => { g.hidden = !g.querySelector('.card:not([hidden])'); });
+    $('#cc').textContent = `${n} shown`;
+  };
+  $('#cq').addEventListener('input', applyComp);
+  $('#cf').addEventListener('click', (e) => { const b = e.target.closest('.chip'); if (!b) return; cFilter = b.dataset.f; $('#cf').querySelectorAll('.chip').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); applyComp(); });
+  applyComp();
+
+  // Astryx
+  const axState = ([, v]) => (v.files > 0 ? 'used' : v.recommended ? 'next' : 'avail');
+  const order = { used: 0, next: 1, avail: 2 };
+  const axSorted = ax.sort((a, b) => order[axState(a)] - order[axState(b)] || (b[1].files - a[1].files) || a[0].localeCompare(b[0]));
+  const avail = ax.length - used - next;
+  const AX_LABEL = { used: 'used', next: 'adopt next', avail: 'available' };
+  const axStory = (v) => v.story ? `<a class="where" href="https://astryx.atmeta.com/storybook/?path=/story/${esc(v.story)}" target="_blank" rel="noopener">Open in Storybook${v.stories ? ` · ${v.stories} stories` : ''}</a>` : '';
+  const axFacts = (v) => (v.files ? `<dt>Bob</dt><dd>${v.files} files · ${v.jsx} uses</dd>` : '')
+    + (v.names?.length ? `<dt>Imported</dt><dd>${tags(v.names, 'tag ax')}</dd>` : '')
+    + (v.storybookOnly ? '<dt>Note</dt><dd>Storybook only (not a separate module in 0.6.2)</dd>' : '');
+  const axCard = ([k, v]) => {
+    const st = axState([k, v]);
+    return `<article class="card" data-name="${esc(k.toLowerCase())}">
+      <div class="thumb ${v.img ? '' : 'none'}">${v.img ? img(v.img, `${k} Storybook story`) : 'No standalone story'}</div>
+      <h3>${esc(k)} <span class="pill ${st}">${AX_LABEL[st]}</span></h3>
+      <dl class="kv">${axFacts(v)}</dl>
+      ${axStory(v)}
+    </article>`;
+  };
+  $('#p-astryx').innerHTML = `<p class="lede">Every Astryx module in the installed 0.6.2 package and every component in its Storybook, with how much Bob uses it. "Adopt next" means a change in this catalog calls for it. Before building anything, check this list (DRY); if a row says "available", Astryx already has it.</p>
+    <div class="block"><div class="meter" role="img" aria-label="${used} used, ${next} to adopt, ${avail} available">
+      <i style="width:${used / ax.length * 100}%;background:var(--ok)"></i><i style="width:${next / ax.length * 100}%;background:var(--ember)"></i></div>
+      <div class="legend"><span><span class="dot" style="background:var(--ok)"></span><b>${used}</b> used by Bob</span><span><span class="dot" style="background:var(--ember)"></span><b>${next}</b> to adopt next</span><span><span class="dot" style="background:var(--surface-2);border:1px solid var(--line)"></span><b>${avail}</b> available, not needed yet</span></div></div>
+    <div class="toolbar"><input id="aq" type="search" placeholder="Filter Astryx components" aria-label="Filter Astryx components"><span class="count" id="ac"></span></div>
+    <div class="grid" id="ag">${axSorted.map(axCard).join('')}</div>`;
+  const applyAx = () => { const q = $('#aq').value.trim().toLowerCase(); let n = 0; document.querySelectorAll('#ag .card').forEach((el) => { el.hidden = !!q && !el.dataset.name.includes(q); if (!el.hidden) n++; }); $('#ac').textContent = `${n} shown`; };
+  $('#aq').addEventListener('input', applyAx); applyAx();
+
+  // Templates
+  const fitFor = (slug) => { const hits = D.pages.flatMap((p) => p.templates.filter((t) => t.slug === slug).map((t) => ({ p: p.title, fit: t.fit }))); return hits; };
+  $('#p-templates').innerHTML = `<p class="lede">All ${D.templatesAll.length} Astryx 0.6.2 page templates and where each lands in Bob. Templates with no Bob screen were checked and set aside (galleries, checkout, IDE, page editor).</p>
+    <div class="tbl-wrap"><table><thead><tr><th>Template</th><th>Category</th><th>Ready</th><th>Bob screen</th><th>Description</th></tr></thead><tbody>
+    ${D.templatesAll.sort((a, b) => (b.used - a.used) || a.category.localeCompare(b.category)).map((t) => { const h = fitFor(t.slug); const fut = D.future.find((f) => f.template === t.slug);
+      return `<tr><td><b>${esc(t.name)}</b><br><span class="mono">${esc(t.slug)}</span></td><td>${esc(t.category)}</td><td>${t.ready ? 'yes' : '<span class="pill">not ready</span>'}</td>
+      <td>${h.map((x) => `${esc(x.p)} <span class="fit ${x.fit}">${x.fit}</span>`).join('<br>')}${fut ? `${h.length ? '<br>' : ''}<span class="pill next">future</span> ${esc(fut.need)}` : ''}${!h.length && !fut ? '<span class="fit None">none</span>' : ''}</td>
+      <td style="min-width:260px">${esc(t.description)}</td></tr>`; }).join('')}
+    </tbody></table></div>`;
+
+  // Future
+  $('#p-future').innerHTML = `<p class="lede">Templates Bob doesn't need today but will when these arrive. Each has the trigger that should make us reach for it, so nothing is built early (YAGNI).</p><div class="grid">${D.future.map((f) => `<article class="card">
+    <div class="thumb ${f.desktop ? '' : 'none'}">${f.desktop ? img(f.desktop, f.name) : esc(f.name || f.template)}</div>
+    <h3>${esc(f.need)}</h3>
+    <dl class="kv"><dt>Template</dt><dd><b>${esc(f.name || f.template)}</b> <span class="mono">${esc(f.template)}</span></dd><dt>Why</dt><dd>${esc(f.why)}</dd><dt>When</dt><dd>${esc(f.when)}</dd></dl></article>`).join('')}</div>`;
+
+  // Findings
+  const refs = {};
+  for (const p of D.pages) {
+    for (const id of p.ops.flatMap((o) => String(o.fixes).split(/[,\s]+/))) {
+      refs[id] ??= new Set();
+      refs[id].add(p.title);
+    }
+  }
+  const groupsF = [['H', 'High'], ['M', 'Medium'], ['L', 'Low'], ['N', 'New in this pass']];
+  $('#p-findings').innerHTML = `<p class="lede">The review findings this catalog fixes, measured on the running app on 2026-10-01. Each links back to the screens whose changes address it.</p>` + groupsF.map(([k, label]) => `<div class="block find-group"><h2 style="font-size:16px">${label}</h2>${Object.entries(D.findings).filter(([id]) => id[0] === k).map(([id, t]) => `<div class="find"><span class="fid ${k}">${id}</span><div>${esc(t)}${refs[id] ? `<div class="refs">Fixed in: ${[...refs[id]].map((x) => `<a href="#page-${esc(D.pages.find((p) => p.title === x).id)}" data-goto="pages">${esc(x)}</a>`).join(', ')}</div>` : ''}</div></div>`).join('')}</div>`).join('');
+
+  // Tabs + deep links
+  const show = (id, scrollTo) => {
+    TABS.forEach(([t]) => { $(`#p-${t}`).hidden = t !== id; $(`#t-${t}`).setAttribute('aria-selected', String(t === id)); });
+    try { localStorage.setItem('bob-catalog-tab', id); } catch {}
+    if (scrollTo) { const el = document.getElementById(scrollTo); if (el) el.scrollIntoView({ block: 'start' }); } else window.scrollTo({ top: 0 });
+  };
+  $('#tablist').addEventListener('click', (e) => { const b = e.target.closest('[data-tab]'); if (b) { show(b.dataset.tab); history.replaceState(null, '', '#' + b.dataset.tab); } });
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('[data-goto]');
+    if (a) { e.preventDefault(); const target = a.getAttribute('href').slice(1); show(a.dataset.goto, target === a.dataset.goto ? null : target); }
+    const im = e.target.closest('img'); if (im && !im.closest('dialog')) { $('#zoom-img').src = im.src; $('#zoom-img').alt = im.alt; $('#zoom-cap').textContent = im.alt; $('#zoom').showModal(); }
+  });
+  $('#zoom').addEventListener('click', () => $('#zoom').close());
+  const hash = location.hash.slice(1);
+  let start = TABS.some(([t]) => t === hash) ? hash : null;
+  if (!start && hash.startsWith('page-')) { show('pages', hash); return; }
+  if (!start) { try { start = localStorage.getItem('bob-catalog-tab'); } catch {} }
+  show(TABS.some(([t]) => t === start) ? start : 'pages');
+})();
+</script>

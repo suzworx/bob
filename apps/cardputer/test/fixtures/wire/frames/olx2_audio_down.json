@@ -1,0 +1,7 @@
+{
+  "comment": "OLX2 downlink frame headers as apps/api serializeAudioFrame writes them; payload is payloadBytes zero bytes. Checked by apps/api/tests/wire-fixtures.test.ts and parsed by test/host/test_parsers.cpp.",
+  "frames": [
+    { "name": "pcm", "formatId": 1, "turnHandle": 7, "sequence": 3, "payloadBytes": 320, "headerHex": "4f4c583201020101000000070000000300000140" },
+    { "name": "mp3", "formatId": 2, "turnHandle": 7, "sequence": 4, "payloadBytes": 1024, "headerHex": "4f4c583201020201000000070000000400000400" }
+  ]
+}

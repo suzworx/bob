@@ -1,0 +1,30 @@
+name: PR Title
+
+on:
+  # A push cannot change a PR title, so `synchronize` only re-billed a minute
+  # per push for the same answer (~78 of 113 runs on 2026-09-22).
+  pull_request:
+    types: [opened, edited, reopened]
+
+# The check reads the title from the event payload; it needs no token scope.
+permissions: {}
+
+jobs:
+  conventional-title:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check conventional commit format
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          node -e '
+            const re = /^(feat|fix|perf|refactor|docs|test|chore|ci|build|style|revert)(\([a-z0-9/-]+\))?!?: .+/;
+            const title = process.env.PR_TITLE || "";
+            if (!re.test(title)) {
+              console.error(`PR title is not a conventional commit: "${title}"`);
+              console.error("Expected: type(scope)!: description, e.g. feat(api): add devices");
+              process.exit(1);
+            }
+            console.log(`PR title OK: ${title}`);
+          '

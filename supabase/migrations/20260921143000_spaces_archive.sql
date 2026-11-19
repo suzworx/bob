@@ -1,0 +1,12 @@
+-- Space archive (CU-SPACES-2, gap G4). An owner archives a group instead of
+-- deleting it: nothing is destroyed. archived_at only hides the space from
+-- GET /api/spaces and freezes rename and new invitations until the owner
+-- restores it (store/spaces.ts archiveSpace / restoreSpace).
+--
+-- No new table, so no new policy: bob.spaces keeps RLS enabled and forced
+-- (20260916050000_spaces_init.sql), its spaces_update policy (owner or admin)
+-- already covers this column, and the table-level grant to authenticated
+-- covers new columns. Owner-only archive/restore is enforced in the store,
+-- as transferOwnership does. Idempotent, and no vector objects, so it applies
+-- under PGlite.
+alter table bob.spaces add column if not exists archived_at timestamptz null;

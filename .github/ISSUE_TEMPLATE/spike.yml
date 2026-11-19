@@ -1,0 +1,22 @@
+name: Spike or decision
+description: Time-boxed research that resolves a named uncertainty
+title: "[Spike] "
+labels: ["type: spike"]
+body:
+  - type: textarea
+    id: question
+    attributes: { label: Decision question and why it blocks delivery }
+    validations: { required: true }
+  - type: textarea
+    id: alternatives
+    attributes: { label: Alternatives and evaluation criteria }
+    validations: { required: true }
+  - type: input
+    id: timebox
+    attributes: { label: Time box }
+    validations: { required: true }
+  - type: textarea
+    id: exit
+    attributes: { label: Required artifact and exit criteria }
+    validations: { required: true }
+

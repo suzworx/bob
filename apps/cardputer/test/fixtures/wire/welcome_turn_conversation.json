@@ -1,0 +1,1 @@
+{"v":1,"type":"welcome","id":"welcome_0123456789abcdef0123","payload":{"protocol":"bob.v2","format_id":2,"max_audio_bytes":4096,"credit_bytes":16384,"session_id":"session_0123456789abcdef0123","device_log":true,"turn_conversation":true,"assistant_name":true,"turn_timing":true}}

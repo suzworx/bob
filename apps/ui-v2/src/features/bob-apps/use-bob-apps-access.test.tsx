@@ -1,0 +1,30 @@
+import { act, renderHook, waitFor } from '@testing-library/react';
+import { expect, it, vi } from 'vitest';
+import { fetchWithAuth } from '@/lib/auth/use-session';
+import { useBobApps } from './use-bob-apps';
+import { starterApp } from './app-starters';
+vi.mock('@/lib/auth/use-session', () => ({ fetchWithAuth: vi.fn() }));
+vi.mock('@/lib/use-refresh-on-focus', () => ({ useRefreshOnFocus: () => 0 }));
+const id = '00000000-0000-4000-8000-000000000001';
+const spaceId = '00000000-0000-4000-8000-000000000002';
+const app = { id, installationId: id, spaceId, canManage: false, revision: 1, lifecycle: 'active', definition: starterApp('checklist'), state: {}, metrics: {}, pendingDefinition: null, canUndo: false, createdAt: 1, updatedAt: 1 };
+it('clears the scoped app immediately on audience invalidation and never restores it after denial', async () => {
+  let denied = false;
+  vi.mocked(fetchWithAuth).mockImplementation(async (path) => String(path).includes('?') ? Response.json({ apps: [], nextCursor: null }) : denied ? new Response(null, { status: 404 }) : Response.json({ app }));
+  const { result } = renderHook(() => useBobApps(id, spaceId));
+  await waitFor(() => expect(result.current.app?.id).toBe(id));
+  denied = true;
+  act(() => window.dispatchEvent(new CustomEvent('bob:space-access', { detail: { spaceId } })));
+  expect(result.current.app).toBeNull();
+  await waitFor(() => expect(result.current.error).toContain('isn'));
+  expect(result.current.app).toBeNull();
+});
+it('also clears a forbidden app when the notification was lost', async () => {
+  let denied = false;
+  vi.mocked(fetchWithAuth).mockImplementation(async (path) => String(path).includes('?') ? Response.json({ apps: [], nextCursor: null }) : denied ? new Response(null, { status: 403 }) : Response.json({ app }));
+  const { result } = renderHook(() => useBobApps(id, spaceId));
+  await waitFor(() => expect(result.current.app?.id).toBe(id));
+  denied = true;
+  await act(async () => result.current.load());
+  expect(result.current.app).toBeNull();
+});

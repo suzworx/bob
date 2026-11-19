@@ -1,0 +1,643 @@
+name: CI
+
+on:
+  # Branches are covered by their pull request. Pushing to a branch with a PR
+  # open used to start a second, identical run: 125 of 183 commits after
+  # 2026-09-19 ran CI twice, about 40% of all CI minutes.
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  # A push to main gets its own group, per commit: GitHub keeps only one
+  # pending run per group even without cancel-in-progress, so a shared group
+  # would let a later merge replace a queued main run. Every main commit's
+  # check suite completes. PR runs share a group and cancel superseded runs.
+  group: ci-${{ github.event_name == 'push' && github.sha || github.ref }}
+  # Main runs always finish, so every main commit has a result.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  # Which jobs this change needs (scripts/ci-scope.mjs). A job whose flag is
+  # false is skipped, not run and passed: its runner never starts. Any doubt --
+  # an unknown path, ci.yml or a root manifest, a failed diff -- runs
+  # everything. Git, not the pulls/files API: it covers pushes as well, and
+  # needs no token.
+  changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      statuses: read # read the PR head's ci/tree-pass status
+      pull-requests: read # map a main commit back to its pull request
+    # A main commit whose tree a PR run already passed (ci-reuse.mjs) needs
+    # neither half: web and server read false, so every suite that keys on them
+    # skips and the aggregates pass. firmware and docker keep their scope.
+    outputs:
+      web: ${{ steps.reuse.outputs.reuse == 'true' && 'false' || steps.scope.outputs.web }}
+      server: ${{ steps.reuse.outputs.reuse == 'true' && 'false' || steps.scope.outputs.server }}
+      firmware: ${{ steps.scope.outputs.firmware }}
+      docker: ${{ steps.scope.outputs.docker }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # the diff needs the base branch and the pushed range
+      - name: Scope the change
+        id: scope
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: node scripts/ci-scope.mjs
+      # Main only: most merges carry a tree their PR run already passed.
+      - name: Did a PR run already pass this tree?
+        id: reuse
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/ci-reuse.mjs
+
+  # The gate runs as two parallel halves: `web` needs no database, `server`
+  # needs Postgres. In one serial job the ~160 s ui-v2 suite waited behind the
+  # stack boot it never uses. `validate` below folds both into one result, so
+  # the check name and the release job's dependency stay stable.
+  #
+  # Vitest is pinned to 4 workers in CI (vitest.config.ts,
+  # apps/ui-v2/vitest.config.ts). A skipped or attested half costs nothing.
+  web:
+    needs: changes
+    if: needs.changes.outputs.web == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      statuses: read # read the local/validate status
+      pull-requests: read # map a main commit back to its pull request
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # the marketing pack checker verifies Git ancestry; a shallow clone cannot
+      # `npm run validate` is the gate every change passes on a developer
+      # machine anyway (AGENTS.md). When `npm run attest` published that pass
+      # for this exact content, repeating the suite here buys nothing, so the
+      # job stops after this step. Anything unattested runs in full.
+      - name: Local validation attested?
+        id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/validate-attested.mjs
+      - uses: actions/setup-node@v7
+        if: steps.gate.outputs.attested != 'true'
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+        if: steps.gate.outputs.attested != 'true'
+      # The web half runs deno check + deno test of supabase/functions when deno is on PATH.
+      - uses: denoland/setup-deno@22d081ff2d3a40755e97629de92e3bcbfa7cf2ed # v2.0.5
+        if: steps.gate.outputs.attested != 'true'
+        with:
+          deno-version: v2.x
+      - run: node scripts/validate.mjs --only=web
+        if: steps.gate.outputs.attested != 'true'
+
+  server:
+    needs: changes
+    if: needs.changes.outputs.server == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      statuses: read # read the local/validate status
+      pull-requests: read # map a main commit back to its pull request
+    steps:
+      - uses: actions/checkout@v7
+      - name: Local validation attested?
+        id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/validate-attested.mjs
+      - uses: actions/setup-node@v7
+        if: steps.gate.outputs.attested != 'true'
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+        if: steps.gate.outputs.attested != 'true'
+      # The API and scripts suites run on real Postgres -- a local Supabase stack
+      # -- rather than PGlite. PGlite ran every test as SUPERUSER, while
+      # production runs as bob_server (nobypassrls) under FORCE RLS, so a whole
+      # class of test passed under privileges production never grants.
+      #
+      # Start the stack here, once, BEFORE the suite. The harness can boot it
+      # itself, but vitest runs test files in parallel workers: with no stack up,
+      # every worker would race its own `supabase start`, and the advisory lock
+      # that serialises template builds cannot help because it lives inside the
+      # Postgres that is not running yet. Started here, every worker takes the
+      # fast path. `supabase start` also applies supabase/migrations.
+      #
+      # Postgres and the kong gateway only. These suites talk to :54322 and
+      # nothing else; the auth schema comes from the postgres image's own init,
+      # not the gotrue container. Kong stays because the test harness
+      # (apps/api/tests/db-harness.ts) requires `supabase status` to report
+      # API_URL, which it only does with kong up. The full stack pulled ~6 GB of
+      # images for services no test here calls. `npm run test:db`
+      # (*.db.test.ts, not run in CI) does need gotrue: run it against a full
+      # `npx supabase start`.
+      #
+      # `-x` stops containers, not schema setup: `supabase start` still ran the
+      # realtime and storage images once to create their schemas, pulling ~52 s
+      # of images per run for services nothing here uses (CLI 2.117,
+      # internal/db/start initSchema15 keys only on [realtime]/[storage]
+      # `enabled`). The CLI reads SUPABASE_* env over config.toml, so they are
+      # off for this step only and config.toml stays untouched. Auth init stays: the
+      # harness writes auth.users and auth.sessions.
+      - name: Start local Postgres (Supabase db + kong only)
+        if: steps.gate.outputs.attested != 'true'
+        env:
+          SUPABASE_REALTIME_ENABLED: 'false'
+          SUPABASE_STORAGE_ENABLED: 'false'
+        run: >-
+          npx supabase start -x
+          gotrue,realtime,storage-api,imgproxy,mailpit,postgrest,postgres-meta,studio,edge-runtime,logflare,vector,supavisor
+      - run: node scripts/validate.mjs --only=server
+        if: steps.gate.outputs.attested != 'true'
+
+  # The db suite (`npm run test:db`, apps/api/tests/*.db.test.ts): the
+  # isolation matrix, RLS coverage and journal privacy under real roles (#116,
+  # docs/testing/db-suite.md). Its own job so `server` stays as fast as it is.
+  # These suites create throwaway accounts through gotrue, so gotrue, postgrest
+  # and mailpit run; only services no test calls are left out (see below). No secrets: the model, STT and extractor are faked.
+  #
+  # Not part of `validate` and not a required check yet: optional until about
+  # 2026-10-10 (two weeks green), then add it to the required checks.
+  # GitHub sets CI=true, which skips the timing-only SC-005 budget.
+  db:
+    needs: changes
+    if: needs.changes.outputs.server == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # `supabase start` waits for every service's health check. A cold boot
+      # can still trip on gotrue health, so it gets one clean retry; the tests
+      # themselves are never retried.
+      #
+      # Services no test calls are left out (studio, logflare, vector,
+      # imgproxy, edge-runtime, postgres-meta, supavisor): each is another
+      # image pulled from public.ecr.aws, whose anonymous pull limit is shared
+      # by every runner and answered "toomanyrequests: Rate exceeded" on
+      # 2026-10-22 (ee6bb07, e2e mobile-390 never reached a test). The retry
+      # waits 30 s so a rate-limited pull has time to recover.
+      - name: Start the local Supabase stack
+        run: |
+          start() { npx supabase start -x "$SUPABASE_EXCLUDE"; }
+          start || {
+            echo "::warning::supabase start failed once; retrying after a clean stop"
+            npx supabase stop --no-backup || true
+            sleep 30
+            start
+          }
+        env:
+          SUPABASE_EXCLUDE: studio,logflare,vector,imgproxy,edge-runtime,postgres-meta,supavisor
+      - run: npx supabase migration up --local
+      - run: npm run test:db
+
+  # The integration suite (#551, docs/testing/integration.md): the real server
+  # on a loopback port, driven over web chat HTTP and the device WebSocket, with
+  # the AI answered by the scripted stub (tool calls, no provider). No secrets
+  # and no network beyond the local stack. It talks only to Postgres on :54322,
+  # so this is the `server` job's slim stack (kong stays: db-harness.ts needs
+  # `supabase status` to report API_URL).
+  #
+  # Not part of `validate` and not a required check yet: optional until it has
+  # run green for a while, then add it to the required checks.
+  integration:
+    needs: changes
+    if: needs.changes.outputs.server == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    env:
+      BOB_AI_STUB: scripted
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Start local Postgres (Supabase db + kong only)
+        env:
+          SUPABASE_REALTIME_ENABLED: 'false'
+          SUPABASE_STORAGE_ENABLED: 'false'
+        run: >-
+          npx supabase start -x
+          gotrue,realtime,storage-api,imgproxy,mailpit,postgrest,postgres-meta,studio,edge-runtime,logflare,vector,supavisor
+      - name: Integration suite (scripted stub AI)
+        run: npm run test:integration --workspace @bob/api
+
+  # The web UI end-to-end suite (#550, docs/testing/e2e.md): Playwright drives
+  # the real app in Chromium at 1280 and 390 px against the full local stack,
+  # with the AI answered by the scripted stub (no provider, no secrets). The
+  # suite starts its own API (:7454) and web server (:5183).
+  #
+  # Not part of `validate` and not a required check yet: optional until it has
+  # run green for a while, then add it to the required checks.
+  # Selecting one project still runs setup + fresh-state dependencies. Separate
+  # runners give each viewport its own account and database; workers stay at 1.
+  e2e-browser:
+    name: e2e (${{ matrix.project }})
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [desktop-1280, mobile-390]
+    needs: changes
+    if: needs.changes.outputs.web == 'true' || needs.changes.outputs.server == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Same trimmed stack and 30 s retry as the db job (public.ecr.aws rate limit).
+      - name: Start the local Supabase stack
+        run: |
+          start() { npx supabase start -x "$SUPABASE_EXCLUDE"; }
+          start || {
+            echo "::warning::supabase start failed once; retrying after a clean stop"
+            npx supabase stop --no-backup || true
+            sleep 30
+            start
+          }
+        env:
+          SUPABASE_EXCLUDE: studio,logflare,vector,imgproxy,edge-runtime,postgres-meta,supavisor
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+        working-directory: apps/ui-v2
+      - name: UI e2e (stub AI)
+        run: npm run test:e2e -- --project=${{ matrix.project }}
+      # Diagnostics only, and only for a failed lane: an upload failure (e.g. the account's full
+      # artifact storage quota, which failed every upload from 2026-10-19) must not fail a lane,
+      # and short retention keeps the store small (6.66 GB filled it on 2026-10-20).
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        continue-on-error: true
+        with:
+          name: e2e-report-${{ matrix.project }}
+          path: data/e2e/report/
+          retention-days: 2
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        continue-on-error: true
+        with:
+          name: e2e-traces-${{ matrix.project }}
+          path: data/e2e/test-results/
+          retention-days: 2
+
+  # Keep the stable check name. Each viewport has its own runner, database,
+  # account and setup/fresh-state dependency; workers remain serial per lane.
+  # A missing scope or failed/cancelled lane must never look like a pass.
+  e2e:
+    needs: [changes, e2e-browser]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: All required browser lanes passed?
+        env:
+          CHANGES: ${{ needs.changes.result }}
+          WEB_NEEDED: ${{ needs.changes.outputs.web }}
+          SERVER_NEEDED: ${{ needs.changes.outputs.server }}
+          BROWSERS: ${{ needs.e2e-browser.result }}
+        run: |
+          node --input-type=module <<'NODE'
+          const { CHANGES, WEB_NEEDED, SERVER_NEEDED, BROWSERS } = process.env;
+          const validScope = [WEB_NEEDED, SERVER_NEEDED].every((value) => ['true', 'false'].includes(value));
+          const needed = WEB_NEEDED === 'true' || SERVER_NEEDED === 'true';
+          const passed = CHANGES === 'success' && validScope &&
+            BROWSERS === (needed ? 'success' : 'skipped');
+          console.log(`changes=${CHANGES} web=${WEB_NEEDED} server=${SERVER_NEEDED} browsers=${BROWSERS}`);
+          process.exit(passed ? 0 : 1);
+          NODE
+
+  # Additive-first migrations (#349, docs/deploy.md "Migrations: expand, then
+  # contract"). New files under supabase/migrations may not drop, rename,
+  # retype, tighten NOT NULL, drop a policy without replacing it or turn RLS
+  # off unless they carry `-- bob:contract`, which passes with a warning in
+  # the job summary. Also fails when EXPECTED_SCHEMA_VERSION in
+  # apps/api/src/web-health.ts is not the newest migration. Node builtins and
+  # git only: no npm ci. Always runs; it takes seconds.
+  migrations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # the diff needs the base branch and the pushed range
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Migration check (additive-first)
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: npm run lint:migrations
+
+  # One stable result for both halves. A red or cancelled half makes this red.
+  # A skipped half passes only when `changes` skipped it on purpose; a half
+  # skipped because `changes` itself failed does not, so nothing downstream
+  # reads "not run" as a pass.
+  validate:
+    needs: [changes, web, server]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Both halves passed or were out of scope?
+        env:
+          CHANGES: ${{ needs.changes.result }}
+          WEB: ${{ needs.web.result }}
+          WEB_NEEDED: ${{ needs.changes.outputs.web }}
+          SERVER: ${{ needs.server.result }}
+          SERVER_NEEDED: ${{ needs.changes.outputs.server }}
+        run: |
+          echo "changes=$CHANGES web=$WEB (needed=$WEB_NEEDED) server=$SERVER (needed=$SERVER_NEEDED)"
+          ok() { [ "$1" = success ] || { [ "$1" = skipped ] && [ "$2" = false ]; }; }
+          [ "$CHANGES" = success ] && ok "$WEB" "$WEB_NEEDED" && ok "$SERVER" "$SERVER_NEEDED"
+
+  # Pull requests only: once every suite passed (or was out of scope), vouch for
+  # the tree this run tested -- the merge ref, i.e. the PR as it would land on
+  # main -- with a ci/tree-pass status on the PR head. A main push with the same
+  # tree reuses it and skips the suites (scripts/ci-reuse.mjs). Never required:
+  # a fork's read-only token cannot post it, and that only costs a full main run.
+  tree-pass:
+    needs: [changes, validate, db, integration, e2e]
+    if: >-
+      always() && github.event_name == 'pull_request' &&
+      needs.validate.result == 'success' && needs.e2e.result == 'success' &&
+      (needs.db.result == 'success' || (needs.db.result == 'skipped' && needs.changes.outputs.server == 'false')) &&
+      (needs.integration.result == 'success' || (needs.integration.result == 'skipped' && needs.changes.outputs.server == 'false'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      statuses: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Post ci/tree-pass on the PR head
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          TREE=$(git rev-parse 'HEAD^{tree}')
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" \
+            -f state=success -f context=ci/tree-pass -f description="tree=$TREE" > /dev/null
+          echo "ci/tree-pass: tree $TREE on $HEAD_SHA"
+
+  # A release attaches firmware.bin, so main always builds (ci-scope.mjs). A
+  # pull request that touches nothing the firmware is built from does not.
+  firmware:
+    needs: changes
+    if: needs.changes.outputs.firmware == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      # Full history: the dev build's version (<next>-dev+<sha>) reads the tags.
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      # Host unit tests: the real src/protocol.cpp against the Arduino shim,
+      # under ASan+UBSan, with the runner's own g++ (docs/cardputer/testing.md).
+      # Their server-side twin, apps/api/tests/voice/wire-fixtures.test.ts, runs in the
+      # server job, which ci-scope.mjs also schedules for a fixture change.
+      - run: npm run test:firmware --workspace @bob/cardputer
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - run: pip install platformio
+      - uses: actions/cache@v6
+        with:
+          path: ~/.platformio
+          key: pio-${{ hashFiles('apps/cardputer/platformio.ini') }}
+      - run: cp apps/cardputer/include/secrets.example.h apps/cardputer/include/secrets.h
+      # bash for pipefail: a failed build must fail here, not hide behind tee.
+      - run: pio run -e m5stack-cardputer-v2-poc 2>&1 | tee pio-build.log
+        shell: bash
+        working-directory: apps/cardputer
+      - name: Memory budget
+        run: node scripts/firmware-budget.mjs --check --log apps/cardputer/pio-build.log
+      # The retail build (#679, OTA-ready) must compile here too; the release job
+      # rebuilds it with the version it tags, so no artifact crosses jobs (a full
+      # artifact quota blocked every upload and deploy on 2026-10-20).
+      - run: pio run -e m5stack-cardputer-release 2>&1 | tee pio-release-build.log
+        shell: bash
+        working-directory: apps/cardputer
+
+  docker:
+    # Main pushes only, not pull requests: one build per merge, not per PR
+    # push. A broken image (e.g. a root `prepare` hook that breaks `npm ci`
+    # inside it) turns main red here instead of failing silently at deploy.
+    #
+    # Only when the image's inputs changed (ci-scope.mjs): Dockerfile,
+    # .dockerignore, the api/ai/ui-v2 sources, or anything that runs everything.
+    needs: changes
+    if: >-
+      github.event_name == 'push' && github.ref == 'refs/heads/main' &&
+      needs.changes.outputs.docker == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: smoke
+          POSTGRES_PASSWORD: smoke
+          POSTGRES_DB: smoke
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U smoke -d smoke"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Initialize the durable queue fixture
+        env:
+          SMOKE_POSTGRES: ${{ job.services.postgres.id }}
+        run: |
+          docker exec "$SMOKE_POSTGRES" psql -U smoke -d smoke -v ON_ERROR_STOP=1 \
+            -c 'CREATE ROLE bob_server; CREATE ROLE anon; CREATE ROLE authenticated;'
+          docker exec -i "$SMOKE_POSTGRES" psql -U smoke -d smoke -v ON_ERROR_STOP=1 \
+            < supabase/migrations/20261023020000_jobs.sql
+      # Build only -- never push. This job only proves the Dockerfile still builds.
+      #
+      # No build cache on purpose: `cache-to: type=gha` needs the
+      # docker-container buildx driver, and the default `docker` driver rejects
+      # it outright. Caching is an optimisation; a green main is not.
+      # Re-add it with docker/setup-buildx-action (docker-container driver) only
+      # once this job has proven itself, and watch its first run on main.
+      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          push: false
+          load: true
+          tags: bob:ci
+      # A build proves the image builds, not that it starts. The runtime stage
+      # ships pruned production deps only, and a dependency the CMD needs going
+      # missing breaks at container start, never at build time. Boot it in
+      # production mode with an isolated database: the durable routine queue
+      # connects to its migrated schema at boot, even without Google config.
+      # Domain migrations are covered by db; this checks runtime dependencies.
+      - name: Container starts and serves /health
+        run: |
+          docker run -d --name smoke --network host \
+            -e SUPABASE_URL=http://127.0.0.1:1 \
+            -e SUPABASE_PUBLISHABLE_KEY=smoke \
+            -e BOB_DATABASE_URL=postgresql://smoke:smoke@127.0.0.1:5432/smoke \
+            bob:ci
+          for _ in $(seq 1 30); do
+            if curl -fs http://127.0.0.1:7444/health; then
+              curl -fs -o /dev/null http://127.0.0.1:7444/ && exit 0
+              echo "::error::/health is up but the web client is not served"
+              break
+            fi
+            sleep 1
+          done
+          docker logs smoke
+          exit 1
+
+  # docker may be skipped on purpose (no image input changed); a skipped
+  # dependency would otherwise skip this job too, so the conditions are explicit.
+  release:
+    needs: [changes, validate, firmware, docker]
+    if: >-
+      always() && github.event_name == 'push' && github.ref == 'refs/heads/main' &&
+      needs.validate.result == 'success' && needs.firmware.result == 'success' &&
+      (needs.docker.result == 'success' ||
+       (needs.docker.result == 'skipped' && needs.changes.outputs.docker == 'false'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Decide next version
+        id: version
+        run: |
+          NEXT=$(node scripts/release/next-version.mjs)
+          echo "next=$NEXT" >> "$GITHUB_OUTPUT"
+      # #345: the attached firmware.bin reports its version, so the retail build
+      # runs here with the version this job tags (BOB_FW_VERSION, read by
+      # scripts/release/fw-version.mjs). The firmware job already proved it builds.
+      - uses: actions/setup-python@v7
+        if: steps.version.outputs.next != 'none'
+        with:
+          python-version: '3.11'
+      - if: steps.version.outputs.next != 'none'
+        run: pip install platformio
+      - uses: actions/cache@v6
+        if: steps.version.outputs.next != 'none'
+        with:
+          path: ~/.platformio
+          key: pio-${{ hashFiles('apps/cardputer/platformio.ini') }}
+      - name: Build firmware
+        if: steps.version.outputs.next != 'none'
+        env:
+          BOB_FW_VERSION: ${{ steps.version.outputs.next }}
+        run: |
+          cp include/secrets.example.h include/secrets.h
+          pio run -e m5stack-cardputer-release
+          mkdir -p ../../dist
+          cp .pio/build/m5stack-cardputer-release/firmware.bin .pio/build/m5stack-cardputer-release/firmware.elf ../../dist/
+        working-directory: apps/cardputer
+      - name: Build notes
+        if: steps.version.outputs.next != 'none'
+        run: node scripts/release/release-notes.mjs > notes.md
+      - name: Locate firmware
+        id: firmware
+        if: steps.version.outputs.next != 'none'
+        run: |
+          FW=$(find dist -name firmware.bin -print -quit)
+          if [ -z "$FW" ]; then
+            echo "firmware.bin not found under dist/" >&2
+            exit 1
+          fi
+          cp "$FW" "bob-cardputer-v${{ steps.version.outputs.next }}.bin"
+          ELF=$(find dist -name firmware.elf -print -quit)
+          if [ -z "$ELF" ]; then
+            echo "firmware.elf not found under dist/" >&2
+            exit 1
+          fi
+          cp "$ELF" "bob-cardputer-v${{ steps.version.outputs.next }}.elf"
+      - name: Sign and verify the OTA bundle
+        if: steps.version.outputs.next != 'none'
+        env:
+          BOB_FW_SIGNING_KEY: ${{ secrets.BOB_FW_SIGNING_KEY }}
+        run: |
+          V='${{ steps.version.outputs.next }}'
+          PUB=apps/cardputer/keys/fw-2026a.pub.pem
+          if [ ! -f "$PUB" ]; then
+            echo "::error::$PUB is missing: check in the OTA public key before releasing"
+            exit 1
+          fi
+          node scripts/release/fw-manifest.mjs build \
+            --bin "bob-cardputer-v$V.bin" --elf "bob-cardputer-v$V.elf" \
+            --version "$V" --git-sha "${GITHUB_SHA::7}" \
+            --notes "$(grep -m1 '^- ' notes.md | cut -c3-)" --out ota
+          node scripts/release/fw-manifest.mjs verify \
+            --manifest ota/manifest.json --sig ota/manifest.sig --pub "$PUB" \
+            --bin "bob-cardputer-v$V.bin"
+      - name: Create release
+        if: steps.version.outputs.next != 'none'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="v${{ steps.version.outputs.next }}"
+          # Two overlapping main runs can compute the same version before either
+          # tags it; the first to tag wins and the other skips.
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "::notice::$TAG already exists (an overlapping main run released it); skipping"
+            exit 0
+          fi
+          gh release create "$TAG" \
+            --target "$GITHUB_SHA" \
+            --title "$TAG" \
+            --notes-file notes.md \
+            "bob-cardputer-$TAG.bin" \
+            "bob-cardputer-$TAG.elf" \
+            ota/manifest.json ota/manifest.sig ota/SHA256SUMS || {
+            if gh release view "$TAG" >/dev/null 2>&1; then
+              echo "::notice::$TAG was created by an overlapping main run meanwhile; skipping"
+              exit 0
+            fi
+            exit 1
+          }

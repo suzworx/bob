@@ -1,0 +1,10 @@
+{
+  "hello": {"v":1,"type":"hello","id":"hello_123456_v2","payload":{"format_id":2,"fw_version":"0.3.0","caps":["reply_text","ota"],"board":"cardputer","last_ota":{"result":"rolled_back","to":"0.4.0","reason":"boot_loop"},"ota_slot":1}},
+  "hello_bad_ota_fields": {"v":1,"type":"hello","id":"hello_123456_v2","payload":{"format_id":2,"fw_version":"0.3.0","caps":["ota"],"board":"this-board-name-is-far-too-long","last_ota":{"result":"exploded","to":"0.4.0"},"ota_slot":7,"future_field":true}},
+  "check_update": {"v":1,"type":"check_update","id":"chk_123456_v2","payload":{}},
+  "ota_progress_start": {"v":1,"type":"ota_progress","id":"otap_123456_v2","payload":{"stage":"start","to":"0.4.0"}},
+  "ota_progress_failed": {"v":1,"type":"ota_progress","id":"otap_123457_v2","payload":{"stage":"failed","to":"0.4.0","reason":"flash_write"}},
+  "update_offer": {"v":1,"type":"update_offer","id":"updo_0123456789abcdef","payload":{"version":"0.4.0","size":1500000,"sha256":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","key_id":"fw-2026a","mandatory":false,"apply_after_s":3600,"notes":"Faster wake word"}},
+  "update_offer_none": {"v":1,"type":"update_offer","id":"updo_0123456789abcdef","payload":{"offer":null}},
+  "welcome_update_offer": {"v":1,"type":"welcome","id":"welcome_0123456789abcdef","payload":{"protocol":"bob.v2","format_id":2,"max_audio_bytes":4096,"credit_bytes":16384,"session_id":"session_0123456789abcdef","update_offer":{"version":"0.4.0","size":1500000,"sha256":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","key_id":"fw-2026a","mandatory":true,"apply_after_s":0}}}
+}

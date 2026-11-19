@@ -1,0 +1,94 @@
+/* Astryx core README ("Six details carry the whole recipe"): nothing in the
+   three stylesheets sets a document font, so body must carry the theme's. */
+body {
+  font-family: var(--font-family-body);
+}
+
+/* This file grew for the native shell. apps/mobile runs this app in a
+   full-screen WKWebView, so the page owns the strip behind the status bar and
+   the home indicator; index.html asks for that with viewport-fit=cover, which
+   is also what makes env(safe-area-inset-*) non-zero. Outside a notched
+   full-screen context every inset is 0, so the desktop and Safari layouts do
+   not change.
+
+   One rule on the AppShell root, because it is the one element every layout
+   shares: the phone's top bar (which holds the menu button), and the wide
+   layout, where the side nav is inline and there is no top bar. The root
+   paints --color-background-body, the same token the top bar paints, so the
+   strip behind the status bar matches the bar. Padding, not margin, keeps that
+   background under the strip. Astryx's own CSS lives in @layer astryx-base, so
+   this unlayered rule wins without raising specificity. The sizes
+   (100dvh, height: 100% below it) are border-box, so the padding is taken from
+   inside the shell rather than pushing it past the screen.
+
+   The side-nav drawer needs the same insets and cannot get them from the
+   root. At phone width the SideNav opens a MobileNav: a full-viewport <dialog>
+   that showModal() puts in the top layer, so the shell's padding never
+   reaches it. Inside it the drawer panel is absolutely placed at top 0, which
+   is under the status bar and the dynamic island, close button included. That
+   panel holds the drawer's header and content and paints the surface
+   background, so padding it keeps the background under the strip. It has no
+   class of its own; it is the dialog's only child, hence the child selector.
+   The dialog itself is only the scrim and stays as it is. Astryx's centred
+   Dialog, Popover and Toast already read the insets themselves. */
+.astryx-app-shell,
+.astryx-mobile-nav > div {
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+}
+
+/* The shell fills the screen and scrolls inside itself (the chat list, the
+   pages), so a rubber-band on the page behind it would drag the whole app in
+   the native shell. Scrolling itself is untouched. */
+html,
+body {
+  overscroll-behavior: none;
+}
+
+/* The side nav's resize handle (SideNav `resizable`) overhangs the rail by half
+   a pixel, and the AppShell panel around the rail scrolls on both axes, so that
+   half pixel put a horizontal scrollbar under the rail. The rail never scrolls
+   sideways (it scrolls its own list vertically), so the panel clips that axis. */
+.astryx-app-shell-sidenav {
+  overflow-x: hidden;
+}
+
+/* Mitigate reported iOS foreground blur (#1105) by removing the decorative
+   backdrop effect behind touch composers. Astryx 0.6.2's last
+   ChatLayout child is the dock; its empty direct div is the decorative blur
+   layer, while the composer and scroll control have content. Remove only
+   that effect on touch surfaces, keeping the dock geometry and desktop frost.
+   The browser regression checks both shared composers and the desktop effect. */
+@media (hover: none) and (pointer: coarse) {
+  .astryx-chat-layout > :last-child > div:empty {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Platform fixes for a phone (mobile-native baseline), not visual design. */
+
+/* iOS flashes a grey box on every tap; the components show their own pressed state. */
+html {
+  -webkit-tap-highlight-color: transparent;
+  /* iOS Safari rescales text on rotate; 100% keeps the sizes the theme sets. */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Removes the 300ms double-tap-zoom wait, so taps register at once. */
+button,
+a,
+[role='button'] {
+  touch-action: manipulation;
+}
+
+/* iOS zooms the page when a field under 16px takes focus; touch screens only. */
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1em);
+  }
+}
