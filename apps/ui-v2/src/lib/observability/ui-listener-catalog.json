@@ -1,0 +1,194 @@
+[
+  {
+    "file": "app/routes.ts",
+    "event": "popstate",
+    "reason": "Navigation has a fixed route/view observation in the central collector.",
+    "handler": "callback",
+    "category": "passive"
+  },
+  {
+    "file": "app/routes.ts",
+    "event": "bob:routechange",
+    "reason": "Navigation has a fixed route/view observation in the central collector.",
+    "handler": "callback",
+    "category": "passive"
+  },
+  {
+    "file": "app/stale-build.ts",
+    "event": "vite:preloadError",
+    "reason": "Build resource lifecycle; no user gesture.",
+    "handler": "onPreloadError",
+    "category": "passive"
+  },
+  {
+    "file": "app/theme-choice.ts",
+    "event": "change",
+    "reason": "Operating-system media-query update; explicit theme selection has its own callback.",
+    "handler": "listener",
+    "category": "passive"
+  },
+  {
+    "file": "app/use-theme.ts",
+    "event": "change",
+    "reason": "Operating-system media-query update; explicit theme selection has its own callback.",
+    "handler": "onChange",
+    "category": "passive"
+  },
+  {
+    "file": "features/admin/use-admin-access.ts",
+    "event": "focus",
+    "reason": "Passive permission refresh; resulting access request is observed.",
+    "handler": "probe",
+    "category": "passive"
+  },
+  {
+    "file": "features/admin/use-admin-access.ts",
+    "event": "bob:admin-access-denied",
+    "reason": "Permission invalidation from a refused API request; no user input or payload.",
+    "handler": "deny",
+    "category": "passive"
+  },
+  {
+    "file": "features/bob-apps/app-view-image-capture.ts",
+    "event": "abort",
+    "reason": "AbortSignal capture lifecycle cancels preparation and discards late canvases; no user action or content is exported.",
+    "handler": "abort",
+    "category": "passive"
+  },
+  {
+    "file": "features/bob-apps/use-bob-apps.ts",
+    "event": "bob:space-access",
+    "reason": "Server audience invalidation clears cached app data before reauthorization; IDs never exported.",
+    "handler": "onAccess",
+    "category": "passive"
+  },
+  {
+    "file": "features/bob-apps/use-marketing-catalog.ts",
+    "event": "bob:space-access",
+    "reason": "Server audience invalidation clears scoped installation metadata before reauthorization.",
+    "handler": "accessChanged",
+    "category": "passive"
+  },
+  {
+    "file": "features/chat/command-palette.tsx",
+    "event": "input",
+    "semantic": "searchInput.onChange",
+    "reason": "Only matching palette input edits invoke the bounded text-edit summary callback.",
+    "handler": "onInput",
+    "category": "action"
+  },
+  {
+    "file": "features/chat/command-palette.tsx",
+    "event": "keydown",
+    "semantic": "commands.onToggle",
+    "reason": "Only matching Cmd/Ctrl+K invokes the named toggle action; keys are never exported.",
+    "handler": "handleKeyDown",
+    "category": "action"
+  },
+  {
+    "file": "features/chat/command-palette.tsx",
+    "event": "bob:open-palette",
+    "semantic": "commands.onOpen",
+    "reason": "The named open action handles the app search command.",
+    "handler": "handleOpen",
+    "category": "action"
+  },
+  {
+    "file": "features/chat/use-group-chat-refresh.ts",
+    "event": "bob:group-chat-updated",
+    "reason": "Server group state invalidation; no payload is exported.",
+    "handler": "refresh",
+    "category": "passive"
+  },
+  {
+    "file": "features/chat/use-group-chat-refresh.ts",
+    "event": "bob:group-chats-changed",
+    "reason": "Local group state invalidation; resulting refresh requests are observed.",
+    "handler": "refresh",
+    "category": "passive"
+  },
+  {
+    "file": "features/chat/use-platform-mentions.ts",
+    "event": "bob:tool-preferences-changed",
+    "reason": "Preference invalidation after an observed settings request; carries no user data.",
+    "handler": "changed",
+    "category": "passive"
+  },
+  {
+    "file": "features/devices/use-device-conversation.ts",
+    "event": "bob:active-changed",
+    "reason": "Server state notification; resulting refresh requests are observed.",
+    "handler": "onActiveChanged",
+    "category": "passive"
+  },
+  {
+    "file": "features/spaces/use-threads.ts",
+    "event": "bob:space-access",
+    "reason": "Server audience invalidation removes the scoped thread cache and closes the active thread before reauthorization.",
+    "handler": "accessChanged",
+    "category": "passive"
+  },
+  {
+    "file": "features/spaces/use-threads.ts",
+    "event": "bob:thread-message",
+    "reason": "Server message notification; no payload is exported.",
+    "handler": "onThreadMessage",
+    "category": "passive"
+  },
+  {
+    "file": "features/voice/mode/metrics.ts",
+    "event": "pagehide",
+    "reason": "Telemetry flush lifecycle; never observe its own transport.",
+    "handler": "onPageHide",
+    "category": "passive"
+  },
+  {
+    "file": "features/voice/mode/metrics.ts",
+    "event": "visibilitychange",
+    "reason": "Telemetry flush lifecycle; never observe its own transport.",
+    "handler": "onVisibilityChange",
+    "category": "passive"
+  },
+  {
+    "file": "features/voice/mode/use-conversation-mode.ts",
+    "event": "visibilitychange",
+    "reason": "Voice session lifecycle has mode_state/mode_off telemetry.",
+    "handler": "onVisibilityChange",
+    "category": "passive"
+  },
+  {
+    "file": "features/voice/mode/use-conversation-mode.ts",
+    "event": "pagehide",
+    "reason": "Voice session lifecycle has mode_state/mode_off telemetry.",
+    "handler": "onPageHide",
+    "category": "passive"
+  },
+  {
+    "file": "lib/use-online.ts",
+    "event": "online",
+    "reason": "Browser connectivity lifecycle, not a user action.",
+    "handler": "goOnline",
+    "category": "passive"
+  },
+  {
+    "file": "lib/use-online.ts",
+    "event": "offline",
+    "reason": "Browser connectivity lifecycle, not a user action.",
+    "handler": "goOffline",
+    "category": "passive"
+  },
+  {
+    "file": "lib/use-refresh-on-focus.ts",
+    "event": "visibilitychange",
+    "reason": "Passive page lifecycle; resulting API refreshes are request observations.",
+    "handler": "onVisibilityChange",
+    "category": "passive"
+  },
+  {
+    "file": "lib/use-refresh-on-focus.ts",
+    "event": "focus",
+    "reason": "Passive focus refresh; resulting API requests are observed.",
+    "handler": "bump",
+    "category": "passive"
+  }
+]

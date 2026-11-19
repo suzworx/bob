@@ -1,0 +1,40 @@
+import { randomUUID } from 'node:crypto';
+import { afterAll, beforeAll, expect, it } from 'vitest';
+import { changeMarketingLifecycle, installMarketingPackage } from '../../src/bob-apps/marketing-install.ts';
+import { marketingPackage } from '../../src/bob-apps/marketing-registry.ts';
+import { createCampaign, createDraft, getCampaign, getDraft, listCampaigns, listDraftContent } from '../../src/bob-apps/marketing-store.ts';
+import { readMarketingConfig, proposeMarketingConfig } from '../../src/bob-apps/marketing-config-store.ts';
+import { CampaignSchema, CampaignSummarySchema, DraftSchema, DraftContentListResponseSchema, MarketingInstallationSchema, MarketingPackageSchema, MarketingConfigDetailResponseSchema } from '../../src/web-schemas.ts';
+import { installationSchema, packageSchema, campaignSchema, campaignSummarySchema, draftSchema, draftContentPageSchema, configDetailSchema } from '../../../ui-v2/src/features/bob-apps/marketing-schemas.ts';
+import { asDb, addAccount, closeTestDb, createTestDb, type TestDb } from '../support/test-db.ts';
+
+let pg: TestDb;
+beforeAll(async () => { pg = await createTestDb(); });
+afterAll(async () => { if (pg) await closeTestDb(pg); });
+
+it('browser DTOs accept real persisted producer responses without dropping fields or config changes', async () => {
+  const db = asDb(pg);
+  const owner = await addAccount(pg);
+  const installed = await installMarketingPackage(db, owner.userId, { packageId: 'bob-marketing', mutationId: randomUUID() }, owner.sessionId);
+  const installation = await changeMarketingLifecycle(db, owner.userId, installed.id, { operation: 'activate', expectedRevision: installed.revision, mutationId: randomUUID() });
+  expect(installationSchema.parse(MarketingInstallationSchema.parse(installation))).toEqual(installation);
+  const pack = MarketingPackageSchema.parse(marketingPackage());
+  expect(packageSchema.parse(pack)).toEqual(pack);
+  const origin = () => ({ key: randomUUID(), scope: { source: 'ui' } });
+  const receipt = await createCampaign(db, owner.userId, installed.id, { name: 'Browser contract', goal: 'curiosity', channels: ['instagram', 'linkedin'] }, origin());
+  if (!receipt.campaignId) throw new Error('campaign missing');
+  const campaign = CampaignSchema.parse(await getCampaign(db, owner.userId, installed.id, receipt.campaignId));
+  expect(campaignSchema.parse(campaign)).toEqual(campaign);
+  const summary = CampaignSummarySchema.parse((await listCampaigns(db, owner.userId, installed.id, null)).items[0]);
+  expect(campaignSummarySchema.parse(summary)).toEqual(summary);
+  const draftReceipt = await createDraft(db, owner.userId, installed.id, { campaignId: campaign.id, channel: 'instagram', format: 'image', body: 'Caption', altText: 'Original Bob artwork', pillar: 'Joy', approvedAssetIds: ['bob-playful'], claimIds: [], cta: 'none' }, origin());
+  if (!draftReceipt.draftId) throw new Error('draft missing');
+  const draft = DraftSchema.parse(await getDraft(db, owner.userId, installed.id, draftReceipt.draftId));
+  expect(draftSchema.parse(draft)).toEqual(draft);
+  const content = DraftContentListResponseSchema.parse(await listDraftContent(db, owner.userId, installed.id, { campaignId: campaign.id, cursor: null }));
+  expect(draftContentPageSchema.parse(content)).toEqual({ items: [draft], nextCursor: null });
+  await proposeMarketingConfig(db, owner.userId, installed.id, { mutationId: randomUUID(), expectedConfigRevision: 1, config: { visibleViews: ['content', 'campaign'], contentGrouping: 'pillar', defaultChannels: ['instagram'] } });
+  const detail = MarketingConfigDetailResponseSchema.parse(await readMarketingConfig(db, owner.userId, installed.id));
+  expect(configDetailSchema.parse(detail)).toEqual(detail);
+  expect(detail.pending[0]?.changes.map((change) => change.field)).toEqual(['visibleViews', 'contentGrouping', 'defaultChannels']);
+});

@@ -1,0 +1,42 @@
+[
+  {
+    "input": "What is the capital of France?",
+    "expected": "Paris"
+  },
+  {
+    "input": "How many continents are there?",
+    "expected": "Seven"
+  },
+  {
+    "input": "What is the chemical symbol for gold?",
+    "expected": "Au"
+  },
+  {
+    "input": "Who wrote Romeo and Juliet?",
+    "expected": "William Shakespeare"
+  },
+  {
+    "input": "What is the largest planet in our solar system?",
+    "expected": "Jupiter"
+  },
+  {
+    "input": "What is the boiling point of water in Celsius?",
+    "expected": "100 degrees"
+  },
+  {
+    "input": "What language is spoken in Brazil?",
+    "expected": "Portuguese"
+  },
+  {
+    "input": "How many sides does a hexagon have?",
+    "expected": "Six"
+  },
+  {
+    "input": "What is the currency of Japan?",
+    "expected": "Yen"
+  },
+  {
+    "input": "What is the speed of light?",
+    "expected": "299792458 meters per second"
+  }
+]

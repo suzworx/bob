@@ -1,0 +1,798 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`account export > puts the timers in timers and the reminder in reminders, never crossed 1`] = `
+{
+  "reminders": [
+    {
+      "created_at": "<iso>",
+      "due_at": "<iso>",
+      "due_date": null,
+      "due_zone": "UTC",
+      "id": "<uuid-2>",
+      "rrule": null,
+      "space_id": "<uuid-1>",
+      "status": "active",
+      "title": "water the plants",
+      "updated_at": "<iso>",
+    },
+  ],
+  "sections": [
+    "spaces",
+    "group_chats",
+    "group_chat_links",
+    "conversations",
+    "memories",
+    "tasks",
+    "notes",
+    "events",
+    "reminders",
+    "timers",
+    "action_items",
+    "game_sessions",
+    "game_settings",
+    "game_usage",
+    "google_accounts",
+    "google_operations",
+    "google_calendar_selections",
+    "google_operation_slots",
+    "routines",
+    "routine_runs",
+    "insights",
+    "routine_results",
+    "tool_preferences",
+    "bob_apps",
+    "bob_app_schedules",
+    "bob_app_runs",
+  ],
+  "timers": [
+    {
+      "created_at": "<iso>",
+      "duration_ms": 600000,
+      "fired_at": null,
+      "fires_at": "<iso>",
+      "id": "<uuid-3>",
+      "kind": "timer",
+      "label": "pasta",
+      "status": "pending",
+    },
+    {
+      "created_at": "<iso>",
+      "duration_ms": null,
+      "fired_at": null,
+      "fires_at": "<iso>",
+      "id": "<uuid-4>",
+      "kind": "alarm",
+      "label": "wake up",
+      "status": "pending",
+    },
+    {
+      "created_at": "<iso>",
+      "duration_ms": 60000,
+      "fired_at": "<iso>",
+      "fires_at": "<iso>",
+      "id": "<uuid-5>",
+      "kind": "timer",
+      "label": "tea",
+      "status": "fired",
+    },
+    {
+      "created_at": "<iso>",
+      "duration_ms": 120000,
+      "fired_at": null,
+      "fires_at": "<iso>",
+      "id": "<uuid-6>",
+      "kind": "timer",
+      "label": "eggs",
+      "status": "cancelled",
+    },
+    {
+      "created_at": "<iso>",
+      "duration_ms": 180000,
+      "fired_at": "<iso>",
+      "fires_at": "<iso>",
+      "id": "<uuid-7>",
+      "kind": "timer",
+      "label": "laundry",
+      "status": "dismissed",
+    },
+  ],
+}
+`;
+
+exports[`device activity and timers_state > builds the timers_state payload: soonest four, null label as empty 1`] = `
+{
+  "all": {
+    "id": "tmrs_<msg-1>",
+    "payload": {
+      "timers": [
+        {
+          "fires_in_ms": 60000,
+          "id": "<uuid-2>",
+          "kind": "timer",
+          "label": "",
+        },
+        {
+          "fires_in_ms": 120000,
+          "id": "<uuid-3>",
+          "kind": "timer",
+          "label": "",
+        },
+        {
+          "fires_in_ms": 180000,
+          "id": "<uuid-4>",
+          "kind": "timer",
+          "label": "",
+        },
+        {
+          "fires_in_ms": 240000,
+          "id": "<uuid-5>",
+          "kind": "timer",
+          "label": "",
+        },
+      ],
+    },
+    "type": "timers_state",
+    "v": 1,
+  },
+  "none": {
+    "id": "tmrs_<msg-6>",
+    "payload": {
+      "timers": [],
+    },
+    "type": "timers_state",
+    "v": 1,
+  },
+}
+`;
+
+exports[`device activity and timers_state > lists fired and dismissed timers as account-scope activity, never pending or cancelled ones 1`] = `
+{
+  "other": [],
+  "owner": [
+    {
+      "at": "<epoch-ms>",
+      "kind": "timer",
+      "label": "laundry",
+      "scope": "account",
+      "status": "dismissed",
+    },
+    {
+      "at": "<epoch-ms>",
+      "kind": "timer",
+      "label": "tea",
+      "scope": "account",
+      "status": "fired",
+    },
+  ],
+  "ownerLimit1": [
+    {
+      "at": "<epoch-ms>",
+      "kind": "timer",
+      "label": "laundry",
+      "scope": "account",
+      "status": "dismissed",
+    },
+  ],
+  "pairedAfter": [
+    {
+      "at": "<epoch-ms>",
+      "kind": "timer",
+      "label": "laundry",
+      "scope": "account",
+      "status": "dismissed",
+    },
+  ],
+}
+`;
+
+exports[`device activity and timers_state > pushes timers_state on welcome only to an account that has pending timers 1`] = `
+[
+  {
+    "id": "tmrs_<msg-1>",
+    "payload": {
+      "timers": [
+        {
+          "fires_in_ms": 600000,
+          "id": "<uuid-2>",
+          "kind": "timer",
+          "label": "pasta",
+        },
+        {
+          "fires_in_ms": 3600000,
+          "id": "<uuid-3>",
+          "kind": "alarm",
+          "label": "wake up",
+        },
+      ],
+    },
+    "type": "timers_state",
+    "v": 1,
+  },
+]
+`;
+
+exports[`reminder reads with timers present > lists only reminders over HTTP and in the store 1`] = `
+{
+  "get": {
+    "createdAt": "<epoch-ms>",
+    "createdBy": "<uuid-3>",
+    "dueAt": "<epoch-ms>",
+    "dueDate": null,
+    "dueZone": "UTC",
+    "eventId": null,
+    "id": "<uuid-1>",
+    "noteId": null,
+    "rrule": null,
+    "scheduleRevision": 1,
+    "spaceId": "<uuid-2>",
+    "status": "active",
+    "taskId": null,
+    "title": "water the plants",
+    "updatedAt": "<epoch-ms>",
+  },
+  "http": {
+    "body": {
+      "reminders": [
+        {
+          "due_at": "<epoch-ms>",
+          "due_zone": "UTC",
+          "id": "<uuid-1>",
+          "rrule": null,
+          "schedule_revision": 1,
+          "space_id": "<uuid-2>",
+          "status": "active",
+          "title": "water the plants",
+        },
+      ],
+    },
+    "status": 200,
+  },
+  "store": [
+    {
+      "createdAt": "<epoch-ms>",
+      "createdBy": "<uuid-3>",
+      "dueAt": "<epoch-ms>",
+      "dueDate": null,
+      "dueZone": "UTC",
+      "eventId": null,
+      "id": "<uuid-1>",
+      "noteId": null,
+      "rrule": null,
+      "scheduleRevision": 1,
+      "spaceId": "<uuid-2>",
+      "status": "active",
+      "taskId": null,
+      "title": "water the plants",
+      "updatedAt": "<epoch-ms>",
+    },
+  ],
+  "timerIdAsReminder": "StoreNotFoundError: reminder not found",
+}
+`;
+
+exports[`timer voice tools > returns the set, list and cancel result objects 1`] = `
+{
+  "cancelAll": {
+    "message": "Cancelled 2 timers and alarms.",
+    "ok": true,
+  },
+  "cancelByLabel": {
+    "message": "Pasta timer cancelled.",
+    "ok": true,
+  },
+  "cancelNone": {
+    "message": "No timers are running.",
+    "ok": true,
+  },
+  "cancelUnknown": {
+    "message": "I couldn't find that timer.",
+    "ok": true,
+  },
+  "cancelWhichOne": {
+    "message": "Which one? You have 3 running.",
+    "ok": true,
+  },
+  "list": {
+    "message": "Timer: 1 minute 30 seconds left. Pasta timer: 10 minutes left. Wake up alarm at 1:30 PM.",
+    "ok": true,
+  },
+  "listAfter": {
+    "message": "No timers or alarms are set.",
+    "ok": true,
+  },
+  "listEmpty": {
+    "message": "No timers or alarms are set.",
+    "ok": true,
+  },
+  "setAlarm": {
+    "id": "<uuid-3>",
+    "message": "Wake up alarm set for 1:30 PM.",
+    "ok": true,
+  },
+  "setAlarmPast": {
+    "ok": false,
+    "reason": "that time has already passed",
+  },
+  "setTimer": {
+    "id": "<uuid-1>",
+    "message": "Pasta timer set for 10 minutes.",
+    "ok": true,
+  },
+  "setTimerSeconds": {
+    "id": "<uuid-2>",
+    "message": "Timer set for 1 minute 30 seconds.",
+    "ok": true,
+  },
+  "setTimerTooLong": {
+    "ok": false,
+    "reason": "timer duration must be between 1 second and 24 hours",
+  },
+  "setTimerUnreadable": {
+    "ok": false,
+    "reason": "unreadable duration",
+  },
+}
+`;
+
+exports[`timers HTTP > cancels one timer, then answers 404 for it, a fired one and a cancelled one 1`] = `
+{
+  "cancelAgain": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "cancelCancelled": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "cancelFired": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "cancelMalformed": {
+    "body": {
+      "error": {
+        "code": "invalid_request",
+      },
+    },
+    "status": 400,
+  },
+  "cancelPending": {
+    "body": {
+      "cancelled": {
+        "fire_at": "<epoch-ms>",
+        "id": "<uuid-1>",
+        "kind": "timer",
+        "label": "pasta",
+        "remaining_ms": 600000,
+        "zone": "UTC",
+      },
+      "remaining": 1,
+    },
+    "status": 200,
+  },
+  "cancelUnknown": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "listAfter": {
+    "body": {
+      "timers": [
+        {
+          "fire_at": "<epoch-ms>",
+          "id": "<uuid-2>",
+          "kind": "alarm",
+          "label": "wake up",
+          "remaining_ms": 3600000,
+          "zone": "UTC",
+        },
+      ],
+    },
+    "status": 200,
+  },
+}
+`;
+
+exports[`timers HTTP > keeps account A timers from account B 1`] = `
+{
+  "aStillHasIt": {
+    "body": {
+      "timers": [
+        {
+          "fire_at": "<epoch-ms>",
+          "id": "<uuid-1>",
+          "kind": "timer",
+          "label": "pasta",
+          "remaining_ms": 600000,
+          "zone": "UTC",
+        },
+        {
+          "fire_at": "<epoch-ms>",
+          "id": "<uuid-2>",
+          "kind": "alarm",
+          "label": "wake up",
+          "remaining_ms": 3600000,
+          "zone": "UTC",
+        },
+      ],
+    },
+    "status": 200,
+  },
+  "bCancelsA": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "bList": {
+    "body": {
+      "timers": [],
+    },
+    "status": 200,
+  },
+}
+`;
+
+exports[`timers HTTP > lists none, then only the pending timer and alarm 1`] = `
+[
+  {
+    "body": {
+      "timers": [],
+    },
+    "status": 200,
+  },
+  {
+    "body": {
+      "timers": [
+        {
+          "fire_at": "<epoch-ms>",
+          "id": "<uuid-1>",
+          "kind": "timer",
+          "label": "pasta",
+          "remaining_ms": 600000,
+          "zone": "UTC",
+        },
+        {
+          "fire_at": "<epoch-ms>",
+          "id": "<uuid-2>",
+          "kind": "alarm",
+          "label": "wake up",
+          "remaining_ms": 3600000,
+          "zone": "UTC",
+        },
+      ],
+    },
+    "status": 200,
+  },
+]
+`;
+
+exports[`timers store > cancels by label, by id, the only one, all, and reports what stays pending 1`] = `
+{
+  "all": {
+    "cancelled": [
+      {
+        "createdAt": "<epoch-ms>",
+        "durationMs": 60000,
+        "firedAt": null,
+        "firesAt": "<epoch-ms>",
+        "id": "<uuid-5>",
+        "kind": "timer",
+        "label": null,
+        "status": "cancelled",
+        "userId": "<uuid-2>",
+      },
+      {
+        "createdAt": "<epoch-ms>",
+        "durationMs": 120000,
+        "firedAt": null,
+        "firesAt": "<epoch-ms>",
+        "id": "<uuid-6>",
+        "kind": "timer",
+        "label": null,
+        "status": "cancelled",
+        "userId": "<uuid-2>",
+      },
+    ],
+    "remaining": 0,
+  },
+  "ambiguous": {
+    "cancelled": [],
+    "remaining": 2,
+  },
+  "byId": {
+    "cancelled": [
+      {
+        "createdAt": "<epoch-ms>",
+        "durationMs": 300000,
+        "firedAt": null,
+        "firesAt": "<epoch-ms>",
+        "id": "<uuid-3>",
+        "kind": "timer",
+        "label": null,
+        "status": "cancelled",
+        "userId": "<uuid-2>",
+      },
+    ],
+    "remaining": 1,
+  },
+  "byLabel": {
+    "cancelled": [
+      {
+        "createdAt": "<epoch-ms>",
+        "durationMs": 600000,
+        "firedAt": null,
+        "firesAt": "<epoch-ms>",
+        "id": "<uuid-1>",
+        "kind": "timer",
+        "label": "pasta",
+        "status": "cancelled",
+        "userId": "<uuid-2>",
+      },
+    ],
+    "remaining": 0,
+  },
+  "byMalformedId": {
+    "cancelled": [],
+    "remaining": 1,
+  },
+  "none": {
+    "cancelled": [],
+    "remaining": 0,
+  },
+  "onlyOne": {
+    "cancelled": [
+      {
+        "createdAt": "<epoch-ms>",
+        "durationMs": null,
+        "firedAt": null,
+        "firesAt": "<epoch-ms>",
+        "id": "<uuid-4>",
+        "kind": "alarm",
+        "label": null,
+        "status": "cancelled",
+        "userId": "<uuid-2>",
+      },
+    ],
+    "remaining": 0,
+  },
+}
+`;
+
+exports[`timers store > creates timers and alarms with and without a label 1`] = `
+[
+  {
+    "createdAt": "<epoch-ms>",
+    "durationMs": 600000,
+    "firedAt": null,
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-1>",
+    "kind": "timer",
+    "label": "pasta",
+    "status": "pending",
+    "userId": "<uuid-2>",
+  },
+  {
+    "createdAt": "<epoch-ms>",
+    "durationMs": 90000,
+    "firedAt": null,
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-3>",
+    "kind": "timer",
+    "label": null,
+    "status": "pending",
+    "userId": "<uuid-2>",
+  },
+  {
+    "createdAt": "<epoch-ms>",
+    "durationMs": null,
+    "firedAt": null,
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-4>",
+    "kind": "alarm",
+    "label": "wake up",
+    "status": "pending",
+    "userId": "<uuid-2>",
+  },
+  {
+    "createdAt": "<epoch-ms>",
+    "durationMs": null,
+    "firedAt": null,
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-5>",
+    "kind": "alarm",
+    "label": null,
+    "status": "pending",
+    "userId": "<uuid-2>",
+  },
+]
+`;
+
+exports[`timers store > creates timers and alarms with and without a label 2`] = `
+[
+  {
+    "createdAt": "<epoch-ms>",
+    "durationMs": 90000,
+    "firedAt": null,
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-3>",
+    "kind": "timer",
+    "label": null,
+    "remainingMs": 30000,
+    "status": "pending",
+    "userId": "<uuid-2>",
+  },
+  {
+    "createdAt": "<epoch-ms>",
+    "durationMs": 600000,
+    "firedAt": null,
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-1>",
+    "kind": "timer",
+    "label": "pasta",
+    "remainingMs": 540000,
+    "status": "pending",
+    "userId": "<uuid-2>",
+  },
+  {
+    "createdAt": "<epoch-ms>",
+    "durationMs": null,
+    "firedAt": null,
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-4>",
+    "kind": "alarm",
+    "label": "wake up",
+    "remainingMs": 5340000,
+    "status": "pending",
+    "userId": "<uuid-2>",
+  },
+  {
+    "createdAt": "<epoch-ms>",
+    "durationMs": null,
+    "firedAt": null,
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-5>",
+    "kind": "alarm",
+    "label": null,
+    "remainingMs": 86340000,
+    "status": "pending",
+    "userId": "<uuid-2>",
+  },
+]
+`;
+
+exports[`timers store > marks fired once, dismisses a fired timer once, ignores malformed ids 1`] = `
+{
+  "dismiss": {
+    "createdAt": "<epoch-ms>",
+    "durationMs": 60000,
+    "firedAt": "<epoch-ms>",
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-1>",
+    "kind": "timer",
+    "label": "tea",
+    "status": "dismissed",
+    "userId": "<uuid-2>",
+  },
+  "dismissAgain": null,
+  "dismissMalformed": null,
+  "dismissPending": null,
+  "fire": {
+    "createdAt": "<epoch-ms>",
+    "durationMs": 60000,
+    "firedAt": "<epoch-ms>",
+    "firesAt": "<epoch-ms>",
+    "id": "<uuid-1>",
+    "kind": "timer",
+    "label": "tea",
+    "status": "fired",
+    "userId": "<uuid-2>",
+  },
+  "fireAgain": null,
+  "fireMalformed": null,
+  "listAfter": [],
+}
+`;
+
+exports[`timers store > reads due timers and the next fire time across accounts 1`] = `
+{
+  "dueBoth": [
+    {
+      "createdAt": "<epoch-ms>",
+      "durationMs": 1000,
+      "firedAt": null,
+      "firesAt": "<epoch-ms>",
+      "id": "<uuid-1>",
+      "kind": "timer",
+      "label": "early",
+      "status": "pending",
+      "userId": "<uuid-2>",
+    },
+    {
+      "createdAt": "<epoch-ms>",
+      "durationMs": 5000,
+      "firedAt": null,
+      "firesAt": "<epoch-ms>",
+      "id": "<uuid-3>",
+      "kind": "timer",
+      "label": null,
+      "status": "pending",
+      "userId": "<uuid-2>",
+    },
+  ],
+  "dueOne": [
+    {
+      "createdAt": "<epoch-ms>",
+      "durationMs": 1000,
+      "firedAt": null,
+      "firesAt": "<epoch-ms>",
+      "id": "<uuid-1>",
+      "kind": "timer",
+      "label": "early",
+      "status": "pending",
+      "userId": "<uuid-2>",
+    },
+  ],
+  "firedNotDue": [],
+  "nextIsEarly": true,
+  "nextIsLater": true,
+  "notDueYet": [],
+}
+`;
+
+exports[`two-account isolation > never shows account A timers or reminders to account B 1`] = `
+{
+  "activity": [],
+  "exportReminders": [],
+  "exportTimers": [],
+  "remindersOfASpace": {
+    "body": {
+      "reminders": [],
+    },
+    "status": 200,
+  },
+  "remindersOfOwnSpace": {
+    "body": {
+      "reminders": [],
+    },
+    "status": 200,
+  },
+  "storeList": [],
+  "timersHttp": {
+    "body": {
+      "timers": [],
+    },
+    "status": 200,
+  },
+  "timersState": {
+    "id": "tmrs_<msg-2>",
+    "payload": {
+      "timers": [],
+    },
+    "type": "timers_state",
+    "v": 1,
+  },
+  "voiceList": {
+    "message": "No timers or alarms are set.",
+    "ok": true,
+  },
+  "welcomePushes": [],
+}
+`;

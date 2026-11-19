@@ -1,0 +1,165 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Bob Supabase Edge Functions",
+    "version": "1.0.0",
+    "description": "First-party HTTP functions deployed separately from the Bob API server. All four functions have verify_jwt=false in supabase/config.toml; each function applies the authorization described on its operation."
+  },
+  "servers": [
+    {
+      "url": "https://{projectRef}.supabase.co/functions/v1",
+      "variables": {
+        "projectRef": {
+          "default": "YOUR_PROJECT_REF",
+          "description": "Your Supabase project reference."
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/waitlist": {
+      "post": {
+        "tags": ["Public waitlist"],
+        "summary": "Request or verify a waitlist code",
+        "description": "Public endpoint. A request returns the same success body during cooldown or for an existing address. A verify request returns verified:false for an incorrect, expired, or unknown code. The JSON body is limited to 4096 bytes.",
+        "operationId": "postWaitlist",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "action": { "const": "request" },
+                      "email": { "type": "string", "format": "email", "maxLength": 254 },
+                      "source": { "type": "string", "description": "Optional source; unsupported values are replaced with landing." }
+                    },
+                    "required": ["action", "email"]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "action": { "const": "verify" },
+                      "email": { "type": "string", "format": "email", "maxLength": 254 },
+                      "code": { "type": "string", "description": "A six-digit code verifies successfully. Missing or malformed codes return verified:false." }
+                    },
+                    "required": ["action", "email"]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Request accepted or verification result.",
+            "content": { "application/json": { "schema": { "anyOf": [
+              { "type": "object", "properties": { "ok": { "const": true } }, "required": ["ok"] },
+              { "type": "object", "properties": { "ok": { "const": true }, "verified": { "type": "boolean" } }, "required": ["ok", "verified"] }
+            ] } } }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "500": { "$ref": "#/components/responses/FunctionError" },
+          "502": { "$ref": "#/components/responses/FunctionError" }
+        }
+      }
+    },
+    "/invite-account": {
+      "post": {
+        "tags": ["API service calls"],
+        "summary": "Provision an invited account",
+        "description": "Called by the Bob API. The bearer value is NOTIFY_EMAIL_SECRET, not a Supabase user JWT. JSON body limit: 4096 bytes.",
+        "operationId": "postInviteAccount",
+        "security": [{ "serviceBearer": [] }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": {
+          "type": "object", "properties": { "email": { "type": "string", "format": "email", "maxLength": 254 } }, "required": ["email"]
+        } } } },
+        "responses": {
+          "200": { "description": "The account was created or already existed.", "content": { "application/json": { "schema": {
+            "type": "object", "properties": { "ok": { "const": true }, "created": { "type": "boolean" } }, "required": ["ok", "created"]
+          } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "502": { "$ref": "#/components/responses/FunctionError" }
+        }
+      }
+    },
+    "/notify-email": {
+      "post": {
+        "tags": ["API service calls"],
+        "summary": "Send a declared notification template",
+        "description": "Called by the Bob API. The bearer value is NOTIFY_EMAIL_SECRET, not a Supabase user JWT. auth-*, security-*, and waitlist-* template IDs are refused. JSON body limit: 16384 bytes.",
+        "operationId": "postNotifyEmail",
+        "security": [{ "serviceBearer": [] }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": {
+          "type": "object", "properties": {
+            "template": { "type": "string" },
+            "to": { "type": "string", "format": "email", "maxLength": 254 },
+            "data": { "type": "object", "additionalProperties": true, "description": "Fields depend on the declared template. bob-account-invite requires an empty object." }
+          }, "required": ["template", "to", "data"]
+        } } } },
+        "responses": {
+          "200": { "description": "Email sent.", "content": { "application/json": { "schema": {
+            "type": "object", "properties": { "ok": { "const": true } }, "required": ["ok"]
+          } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "502": { "$ref": "#/components/responses/FunctionError" }
+        }
+      }
+    },
+    "/send-email": {
+      "post": {
+        "tags": ["Supabase Auth hook"],
+        "summary": "Deliver a Supabase Auth email",
+        "description": "Called by Supabase Auth's Send Email Hook. The function verifies the Standard Webhooks signature on the exact raw request body before reading it. It is not a browser or account JWT endpoint.",
+        "operationId": "postSendEmail",
+        "security": [{ "webhookSignature": [] }],
+        "parameters": [
+          { "name": "webhook-id", "in": "header", "required": true, "schema": { "type": "string" } },
+          { "name": "webhook-timestamp", "in": "header", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": {
+          "type": "object", "properties": {
+            "user": { "type": "object", "properties": { "email": { "type": "string", "format": "email" }, "new_email": { "type": "string", "format": "email" } }, "required": ["email"], "additionalProperties": true },
+            "email_data": { "type": "object", "properties": {
+              "token": { "type": "string" }, "token_hash": { "type": "string" }, "redirect_to": { "type": "string" }, "site_url": { "type": "string" },
+              "email_action_type": { "type": "string" }, "token_new": { "type": "string" }, "token_hash_new": { "type": "string" },
+              "old_email": { "type": "string" }, "provider": { "type": "string" }, "factor_type": { "type": "string" }
+            }, "required": ["email_action_type"], "additionalProperties": true }
+          }, "required": ["user", "email_data"], "additionalProperties": true
+        } } } },
+        "responses": {
+          "200": { "description": "Message delivered; Supabase Auth performs no further send.", "content": { "application/json": { "schema": { "type": "object", "additionalProperties": false } } } },
+          "400": { "$ref": "#/components/responses/HookError" },
+          "401": { "$ref": "#/components/responses/HookError" },
+          "405": { "$ref": "#/components/responses/HookError" },
+          "500": { "$ref": "#/components/responses/HookError" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "serviceBearer": { "type": "http", "scheme": "bearer", "description": "Shared API-to-function NOTIFY_EMAIL_SECRET. Never use a user access token." },
+      "webhookSignature": { "type": "apiKey", "in": "header", "name": "webhook-signature", "description": "Standard Webhooks signature produced by Supabase Auth. Requires webhook-id and webhook-timestamp headers." }
+    },
+    "schemas": {
+      "FunctionError": { "type": "object", "properties": { "ok": { "const": false }, "error": { "type": "string" } }, "required": ["ok", "error"] },
+      "HookError": { "type": "object", "properties": { "error": { "type": "object", "properties": { "http_code": { "type": "integer" }, "message": { "type": "string" } }, "required": ["http_code", "message"] } }, "required": ["error"] }
+    },
+    "responses": {
+      "BadRequest": { "description": "Invalid request or missing template field.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/FunctionError" } } } },
+      "Unauthorized": { "description": "Missing or invalid service bearer.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/FunctionError" } } } },
+      "MethodNotAllowed": { "description": "Only POST is supported.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/FunctionError" } } } },
+      "FunctionError": { "description": "Internal or upstream delivery failure.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/FunctionError" } } } },
+      "HookError": { "description": "Hook request or delivery failed; Supabase Auth receives the failure.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/HookError" } } } }
+    }
+  }
+}

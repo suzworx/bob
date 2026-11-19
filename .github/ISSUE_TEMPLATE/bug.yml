@@ -1,0 +1,29 @@
+name: Bug
+description: A reproducible deviation from intended behavior
+title: "[Bug] "
+labels: ["type: bug"]
+body:
+  - type: textarea
+    id: observed
+    attributes: { label: Actual behavior and impact }
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes: { label: Expected behavior }
+    validations: { required: true }
+  - type: textarea
+    id: reproduce
+    attributes: { label: Minimal reproduction, description: Redact secrets, audio, transcripts, prompts, list contents, and PII. }
+    validations: { required: true }
+  - type: input
+    id: environment
+    attributes: { label: Version, client, device, and environment }
+    validations: { required: true }
+  - type: dropdown
+    id: regression
+    attributes: { label: Regression?, options: ["Yes", "No", "Unknown"] }
+    validations: { required: true }
+  - type: textarea
+    id: evidence
+    attributes: { label: Redacted evidence and verification }
+

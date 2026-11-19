@@ -1,0 +1,1126 @@
+{
+  "name": "core-en-us",
+  "model": "microsoft/mai-voice-2.1-flash",
+  "voice": "en-US-Harper",
+  "locale": "en-US",
+  "clips": [
+    {
+      "id": "timer-for-1m",
+      "say": "I've set a timer for one minute."
+    },
+    {
+      "id": "okay-timer-for-1m",
+      "say": "Okay, I've set a timer for one minute."
+    },
+    {
+      "id": "timer-for-2m",
+      "say": "I've set a timer for two minutes."
+    },
+    {
+      "id": "okay-timer-for-2m",
+      "say": "Okay, I've set a timer for two minutes."
+    },
+    {
+      "id": "timer-for-3m",
+      "say": "I've set a timer for three minutes."
+    },
+    {
+      "id": "okay-timer-for-3m",
+      "say": "Okay, I've set a timer for three minutes."
+    },
+    {
+      "id": "timer-for-4m",
+      "say": "I've set a timer for four minutes."
+    },
+    {
+      "id": "okay-timer-for-4m",
+      "say": "Okay, I've set a timer for four minutes."
+    },
+    {
+      "id": "timer-for-5m",
+      "say": "I've set a timer for five minutes."
+    },
+    {
+      "id": "okay-timer-for-5m",
+      "say": "Okay, I've set a timer for five minutes."
+    },
+    {
+      "id": "timer-for-10m",
+      "say": "I've set a timer for ten minutes."
+    },
+    {
+      "id": "okay-timer-for-10m",
+      "say": "Okay, I've set a timer for ten minutes."
+    },
+    {
+      "id": "timer-for-15m",
+      "say": "I've set a timer for fifteen minutes."
+    },
+    {
+      "id": "okay-timer-for-15m",
+      "say": "Okay, I've set a timer for fifteen minutes."
+    },
+    {
+      "id": "timer-for-20m",
+      "say": "I've set a timer for twenty minutes."
+    },
+    {
+      "id": "okay-timer-for-20m",
+      "say": "Okay, I've set a timer for twenty minutes."
+    },
+    {
+      "id": "timer-for-30m",
+      "say": "I've set a timer for thirty minutes."
+    },
+    {
+      "id": "okay-timer-for-30m",
+      "say": "Okay, I've set a timer for thirty minutes."
+    },
+    {
+      "id": "timer-for-45m",
+      "say": "I've set a timer for forty-five minutes."
+    },
+    {
+      "id": "okay-timer-for-45m",
+      "say": "Okay, I've set a timer for forty-five minutes."
+    },
+    {
+      "id": "timer-for-1h",
+      "say": "I've set a timer for one hour."
+    },
+    {
+      "id": "okay-timer-for-1h",
+      "say": "Okay, I've set a timer for one hour."
+    },
+    {
+      "id": "timer-for-30s",
+      "say": "I've set a timer for thirty seconds."
+    },
+    {
+      "id": "okay-timer-for-30s",
+      "say": "Okay, I've set a timer for thirty seconds."
+    },
+    {
+      "id": "minute-timer-2",
+      "say": "I've set a two-minute timer."
+    },
+    {
+      "id": "okay-minute-timer-2",
+      "say": "Okay, I've set a two-minute timer."
+    },
+    {
+      "id": "minute-timer-3",
+      "say": "I've set a three-minute timer."
+    },
+    {
+      "id": "okay-minute-timer-3",
+      "say": "Okay, I've set a three-minute timer."
+    },
+    {
+      "id": "minute-timer-5",
+      "say": "I've set a five-minute timer."
+    },
+    {
+      "id": "okay-minute-timer-5",
+      "say": "Okay, I've set a five-minute timer."
+    },
+    {
+      "id": "minute-timer-10",
+      "say": "I've set a ten-minute timer."
+    },
+    {
+      "id": "okay-minute-timer-10",
+      "say": "Okay, I've set a ten-minute timer."
+    },
+    {
+      "id": "minute-timer-15",
+      "say": "I've set a fifteen-minute timer."
+    },
+    {
+      "id": "okay-minute-timer-15",
+      "say": "Okay, I've set a fifteen-minute timer."
+    },
+    {
+      "id": "minute-timer-20",
+      "say": "I've set a twenty-minute timer."
+    },
+    {
+      "id": "okay-minute-timer-20",
+      "say": "Okay, I've set a twenty-minute timer."
+    },
+    {
+      "id": "minute-timer-30",
+      "say": "I've set a thirty-minute timer."
+    },
+    {
+      "id": "okay-minute-timer-30",
+      "say": "Okay, I've set a thirty-minute timer."
+    },
+    {
+      "id": "alarm-5am",
+      "say": "I've set an alarm for 5 AM."
+    },
+    {
+      "id": "alarm-6am",
+      "say": "I've set an alarm for 6 AM."
+    },
+    {
+      "id": "alarm-7am",
+      "say": "I've set an alarm for 7 AM."
+    },
+    {
+      "id": "alarm-8am",
+      "say": "I've set an alarm for 8 AM."
+    },
+    {
+      "id": "alarm-9am",
+      "say": "I've set an alarm for 9 AM."
+    },
+    {
+      "id": "alarm-10am",
+      "say": "I've set an alarm for 10 AM."
+    },
+    {
+      "id": "timer-cancelled",
+      "say": "Your timer has been cancelled."
+    },
+    {
+      "id": "cancelled-your-timer",
+      "say": "I've cancelled your timer."
+    },
+    {
+      "id": "have-cancelled-your-timer",
+      "say": "I have cancelled your timer."
+    },
+    {
+      "id": "okay-timer-cancelled",
+      "say": "Okay, your timer has been cancelled."
+    },
+    {
+      "id": "volume-up",
+      "say": "I've turned the volume up."
+    },
+    {
+      "id": "okay-volume-up",
+      "say": "Okay, I've turned the volume up."
+    },
+    {
+      "id": "volume-up-2",
+      "say": "I've turned up the volume."
+    },
+    {
+      "id": "okay-volume-up-2",
+      "say": "Okay, I've turned up the volume."
+    },
+    {
+      "id": "volume-down",
+      "say": "I've turned the volume down."
+    },
+    {
+      "id": "okay-volume-down",
+      "say": "Okay, I've turned the volume down."
+    },
+    {
+      "id": "volume-down-2",
+      "say": "I've turned down the volume."
+    },
+    {
+      "id": "okay-volume-down-2",
+      "say": "Okay, I've turned down the volume."
+    },
+    {
+      "id": "ok",
+      "say": "OK."
+    },
+    {
+      "id": "for-how-long",
+      "say": "For how long?"
+    }
+  ],
+  "templates": [
+    {
+      "id": "timer-for",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "I've set a timer for one minute.",
+              "clipId": "timer-for-1m"
+            },
+            {
+              "text": "I've set a timer for 1 minute.",
+              "clipId": "timer-for-1m"
+            },
+            {
+              "text": "I've set a timer for two minutes.",
+              "clipId": "timer-for-2m"
+            },
+            {
+              "text": "I've set a timer for 2 minutes.",
+              "clipId": "timer-for-2m"
+            },
+            {
+              "text": "I've set a timer for three minutes.",
+              "clipId": "timer-for-3m"
+            },
+            {
+              "text": "I've set a timer for 3 minutes.",
+              "clipId": "timer-for-3m"
+            },
+            {
+              "text": "I've set a timer for four minutes.",
+              "clipId": "timer-for-4m"
+            },
+            {
+              "text": "I've set a timer for 4 minutes.",
+              "clipId": "timer-for-4m"
+            },
+            {
+              "text": "I've set a timer for five minutes.",
+              "clipId": "timer-for-5m"
+            },
+            {
+              "text": "I've set a timer for 5 minutes.",
+              "clipId": "timer-for-5m"
+            },
+            {
+              "text": "I've set a timer for ten minutes.",
+              "clipId": "timer-for-10m"
+            },
+            {
+              "text": "I've set a timer for 10 minutes.",
+              "clipId": "timer-for-10m"
+            },
+            {
+              "text": "I've set a timer for fifteen minutes.",
+              "clipId": "timer-for-15m"
+            },
+            {
+              "text": "I've set a timer for 15 minutes.",
+              "clipId": "timer-for-15m"
+            },
+            {
+              "text": "I've set a timer for twenty minutes.",
+              "clipId": "timer-for-20m"
+            },
+            {
+              "text": "I've set a timer for 20 minutes.",
+              "clipId": "timer-for-20m"
+            },
+            {
+              "text": "I've set a timer for thirty minutes.",
+              "clipId": "timer-for-30m"
+            },
+            {
+              "text": "I've set a timer for 30 minutes.",
+              "clipId": "timer-for-30m"
+            },
+            {
+              "text": "I've set a timer for forty-five minutes.",
+              "clipId": "timer-for-45m"
+            },
+            {
+              "text": "I've set a timer for 45 minutes.",
+              "clipId": "timer-for-45m"
+            },
+            {
+              "text": "I've set a timer for one hour.",
+              "clipId": "timer-for-1h"
+            },
+            {
+              "text": "I've set a timer for 1 hour.",
+              "clipId": "timer-for-1h"
+            },
+            {
+              "text": "I've set a timer for thirty seconds.",
+              "clipId": "timer-for-30s"
+            },
+            {
+              "text": "I've set a timer for 30 seconds.",
+              "clipId": "timer-for-30s"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "okay-timer-for",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "Okay, I've set a timer for one minute.",
+              "clipId": "okay-timer-for-1m"
+            },
+            {
+              "text": "Okay, I've set a timer for 1 minute.",
+              "clipId": "okay-timer-for-1m"
+            },
+            {
+              "text": "OK, I've set a timer for one minute.",
+              "clipId": "okay-timer-for-1m"
+            },
+            {
+              "text": "OK, I've set a timer for 1 minute.",
+              "clipId": "okay-timer-for-1m"
+            },
+            {
+              "text": "Okay, I've set a timer for two minutes.",
+              "clipId": "okay-timer-for-2m"
+            },
+            {
+              "text": "Okay, I've set a timer for 2 minutes.",
+              "clipId": "okay-timer-for-2m"
+            },
+            {
+              "text": "OK, I've set a timer for two minutes.",
+              "clipId": "okay-timer-for-2m"
+            },
+            {
+              "text": "OK, I've set a timer for 2 minutes.",
+              "clipId": "okay-timer-for-2m"
+            },
+            {
+              "text": "Okay, I've set a timer for three minutes.",
+              "clipId": "okay-timer-for-3m"
+            },
+            {
+              "text": "Okay, I've set a timer for 3 minutes.",
+              "clipId": "okay-timer-for-3m"
+            },
+            {
+              "text": "OK, I've set a timer for three minutes.",
+              "clipId": "okay-timer-for-3m"
+            },
+            {
+              "text": "OK, I've set a timer for 3 minutes.",
+              "clipId": "okay-timer-for-3m"
+            },
+            {
+              "text": "Okay, I've set a timer for four minutes.",
+              "clipId": "okay-timer-for-4m"
+            },
+            {
+              "text": "Okay, I've set a timer for 4 minutes.",
+              "clipId": "okay-timer-for-4m"
+            },
+            {
+              "text": "OK, I've set a timer for four minutes.",
+              "clipId": "okay-timer-for-4m"
+            },
+            {
+              "text": "OK, I've set a timer for 4 minutes.",
+              "clipId": "okay-timer-for-4m"
+            },
+            {
+              "text": "Okay, I've set a timer for five minutes.",
+              "clipId": "okay-timer-for-5m"
+            },
+            {
+              "text": "Okay, I've set a timer for 5 minutes.",
+              "clipId": "okay-timer-for-5m"
+            },
+            {
+              "text": "OK, I've set a timer for five minutes.",
+              "clipId": "okay-timer-for-5m"
+            },
+            {
+              "text": "OK, I've set a timer for 5 minutes.",
+              "clipId": "okay-timer-for-5m"
+            },
+            {
+              "text": "Okay, I've set a timer for ten minutes.",
+              "clipId": "okay-timer-for-10m"
+            },
+            {
+              "text": "Okay, I've set a timer for 10 minutes.",
+              "clipId": "okay-timer-for-10m"
+            },
+            {
+              "text": "OK, I've set a timer for ten minutes.",
+              "clipId": "okay-timer-for-10m"
+            },
+            {
+              "text": "OK, I've set a timer for 10 minutes.",
+              "clipId": "okay-timer-for-10m"
+            },
+            {
+              "text": "Okay, I've set a timer for fifteen minutes.",
+              "clipId": "okay-timer-for-15m"
+            },
+            {
+              "text": "Okay, I've set a timer for 15 minutes.",
+              "clipId": "okay-timer-for-15m"
+            },
+            {
+              "text": "OK, I've set a timer for fifteen minutes.",
+              "clipId": "okay-timer-for-15m"
+            },
+            {
+              "text": "OK, I've set a timer for 15 minutes.",
+              "clipId": "okay-timer-for-15m"
+            },
+            {
+              "text": "Okay, I've set a timer for twenty minutes.",
+              "clipId": "okay-timer-for-20m"
+            },
+            {
+              "text": "Okay, I've set a timer for 20 minutes.",
+              "clipId": "okay-timer-for-20m"
+            },
+            {
+              "text": "OK, I've set a timer for twenty minutes.",
+              "clipId": "okay-timer-for-20m"
+            },
+            {
+              "text": "OK, I've set a timer for 20 minutes.",
+              "clipId": "okay-timer-for-20m"
+            },
+            {
+              "text": "Okay, I've set a timer for thirty minutes.",
+              "clipId": "okay-timer-for-30m"
+            },
+            {
+              "text": "Okay, I've set a timer for 30 minutes.",
+              "clipId": "okay-timer-for-30m"
+            },
+            {
+              "text": "OK, I've set a timer for thirty minutes.",
+              "clipId": "okay-timer-for-30m"
+            },
+            {
+              "text": "OK, I've set a timer for 30 minutes.",
+              "clipId": "okay-timer-for-30m"
+            },
+            {
+              "text": "Okay, I've set a timer for forty-five minutes.",
+              "clipId": "okay-timer-for-45m"
+            },
+            {
+              "text": "Okay, I've set a timer for 45 minutes.",
+              "clipId": "okay-timer-for-45m"
+            },
+            {
+              "text": "OK, I've set a timer for forty-five minutes.",
+              "clipId": "okay-timer-for-45m"
+            },
+            {
+              "text": "OK, I've set a timer for 45 minutes.",
+              "clipId": "okay-timer-for-45m"
+            },
+            {
+              "text": "Okay, I've set a timer for one hour.",
+              "clipId": "okay-timer-for-1h"
+            },
+            {
+              "text": "Okay, I've set a timer for 1 hour.",
+              "clipId": "okay-timer-for-1h"
+            },
+            {
+              "text": "OK, I've set a timer for one hour.",
+              "clipId": "okay-timer-for-1h"
+            },
+            {
+              "text": "OK, I've set a timer for 1 hour.",
+              "clipId": "okay-timer-for-1h"
+            },
+            {
+              "text": "Okay, I've set a timer for thirty seconds.",
+              "clipId": "okay-timer-for-30s"
+            },
+            {
+              "text": "Okay, I've set a timer for 30 seconds.",
+              "clipId": "okay-timer-for-30s"
+            },
+            {
+              "text": "OK, I've set a timer for thirty seconds.",
+              "clipId": "okay-timer-for-30s"
+            },
+            {
+              "text": "OK, I've set a timer for 30 seconds.",
+              "clipId": "okay-timer-for-30s"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "minute-timer",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "I've set a two-minute timer.",
+              "clipId": "minute-timer-2"
+            },
+            {
+              "text": "I've set a 2-minute timer.",
+              "clipId": "minute-timer-2"
+            },
+            {
+              "text": "I've set a three-minute timer.",
+              "clipId": "minute-timer-3"
+            },
+            {
+              "text": "I've set a 3-minute timer.",
+              "clipId": "minute-timer-3"
+            },
+            {
+              "text": "I've set a five-minute timer.",
+              "clipId": "minute-timer-5"
+            },
+            {
+              "text": "I've set a 5-minute timer.",
+              "clipId": "minute-timer-5"
+            },
+            {
+              "text": "I've set a ten-minute timer.",
+              "clipId": "minute-timer-10"
+            },
+            {
+              "text": "I've set a 10-minute timer.",
+              "clipId": "minute-timer-10"
+            },
+            {
+              "text": "I've set a fifteen-minute timer.",
+              "clipId": "minute-timer-15"
+            },
+            {
+              "text": "I've set a 15-minute timer.",
+              "clipId": "minute-timer-15"
+            },
+            {
+              "text": "I've set a twenty-minute timer.",
+              "clipId": "minute-timer-20"
+            },
+            {
+              "text": "I've set a 20-minute timer.",
+              "clipId": "minute-timer-20"
+            },
+            {
+              "text": "I've set a thirty-minute timer.",
+              "clipId": "minute-timer-30"
+            },
+            {
+              "text": "I've set a 30-minute timer.",
+              "clipId": "minute-timer-30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "okay-minute-timer",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "Okay, I've set a two-minute timer.",
+              "clipId": "okay-minute-timer-2"
+            },
+            {
+              "text": "Okay, I've set a 2-minute timer.",
+              "clipId": "okay-minute-timer-2"
+            },
+            {
+              "text": "OK, I've set a two-minute timer.",
+              "clipId": "okay-minute-timer-2"
+            },
+            {
+              "text": "OK, I've set a 2-minute timer.",
+              "clipId": "okay-minute-timer-2"
+            },
+            {
+              "text": "Okay, I've set a three-minute timer.",
+              "clipId": "okay-minute-timer-3"
+            },
+            {
+              "text": "Okay, I've set a 3-minute timer.",
+              "clipId": "okay-minute-timer-3"
+            },
+            {
+              "text": "OK, I've set a three-minute timer.",
+              "clipId": "okay-minute-timer-3"
+            },
+            {
+              "text": "OK, I've set a 3-minute timer.",
+              "clipId": "okay-minute-timer-3"
+            },
+            {
+              "text": "Okay, I've set a five-minute timer.",
+              "clipId": "okay-minute-timer-5"
+            },
+            {
+              "text": "Okay, I've set a 5-minute timer.",
+              "clipId": "okay-minute-timer-5"
+            },
+            {
+              "text": "OK, I've set a five-minute timer.",
+              "clipId": "okay-minute-timer-5"
+            },
+            {
+              "text": "OK, I've set a 5-minute timer.",
+              "clipId": "okay-minute-timer-5"
+            },
+            {
+              "text": "Okay, I've set a ten-minute timer.",
+              "clipId": "okay-minute-timer-10"
+            },
+            {
+              "text": "Okay, I've set a 10-minute timer.",
+              "clipId": "okay-minute-timer-10"
+            },
+            {
+              "text": "OK, I've set a ten-minute timer.",
+              "clipId": "okay-minute-timer-10"
+            },
+            {
+              "text": "OK, I've set a 10-minute timer.",
+              "clipId": "okay-minute-timer-10"
+            },
+            {
+              "text": "Okay, I've set a fifteen-minute timer.",
+              "clipId": "okay-minute-timer-15"
+            },
+            {
+              "text": "Okay, I've set a 15-minute timer.",
+              "clipId": "okay-minute-timer-15"
+            },
+            {
+              "text": "OK, I've set a fifteen-minute timer.",
+              "clipId": "okay-minute-timer-15"
+            },
+            {
+              "text": "OK, I've set a 15-minute timer.",
+              "clipId": "okay-minute-timer-15"
+            },
+            {
+              "text": "Okay, I've set a twenty-minute timer.",
+              "clipId": "okay-minute-timer-20"
+            },
+            {
+              "text": "Okay, I've set a 20-minute timer.",
+              "clipId": "okay-minute-timer-20"
+            },
+            {
+              "text": "OK, I've set a twenty-minute timer.",
+              "clipId": "okay-minute-timer-20"
+            },
+            {
+              "text": "OK, I've set a 20-minute timer.",
+              "clipId": "okay-minute-timer-20"
+            },
+            {
+              "text": "Okay, I've set a thirty-minute timer.",
+              "clipId": "okay-minute-timer-30"
+            },
+            {
+              "text": "Okay, I've set a 30-minute timer.",
+              "clipId": "okay-minute-timer-30"
+            },
+            {
+              "text": "OK, I've set a thirty-minute timer.",
+              "clipId": "okay-minute-timer-30"
+            },
+            {
+              "text": "OK, I've set a 30-minute timer.",
+              "clipId": "okay-minute-timer-30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alarm",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "I've set an alarm for 5 AM.",
+              "clipId": "alarm-5am"
+            },
+            {
+              "text": "I've set an alarm for 5 am.",
+              "clipId": "alarm-5am"
+            },
+            {
+              "text": "I've set an alarm for 6 AM.",
+              "clipId": "alarm-6am"
+            },
+            {
+              "text": "I've set an alarm for 6 am.",
+              "clipId": "alarm-6am"
+            },
+            {
+              "text": "I've set an alarm for 7 AM.",
+              "clipId": "alarm-7am"
+            },
+            {
+              "text": "I've set an alarm for 7 am.",
+              "clipId": "alarm-7am"
+            },
+            {
+              "text": "I've set an alarm for 8 AM.",
+              "clipId": "alarm-8am"
+            },
+            {
+              "text": "I've set an alarm for 8 am.",
+              "clipId": "alarm-8am"
+            },
+            {
+              "text": "I've set an alarm for 9 AM.",
+              "clipId": "alarm-9am"
+            },
+            {
+              "text": "I've set an alarm for 9 am.",
+              "clipId": "alarm-9am"
+            },
+            {
+              "text": "I've set an alarm for 10 AM.",
+              "clipId": "alarm-10am"
+            },
+            {
+              "text": "I've set an alarm for 10 am.",
+              "clipId": "alarm-10am"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "Your timer has been cancelled.",
+              "clipId": "timer-cancelled"
+            },
+            {
+              "text": "Your timer has been canceled.",
+              "clipId": "timer-cancelled"
+            },
+            {
+              "text": "I've cancelled your timer.",
+              "clipId": "cancelled-your-timer"
+            },
+            {
+              "text": "I've canceled your timer.",
+              "clipId": "cancelled-your-timer"
+            },
+            {
+              "text": "I have cancelled your timer.",
+              "clipId": "have-cancelled-your-timer"
+            },
+            {
+              "text": "I have canceled your timer.",
+              "clipId": "have-cancelled-your-timer"
+            },
+            {
+              "text": "Okay, your timer has been cancelled.",
+              "clipId": "okay-timer-cancelled"
+            },
+            {
+              "text": "Okay, your timer has been canceled.",
+              "clipId": "okay-timer-cancelled"
+            },
+            {
+              "text": "OK, your timer has been cancelled.",
+              "clipId": "okay-timer-cancelled"
+            },
+            {
+              "text": "OK, your timer has been canceled.",
+              "clipId": "okay-timer-cancelled"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "volume",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "I've turned the volume up.",
+              "clipId": "volume-up"
+            },
+            {
+              "text": "Okay, I've turned the volume up.",
+              "clipId": "okay-volume-up"
+            },
+            {
+              "text": "OK, I've turned the volume up.",
+              "clipId": "okay-volume-up"
+            },
+            {
+              "text": "I've turned up the volume.",
+              "clipId": "volume-up-2"
+            },
+            {
+              "text": "Okay, I've turned up the volume.",
+              "clipId": "okay-volume-up-2"
+            },
+            {
+              "text": "OK, I've turned up the volume.",
+              "clipId": "okay-volume-up-2"
+            },
+            {
+              "text": "I've turned the volume down.",
+              "clipId": "volume-down"
+            },
+            {
+              "text": "Okay, I've turned the volume down.",
+              "clipId": "okay-volume-down"
+            },
+            {
+              "text": "OK, I've turned the volume down.",
+              "clipId": "okay-volume-down"
+            },
+            {
+              "text": "I've turned down the volume.",
+              "clipId": "volume-down-2"
+            },
+            {
+              "text": "Okay, I've turned down the volume.",
+              "clipId": "okay-volume-down-2"
+            },
+            {
+              "text": "OK, I've turned down the volume.",
+              "clipId": "okay-volume-down-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ack",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "OK.",
+              "clipId": "ok"
+            },
+            {
+              "text": "Okay.",
+              "clipId": "ok"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ask-duration",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "For how long?",
+              "clipId": "for-how-long"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ack-alarm",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "OK.",
+              "clipId": "ok"
+            },
+            {
+              "text": "Okay.",
+              "clipId": "ok"
+            }
+          ]
+        },
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": " I've set an alarm for 5 AM.",
+              "clipId": "alarm-5am"
+            },
+            {
+              "text": " I've set an alarm for 5 am.",
+              "clipId": "alarm-5am"
+            },
+            {
+              "text": " I've set an alarm for 6 AM.",
+              "clipId": "alarm-6am"
+            },
+            {
+              "text": " I've set an alarm for 6 am.",
+              "clipId": "alarm-6am"
+            },
+            {
+              "text": " I've set an alarm for 7 AM.",
+              "clipId": "alarm-7am"
+            },
+            {
+              "text": " I've set an alarm for 7 am.",
+              "clipId": "alarm-7am"
+            },
+            {
+              "text": " I've set an alarm for 8 AM.",
+              "clipId": "alarm-8am"
+            },
+            {
+              "text": " I've set an alarm for 8 am.",
+              "clipId": "alarm-8am"
+            },
+            {
+              "text": " I've set an alarm for 9 AM.",
+              "clipId": "alarm-9am"
+            },
+            {
+              "text": " I've set an alarm for 9 am.",
+              "clipId": "alarm-9am"
+            },
+            {
+              "text": " I've set an alarm for 10 AM.",
+              "clipId": "alarm-10am"
+            },
+            {
+              "text": " I've set an alarm for 10 am.",
+              "clipId": "alarm-10am"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ack-timer-for",
+      "segments": [
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": "OK.",
+              "clipId": "ok"
+            },
+            {
+              "text": "Okay.",
+              "clipId": "ok"
+            }
+          ]
+        },
+        {
+          "type": "slot",
+          "values": [
+            {
+              "text": " I've set a timer for one minute.",
+              "clipId": "timer-for-1m"
+            },
+            {
+              "text": " I've set a timer for 1 minute.",
+              "clipId": "timer-for-1m"
+            },
+            {
+              "text": " I've set a timer for two minutes.",
+              "clipId": "timer-for-2m"
+            },
+            {
+              "text": " I've set a timer for 2 minutes.",
+              "clipId": "timer-for-2m"
+            },
+            {
+              "text": " I've set a timer for three minutes.",
+              "clipId": "timer-for-3m"
+            },
+            {
+              "text": " I've set a timer for 3 minutes.",
+              "clipId": "timer-for-3m"
+            },
+            {
+              "text": " I've set a timer for four minutes.",
+              "clipId": "timer-for-4m"
+            },
+            {
+              "text": " I've set a timer for 4 minutes.",
+              "clipId": "timer-for-4m"
+            },
+            {
+              "text": " I've set a timer for five minutes.",
+              "clipId": "timer-for-5m"
+            },
+            {
+              "text": " I've set a timer for 5 minutes.",
+              "clipId": "timer-for-5m"
+            },
+            {
+              "text": " I've set a timer for ten minutes.",
+              "clipId": "timer-for-10m"
+            },
+            {
+              "text": " I've set a timer for 10 minutes.",
+              "clipId": "timer-for-10m"
+            },
+            {
+              "text": " I've set a timer for fifteen minutes.",
+              "clipId": "timer-for-15m"
+            },
+            {
+              "text": " I've set a timer for 15 minutes.",
+              "clipId": "timer-for-15m"
+            },
+            {
+              "text": " I've set a timer for twenty minutes.",
+              "clipId": "timer-for-20m"
+            },
+            {
+              "text": " I've set a timer for 20 minutes.",
+              "clipId": "timer-for-20m"
+            },
+            {
+              "text": " I've set a timer for thirty minutes.",
+              "clipId": "timer-for-30m"
+            },
+            {
+              "text": " I've set a timer for 30 minutes.",
+              "clipId": "timer-for-30m"
+            },
+            {
+              "text": " I've set a timer for forty-five minutes.",
+              "clipId": "timer-for-45m"
+            },
+            {
+              "text": " I've set a timer for 45 minutes.",
+              "clipId": "timer-for-45m"
+            },
+            {
+              "text": " I've set a timer for one hour.",
+              "clipId": "timer-for-1h"
+            },
+            {
+              "text": " I've set a timer for 1 hour.",
+              "clipId": "timer-for-1h"
+            },
+            {
+              "text": " I've set a timer for thirty seconds.",
+              "clipId": "timer-for-30s"
+            },
+            {
+              "text": " I've set a timer for 30 seconds.",
+              "clipId": "timer-for-30s"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

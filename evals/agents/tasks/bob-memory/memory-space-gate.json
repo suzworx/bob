@@ -1,0 +1,16 @@
+{
+  "id": "memory-space-gate",
+  "agent": "bob-memory",
+  "commit": "36041e9c",
+  "base": "36041e9c^",
+  "prompt": "Personal memory must stay personal now that conversations can live in shared spaces. When a turn happens in a pair or group space, skip memory extraction for it entirely; only private-space turns may produce personal memories. The helper that finds accounts with unextracted messages must count only private-space messages too. Every memory that gets stored, whether extracted, remembered on request or added by hand, should carry the id of the user's private space. Older databases may not have the space column on memories yet, so inserts must degrade gracefully when it is missing, and that check should not break when a test mocks the memory availability probe.",
+  "hiddenTests": [
+    "apps/api/tests/modules/memory/memory-space-gate.test.ts",
+    "apps/api/tests/modules/memory/memory-space-gate.db.test.ts"
+  ],
+  "gates": [
+    "npx vitest run --root apps/api tests/modules/memory/memory-space-gate.test.ts",
+    "npx vitest run --config apps/api/vitest.db.config.ts apps/api/tests/modules/memory/memory-space-gate.db.test.ts"
+  ],
+  "maxBudgetUsd": 3
+}

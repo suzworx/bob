@@ -1,0 +1,7570 @@
+{
+  "astryxVersion": "0.6.2",
+  "astryx": {
+    "AlertDialog": {
+      "files": [
+        "src/features/account/account-delete-section.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/bob-apps/app-actions.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/memory/delete-all-memories.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/spaces-page.tsx",
+        "src/features/spaces/thread-reader.tsx"
+      ],
+      "jsx": 17,
+      "names": [
+        "AlertDialog"
+      ]
+    },
+    "AppShell": {
+      "files": [
+        "src/app/grouped-list.tsx",
+        "src/app/page-width.ts",
+        "src/app/shell.tsx",
+        "src/features/account/account-delete-section.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/app-view-image.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/chat-layout-props.ts",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/collaborate-button.tsx",
+        "src/features/chat/composer.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/group-chat-page.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/insights/insights-page.tsx",
+        "src/features/integrations/integrations-page.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/notifications/notification-settings.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/spaces-nav.tsx",
+        "src/features/spaces/spaces-page.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/usage/usage-section.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "AppShell"
+      ]
+    },
+    "AspectRatio": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Avatar": {
+      "files": [
+        "src/features/chat/chat-landing.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/thread-reader.tsx"
+      ],
+      "jsx": 6,
+      "names": [
+        "Avatar"
+      ]
+    },
+    "AvatarGroup": {
+      "files": [
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/space-header.tsx"
+      ],
+      "jsx": 4,
+      "names": [
+        "AvatarGroup",
+        "AvatarGroupOverflow"
+      ]
+    },
+    "Badge": {
+      "files": [
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/spaces-nav.tsx",
+        "src/features/spaces/thread-panel.tsx"
+      ],
+      "jsx": 6,
+      "names": [
+        "Badge"
+      ]
+    },
+    "Banner": {
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/account/account-delete-section.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/app-view-image.tsx",
+        "src/features/bob-apps/app-workspace.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-config.tsx",
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/bob-apps/marketing-review.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/bob-apps/post-creative.tsx",
+        "src/features/bob-apps/prepared-image.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/app-proposal.tsx",
+        "src/features/chat/chat-notices.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/devices/device-recent.tsx",
+        "src/features/devices/device-settings-groups.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/insights/insight-refresh.tsx",
+        "src/features/insights/insights-page.tsx",
+        "src/features/integrations/google-account-name-dialog.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/integrations/google-agenda-row.tsx",
+        "src/features/integrations/google-calendar-selection.tsx",
+        "src/features/integrations/google-consent-dialog.tsx",
+        "src/features/memory/delete-all-memories.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/notifications/notification-settings.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/event-dialog-delete-step.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routine-conversation.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/routines/routine-runs.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/routines/saved-summary.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/invite-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/spaces-page.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/tools/tool-controls.tsx",
+        "src/features/usage/usage-section.tsx"
+      ],
+      "jsx": 125,
+      "names": [
+        "Banner"
+      ]
+    },
+    "Blockquote": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "BottomSheet": {
+      "files": [
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/notifications/notifications-bell.tsx"
+      ],
+      "jsx": 2,
+      "names": [
+        "BottomSheet"
+      ]
+    },
+    "Breadcrumbs": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Button": {
+      "files": [
+        "src/app/app.tsx",
+        "src/app/page-width.ts",
+        "src/app/shell.tsx",
+        "src/features/account/account-delete-section.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/app-view-image.tsx",
+        "src/features/bob-apps/app-workspace.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-config.tsx",
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/bob-apps/marketing-install.tsx",
+        "src/features/bob-apps/marketing-review.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/bob-apps/post-creative.tsx",
+        "src/features/bob-apps/prepared-image.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/app-proposal.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/chat-notices.tsx",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/collaborate-button.tsx",
+        "src/features/chat/composer.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/group-chat-controls.tsx",
+        "src/features/chat/group-chat-invite-page.tsx",
+        "src/features/chat/group-chat-page.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-header-control.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/devices/device-recent.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/now-talking-card.tsx",
+        "src/features/devices/pair-dialog.tsx",
+        "src/features/insights/insight-refresh.tsx",
+        "src/features/insights/insights-page.tsx",
+        "src/features/integrations/google-account-name-dialog.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/integrations/google-agenda-row.tsx",
+        "src/features/integrations/google-calendar-selection.tsx",
+        "src/features/integrations/google-consent-dialog.tsx",
+        "src/features/memory/delete-all-memories.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/notifications/notification-settings.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/event-dialog-delete-step.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routine-conversation.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/routines/routine-runs.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/create-space-controls.tsx",
+        "src/features/spaces/invite-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/spaces-page.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/spaces/thread-reader.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/tools/tool-controls.tsx",
+        "src/features/usage/usage-section.tsx",
+        "src/features/voice/spoken-reply-player.tsx",
+        "src/features/voice/voice-mode-bar.tsx"
+      ],
+      "jsx": 289,
+      "names": [
+        "Button"
+      ]
+    },
+    "ButtonGroup": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Calendar": {
+      "files": [
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/calendar-grid.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/timeline/timeline-page.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "Calendar"
+      ]
+    },
+    "Card": {
+      "files": [
+        "src/features/account/sign-in.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/chat/app-proposal.tsx",
+        "src/features/metrics/metrics-cards.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/spaces/invite-page.tsx",
+        "src/features/usage/usage-section.tsx"
+      ],
+      "jsx": 13,
+      "names": [
+        "Card"
+      ]
+    },
+    "Carousel": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Center": {
+      "files": [
+        "src/app/app.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/spaces/invite-page.tsx"
+      ],
+      "jsx": 8,
+      "names": [
+        "Center"
+      ]
+    },
+    "Chat": {
+      "files": [
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/composer.tsx",
+        "src/features/chat/mentions.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/chat/tool-calls.ts",
+        "src/features/spaces/thread-reader.tsx"
+      ],
+      "jsx": 30,
+      "names": [
+        "ChatComposer",
+        "ChatComposerDrawer",
+        "ChatComposerInput",
+        "ChatLayout",
+        "ChatMessage",
+        "ChatMessageBubble",
+        "ChatMessageList",
+        "ChatMessageMetadata",
+        "ChatSendButton",
+        "ChatTokenizedText",
+        "ChatToolCalls"
+      ]
+    },
+    "CheckboxInput": {
+      "files": [
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routine-form.tsx"
+      ],
+      "jsx": 10,
+      "names": [
+        "CheckboxInput"
+      ]
+    },
+    "CheckboxList": {
+      "files": [
+        "src/features/integrations/google-consent-dialog.tsx",
+        "src/features/productivity/reminder-dialog.tsx"
+      ],
+      "jsx": 5,
+      "names": [
+        "CheckboxList",
+        "CheckboxListItem"
+      ]
+    },
+    "Citation": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "ClickableCard": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Code": {
+      "files": [
+        "src/features/chat/rich-markdown.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "Code"
+      ]
+    },
+    "CodeBlock": {
+      "files": [
+        "src/features/chat/rich-markdown.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "CodeBlock"
+      ]
+    },
+    "Collapsible": {
+      "files": [
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/chat/reasoning.tsx",
+        "src/features/devices/device-settings-groups.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/routines/routine-runs.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/routines/saved-summary.tsx",
+        "src/features/timeline/timeline-page.tsx"
+      ],
+      "jsx": 9,
+      "names": [
+        "Collapsible",
+        "CollapsibleGroup"
+      ]
+    },
+    "CommandPalette": {
+      "files": [
+        "src/features/chat/command-palette.tsx"
+      ],
+      "jsx": 2,
+      "names": [
+        "CommandPalette",
+        "CommandPaletteInput"
+      ]
+    },
+    "ComplexSelector": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "ContextMenu": {
+      "files": [
+        "src/features/chat/message-actions.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/spaces/thread-reader.tsx"
+      ],
+      "jsx": 3,
+      "names": [
+        "ContextMenu"
+      ]
+    },
+    "DateInput": {
+      "files": [
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/timeline/timeline-page.tsx"
+      ],
+      "jsx": 7,
+      "names": [
+        "DateInput"
+      ]
+    },
+    "DateRangeInput": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "DateTimeInput": {
+      "files": [
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/reminder-dialog.tsx"
+      ],
+      "jsx": 5,
+      "names": [
+        "DateTimeInput"
+      ]
+    },
+    "Dialog": {
+      "files": [
+        "src/features/admin/admin-page.tsx",
+        "src/features/bob-apps/app-view-image.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/collaborate-button.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/group-chat-controls.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/pair-dialog.tsx",
+        "src/features/integrations/google-account-name-dialog.tsx",
+        "src/features/integrations/google-agenda-row.tsx",
+        "src/features/integrations/google-calendar-selection.tsx",
+        "src/features/integrations/google-consent-dialog.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/productivity/event-dialog-delete-step.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/spaces/create-space-controls.tsx",
+        "src/features/tools/tool-controls.tsx"
+      ],
+      "jsx": 55,
+      "names": [
+        "Dialog",
+        "DialogHeader"
+      ]
+    },
+    "Divider": {
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/memory/delete-all-memories.tsx"
+      ],
+      "jsx": 2,
+      "names": [
+        "Divider"
+      ]
+    },
+    "DropdownMenu": {
+      "files": [
+        "src/features/admin/account-management.tsx",
+        "src/features/chat/composer.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-header-control.tsx",
+        "src/features/devices/use-device-conversation.ts",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/task-row-menu.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/thread-panel.tsx"
+      ],
+      "jsx": 5,
+      "names": [
+        "DropdownMenu",
+        "DropdownMenuItem"
+      ]
+    },
+    "EmptyState": {
+      "files": [
+        "src/app/app.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/insights/insights-page.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/spaces-page.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/spaces/thread-reader.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/usage/usage-section.tsx"
+      ],
+      "jsx": 31,
+      "names": [
+        "EmptyState"
+      ]
+    },
+    "Field": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "FieldStatus": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "FileInput": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "FormLayout": {
+      "files": [
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/devices/device-settings-groups.tsx",
+        "src/features/productivity/reminder-dialog.tsx"
+      ],
+      "jsx": 5,
+      "names": [
+        "FormLayout"
+      ]
+    },
+    "Grid": {
+      "files": [
+        "src/features/account/sign-in.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/metrics/lens-ai.tsx",
+        "src/features/metrics/lens-devices.tsx",
+        "src/features/metrics/lens-features.tsx",
+        "src/features/metrics/lens-reliability.tsx",
+        "src/features/metrics/lens-users.tsx",
+        "src/features/metrics/metrics-page.tsx"
+      ],
+      "jsx": 13,
+      "names": [
+        "Grid"
+      ]
+    },
+    "HStack": {
+      "files": [
+        "src/app/grouped-list.tsx",
+        "src/app/page-width.ts",
+        "src/app/shell.tsx",
+        "src/features/account/account-delete-section.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-config.tsx",
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/bob-apps/marketing-review.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/app-proposal.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/collaborate-button.tsx",
+        "src/features/chat/command-palette.tsx",
+        "src/features/chat/composer.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/group-chat-controls.tsx",
+        "src/features/chat/group-chat-page.tsx",
+        "src/features/chat/message-actions.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-header-control.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/devices/device-settings-groups.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/pair-dialog.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/memory/delete-all-memories.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/event-dialog-delete-step.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/productivity/task-row-menu.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routine-conversation.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/create-space-controls.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/spaces/thread-reader.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/usage/usage-section.tsx",
+        "src/features/voice/spoken-reply-player.tsx",
+        "src/features/voice/voice-mode-bar.tsx"
+      ],
+      "jsx": 152,
+      "names": [
+        "HStack"
+      ]
+    },
+    "Heading": {
+      "files": [
+        "src/app/grouped-list.tsx",
+        "src/app/page-width.ts",
+        "src/features/account/account-page.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/app-view-image.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-config.tsx",
+        "src/features/bob-apps/marketing-review.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/group-chat-invite-page.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/metrics/metrics-cards.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/routines/routine-conversation.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/routines/routine-runs.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/routines/saved-summary.tsx",
+        "src/features/spaces/invite-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/tools/tool-controls.tsx"
+      ],
+      "jsx": 63,
+      "names": [
+        "Heading"
+      ]
+    },
+    "HoverCard": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Icon": {
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/collaborate-button.tsx",
+        "src/features/chat/command-palette.tsx",
+        "src/features/chat/composer.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/group-chat-page.tsx",
+        "src/features/chat/message-actions.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-header-control.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/devices/device-recent.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/now-talking-card.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/spaces/thread-reader.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/voice/spoken-reply-player.tsx",
+        "src/features/voice/voice-mode-bar.tsx"
+      ],
+      "jsx": 90,
+      "names": [
+        "Icon"
+      ]
+    },
+    "IconButton": {
+      "files": [
+        "src/app/page-width.ts",
+        "src/app/shell.tsx",
+        "src/features/chat/message-actions.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/spaces/thread-reader.tsx",
+        "src/features/timeline/timeline-page.tsx"
+      ],
+      "jsx": 21,
+      "names": [
+        "IconButton"
+      ]
+    },
+    "Indicator": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "InputGroup": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "InteractiveRoleContext": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Item": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Kbd": {
+      "files": [
+        "src/app/shell.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "Kbd"
+      ]
+    },
+    "Layer": {
+      "files": [
+        "src/app/app.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "LayerProvider"
+      ]
+    },
+    "Layout": {
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/bob-apps/app-view-image.tsx",
+        "src/features/bob-apps/app-workspace.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/collaborate-button.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/group-chat-controls.tsx",
+        "src/features/chat/group-chat-invite-page.tsx",
+        "src/features/chat/group-chat-page.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/pair-dialog.tsx",
+        "src/features/insights/insights-page.tsx",
+        "src/features/integrations/google-account-name-dialog.tsx",
+        "src/features/integrations/google-agenda-row.tsx",
+        "src/features/integrations/google-calendar-selection.tsx",
+        "src/features/integrations/google-consent-dialog.tsx",
+        "src/features/integrations/integrations-page.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/event-dialog-delete-step.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/create-space-controls.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/spaces-page.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/tools/tool-controls.tsx",
+        "src/features/tools/tools-page.tsx"
+      ],
+      "jsx": 162,
+      "names": [
+        "HStack",
+        "Layout",
+        "LayoutContent",
+        "LayoutFooter",
+        "LayoutHeader",
+        "LayoutPanel",
+        "VStack"
+      ]
+    },
+    "Lightbox": {
+      "files": [
+        "src/features/bob-apps/prepared-image.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "Lightbox"
+      ]
+    },
+    "Link": {
+      "files": [
+        "src/features/account/account-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/chat/rich-markdown.tsx",
+        "src/features/spaces/invite-page.tsx",
+        "src/features/usage/usage-section.tsx"
+      ],
+      "jsx": 7,
+      "names": [
+        "Link"
+      ]
+    },
+    "List": {
+      "files": [
+        "src/app/grouped-list.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-install.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-recent.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/now-talking-card.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/integrations/google-agenda-row.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/notifications/notification-settings.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/routines/saved-summary.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/timeline/timeline-page.tsx"
+      ],
+      "jsx": 74,
+      "names": [
+        "List",
+        "ListItem"
+      ]
+    },
+    "Markdown": {
+      "files": [
+        "src/features/chat/rich-markdown.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "Markdown"
+      ]
+    },
+    "MetadataList": {
+      "files": [
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/usage/usage-section.tsx"
+      ],
+      "jsx": 23,
+      "names": [
+        "MetadataList",
+        "MetadataListItem"
+      ]
+    },
+    "MobileNav": {
+      "files": [
+        "src/app/shell.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "MobileNavToggle"
+      ]
+    },
+    "MoreMenu": {
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/bob-apps/app-actions.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/message-actions.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/productivity/task-row-menu.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/timeline/timeline-page.tsx"
+      ],
+      "jsx": 21,
+      "names": [
+        "MoreMenu"
+      ]
+    },
+    "MultiSelector": {
+      "files": [
+        "src/features/integrations/google-calendar-selection.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "MultiSelector"
+      ]
+    },
+    "NavIcon": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "NavItem": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "NavMenu": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "NumberInput": {
+      "files": [
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/productivity/reminder-dialog.tsx"
+      ],
+      "jsx": 2,
+      "names": [
+        "NumberInput"
+      ]
+    },
+    "Outline": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "OverflowList": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Overlay": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Pagination": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Popover": {
+      "files": [
+        "src/features/notifications/notifications-bell.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "Popover"
+      ]
+    },
+    "PowerSearch": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "ProgressBar": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "RadioList": {
+      "files": [
+        "src/features/integrations/google-consent-dialog.tsx",
+        "src/features/productivity/event-dialog-delete-step.tsx",
+        "src/features/productivity/event-dialog.tsx"
+      ],
+      "jsx": 15,
+      "names": [
+        "RadioList",
+        "RadioListItem"
+      ]
+    },
+    "Resizable": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "ScrollableArea": {
+      "files": [
+        "src/features/chat/rich-markdown.tsx"
+      ],
+      "jsx": 2,
+      "names": [
+        "ScrollableArea"
+      ]
+    },
+    "Section": {
+      "files": [
+        "src/app/grouped-list.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/thread-reader.tsx",
+        "src/features/timeline/timeline-page.tsx"
+      ],
+      "jsx": 19,
+      "names": [
+        "Section"
+      ]
+    },
+    "SegmentedControl": {
+      "files": [
+        "src/app/appearance-control.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/usage/usage-section.tsx"
+      ],
+      "jsx": 22,
+      "names": [
+        "SegmentedControl",
+        "SegmentedControlItem"
+      ]
+    },
+    "SelectableCard": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Selector": {
+      "files": [
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-settings-groups.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/insights/insight-refresh.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/timeline/timeline-page.tsx"
+      ],
+      "jsx": 23,
+      "names": [
+        "Selector"
+      ]
+    },
+    "SideNav": {
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/spaces/spaces-nav.tsx"
+      ],
+      "jsx": 31,
+      "names": [
+        "SideNav",
+        "SideNavHeading",
+        "SideNavItem",
+        "SideNavSection"
+      ]
+    },
+    "SizeContext": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Skeleton": {
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/devices/device-recent.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/notifications/notification-settings.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/spaces-page.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/tools/tool-controls.tsx",
+        "src/features/usage/usage-section.tsx"
+      ],
+      "jsx": 34,
+      "names": [
+        "Skeleton"
+      ]
+    },
+    "Slider": {
+      "files": [
+        "src/features/devices/device-settings-groups.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "Slider"
+      ]
+    },
+    "Spinner": {
+      "files": [
+        "src/app/app.tsx",
+        "src/app/shell.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/spaces/invite-page.tsx"
+      ],
+      "jsx": 6,
+      "names": [
+        "Spinner"
+      ]
+    },
+    "Stack": {
+      "files": [
+        "src/app/grouped-list.tsx",
+        "src/app/page-width.ts",
+        "src/app/shell.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/command-palette.tsx",
+        "src/features/devices/device-header-control.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/timeline/timeline-page.tsx"
+      ],
+      "jsx": 44,
+      "names": [
+        "Stack",
+        "StackItem"
+      ]
+    },
+    "StatusDot": {
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/devices/device-settings-groups.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/task-row-menu.tsx",
+        "src/features/voice/voice-mode-bar.tsx"
+      ],
+      "jsx": 8,
+      "names": [
+        "StatusDot"
+      ]
+    },
+    "Stepper": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Switch": {
+      "files": [
+        "src/features/notifications/notification-settings.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/tools/tool-controls.tsx"
+      ],
+      "jsx": 9,
+      "names": [
+        "Switch"
+      ]
+    },
+    "TabList": {
+      "files": [
+        "src/features/admin/admin-page.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/insights/insights-page.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/spaces/space-header.tsx"
+      ],
+      "jsx": 20,
+      "names": [
+        "Tab",
+        "TabList"
+      ]
+    },
+    "Table": {
+      "files": [
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/metrics/metrics-cards.tsx"
+      ],
+      "jsx": 4,
+      "names": [
+        "Table"
+      ]
+    },
+    "Text": {
+      "files": [
+        "src/app/grouped-list.tsx",
+        "src/app/page-width.ts",
+        "src/app/shell.tsx",
+        "src/features/account/account-delete-section.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/app-workspace.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-config.tsx",
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/bob-apps/marketing-review.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/app-proposal.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/collaborate-button.tsx",
+        "src/features/chat/command-palette.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/group-chat-controls.tsx",
+        "src/features/chat/group-chat-invite-page.tsx",
+        "src/features/chat/group-chat-page.tsx",
+        "src/features/chat/message-actions.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/chat/reasoning.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-header-control.tsx",
+        "src/features/devices/device-recent.tsx",
+        "src/features/devices/device-settings-groups.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/pair-dialog.tsx",
+        "src/features/insights/insight-refresh.tsx",
+        "src/features/insights/insights-page.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/integrations/google-agenda-row.tsx",
+        "src/features/integrations/google-calendar-selection.tsx",
+        "src/features/integrations/google-consent-dialog.tsx",
+        "src/features/integrations/integrations-page.tsx",
+        "src/features/memory/delete-all-memories.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/lens-ai.tsx",
+        "src/features/metrics/lens-devices.tsx",
+        "src/features/metrics/lens-features.tsx",
+        "src/features/metrics/lens-reliability.tsx",
+        "src/features/metrics/lens-users.tsx",
+        "src/features/metrics/metrics-cards.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/notifications/notification-settings.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/event-dialog-delete-step.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/productivity/task-row-menu.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routine-conversation.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/routines/routine-runs.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/routines/saved-summary.tsx",
+        "src/features/spaces/group-thread-content.tsx",
+        "src/features/spaces/invite-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/spaces/thread-reader.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/tools/tool-controls.tsx",
+        "src/features/usage/usage-section.tsx",
+        "src/features/voice/spoken-reply-player.tsx",
+        "src/features/voice/voice-mode-bar.tsx"
+      ],
+      "jsx": 296,
+      "names": [
+        "Text"
+      ]
+    },
+    "TextArea": {
+      "files": [
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/spaces/thread-reader.tsx"
+      ],
+      "jsx": 13,
+      "names": [
+        "TextArea"
+      ]
+    },
+    "TextInput": {
+      "files": [
+        "src/features/account/account-delete-section.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/group-chat-controls.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/pair-dialog.tsx",
+        "src/features/integrations/google-account-name-dialog.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/spaces/create-space-controls.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/tools/tool-controls.tsx"
+      ],
+      "jsx": 46,
+      "names": [
+        "TextInput"
+      ]
+    },
+    "Thumbnail": {
+      "files": [
+        "src/features/bob-apps/prepared-image.tsx",
+        "src/features/chat/composer.tsx",
+        "src/features/chat/message-view.tsx"
+      ],
+      "jsx": 3,
+      "names": [
+        "Thumbnail"
+      ]
+    },
+    "TimeInput": {
+      "files": [
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-edit-dialog.tsx",
+        "src/features/routines/routine-form.tsx"
+      ],
+      "jsx": 5,
+      "names": [
+        "TimeInput"
+      ]
+    },
+    "Timestamp": {
+      "files": [
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/device-recent.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/now-talking-card.tsx",
+        "src/features/integrations/google-agenda-row.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/calendar-grid.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/spaces/thread-reader.tsx"
+      ],
+      "jsx": 29,
+      "names": [
+        "Timestamp"
+      ]
+    },
+    "Toast": {
+      "files": [
+        "src/app/shell.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/devices/device-settings-groups.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/memory/delete-all-memories.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/spaces-page.tsx",
+        "src/features/spaces/thread-panel.tsx"
+      ],
+      "jsx": 0,
+      "names": []
+    },
+    "ToggleButton": {
+      "files": [
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/devices/device-quick-actions.tsx"
+      ],
+      "jsx": 4,
+      "names": [
+        "ToggleButton",
+        "ToggleButtonGroup"
+      ]
+    },
+    "Token": {
+      "files": [
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/composer.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/device-header-control.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/rsvp-token.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/space-header.tsx"
+      ],
+      "jsx": 15,
+      "names": [
+        "Token"
+      ]
+    },
+    "Tokenizer": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Toolbar": {
+      "files": [
+        "src/features/voice/voice-mode-bar.tsx"
+      ],
+      "jsx": 1,
+      "names": [
+        "Toolbar"
+      ]
+    },
+    "Tooltip": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "TopNav": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "TreeList": {
+      "files": [],
+      "jsx": 0,
+      "names": []
+    },
+    "Typeahead": {
+      "files": [
+        "src/features/account/account-page.tsx",
+        "src/features/chat/command-palette.tsx",
+        "src/features/chat/mentions.tsx"
+      ],
+      "jsx": 2,
+      "names": [
+        "Typeahead",
+        "TypeaheadItem"
+      ]
+    },
+    "VStack": {
+      "files": [
+        "src/app/grouped-list.tsx",
+        "src/app/shell.tsx",
+        "src/features/account/account-delete-section.tsx",
+        "src/features/account/account-page.tsx",
+        "src/features/account/reset-page.tsx",
+        "src/features/account/sign-in.tsx",
+        "src/features/admin/account-management.tsx",
+        "src/features/admin/admin-page.tsx",
+        "src/features/admin/waitlist-management.tsx",
+        "src/features/bob-apps/app-refresh.tsx",
+        "src/features/bob-apps/app-renderer.tsx",
+        "src/features/bob-apps/app-view-image.tsx",
+        "src/features/bob-apps/bob-apps-page.tsx",
+        "src/features/bob-apps/marketing-config.tsx",
+        "src/features/bob-apps/marketing-draft.tsx",
+        "src/features/bob-apps/marketing-review.tsx",
+        "src/features/bob-apps/marketing-workspace.tsx",
+        "src/features/bob-apps/prepared-image.tsx",
+        "src/features/bob-apps/record-editor.tsx",
+        "src/features/chat/app-proposal.tsx",
+        "src/features/chat/chat-landing.tsx",
+        "src/features/chat/chat-notices.tsx",
+        "src/features/chat/chat-surface.tsx",
+        "src/features/chat/collaborate-button.tsx",
+        "src/features/chat/conversation-nav.tsx",
+        "src/features/chat/group-chat-controls.tsx",
+        "src/features/chat/group-chat-invite-page.tsx",
+        "src/features/chat/group-chat-page.tsx",
+        "src/features/chat/message-view.tsx",
+        "src/features/devices/conversation-picker.tsx",
+        "src/features/devices/device-quick-actions.tsx",
+        "src/features/devices/device-recent.tsx",
+        "src/features/devices/device-settings-groups.tsx",
+        "src/features/devices/devices-page.tsx",
+        "src/features/devices/pair-dialog.tsx",
+        "src/features/insights/insight-refresh.tsx",
+        "src/features/insights/insights-page.tsx",
+        "src/features/integrations/google-account-name-dialog.tsx",
+        "src/features/integrations/google-accounts-section.tsx",
+        "src/features/integrations/google-agenda-row.tsx",
+        "src/features/integrations/google-calendar-selection.tsx",
+        "src/features/integrations/google-consent-dialog.tsx",
+        "src/features/integrations/integrations-page.tsx",
+        "src/features/memory/delete-all-memories.tsx",
+        "src/features/memory/memory-page.tsx",
+        "src/features/metrics/lens-ai.tsx",
+        "src/features/metrics/lens-devices.tsx",
+        "src/features/metrics/lens-features.tsx",
+        "src/features/metrics/lens-reliability.tsx",
+        "src/features/metrics/lens-users.tsx",
+        "src/features/metrics/metrics-cards.tsx",
+        "src/features/metrics/metrics-page.tsx",
+        "src/features/notifications/notification-settings.tsx",
+        "src/features/notifications/notifications-bell.tsx",
+        "src/features/productivity/agenda-panel.tsx",
+        "src/features/productivity/calendar-page.tsx",
+        "src/features/productivity/event-dialog-delete-step.tsx",
+        "src/features/productivity/event-dialog.tsx",
+        "src/features/productivity/event-people.tsx",
+        "src/features/productivity/notes-panel.tsx",
+        "src/features/productivity/reminder-dialog.tsx",
+        "src/features/productivity/task-checklist.tsx",
+        "src/features/productivity/tasks-panel.tsx",
+        "src/features/routines/routine-conversation.tsx",
+        "src/features/routines/routine-form.tsx",
+        "src/features/routines/routine-runs.tsx",
+        "src/features/routines/routines-page.tsx",
+        "src/features/routines/saved-summary.tsx",
+        "src/features/spaces/all-spaces-page.tsx",
+        "src/features/spaces/create-space-controls.tsx",
+        "src/features/spaces/invite-page.tsx",
+        "src/features/spaces/members-panel.tsx",
+        "src/features/spaces/space-header.tsx",
+        "src/features/spaces/spaces-page.tsx",
+        "src/features/spaces/thread-panel.tsx",
+        "src/features/spaces/thread-reader.tsx",
+        "src/features/timeline/timeline-page.tsx",
+        "src/features/tools/tool-controls.tsx",
+        "src/features/tools/tools-page.tsx",
+        "src/features/usage/usage-section.tsx"
+      ],
+      "jsx": 249,
+      "names": [
+        "VStack"
+      ]
+    },
+    "VisuallyHidden": {
+      "files": [
+        "src/app/page-width.ts",
+        "src/features/chat/message-view.tsx",
+        "src/features/metrics/metrics-page.tsx"
+      ],
+      "jsx": 2,
+      "names": [
+        "VisuallyHidden"
+      ]
+    }
+  },
+  "bob": [
+    {
+      "name": "CentredSpinner",
+      "file": "src/app/app.tsx",
+      "line": 27,
+      "lines": 7,
+      "exported": false,
+      "astryx": [
+        "Center",
+        "Spinner"
+      ],
+      "local": [],
+      "renderedBy": [
+        "SessionGate (src/app/app.tsx)"
+      ]
+    },
+    {
+      "name": "SessionGate",
+      "file": "src/app/app.tsx",
+      "line": 67,
+      "lines": 32,
+      "exported": false,
+      "astryx": [
+        "Button"
+      ],
+      "local": [
+        "CentredSpinner",
+        "CommandPalette",
+        "InvitePage",
+        "ResetPage",
+        "Shell",
+        "SignIn",
+        "SpacesProvider"
+      ],
+      "renderedBy": [
+        "App (src/app/app.tsx)"
+      ]
+    },
+    {
+      "name": "App",
+      "file": "src/app/app.tsx",
+      "line": 100,
+      "lines": 23,
+      "exported": true,
+      "astryx": [
+        "Layer",
+        "theme"
+      ],
+      "local": [
+        "AppErrorBoundary",
+        "SessionGate"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "AppearanceControl",
+      "file": "src/app/appearance-control.tsx",
+      "line": 10,
+      "lines": 19,
+      "exported": true,
+      "astryx": [
+        "SegmentedControl"
+      ],
+      "local": [],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "BrandMark",
+      "file": "src/app/brand-mark.tsx",
+      "line": 6,
+      "lines": 10,
+      "exported": true,
+      "astryx": [],
+      "local": [],
+      "renderedBy": [
+        "src/app/shell.tsx (as value)",
+        "src/features/chat/message-view.tsx (as value)"
+      ]
+    },
+    {
+      "name": "GroupedList",
+      "file": "src/app/grouped-list.tsx",
+      "line": 15,
+      "lines": 40,
+      "exported": true,
+      "astryx": [
+        "HStack",
+        "Heading",
+        "List",
+        "Section",
+        "Stack",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AppCatalog (src/features/bob-apps/bob-apps-page.tsx)",
+        "CalendarPage (src/features/productivity/calendar-page.tsx)",
+        "MemoryLists (src/features/memory/memory-page.tsx)",
+        "RoutineIndex (src/features/routines/routines-page.tsx)",
+        "RunningTimers (src/features/productivity/calendar-page.tsx)",
+        "SettingsSection (src/features/account/account-page.tsx)",
+        "TodayLayout (src/features/productivity/calendar-page.tsx)",
+        "YourApps (src/features/bob-apps/bob-apps-page.tsx)",
+        "src/features/memory/memory-page.tsx (as value)"
+      ]
+    },
+    {
+      "name": "AccountFooter",
+      "file": "src/app/shell.tsx",
+      "line": 224,
+      "lines": 37,
+      "exported": false,
+      "astryx": [
+        "MoreMenu",
+        "SideNav"
+      ],
+      "local": [],
+      "renderedBy": [
+        "Shell (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "DevicesNavItem",
+      "file": "src/app/shell.tsx",
+      "line": 263,
+      "lines": 15,
+      "exported": false,
+      "astryx": [
+        "SideNav",
+        "StatusDot"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RailNav (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "RailNav",
+      "file": "src/app/shell.tsx",
+      "line": 281,
+      "lines": 62,
+      "exported": false,
+      "astryx": [
+        "Divider",
+        "SideNav"
+      ],
+      "local": [
+        "DevicesNavItem",
+        "SearchShortcut"
+      ],
+      "renderedBy": [
+        "Shell (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "SearchShortcut",
+      "file": "src/app/shell.tsx",
+      "line": 346,
+      "lines": 4,
+      "exported": false,
+      "astryx": [
+        "Kbd"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RailNav (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "RailConversations",
+      "file": "src/app/shell.tsx",
+      "line": 353,
+      "lines": 4,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "ConversationNav"
+      ],
+      "renderedBy": [
+        "Shell (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "PhoneTopBar",
+      "file": "src/app/shell.tsx",
+      "line": 362,
+      "lines": 26,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Icon",
+        "IconButton",
+        "MobileNav",
+        "Stack",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "Shell (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "OpeningConversation",
+      "file": "src/app/shell.tsx",
+      "line": 390,
+      "lines": 17,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Layout",
+        "Skeleton",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "Shell (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "Shell",
+      "file": "src/app/shell.tsx",
+      "line": 408,
+      "lines": 488,
+      "exported": true,
+      "astryx": [
+        "AppShell",
+        "Banner",
+        "Button",
+        "Icon",
+        "Layout",
+        "SideNav",
+        "Spinner",
+        "Stack",
+        "VStack"
+      ],
+      "local": [
+        "AccountFooter",
+        "ChatSurface",
+        "CreateSpaceDialog",
+        "NotificationsBell",
+        "OpeningConversation",
+        "PhoneTopBar",
+        "RailConversations",
+        "RailNav",
+        "SpacesNav"
+      ],
+      "renderedBy": [
+        "SessionGate (src/app/app.tsx)"
+      ]
+    },
+    {
+      "name": "DeleteAccountSection",
+      "file": "src/features/account/account-delete-section.tsx",
+      "line": 22,
+      "lines": 109,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "Banner",
+        "Button",
+        "HStack",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "InfoRow",
+      "file": "src/features/account/account-page.tsx",
+      "line": 98,
+      "lines": 48,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "List",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ExpandableRow (src/features/account/account-page.tsx)",
+        "ExportSection (src/features/account/account-page.tsx)",
+        "SettingsPage (src/features/account/account-page.tsx)",
+        "SignInSecuritySection (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "ExpandableRow",
+      "file": "src/features/account/account-page.tsx",
+      "line": 149,
+      "lines": 67,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "List",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "InfoRow"
+      ],
+      "renderedBy": [
+        "ProfileSection (src/features/account/account-page.tsx)",
+        "TimeZoneSection (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "ProfileSection",
+      "file": "src/features/account/account-page.tsx",
+      "line": 217,
+      "lines": 75,
+      "exported": false,
+      "astryx": [
+        "Text",
+        "TextInput"
+      ],
+      "local": [
+        "ExpandableRow",
+        "RetryBanner"
+      ],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "TimeZoneSection",
+      "file": "src/features/account/account-page.tsx",
+      "line": 293,
+      "lines": 72,
+      "exported": false,
+      "astryx": [
+        "Text",
+        "Typeahead"
+      ],
+      "local": [
+        "ExpandableRow",
+        "RetryBanner"
+      ],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "SignInSecuritySection",
+      "file": "src/features/account/account-page.tsx",
+      "line": 366,
+      "lines": 90,
+      "exported": false,
+      "astryx": [
+        "AlertDialog",
+        "Button"
+      ],
+      "local": [
+        "InfoRow",
+        "RetryBanner"
+      ],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "ExportSection",
+      "file": "src/features/account/account-page.tsx",
+      "line": 477,
+      "lines": 30,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button"
+      ],
+      "local": [
+        "InfoRow",
+        "RetryBanner"
+      ],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "SettingsSection",
+      "file": "src/features/account/account-page.tsx",
+      "line": 535,
+      "lines": 50,
+      "exported": false,
+      "astryx": [
+        "Heading",
+        "Section",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "GroupedList"
+      ],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "RetryBanner",
+      "file": "src/features/account/account-page.tsx",
+      "line": 587,
+      "lines": 3,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ExportSection (src/features/account/account-page.tsx)",
+        "ProfileSection (src/features/account/account-page.tsx)",
+        "SignInSecuritySection (src/features/account/account-page.tsx)",
+        "TimeZoneSection (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "SettingsPage",
+      "file": "src/features/account/account-page.tsx",
+      "line": 602,
+      "lines": 73,
+      "exported": true,
+      "astryx": [
+        "Layout",
+        "Link",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "AppearanceControl",
+        "DeleteAccountSection",
+        "DeleteAllMemoriesSection",
+        "ExportSection",
+        "InfoRow",
+        "NotificationSettingsSection",
+        "PageTitle",
+        "ProfileSection",
+        "SettingsSection",
+        "SignInSecuritySection",
+        "TimeZoneSection",
+        "UsageSection"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "ResetCard",
+      "file": "src/features/account/reset-page.tsx",
+      "line": 40,
+      "lines": 17,
+      "exported": false,
+      "astryx": [
+        "Center",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ResetPage (src/features/account/reset-page.tsx)"
+      ]
+    },
+    {
+      "name": "ResetPage",
+      "file": "src/features/account/reset-page.tsx",
+      "line": 81,
+      "lines": 139,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Center",
+        "EmptyState",
+        "Heading",
+        "Spinner",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [
+        "ResetCard"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "BobAuthShell",
+      "file": "src/features/account/sign-in.tsx",
+      "line": 103,
+      "lines": 30,
+      "exported": false,
+      "astryx": [
+        "Card",
+        "Center",
+        "Grid",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AuthShell (src/features/account/sign-in.tsx)"
+      ]
+    },
+    {
+      "name": "AuthShell",
+      "file": "src/features/account/sign-in.tsx",
+      "line": 134,
+      "lines": 3,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "BobAuthShell"
+      ],
+      "renderedBy": [
+        "ReadySignIn (src/features/account/sign-in.tsx)",
+        "SignIn (src/features/account/sign-in.tsx)"
+      ]
+    },
+    {
+      "name": "DevSignIn",
+      "file": "src/features/account/sign-in.tsx",
+      "line": 155,
+      "lines": 16,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "SignIn (src/features/account/sign-in.tsx)"
+      ]
+    },
+    {
+      "name": "SignInActions",
+      "file": "src/features/account/sign-in.tsx",
+      "line": 183,
+      "lines": 3,
+      "exported": false,
+      "astryx": [
+        "HStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ReadySignIn (src/features/account/sign-in.tsx)"
+      ]
+    },
+    {
+      "name": "ReadySignIn",
+      "file": "src/features/account/sign-in.tsx",
+      "line": 190,
+      "lines": 246,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Link",
+        "Text",
+        "TextInput"
+      ],
+      "local": [
+        "AuthShell",
+        "SignInActions"
+      ],
+      "renderedBy": [
+        "SignIn (src/features/account/sign-in.tsx)"
+      ]
+    },
+    {
+      "name": "SignIn",
+      "file": "src/features/account/sign-in.tsx",
+      "line": 444,
+      "lines": 25,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Center",
+        "Spinner"
+      ],
+      "local": [
+        "AuthShell",
+        "DevSignIn",
+        "ReadySignIn"
+      ],
+      "renderedBy": [
+        "GroupChatInvitePage (src/features/chat/group-chat-invite-page.tsx)",
+        "InvitePage (src/features/spaces/invite-page.tsx)",
+        "SessionGate (src/app/app.tsx)",
+        "src/features/spaces/invite-page.tsx (as value)"
+      ]
+    },
+    {
+      "name": "AccountManagement",
+      "file": "src/features/admin/account-management.tsx",
+      "line": 67,
+      "lines": 170,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Heading",
+        "MetadataList",
+        "MoreMenu",
+        "Skeleton",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [
+        "AccountConfirmation",
+        "AccountTable"
+      ],
+      "renderedBy": [
+        "AdminPage (src/features/admin/admin-page.tsx)"
+      ]
+    },
+    {
+      "name": "AccountTable",
+      "file": "src/features/admin/account-management.tsx",
+      "line": 238,
+      "lines": 43,
+      "exported": false,
+      "astryx": [
+        "Table",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AccountManagement (src/features/admin/account-management.tsx)"
+      ]
+    },
+    {
+      "name": "AccountConfirmation",
+      "file": "src/features/admin/account-management.tsx",
+      "line": 282,
+      "lines": 31,
+      "exported": false,
+      "astryx": [
+        "AlertDialog"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AccountManagement (src/features/admin/account-management.tsx)"
+      ]
+    },
+    {
+      "name": "AddPersonDialog",
+      "file": "src/features/admin/admin-page.tsx",
+      "line": 52,
+      "lines": 102,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AdminPage (src/features/admin/admin-page.tsx)"
+      ]
+    },
+    {
+      "name": "AdminPage",
+      "file": "src/features/admin/admin-page.tsx",
+      "line": 160,
+      "lines": 78,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "HStack",
+        "Layout",
+        "Skeleton",
+        "Stack",
+        "TabList",
+        "VStack"
+      ],
+      "local": [
+        "AccountManagement",
+        "AddPersonDialog",
+        "MetricsPage",
+        "PageTitle",
+        "WaitlistManagement"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "WaitlistTable",
+      "file": "src/features/admin/waitlist-management.tsx",
+      "line": 28,
+      "lines": 53,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "Table",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "WaitlistManagement (src/features/admin/waitlist-management.tsx)"
+      ]
+    },
+    {
+      "name": "WaitlistManagement",
+      "file": "src/features/admin/waitlist-management.tsx",
+      "line": 82,
+      "lines": 106,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Heading",
+        "MetadataList",
+        "Selector",
+        "Skeleton",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [
+        "WaitlistTable"
+      ],
+      "renderedBy": [
+        "AdminPage (src/features/admin/admin-page.tsx)"
+      ]
+    },
+    {
+      "name": "AppActions",
+      "file": "src/features/bob-apps/app-actions.tsx",
+      "line": 23,
+      "lines": 19,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "MoreMenu"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AppDetails (src/features/bob-apps/bob-apps-page.tsx)",
+        "MarketingContent (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "RefreshForm",
+      "file": "src/features/bob-apps/app-refresh.tsx",
+      "line": 25,
+      "lines": 18,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "CheckboxInput",
+        "HStack",
+        "Selector",
+        "Text",
+        "TextInput",
+        "TimeInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AppRefresh (src/features/bob-apps/app-refresh.tsx)"
+      ]
+    },
+    {
+      "name": "AppRefresh",
+      "file": "src/features/bob-apps/app-refresh.tsx",
+      "line": 43,
+      "lines": 42,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Heading",
+        "List",
+        "Text",
+        "Timestamp",
+        "VStack"
+      ],
+      "local": [
+        "RefreshForm"
+      ],
+      "renderedBy": [
+        "AppDetails (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "Metrics",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 28,
+      "lines": 6,
+      "exported": false,
+      "astryx": [
+        "Card",
+        "Grid",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AppRenderer (src/features/bob-apps/app-renderer.tsx)",
+        "Slides (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "Slides",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 34,
+      "lines": 9,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "Card",
+        "HStack",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "Metrics"
+      ],
+      "renderedBy": [
+        "AppRenderer (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "RecordTable",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 43,
+      "lines": 5,
+      "exported": false,
+      "astryx": [
+        "Table",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RecordViewPanel (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "RemoveRecord",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 60,
+      "lines": 11,
+      "exported": false,
+      "astryx": [
+        "AlertDialog"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RecordViewPanel (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "RecordList",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 71,
+      "lines": 6,
+      "exported": false,
+      "astryx": [
+        "CheckboxInput",
+        "List"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RecordViewPanel (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "ViewHeader",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 77,
+      "lines": 5,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Heading",
+        "Stack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RecordViewPanel (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "RowMenu",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 82,
+      "lines": 4,
+      "exported": false,
+      "astryx": [
+        "MoreMenu"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RecordViewPanel (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "EditRecord",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 86,
+      "lines": 4,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "RecordEditor"
+      ],
+      "renderedBy": [
+        "RecordViewPanel (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "RecordViewPanel",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 96,
+      "lines": 25,
+      "exported": false,
+      "astryx": [
+        "EmptyState",
+        "VStack"
+      ],
+      "local": [
+        "EditRecord",
+        "RecordList",
+        "RecordTable",
+        "RemoveRecord",
+        "RowMenu",
+        "ViewHeader"
+      ],
+      "renderedBy": [
+        "AppRenderer (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "AppRenderer",
+      "file": "src/features/bob-apps/app-renderer.tsx",
+      "line": 121,
+      "lines": 19,
+      "exported": true,
+      "astryx": [
+        "Heading",
+        "TabList",
+        "VStack"
+      ],
+      "local": [
+        "Metrics",
+        "RecordViewPanel",
+        "Slides"
+      ],
+      "renderedBy": [
+        "AppDetails (src/features/bob-apps/bob-apps-page.tsx)",
+        "ImagePreview (src/features/bob-apps/app-view-image.tsx)"
+      ]
+    },
+    {
+      "name": "ImagePreview",
+      "file": "src/features/bob-apps/app-view-image.tsx",
+      "line": 33,
+      "lines": 65,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "Heading",
+        "Layout",
+        "VStack"
+      ],
+      "local": [
+        "AppRenderer",
+        "PreparedImage"
+      ],
+      "renderedBy": [
+        "AppViewImage (src/features/bob-apps/app-view-image.tsx)"
+      ]
+    },
+    {
+      "name": "AppViewImage",
+      "file": "src/features/bob-apps/app-view-image.tsx",
+      "line": 100,
+      "lines": 6,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "ImagePreview"
+      ],
+      "renderedBy": [
+        "AppDetails (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "PrivateAppConversation",
+      "file": "src/features/bob-apps/app-workspace.tsx",
+      "line": 20,
+      "lines": 9,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Text"
+      ],
+      "local": [
+        "ChatSurface"
+      ],
+      "renderedBy": [
+        "AppWorkspace (src/features/bob-apps/app-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "SharedAppConversation",
+      "file": "src/features/bob-apps/app-workspace.tsx",
+      "line": 29,
+      "lines": 7,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Text"
+      ],
+      "local": [
+        "ThreadReader"
+      ],
+      "renderedBy": [
+        "AppWorkspace (src/features/bob-apps/app-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "AppWorkspace",
+      "file": "src/features/bob-apps/app-workspace.tsx",
+      "line": 37,
+      "lines": 8,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Layout"
+      ],
+      "local": [
+        "PrivateAppConversation",
+        "SharedAppConversation"
+      ],
+      "renderedBy": [
+        "AppDetails (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "DefinitionSummary",
+      "file": "src/features/bob-apps/bob-apps-page.tsx",
+      "line": 45,
+      "lines": 8,
+      "exported": false,
+      "astryx": [
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AppDetails (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "AppDetails",
+      "file": "src/features/bob-apps/bob-apps-page.tsx",
+      "line": 57,
+      "lines": 23,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "AppActions",
+        "AppRefresh",
+        "AppRenderer",
+        "AppViewImage",
+        "AppWorkspace",
+        "DefinitionSummary"
+      ],
+      "renderedBy": [
+        "MarketingContent (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "MarketingContent",
+      "file": "src/features/bob-apps/bob-apps-page.tsx",
+      "line": 80,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Stack",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "AppActions",
+        "AppDetails",
+        "MarketingWorkspace"
+      ],
+      "renderedBy": [
+        "BobAppsPage (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "NoAppsShown",
+      "file": "src/features/bob-apps/bob-apps-page.tsx",
+      "line": 102,
+      "lines": 5,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "EmptyState"
+      ],
+      "local": [],
+      "renderedBy": [
+        "YourApps (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "YourApps",
+      "file": "src/features/bob-apps/bob-apps-page.tsx",
+      "line": 107,
+      "lines": 12,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "List",
+        "SegmentedControl",
+        "VStack"
+      ],
+      "local": [
+        "GroupedList",
+        "NoAppsShown"
+      ],
+      "renderedBy": [
+        "BobAppsPage (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "AppCatalog",
+      "file": "src/features/bob-apps/bob-apps-page.tsx",
+      "line": 119,
+      "lines": 9,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "List",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "GroupedList",
+        "MarketingInstall"
+      ],
+      "renderedBy": [
+        "BobAppsPage (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "AppsHeader",
+      "file": "src/features/bob-apps/bob-apps-page.tsx",
+      "line": 139,
+      "lines": 16,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Layout",
+        "MoreMenu",
+        "Stack",
+        "VStack"
+      ],
+      "local": [
+        "PageSubtitle",
+        "PageTitle"
+      ],
+      "renderedBy": [
+        "BobAppsPage (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "AppPageContent",
+      "file": "src/features/bob-apps/bob-apps-page.tsx",
+      "line": 155,
+      "lines": 3,
+      "exported": false,
+      "astryx": [
+        "Layout",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "BobAppsPage (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "BobAppsPage",
+      "file": "src/features/bob-apps/bob-apps-page.tsx",
+      "line": 158,
+      "lines": 23,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Layout",
+        "Text"
+      ],
+      "local": [
+        "AppCatalog",
+        "AppPageContent",
+        "AppsHeader",
+        "MarketingContent",
+        "YourApps"
+      ],
+      "renderedBy": [
+        "SpacesPage (src/features/spaces/spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "MarketingConfig",
+      "file": "src/features/bob-apps/marketing-config.tsx",
+      "line": 13,
+      "lines": 53,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "WorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "DraftEditor",
+      "file": "src/features/bob-apps/marketing-draft.tsx",
+      "line": 24,
+      "lines": 18,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "FormLayout",
+        "HStack",
+        "Text",
+        "TextArea",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MarketingDraft (src/features/bob-apps/marketing-draft.tsx)"
+      ]
+    },
+    {
+      "name": "CopyPost",
+      "file": "src/features/bob-apps/marketing-draft.tsx",
+      "line": 43,
+      "lines": 6,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MarketingDraft (src/features/bob-apps/marketing-draft.tsx)"
+      ]
+    },
+    {
+      "name": "MarketingDraft",
+      "file": "src/features/bob-apps/marketing-draft.tsx",
+      "line": 50,
+      "lines": 19,
+      "exported": true,
+      "astryx": [
+        "Badge",
+        "Button",
+        "Card",
+        "HStack",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "CopyPost",
+        "DraftEditor",
+        "PostCreative"
+      ],
+      "renderedBy": [
+        "WeekBoard (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "MarketingInstall",
+      "file": "src/features/bob-apps/marketing-install.tsx",
+      "line": 7,
+      "lines": 16,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "List"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AppCatalog (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "MarketingReviewPanel",
+      "file": "src/features/bob-apps/marketing-review.tsx",
+      "line": 11,
+      "lines": 21,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "Story (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "Story",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 69,
+      "lines": 9,
+      "exported": false,
+      "astryx": [
+        "Collapsible",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "MarketingReviewPanel"
+      ],
+      "renderedBy": [
+        "CampaignBoard (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "WeekHeading",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 79,
+      "lines": 12,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Heading",
+        "Selector",
+        "Text",
+        "ToggleButton",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "WeekBoard (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "WeekBoard",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 92,
+      "lines": 14,
+      "exported": false,
+      "astryx": [
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "MarketingDraft",
+        "WeekHeading"
+      ],
+      "renderedBy": [
+        "CampaignBoard (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "FirstPost",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 107,
+      "lines": 6,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Heading",
+        "Text",
+        "Token",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "WorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "LifecycleNotice",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 143,
+      "lines": 7,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "WorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "BrandAndSkills",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 151,
+      "lines": 3,
+      "exported": false,
+      "astryx": [
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "WorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "MarketingChat",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 155,
+      "lines": 9,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "ChatSurface"
+      ],
+      "renderedBy": [
+        "PersonalWorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "MarketingWorkspace",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 217,
+      "lines": 8,
+      "exported": true,
+      "astryx": [
+        "Text"
+      ],
+      "local": [
+        "PersonalWorkspaceSession",
+        "SharedWorkspaceSession"
+      ],
+      "renderedBy": [
+        "MarketingContent (src/features/bob-apps/bob-apps-page.tsx)"
+      ]
+    },
+    {
+      "name": "PersonalWorkspaceSession",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 227,
+      "lines": 4,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "MarketingChat",
+        "WorkspaceSession"
+      ],
+      "renderedBy": [
+        "MarketingWorkspace (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "SharedWorkspaceSession",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 231,
+      "lines": 8,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Text"
+      ],
+      "local": [
+        "ThreadReader",
+        "WorkspaceSession"
+      ],
+      "renderedBy": [
+        "MarketingWorkspace (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "ReadNotice",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 240,
+      "lines": 4,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "WorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "CampaignBoard",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 245,
+      "lines": 8,
+      "exported": false,
+      "astryx": [
+        "VStack"
+      ],
+      "local": [
+        "Story",
+        "WeekBoard"
+      ],
+      "renderedBy": [
+        "WorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "WorkspaceBar",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 263,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "MoreMenu",
+        "Selector",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "WorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "WorkspaceSession",
+      "file": "src/features/bob-apps/marketing-workspace.tsx",
+      "line": 277,
+      "lines": 60,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Layout",
+        "VStack"
+      ],
+      "local": [
+        "BoardSlot",
+        "BrandAndSkills",
+        "CampaignBoard",
+        "FirstPost",
+        "LifecycleNotice",
+        "MarketingConfig",
+        "ReadNotice",
+        "WorkspaceBar"
+      ],
+      "renderedBy": [
+        "PersonalWorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)",
+        "SharedWorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)"
+      ]
+    },
+    {
+      "name": "Creative",
+      "file": "src/features/bob-apps/post-creative.tsx",
+      "line": 10,
+      "lines": 33,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button"
+      ],
+      "local": [
+        "PreparedImage"
+      ],
+      "renderedBy": [
+        "PostCreative (src/features/bob-apps/post-creative.tsx)"
+      ]
+    },
+    {
+      "name": "PostCreative",
+      "file": "src/features/bob-apps/post-creative.tsx",
+      "line": 45,
+      "lines": 3,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "Creative"
+      ],
+      "renderedBy": [
+        "MarketingDraft (src/features/bob-apps/marketing-draft.tsx)"
+      ]
+    },
+    {
+      "name": "PreparedImage",
+      "file": "src/features/bob-apps/prepared-image.tsx",
+      "line": 12,
+      "lines": 31,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Lightbox",
+        "Thumbnail",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "Creative (src/features/bob-apps/post-creative.tsx)",
+        "ImagePreview (src/features/bob-apps/app-view-image.tsx)"
+      ]
+    },
+    {
+      "name": "FormFrame",
+      "file": "src/features/bob-apps/record-editor.tsx",
+      "line": 49,
+      "lines": 9,
+      "exported": false,
+      "astryx": [
+        "BottomSheet",
+        "Dialog",
+        "Heading",
+        "Layout"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RecordEditor (src/features/bob-apps/record-editor.tsx)"
+      ]
+    },
+    {
+      "name": "DeviceLocale",
+      "file": "src/features/bob-apps/record-editor.tsx",
+      "line": 62,
+      "lines": 3,
+      "exported": false,
+      "astryx": [
+        "i18n"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RecordEditor (src/features/bob-apps/record-editor.tsx)"
+      ]
+    },
+    {
+      "name": "Fields",
+      "file": "src/features/bob-apps/record-editor.tsx",
+      "line": 66,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "CheckboxInput",
+        "FormLayout",
+        "NumberInput",
+        "TextInput"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RecordEditor (src/features/bob-apps/record-editor.tsx)"
+      ]
+    },
+    {
+      "name": "RecordEditor",
+      "file": "src/features/bob-apps/record-editor.tsx",
+      "line": 81,
+      "lines": 66,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "Banner",
+        "Button",
+        "HStack",
+        "Layout",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "DeviceLocale",
+        "Fields",
+        "FormFrame"
+      ],
+      "renderedBy": [
+        "EditRecord (src/features/bob-apps/app-renderer.tsx)"
+      ]
+    },
+    {
+      "name": "AppProposal",
+      "file": "src/features/chat/app-proposal.tsx",
+      "line": 19,
+      "lines": 59,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "ProposalContent"
+      ],
+      "renderedBy": [
+        "AssistantMessageView (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "ProposalContent",
+      "file": "src/features/chat/app-proposal.tsx",
+      "line": 79,
+      "lines": 19,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Card",
+        "HStack",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AppProposal (src/features/chat/app-proposal.tsx)"
+      ]
+    },
+    {
+      "name": "TodayGlance",
+      "file": "src/features/chat/chat-landing.tsx",
+      "line": 54,
+      "lines": 40,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon",
+        "List",
+        "Section",
+        "Skeleton",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ChatLanding (src/features/chat/chat-landing.tsx)"
+      ]
+    },
+    {
+      "name": "ChatLanding",
+      "file": "src/features/chat/chat-landing.tsx",
+      "line": 97,
+      "lines": 79,
+      "exported": true,
+      "astryx": [
+        "Avatar",
+        "Button",
+        "HStack",
+        "Heading",
+        "Layout",
+        "Text",
+        "Token",
+        "VStack"
+      ],
+      "local": [
+        "TodayGlance"
+      ],
+      "renderedBy": [
+        "ChatSurface (src/features/chat/chat-surface.tsx)"
+      ]
+    },
+    {
+      "name": "NoticeRegion",
+      "file": "src/features/chat/chat-notices.tsx",
+      "line": 22,
+      "lines": 27,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ChatSurface (src/features/chat/chat-surface.tsx)"
+      ]
+    },
+    {
+      "name": "ChatSurface",
+      "file": "src/features/chat/chat-surface.tsx",
+      "line": 138,
+      "lines": 620,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "Button",
+        "Chat",
+        "HStack",
+        "Heading",
+        "Icon",
+        "Layout",
+        "Stack",
+        "VStack"
+      ],
+      "local": [
+        "ChatLanding",
+        "CollaborateButton",
+        "CollaborateDialog",
+        "Composer",
+        "DeviceHeaderControl",
+        "DeviceNameProvider",
+        "MessageView",
+        "NoticeRegion",
+        "PageTitle",
+        "SpokenReplyPlayer",
+        "ThinkingMessage",
+        "VoiceModeBar"
+      ],
+      "renderedBy": [
+        "MarketingChat (src/features/bob-apps/marketing-workspace.tsx)",
+        "PrivateAppConversation (src/features/bob-apps/app-workspace.tsx)",
+        "RoutineConversation (src/features/routines/routine-conversation.tsx)",
+        "Shell (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "CollaborateDialog",
+      "file": "src/features/chat/collaborate-button.tsx",
+      "line": 16,
+      "lines": 48,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ChatSurface (src/features/chat/chat-surface.tsx)",
+        "CollaborateButton (src/features/chat/collaborate-button.tsx)"
+      ]
+    },
+    {
+      "name": "CollaborateButton",
+      "file": "src/features/chat/collaborate-button.tsx",
+      "line": 65,
+      "lines": 8,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "Icon"
+      ],
+      "local": [
+        "CollaborateDialog"
+      ],
+      "renderedBy": [
+        "ChatSurface (src/features/chat/chat-surface.tsx)"
+      ]
+    },
+    {
+      "name": "PaletteDialog",
+      "file": "src/features/chat/command-palette.tsx",
+      "line": 219,
+      "lines": 10,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "PaletteList"
+      ],
+      "renderedBy": [
+        "CommandPalette (src/features/chat/command-palette.tsx)"
+      ]
+    },
+    {
+      "name": "PaletteList",
+      "file": "src/features/chat/command-palette.tsx",
+      "line": 230,
+      "lines": 91,
+      "exported": false,
+      "astryx": [
+        "CommandPalette",
+        "HStack",
+        "Icon",
+        "Stack",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "PaletteDialog (src/features/chat/command-palette.tsx)"
+      ]
+    },
+    {
+      "name": "CommandPalette",
+      "file": "src/features/chat/command-palette.tsx",
+      "line": 329,
+      "lines": 22,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "PaletteDialog"
+      ],
+      "renderedBy": [
+        "SessionGate (src/app/app.tsx)"
+      ]
+    },
+    {
+      "name": "SendControl",
+      "file": "src/features/chat/composer.tsx",
+      "line": 99,
+      "lines": 20,
+      "exported": false,
+      "astryx": [
+        "Chat"
+      ],
+      "local": [],
+      "renderedBy": [
+        "Composer (src/features/chat/composer.tsx)"
+      ]
+    },
+    {
+      "name": "Composer",
+      "file": "src/features/chat/composer.tsx",
+      "line": 171,
+      "lines": 429,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "Chat",
+        "DropdownMenu",
+        "HStack",
+        "Icon",
+        "Thumbnail",
+        "Token"
+      ],
+      "local": [
+        "SendControl"
+      ],
+      "renderedBy": [
+        "ChatSurface (src/features/chat/chat-surface.tsx)",
+        "ThreadReader (src/features/spaces/thread-reader.tsx)"
+      ]
+    },
+    {
+      "name": "FilledDot",
+      "file": "src/features/chat/conversation-nav.tsx",
+      "line": 54,
+      "lines": 3,
+      "exported": false,
+      "astryx": [],
+      "local": [],
+      "renderedBy": []
+    },
+    {
+      "name": "RowMenu",
+      "file": "src/features/chat/conversation-nav.tsx",
+      "line": 66,
+      "lines": 19,
+      "exported": false,
+      "astryx": [
+        "MoreMenu"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ConversationNav (src/features/chat/conversation-nav.tsx)"
+      ]
+    },
+    {
+      "name": "RenameDialog",
+      "file": "src/features/chat/conversation-nav.tsx",
+      "line": 88,
+      "lines": 82,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "TextInput"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ConversationNav (src/features/chat/conversation-nav.tsx)"
+      ]
+    },
+    {
+      "name": "ConversationNav",
+      "file": "src/features/chat/conversation-nav.tsx",
+      "line": 201,
+      "lines": 294,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "Button",
+        "Icon",
+        "SideNav",
+        "Skeleton",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "RenameDialog",
+        "RowMenu"
+      ],
+      "renderedBy": [
+        "RailConversations (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "GroupChatControls",
+      "file": "src/features/chat/group-chat-controls.tsx",
+      "line": 15,
+      "lines": 113,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "GroupChatPage (src/features/chat/group-chat-page.tsx)"
+      ]
+    },
+    {
+      "name": "GroupChatInvitePage",
+      "file": "src/features/chat/group-chat-invite-page.tsx",
+      "line": 13,
+      "lines": 38,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "Heading",
+        "Layout",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "SignIn"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "GroupChatPage",
+      "file": "src/features/chat/group-chat-page.tsx",
+      "line": 16,
+      "lines": 41,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon",
+        "Layout",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "GroupChatControls",
+        "GroupThreadContent",
+        "PageTitle"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "ReplyFeedback",
+      "file": "src/features/chat/message-actions.tsx",
+      "line": 13,
+      "lines": 19,
+      "exported": false,
+      "astryx": [
+        "Icon",
+        "IconButton"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AssistantActions (src/features/chat/message-actions.tsx)"
+      ]
+    },
+    {
+      "name": "VersionSelector",
+      "file": "src/features/chat/message-actions.tsx",
+      "line": 42,
+      "lines": 30,
+      "exported": true,
+      "astryx": [
+        "HStack",
+        "Icon",
+        "IconButton",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AssistantActions (src/features/chat/message-actions.tsx)"
+      ]
+    },
+    {
+      "name": "AssistantActions",
+      "file": "src/features/chat/message-actions.tsx",
+      "line": 73,
+      "lines": 61,
+      "exported": true,
+      "astryx": [
+        "HStack",
+        "Icon",
+        "IconButton"
+      ],
+      "local": [
+        "ReplyFeedback",
+        "VersionSelector"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "PhoneMoreActions",
+      "file": "src/features/chat/message-actions.tsx",
+      "line": 139,
+      "lines": 5,
+      "exported": true,
+      "astryx": [
+        "MoreMenu"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MessageItem (src/features/spaces/thread-reader.tsx)",
+        "UserMessageView (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "OriginNote",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 102,
+      "lines": 6,
+      "exported": false,
+      "astryx": [
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MessageBubble (src/features/chat/message-view.tsx)",
+        "UserMessageView (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "SentTime",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 119,
+      "lines": 4,
+      "exported": false,
+      "astryx": [
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "UserMessageView (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "WeekReady",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 165,
+      "lines": 4,
+      "exported": false,
+      "astryx": [
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AssistantMessageView (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "ResourceChips",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 187,
+      "lines": 33,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Icon",
+        "Text",
+        "Token"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AssistantMessageView (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "AssistantAvatar",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 227,
+      "lines": 3,
+      "exported": true,
+      "astryx": [
+        "Icon"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AssistantMessageView (src/features/chat/message-view.tsx)",
+        "MessageItem (src/features/spaces/thread-reader.tsx)",
+        "ThinkingMessage (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "MessageBubble",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 238,
+      "lines": 51,
+      "exported": true,
+      "astryx": [
+        "Chat",
+        "HStack",
+        "Text",
+        "VisuallyHidden"
+      ],
+      "local": [
+        "OriginNote"
+      ],
+      "renderedBy": [
+        "MessageItem (src/features/spaces/thread-reader.tsx)",
+        "src/features/spaces/thread-reader.tsx (as value)"
+      ]
+    },
+    {
+      "name": "ThinkingMessage",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 290,
+      "lines": 13,
+      "exported": true,
+      "astryx": [
+        "Chat",
+        "HStack",
+        "Spinner",
+        "Text"
+      ],
+      "local": [
+        "AssistantAvatar"
+      ],
+      "renderedBy": [
+        "AssistantMessageView (src/features/chat/message-view.tsx)",
+        "ChatSurface (src/features/chat/chat-surface.tsx)",
+        "ThreadReader (src/features/spaces/thread-reader.tsx)",
+        "src/features/spaces/thread-reader.tsx (as value)"
+      ]
+    },
+    {
+      "name": "Attachments",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 309,
+      "lines": 23,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Icon",
+        "Thumbnail",
+        "Token"
+      ],
+      "local": [],
+      "renderedBy": [
+        "UserMessageView (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "UserMessageView",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 346,
+      "lines": 150,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "Chat",
+        "ContextMenu",
+        "HStack",
+        "Icon",
+        "IconButton",
+        "MoreMenu",
+        "TextArea",
+        "VStack"
+      ],
+      "local": [
+        "Attachments",
+        "OriginNote",
+        "PhoneMoreActions",
+        "SentTime"
+      ],
+      "renderedBy": [
+        "MessageView (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "AssistantMessageView",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 625,
+      "lines": 60,
+      "exported": false,
+      "astryx": [
+        "Chat",
+        "ContextMenu"
+      ],
+      "local": [
+        "AppProposal",
+        "AssistantAvatar",
+        "ResourceChips",
+        "ThinkingMessage",
+        "WeekReady"
+      ],
+      "renderedBy": [
+        "MessageView (src/features/chat/message-view.tsx)"
+      ]
+    },
+    {
+      "name": "MessageView",
+      "file": "src/features/chat/message-view.tsx",
+      "line": 694,
+      "lines": 57,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "AssistantMessageView",
+        "UserMessageView"
+      ],
+      "renderedBy": [
+        "ChatSurface (src/features/chat/chat-surface.tsx)"
+      ]
+    },
+    {
+      "name": "Reasoning",
+      "file": "src/features/chat/reasoning.tsx",
+      "line": 19,
+      "lines": 30,
+      "exported": true,
+      "astryx": [
+        "Collapsible",
+        "Text"
+      ],
+      "local": [
+        "RichMarkdown"
+      ],
+      "renderedBy": [
+        "src/features/chat/message-view.tsx (as value)"
+      ]
+    },
+    {
+      "name": "MathExpression",
+      "file": "src/features/chat/rich-markdown.tsx",
+      "line": 31,
+      "lines": 34,
+      "exported": false,
+      "astryx": [
+        "Code",
+        "ScrollableArea"
+      ],
+      "local": [],
+      "renderedBy": []
+    },
+    {
+      "name": "PlainCode",
+      "file": "src/features/chat/rich-markdown.tsx",
+      "line": 66,
+      "lines": 3,
+      "exported": false,
+      "astryx": [
+        "CodeBlock"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MermaidDiagram (src/features/chat/rich-markdown.tsx)",
+        "SettledCode (src/features/chat/rich-markdown.tsx)"
+      ]
+    },
+    {
+      "name": "MermaidDiagram",
+      "file": "src/features/chat/rich-markdown.tsx",
+      "line": 88,
+      "lines": 39,
+      "exported": false,
+      "astryx": [
+        "ScrollableArea"
+      ],
+      "local": [
+        "PlainCode"
+      ],
+      "renderedBy": [
+        "SettledCode (src/features/chat/rich-markdown.tsx)"
+      ]
+    },
+    {
+      "name": "SettledCode",
+      "file": "src/features/chat/rich-markdown.tsx",
+      "line": 128,
+      "lines": 3,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "MermaidDiagram",
+        "PlainCode"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "AppLink",
+      "file": "src/features/chat/rich-markdown.tsx",
+      "line": 148,
+      "lines": 8,
+      "exported": false,
+      "astryx": [
+        "Link"
+      ],
+      "local": [
+        "EnclosingLink"
+      ],
+      "renderedBy": [
+        "AppTextMatch (src/features/chat/rich-markdown.tsx)",
+        "MarkdownLink (src/features/chat/rich-markdown.tsx)"
+      ]
+    },
+    {
+      "name": "MarkdownLink",
+      "file": "src/features/chat/rich-markdown.tsx",
+      "line": 157,
+      "lines": 10,
+      "exported": false,
+      "astryx": [
+        "Link"
+      ],
+      "local": [
+        "AppLink",
+        "EnclosingLink"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "AppTextMatch",
+      "file": "src/features/chat/rich-markdown.tsx",
+      "line": 168,
+      "lines": 6,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "AppLink"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "RichMarkdown",
+      "file": "src/features/chat/rich-markdown.tsx",
+      "line": 185,
+      "lines": 23,
+      "exported": true,
+      "astryx": [
+        "Markdown"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MessageBody (src/features/spaces/thread-reader.tsx)",
+        "Reasoning (src/features/chat/reasoning.tsx)",
+        "SavedSummary (src/features/routines/saved-summary.tsx)"
+      ]
+    },
+    {
+      "name": "NewInSpace",
+      "file": "src/features/devices/conversation-picker.tsx",
+      "line": 65,
+      "lines": 11,
+      "exported": false,
+      "astryx": [
+        "DropdownMenu",
+        "Icon"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ConversationPicker (src/features/devices/conversation-picker.tsx)"
+      ]
+    },
+    {
+      "name": "PickerRows",
+      "file": "src/features/devices/conversation-picker.tsx",
+      "line": 144,
+      "lines": 46,
+      "exported": false,
+      "astryx": [
+        "EmptyState",
+        "Icon",
+        "List",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ConversationPicker (src/features/devices/conversation-picker.tsx)"
+      ]
+    },
+    {
+      "name": "ConversationPicker",
+      "file": "src/features/devices/conversation-picker.tsx",
+      "line": 191,
+      "lines": 135,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "Selector",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [
+        "NewInSpace",
+        "PickerRows",
+        "SpaceThreads"
+      ],
+      "renderedBy": [
+        "DeviceHeaderControl (src/features/devices/device-header-control.tsx)",
+        "NowTalkingCard (src/features/devices/now-talking-card.tsx)"
+      ]
+    },
+    {
+      "name": "DeviceHeaderControl",
+      "file": "src/features/devices/device-header-control.tsx",
+      "line": 55,
+      "lines": 84,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "DropdownMenu",
+        "HStack",
+        "Icon",
+        "Stack",
+        "Text",
+        "Token"
+      ],
+      "local": [
+        "ConversationPicker"
+      ],
+      "renderedBy": [
+        "ChatSurface (src/features/chat/chat-surface.tsx)",
+        "ThreadPanel (src/features/spaces/thread-panel.tsx)",
+        "ThreadTitleBar (src/features/spaces/thread-panel.tsx)",
+        "src/features/spaces/thread-panel.tsx (as value)"
+      ]
+    },
+    {
+      "name": "AnnounceDialog",
+      "file": "src/features/devices/device-quick-actions.tsx",
+      "line": 61,
+      "lines": 60,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "TextArea",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "DeviceQuickActions (src/features/devices/device-quick-actions.tsx)"
+      ]
+    },
+    {
+      "name": "DeviceQuickActions",
+      "file": "src/features/devices/device-quick-actions.tsx",
+      "line": 129,
+      "lines": 67,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon",
+        "ToggleButton"
+      ],
+      "local": [
+        "AnnounceDialog"
+      ],
+      "renderedBy": [
+        "DeviceDetail (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "When",
+      "file": "src/features/devices/device-recent.tsx",
+      "line": 67,
+      "lines": 3,
+      "exported": false,
+      "astryx": [
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ActivityRow (src/features/devices/device-recent.tsx)"
+      ]
+    },
+    {
+      "name": "ActivityRow",
+      "file": "src/features/devices/device-recent.tsx",
+      "line": 71,
+      "lines": 21,
+      "exported": false,
+      "astryx": [
+        "Icon",
+        "List"
+      ],
+      "local": [
+        "When"
+      ],
+      "renderedBy": [
+        "DeviceRecent (src/features/devices/device-recent.tsx)"
+      ]
+    },
+    {
+      "name": "DeviceRecent",
+      "file": "src/features/devices/device-recent.tsx",
+      "line": 96,
+      "lines": 30,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "List",
+        "Skeleton",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "ActivityRow"
+      ],
+      "renderedBy": [
+        "DeviceDetail (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "SettingsStatus",
+      "file": "src/features/devices/device-settings-groups.tsx",
+      "line": 70,
+      "lines": 17,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "StatusDot",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "DeviceSettingsGroups (src/features/devices/device-settings-groups.tsx)"
+      ]
+    },
+    {
+      "name": "GroupRow",
+      "file": "src/features/devices/device-settings-groups.tsx",
+      "line": 89,
+      "lines": 8,
+      "exported": false,
+      "astryx": [
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "Group (src/features/devices/device-settings-groups.tsx)"
+      ]
+    },
+    {
+      "name": "Group",
+      "file": "src/features/devices/device-settings-groups.tsx",
+      "line": 100,
+      "lines": 7,
+      "exported": false,
+      "astryx": [
+        "Collapsible"
+      ],
+      "local": [
+        "GroupRow"
+      ],
+      "renderedBy": [
+        "DeviceSettingsGroups (src/features/devices/device-settings-groups.tsx)"
+      ]
+    },
+    {
+      "name": "DeviceSettingsGroups",
+      "file": "src/features/devices/device-settings-groups.tsx",
+      "line": 195,
+      "lines": 77,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Collapsible",
+        "FormLayout",
+        "Selector",
+        "Slider",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "Group",
+        "SettingsStatus"
+      ],
+      "renderedBy": [
+        "DeviceDetail (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "StatusLine",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 66,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "DeviceDetail (src/features/devices/devices-page.tsx)",
+        "DeviceListRow (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "Dot",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 81,
+      "lines": 4,
+      "exported": false,
+      "astryx": [
+        "StatusDot"
+      ],
+      "local": [],
+      "renderedBy": [
+        "DeviceDetail (src/features/devices/devices-page.tsx)",
+        "DeviceListRow (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "DeviceMenu",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 89,
+      "lines": 17,
+      "exported": false,
+      "astryx": [
+        "MoreMenu"
+      ],
+      "local": [],
+      "renderedBy": [
+        "DeviceDetail (src/features/devices/devices-page.tsx)",
+        "DeviceListRow (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "DeviceListRow",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 107,
+      "lines": 12,
+      "exported": false,
+      "astryx": [
+        "List"
+      ],
+      "local": [
+        "DeviceMenu",
+        "Dot",
+        "StatusLine"
+      ],
+      "renderedBy": [
+        "ListBody (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "ListSkeleton",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 120,
+      "lines": 8,
+      "exported": false,
+      "astryx": [
+        "Skeleton",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ListBody (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "RenameDialog",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 130,
+      "lines": 53,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "TextInput"
+      ],
+      "local": [],
+      "renderedBy": [
+        "DevicesDialogs (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "RemoveDialog",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 185,
+      "lines": 32,
+      "exported": false,
+      "astryx": [
+        "AlertDialog"
+      ],
+      "local": [],
+      "renderedBy": [
+        "DevicesDialogs (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "DeviceDetail",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 258,
+      "lines": 105,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Heading",
+        "Icon",
+        "IconButton",
+        "Layout",
+        "MetadataList",
+        "Section",
+        "Selector",
+        "Stack",
+        "Text",
+        "Timestamp",
+        "VStack"
+      ],
+      "local": [
+        "DeviceMenu",
+        "DeviceQuickActions",
+        "DeviceRecent",
+        "DeviceSettingsGroups",
+        "Dot",
+        "NowTalkingCard",
+        "StatusLine"
+      ],
+      "renderedBy": [
+        "DevicesPage (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "DevicesDialogs",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 383,
+      "lines": 42,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "PairDialog",
+        "RemoveDialog",
+        "RenameDialog"
+      ],
+      "renderedBy": [
+        "DevicesPage (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "ListHeader",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 426,
+      "lines": 20,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon",
+        "Layout",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "PageTitle"
+      ],
+      "renderedBy": [
+        "DevicesPage (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "ListBody",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 458,
+      "lines": 42,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "Icon",
+        "List"
+      ],
+      "local": [
+        "DeviceListRow",
+        "ListSkeleton"
+      ],
+      "renderedBy": [
+        "DevicesPage (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "DevicesPage",
+      "file": "src/features/devices/devices-page.tsx",
+      "line": 505,
+      "lines": 80,
+      "exported": true,
+      "astryx": [
+        "Layout",
+        "VStack"
+      ],
+      "local": [
+        "DeviceDetail",
+        "DevicesDialogs",
+        "ListBody",
+        "ListHeader"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "RowDescription",
+      "file": "src/features/devices/now-talking-card.tsx",
+      "line": 94,
+      "lines": 17,
+      "exported": false,
+      "astryx": [
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "NowTalkingCard (src/features/devices/now-talking-card.tsx)"
+      ]
+    },
+    {
+      "name": "NowTalkingCard",
+      "file": "src/features/devices/now-talking-card.tsx",
+      "line": 112,
+      "lines": 38,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "Icon",
+        "List"
+      ],
+      "local": [
+        "ConversationPicker",
+        "RowDescription"
+      ],
+      "renderedBy": [
+        "DeviceDetail (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "PairDialog",
+      "file": "src/features/devices/pair-dialog.tsx",
+      "line": 93,
+      "lines": 86,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "DevicesDialogs (src/features/devices/devices-page.tsx)"
+      ]
+    },
+    {
+      "name": "InsightRefresh",
+      "file": "src/features/insights/insight-refresh.tsx",
+      "line": 11,
+      "lines": 46,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Selector",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "InsightResults (src/features/insights/insights-page.tsx)"
+      ]
+    },
+    {
+      "name": "InsightsPage",
+      "file": "src/features/insights/insights-page.tsx",
+      "line": 30,
+      "lines": 4,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "InsightsContent"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "InsightsContent",
+      "file": "src/features/insights/insights-page.tsx",
+      "line": 35,
+      "lines": 18,
+      "exported": false,
+      "astryx": [
+        "Layout",
+        "TabList",
+        "VStack"
+      ],
+      "local": [
+        "InsightResults",
+        "PageSubtitle",
+        "PageTitle"
+      ],
+      "renderedBy": [
+        "InsightsPage (src/features/insights/insights-page.tsx)"
+      ]
+    },
+    {
+      "name": "InsightResults",
+      "file": "src/features/insights/insights-page.tsx",
+      "line": 54,
+      "lines": 27,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "InsightRefresh",
+        "InsightResult"
+      ],
+      "renderedBy": [
+        "InsightsContent (src/features/insights/insights-page.tsx)"
+      ]
+    },
+    {
+      "name": "InsightResult",
+      "file": "src/features/insights/insights-page.tsx",
+      "line": 82,
+      "lines": 4,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "SavedSummary"
+      ],
+      "renderedBy": [
+        "InsightResults (src/features/insights/insights-page.tsx)"
+      ]
+    },
+    {
+      "name": "GoogleAccountNameDialog",
+      "file": "src/features/integrations/google-account-name-dialog.tsx",
+      "line": 10,
+      "lines": 34,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "Layout",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "GoogleAccountsContent (src/features/integrations/google-accounts-section.tsx)"
+      ]
+    },
+    {
+      "name": "GoogleAccountsSection",
+      "file": "src/features/integrations/google-accounts-section.tsx",
+      "line": 33,
+      "lines": 7,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "GoogleAccountsContent"
+      ],
+      "renderedBy": [
+        "IntegrationsPage (src/features/integrations/integrations-page.tsx)"
+      ]
+    },
+    {
+      "name": "IntegrationToolsDialog",
+      "file": "src/features/integrations/google-accounts-section.tsx",
+      "line": 73,
+      "lines": 4,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "ToolControlsDialog"
+      ],
+      "renderedBy": [
+        "GoogleAccountsContent (src/features/integrations/google-accounts-section.tsx)"
+      ]
+    },
+    {
+      "name": "GoogleAccountsContent",
+      "file": "src/features/integrations/google-accounts-section.tsx",
+      "line": 78,
+      "lines": 152,
+      "exported": false,
+      "astryx": [
+        "AlertDialog",
+        "Banner",
+        "Button",
+        "EmptyState",
+        "HStack",
+        "Heading",
+        "Icon",
+        "List",
+        "MoreMenu",
+        "Skeleton",
+        "Stack",
+        "StatusDot",
+        "Text",
+        "Token",
+        "VStack"
+      ],
+      "local": [
+        "GoogleAccountNameDialog",
+        "GoogleCalendarSelection",
+        "GoogleConsentDialog",
+        "IntegrationToolsDialog"
+      ],
+      "renderedBy": [
+        "GoogleAccountsSection (src/features/integrations/google-accounts-section.tsx)"
+      ]
+    },
+    {
+      "name": "EventTime",
+      "file": "src/features/integrations/google-agenda-row.tsx",
+      "line": 13,
+      "lines": 5,
+      "exported": false,
+      "astryx": [
+        "Text",
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "GoogleAgendaRow (src/features/integrations/google-agenda-row.tsx)"
+      ]
+    },
+    {
+      "name": "GoogleAgendaRow",
+      "file": "src/features/integrations/google-agenda-row.tsx",
+      "line": 19,
+      "lines": 8,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "Dialog",
+        "Layout",
+        "List",
+        "Text",
+        "Timestamp",
+        "VStack"
+      ],
+      "local": [
+        "EventTime"
+      ],
+      "renderedBy": [
+        "AgendaPanel (src/features/productivity/agenda-panel.tsx)",
+        "CalendarPage (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "GoogleAgendaStatus",
+      "file": "src/features/integrations/google-agenda-row.tsx",
+      "line": 31,
+      "lines": 9,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Text",
+        "Timestamp",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AgendaPanel (src/features/productivity/agenda-panel.tsx)",
+        "CalendarPage (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "GoogleCalendarSelection",
+      "file": "src/features/integrations/google-calendar-selection.tsx",
+      "line": 18,
+      "lines": 3,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "CalendarSelectionForm"
+      ],
+      "renderedBy": [
+        "GoogleAccountsContent (src/features/integrations/google-accounts-section.tsx)"
+      ]
+    },
+    {
+      "name": "CalendarSelectionForm",
+      "file": "src/features/integrations/google-calendar-selection.tsx",
+      "line": 22,
+      "lines": 54,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "Layout",
+        "MultiSelector",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "GoogleCalendarSelection (src/features/integrations/google-calendar-selection.tsx)"
+      ]
+    },
+    {
+      "name": "GoogleConsentDialog",
+      "file": "src/features/integrations/google-consent-dialog.tsx",
+      "line": 39,
+      "lines": 55,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "CheckboxList",
+        "Dialog",
+        "Layout",
+        "RadioList",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "GoogleAccountsContent (src/features/integrations/google-accounts-section.tsx)"
+      ]
+    },
+    {
+      "name": "IntegrationsPage",
+      "file": "src/features/integrations/integrations-page.tsx",
+      "line": 13,
+      "lines": 10,
+      "exported": true,
+      "astryx": [
+        "Layout",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "GoogleAccountsSection",
+        "PageTitle"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "DeleteAllMemoriesSection",
+      "file": "src/features/memory/delete-all-memories.tsx",
+      "line": 20,
+      "lines": 58,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "Banner",
+        "Button",
+        "Divider",
+        "HStack",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "MemoryRowMenu",
+      "file": "src/features/memory/memory-page.tsx",
+      "line": 97,
+      "lines": 40,
+      "exported": false,
+      "astryx": [
+        "Icon",
+        "MoreMenu"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MemoryLists (src/features/memory/memory-page.tsx)",
+        "MemoryRow (src/features/memory/memory-page.tsx)"
+      ]
+    },
+    {
+      "name": "MemoryRow",
+      "file": "src/features/memory/memory-page.tsx",
+      "line": 138,
+      "lines": 28,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "List",
+        "Timestamp",
+        "Token"
+      ],
+      "local": [
+        "MemoryRowMenu"
+      ],
+      "renderedBy": [
+        "MemoryLists (src/features/memory/memory-page.tsx)"
+      ]
+    },
+    {
+      "name": "MemoryLists",
+      "file": "src/features/memory/memory-page.tsx",
+      "line": 167,
+      "lines": 54,
+      "exported": false,
+      "astryx": [
+        "Collapsible",
+        "List",
+        "Section",
+        "VStack"
+      ],
+      "local": [
+        "GroupedList",
+        "MemoryRow",
+        "MemoryRowMenu"
+      ],
+      "renderedBy": [
+        "MemoryPage (src/features/memory/memory-page.tsx)"
+      ]
+    },
+    {
+      "name": "LoadingRows",
+      "file": "src/features/memory/memory-page.tsx",
+      "line": 222,
+      "lines": 12,
+      "exported": false,
+      "astryx": [
+        "Skeleton",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MemoryPage (src/features/memory/memory-page.tsx)"
+      ]
+    },
+    {
+      "name": "MemoryTextDialog",
+      "file": "src/features/memory/memory-page.tsx",
+      "line": 237,
+      "lines": 96,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "SegmentedControl",
+        "TextArea",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MemoryPage (src/features/memory/memory-page.tsx)"
+      ]
+    },
+    {
+      "name": "MemoryPage",
+      "file": "src/features/memory/memory-page.tsx",
+      "line": 425,
+      "lines": 205,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "Banner",
+        "Button",
+        "EmptyState",
+        "HStack",
+        "Icon",
+        "Layout",
+        "Stack",
+        "TabList",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [
+        "LoadingRows",
+        "MemoryLists",
+        "MemoryTextDialog",
+        "PageAction",
+        "PageSubtitle",
+        "PageTitle"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "TokensChart",
+      "file": "src/features/metrics/lens-ai.tsx",
+      "line": 46,
+      "lines": 19,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "ChartCard",
+        "ChartTooltip"
+      ],
+      "renderedBy": [
+        "LensAi (src/features/metrics/lens-ai.tsx)"
+      ]
+    },
+    {
+      "name": "ToolsChart",
+      "file": "src/features/metrics/lens-ai.tsx",
+      "line": 66,
+      "lines": 15,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "ChartCard",
+        "ChartTooltip"
+      ],
+      "renderedBy": [
+        "LensAi (src/features/metrics/lens-ai.tsx)"
+      ]
+    },
+    {
+      "name": "LensAi",
+      "file": "src/features/metrics/lens-ai.tsx",
+      "line": 82,
+      "lines": 22,
+      "exported": true,
+      "astryx": [
+        "Grid",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "StatTile",
+        "TableCard",
+        "TokensChart",
+        "ToolsChart"
+      ],
+      "renderedBy": [
+        "ActiveLens (src/features/metrics/metrics-page.tsx)"
+      ]
+    },
+    {
+      "name": "FreshnessChart",
+      "file": "src/features/metrics/lens-devices.tsx",
+      "line": 42,
+      "lines": 15,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "ChartCard",
+        "ChartTooltip"
+      ],
+      "renderedBy": [
+        "LensDevices (src/features/metrics/lens-devices.tsx)"
+      ]
+    },
+    {
+      "name": "LensDevices",
+      "file": "src/features/metrics/lens-devices.tsx",
+      "line": 58,
+      "lines": 22,
+      "exported": true,
+      "astryx": [
+        "Grid",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "FreshnessChart",
+        "StatTile",
+        "TableCard"
+      ],
+      "renderedBy": [
+        "ActiveLens (src/features/metrics/metrics-page.tsx)"
+      ]
+    },
+    {
+      "name": "CreatedChart",
+      "file": "src/features/metrics/lens-features.tsx",
+      "line": 61,
+      "lines": 18,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "ChartCard",
+        "ChartTooltip"
+      ],
+      "renderedBy": [
+        "LensFeatures (src/features/metrics/lens-features.tsx)"
+      ]
+    },
+    {
+      "name": "LensFeatures",
+      "file": "src/features/metrics/lens-features.tsx",
+      "line": 80,
+      "lines": 28,
+      "exported": true,
+      "astryx": [
+        "Grid",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "CreatedChart",
+        "StatTile",
+        "TableCard"
+      ],
+      "renderedBy": [
+        "ActiveLens (src/features/metrics/metrics-page.tsx)"
+      ]
+    },
+    {
+      "name": "FirstAudioChart",
+      "file": "src/features/metrics/lens-reliability.tsx",
+      "line": 65,
+      "lines": 19,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "ChartCard",
+        "ChartTooltip"
+      ],
+      "renderedBy": [
+        "LensReliability (src/features/metrics/lens-reliability.tsx)"
+      ]
+    },
+    {
+      "name": "TurnsChart",
+      "file": "src/features/metrics/lens-reliability.tsx",
+      "line": 85,
+      "lines": 18,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "ChartCard",
+        "ChartTooltip"
+      ],
+      "renderedBy": [
+        "LensReliability (src/features/metrics/lens-reliability.tsx)"
+      ]
+    },
+    {
+      "name": "FailuresChart",
+      "file": "src/features/metrics/lens-reliability.tsx",
+      "line": 104,
+      "lines": 15,
+      "exported": false,
+      "astryx": [],
+      "local": [
+        "ChartCard",
+        "ChartTooltip"
+      ],
+      "renderedBy": [
+        "LensReliability (src/features/metrics/lens-reliability.tsx)"
+      ]
+    },
+    {
+      "name": "LensReliability",
+      "file": "src/features/metrics/lens-reliability.tsx",
+      "line": 120,
+      "lines": 20,
+      "exported": true,
+      "astryx": [
+        "Grid",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "FailuresChart",
+        "FirstAudioChart",
+        "StatTile",
+        "TableCard",
+        "TurnsChart"
+      ],
+      "renderedBy": [
+        "ActiveLens (src/features/metrics/metrics-page.tsx)"
+      ]
+    },
+    {
+      "name": "LensUsers",
+      "file": "src/features/metrics/lens-users.tsx",
+      "line": 14,
+      "lines": 26,
+      "exported": true,
+      "astryx": [
+        "Grid",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "ChartCard",
+        "ChartTooltip",
+        "StatTile"
+      ],
+      "renderedBy": [
+        "ActiveLens (src/features/metrics/metrics-page.tsx)"
+      ]
+    },
+    {
+      "name": "TableCard",
+      "file": "src/features/metrics/metrics-cards.tsx",
+      "line": 57,
+      "lines": 11,
+      "exported": true,
+      "astryx": [
+        "Card",
+        "Heading",
+        "Table",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "LensAi (src/features/metrics/lens-ai.tsx)",
+        "LensDevices (src/features/metrics/lens-devices.tsx)",
+        "LensFeatures (src/features/metrics/lens-features.tsx)",
+        "LensReliability (src/features/metrics/lens-reliability.tsx)"
+      ]
+    },
+    {
+      "name": "StatTile",
+      "file": "src/features/metrics/metrics-cards.tsx",
+      "line": 69,
+      "lines": 11,
+      "exported": true,
+      "astryx": [
+        "Card",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "LensAi (src/features/metrics/lens-ai.tsx)",
+        "LensDevices (src/features/metrics/lens-devices.tsx)",
+        "LensFeatures (src/features/metrics/lens-features.tsx)",
+        "LensReliability (src/features/metrics/lens-reliability.tsx)",
+        "LensUsers (src/features/metrics/lens-users.tsx)"
+      ]
+    },
+    {
+      "name": "ChartCard",
+      "file": "src/features/metrics/metrics-cards.tsx",
+      "line": 82,
+      "lines": 13,
+      "exported": true,
+      "astryx": [
+        "Card",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "CreatedChart (src/features/metrics/lens-features.tsx)",
+        "FailuresChart (src/features/metrics/lens-reliability.tsx)",
+        "FirstAudioChart (src/features/metrics/lens-reliability.tsx)",
+        "FreshnessChart (src/features/metrics/lens-devices.tsx)",
+        "LensUsers (src/features/metrics/lens-users.tsx)",
+        "TokensChart (src/features/metrics/lens-ai.tsx)",
+        "ToolsChart (src/features/metrics/lens-ai.tsx)",
+        "TurnsChart (src/features/metrics/lens-reliability.tsx)"
+      ]
+    },
+    {
+      "name": "ChartTooltip",
+      "file": "src/features/metrics/metrics-cards.tsx",
+      "line": 99,
+      "lines": 25,
+      "exported": true,
+      "astryx": [
+        "Card",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "CreatedChart (src/features/metrics/lens-features.tsx)",
+        "FailuresChart (src/features/metrics/lens-reliability.tsx)",
+        "FirstAudioChart (src/features/metrics/lens-reliability.tsx)",
+        "FreshnessChart (src/features/metrics/lens-devices.tsx)",
+        "LensUsers (src/features/metrics/lens-users.tsx)",
+        "TokensChart (src/features/metrics/lens-ai.tsx)",
+        "ToolsChart (src/features/metrics/lens-ai.tsx)",
+        "TurnsChart (src/features/metrics/lens-reliability.tsx)"
+      ]
+    },
+    {
+      "name": "LoadingLens",
+      "file": "src/features/metrics/metrics-page.tsx",
+      "line": 64,
+      "lines": 22,
+      "exported": false,
+      "astryx": [
+        "Card",
+        "Grid",
+        "Skeleton",
+        "Text",
+        "VStack",
+        "VisuallyHidden"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ActiveLens (src/features/metrics/metrics-page.tsx)"
+      ]
+    },
+    {
+      "name": "ActiveLens",
+      "file": "src/features/metrics/metrics-page.tsx",
+      "line": 87,
+      "lines": 18,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button"
+      ],
+      "local": [
+        "LensAi",
+        "LensDevices",
+        "LensFeatures",
+        "LensReliability",
+        "LensUsers",
+        "LoadingLens"
+      ],
+      "renderedBy": [
+        "MetricsView (src/features/metrics/metrics-page.tsx)"
+      ]
+    },
+    {
+      "name": "MetricsView",
+      "file": "src/features/metrics/metrics-page.tsx",
+      "line": 106,
+      "lines": 65,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Layout",
+        "SegmentedControl",
+        "Stack",
+        "TabList",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "ActiveLens",
+        "PageTitle"
+      ],
+      "renderedBy": [
+        "MetricsPage (src/features/metrics/metrics-page.tsx)"
+      ]
+    },
+    {
+      "name": "Frame",
+      "file": "src/features/metrics/metrics-page.tsx",
+      "line": 172,
+      "lines": 5,
+      "exported": false,
+      "astryx": [
+        "Layout",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MetricsPage (src/features/metrics/metrics-page.tsx)"
+      ]
+    },
+    {
+      "name": "MetricsPage",
+      "file": "src/features/metrics/metrics-page.tsx",
+      "line": 183,
+      "lines": 24,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "Text"
+      ],
+      "local": [
+        "Frame",
+        "MetricsView"
+      ],
+      "renderedBy": [
+        "AdminPage (src/features/admin/admin-page.tsx)"
+      ]
+    },
+    {
+      "name": "NotificationSettingsSection",
+      "file": "src/features/notifications/notification-settings.tsx",
+      "line": 34,
+      "lines": 140,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "List",
+        "Skeleton",
+        "Switch",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "NotificationList",
+      "file": "src/features/notifications/notifications-bell.tsx",
+      "line": 78,
+      "lines": 35,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Icon",
+        "List",
+        "StatusDot",
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "NotificationsBell (src/features/notifications/notifications-bell.tsx)"
+      ]
+    },
+    {
+      "name": "BellTrigger",
+      "file": "src/features/notifications/notifications-bell.tsx",
+      "line": 114,
+      "lines": 15,
+      "exported": false,
+      "astryx": [
+        "Badge",
+        "HStack",
+        "Icon",
+        "IconButton"
+      ],
+      "local": [],
+      "renderedBy": [
+        "NotificationsBell (src/features/notifications/notifications-bell.tsx)"
+      ]
+    },
+    {
+      "name": "NotificationsBell",
+      "file": "src/features/notifications/notifications-bell.tsx",
+      "line": 135,
+      "lines": 204,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "BottomSheet",
+        "Button",
+        "EmptyState",
+        "HStack",
+        "Heading",
+        "Icon",
+        "Popover",
+        "Section",
+        "Skeleton",
+        "VStack"
+      ],
+      "local": [
+        "BellTrigger",
+        "NotificationList"
+      ],
+      "renderedBy": [
+        "Shell (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "TimeLabel",
+      "file": "src/features/productivity/agenda-panel.tsx",
+      "line": 53,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "Text"
+      ],
+      "local": [
+        "DayLabel"
+      ],
+      "renderedBy": [
+        "EventRow (src/features/productivity/agenda-panel.tsx)"
+      ]
+    },
+    {
+      "name": "EventRow",
+      "file": "src/features/productivity/agenda-panel.tsx",
+      "line": 74,
+      "lines": 64,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Icon",
+        "IconButton",
+        "List",
+        "StatusDot",
+        "Text"
+      ],
+      "local": [
+        "RsvpToken",
+        "TimeLabel"
+      ],
+      "renderedBy": [
+        "AgendaPanel (src/features/productivity/agenda-panel.tsx)"
+      ]
+    },
+    {
+      "name": "AgendaPanel",
+      "file": "src/features/productivity/agenda-panel.tsx",
+      "line": 164,
+      "lines": 139,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Icon",
+        "List",
+        "Section",
+        "Stack",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "CalendarGrid",
+        "DayLabel",
+        "EventDialog",
+        "EventRow",
+        "GoogleAgendaRow",
+        "GoogleAgendaStatus"
+      ],
+      "renderedBy": [
+        "SpacesPage (src/features/spaces/spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "CalendarGrid",
+      "file": "src/features/productivity/calendar-grid.tsx",
+      "line": 8,
+      "lines": 24,
+      "exported": true,
+      "astryx": [
+        "Calendar"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AgendaPanel (src/features/productivity/agenda-panel.tsx)",
+        "CalendarPage (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "DayLabel",
+      "file": "src/features/productivity/calendar-grid.tsx",
+      "line": 35,
+      "lines": 4,
+      "exported": true,
+      "astryx": [
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AgendaPanel (src/features/productivity/agenda-panel.tsx)",
+        "CalendarPage (src/features/productivity/calendar-page.tsx)",
+        "TimeLabel (src/features/productivity/agenda-panel.tsx)"
+      ]
+    },
+    {
+      "name": "TodayPage",
+      "file": "src/features/productivity/calendar-page.tsx",
+      "line": 108,
+      "lines": 3,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "CalendarPage"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "CalendarPage",
+      "file": "src/features/productivity/calendar-page.tsx",
+      "line": 139,
+      "lines": 394,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "DropdownMenu",
+        "EmptyState",
+        "HStack",
+        "Heading",
+        "Icon",
+        "Layout",
+        "Skeleton",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "CalendarGrid",
+        "CalendarLayout",
+        "DayLabel",
+        "EventDialog",
+        "GoogleAgendaRow",
+        "GoogleAgendaStatus",
+        "GroupedList",
+        "ItemRow",
+        "PageTitle",
+        "ReminderDialog",
+        "RowMenu",
+        "TaskEditDialog",
+        "TodayLayout"
+      ],
+      "renderedBy": [
+        "TodayPage (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "CalendarLayout",
+      "file": "src/features/productivity/calendar-page.tsx",
+      "line": 549,
+      "lines": 36,
+      "exported": false,
+      "astryx": [
+        "Layout",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "CalendarPage (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "TodayLayout",
+      "file": "src/features/productivity/calendar-page.tsx",
+      "line": 588,
+      "lines": 144,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "HStack",
+        "Icon",
+        "Layout",
+        "List",
+        "VStack"
+      ],
+      "local": [
+        "GroupedList",
+        "RowMenu",
+        "RunningTimers",
+        "TaskOverdueMark"
+      ],
+      "renderedBy": [
+        "CalendarPage (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "ItemRow",
+      "file": "src/features/productivity/calendar-page.tsx",
+      "line": 735,
+      "lines": 50,
+      "exported": false,
+      "astryx": [
+        "CheckboxInput",
+        "HStack",
+        "Icon",
+        "List"
+      ],
+      "local": [
+        "RsvpToken",
+        "TaskOverdueMark"
+      ],
+      "renderedBy": [
+        "CalendarPage (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "RunningTimers",
+      "file": "src/features/productivity/calendar-page.tsx",
+      "line": 790,
+      "lines": 43,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Icon",
+        "List",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "GroupedList"
+      ],
+      "renderedBy": [
+        "TodayLayout (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "DeleteEventStep",
+      "file": "src/features/productivity/event-dialog-delete-step.tsx",
+      "line": 20,
+      "lines": 88,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "RadioList",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "EditEventDialog (src/features/productivity/event-dialog.tsx)",
+        "ViewEventDialog (src/features/productivity/event-dialog.tsx)"
+      ]
+    },
+    {
+      "name": "OccurrenceTimeLabel",
+      "file": "src/features/productivity/event-dialog.tsx",
+      "line": 191,
+      "lines": 5,
+      "exported": false,
+      "astryx": [],
+      "local": [],
+      "renderedBy": [
+        "ViewEventDialog (src/features/productivity/event-dialog.tsx)"
+      ]
+    },
+    {
+      "name": "CreateEventDialog",
+      "file": "src/features/productivity/event-dialog.tsx",
+      "line": 213,
+      "lines": 155,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "DateInput",
+        "DateTimeInput",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "Selector",
+        "Switch",
+        "TextArea",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "EventDialog (src/features/productivity/event-dialog.tsx)"
+      ]
+    },
+    {
+      "name": "EditEventDialog",
+      "file": "src/features/productivity/event-dialog.tsx",
+      "line": 379,
+      "lines": 278,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "DateInput",
+        "DateTimeInput",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "RadioList",
+        "Switch",
+        "Text",
+        "TextArea",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [
+        "DeleteEventStep",
+        "EventPeople"
+      ],
+      "renderedBy": [
+        "EventDialog (src/features/productivity/event-dialog.tsx)"
+      ]
+    },
+    {
+      "name": "ViewEventDialog",
+      "file": "src/features/productivity/event-dialog.tsx",
+      "line": 662,
+      "lines": 124,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "DeleteEventStep",
+        "EventPeople",
+        "OccurrenceTimeLabel"
+      ],
+      "renderedBy": [
+        "EventDialog (src/features/productivity/event-dialog.tsx)"
+      ]
+    },
+    {
+      "name": "EventDialog",
+      "file": "src/features/productivity/event-dialog.tsx",
+      "line": 787,
+      "lines": 17,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "CreateEventDialog",
+        "EditEventDialog",
+        "ViewEventDialog"
+      ],
+      "renderedBy": [
+        "AgendaPanel (src/features/productivity/agenda-panel.tsx)",
+        "CalendarPage (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "EventPeople",
+      "file": "src/features/productivity/event-people.tsx",
+      "line": 68,
+      "lines": 152,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Icon",
+        "IconButton",
+        "List",
+        "SegmentedControl",
+        "Selector",
+        "Skeleton",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "RsvpToken"
+      ],
+      "renderedBy": [
+        "EditEventDialog (src/features/productivity/event-dialog.tsx)",
+        "ViewEventDialog (src/features/productivity/event-dialog.tsx)",
+        "src/features/productivity/event-dialog.tsx (as value)"
+      ]
+    },
+    {
+      "name": "NoteDescription",
+      "file": "src/features/productivity/notes-panel.tsx",
+      "line": 91,
+      "lines": 12,
+      "exported": false,
+      "astryx": [
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "NotesPanel (src/features/productivity/notes-panel.tsx)"
+      ]
+    },
+    {
+      "name": "NotesPanel",
+      "file": "src/features/productivity/notes-panel.tsx",
+      "line": 104,
+      "lines": 324,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "HStack",
+        "Icon",
+        "List",
+        "Section",
+        "Skeleton",
+        "Stack",
+        "Text",
+        "TextInput",
+        "Timestamp",
+        "VStack"
+      ],
+      "local": [
+        "CopyNoteDialog",
+        "NoteDescription",
+        "NoteEditor",
+        "RowMenu"
+      ],
+      "renderedBy": [
+        "SpacesPage (src/features/spaces/spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "CopyNoteDialog",
+      "file": "src/features/productivity/notes-panel.tsx",
+      "line": 435,
+      "lines": 86,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "Selector",
+        "Switch",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "NotesPanel (src/features/productivity/notes-panel.tsx)"
+      ]
+    },
+    {
+      "name": "NoteEditor",
+      "file": "src/features/productivity/notes-panel.tsx",
+      "line": 524,
+      "lines": 207,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Icon",
+        "List",
+        "Section",
+        "Stack",
+        "Text",
+        "TextArea",
+        "TextInput",
+        "Timestamp",
+        "Token",
+        "VStack"
+      ],
+      "local": [
+        "RowMenu"
+      ],
+      "renderedBy": [
+        "NotesPanel (src/features/productivity/notes-panel.tsx)"
+      ]
+    },
+    {
+      "name": "ReminderPreview",
+      "file": "src/features/productivity/reminder-dialog.tsx",
+      "line": 40,
+      "lines": 15,
+      "exported": false,
+      "astryx": [
+        "List",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ReminderDialog (src/features/productivity/reminder-dialog.tsx)"
+      ]
+    },
+    {
+      "name": "ReminderDialog",
+      "file": "src/features/productivity/reminder-dialog.tsx",
+      "line": 150,
+      "lines": 127,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "CheckboxList",
+        "DateTimeInput",
+        "Dialog",
+        "FormLayout",
+        "HStack",
+        "Layout",
+        "NumberInput",
+        "Selector",
+        "Text",
+        "TextInput",
+        "TimeInput",
+        "VStack"
+      ],
+      "local": [
+        "ReminderPreview"
+      ],
+      "renderedBy": [
+        "CalendarPage (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "RsvpToken",
+      "file": "src/features/productivity/rsvp-token.tsx",
+      "line": 19,
+      "lines": 4,
+      "exported": true,
+      "astryx": [
+        "Token"
+      ],
+      "local": [],
+      "renderedBy": [
+        "EventPeople (src/features/productivity/event-people.tsx)",
+        "EventRow (src/features/productivity/agenda-panel.tsx)",
+        "ItemRow (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "TaskChecklist",
+      "file": "src/features/productivity/task-checklist.tsx",
+      "line": 26,
+      "lines": 106,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "CheckboxInput",
+        "HStack",
+        "Icon",
+        "IconButton",
+        "Stack",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "TasksPanel (src/features/productivity/tasks-panel.tsx)"
+      ]
+    },
+    {
+      "name": "TaskEditDialog",
+      "file": "src/features/productivity/task-edit-dialog.tsx",
+      "line": 174,
+      "lines": 37,
+      "exported": true,
+      "astryx": [
+        "Dialog"
+      ],
+      "local": [
+        "TaskEditForm"
+      ],
+      "renderedBy": [
+        "CalendarPage (src/features/productivity/calendar-page.tsx)",
+        "TasksPanel (src/features/productivity/tasks-panel.tsx)"
+      ]
+    },
+    {
+      "name": "DueFields",
+      "file": "src/features/productivity/task-edit-dialog.tsx",
+      "line": 215,
+      "lines": 20,
+      "exported": false,
+      "astryx": [
+        "DateInput",
+        "Layout",
+        "Stack",
+        "TimeInput"
+      ],
+      "local": [],
+      "renderedBy": [
+        "TaskEditForm (src/features/productivity/task-edit-dialog.tsx)"
+      ]
+    },
+    {
+      "name": "NotifySwitch",
+      "file": "src/features/productivity/task-edit-dialog.tsx",
+      "line": 237,
+      "lines": 25,
+      "exported": false,
+      "astryx": [
+        "Switch"
+      ],
+      "local": [],
+      "renderedBy": [
+        "TaskEditForm (src/features/productivity/task-edit-dialog.tsx)"
+      ]
+    },
+    {
+      "name": "TaskEditForm",
+      "file": "src/features/productivity/task-edit-dialog.tsx",
+      "line": 263,
+      "lines": 133,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Dialog",
+        "Layout",
+        "Selector",
+        "Stack",
+        "TextArea",
+        "TextInput"
+      ],
+      "local": [
+        "DueFields",
+        "NotifySwitch"
+      ],
+      "renderedBy": [
+        "TaskEditDialog (src/features/productivity/task-edit-dialog.tsx)"
+      ]
+    },
+    {
+      "name": "RowMenu",
+      "file": "src/features/productivity/task-row-menu.tsx",
+      "line": 14,
+      "lines": 20,
+      "exported": true,
+      "astryx": [
+        "MoreMenu"
+      ],
+      "local": [],
+      "renderedBy": [
+        "CalendarPage (src/features/productivity/calendar-page.tsx)",
+        "DeletedTaskList (src/features/productivity/tasks-panel.tsx)",
+        "NoteEditor (src/features/productivity/notes-panel.tsx)",
+        "NotesPanel (src/features/productivity/notes-panel.tsx)",
+        "TasksPanel (src/features/productivity/tasks-panel.tsx)",
+        "TodayLayout (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "TaskOverdueMark",
+      "file": "src/features/productivity/task-row-menu.tsx",
+      "line": 61,
+      "lines": 10,
+      "exported": true,
+      "astryx": [
+        "HStack",
+        "StatusDot",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ItemRow (src/features/productivity/calendar-page.tsx)",
+        "TasksPanel (src/features/productivity/tasks-panel.tsx)",
+        "TodayLayout (src/features/productivity/calendar-page.tsx)"
+      ]
+    },
+    {
+      "name": "TasksPanel",
+      "file": "src/features/productivity/tasks-panel.tsx",
+      "line": 87,
+      "lines": 374,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "CheckboxInput",
+        "DateInput",
+        "EmptyState",
+        "HStack",
+        "Icon",
+        "List",
+        "Section",
+        "SegmentedControl",
+        "Selector",
+        "Skeleton",
+        "Stack",
+        "Text",
+        "TextInput",
+        "Token",
+        "VStack"
+      ],
+      "local": [
+        "DeletedTaskList",
+        "RowMenu",
+        "TaskChecklist",
+        "TaskEditDialog",
+        "TaskOverdueMark"
+      ],
+      "renderedBy": [
+        "SpacesPage (src/features/spaces/spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "DeletedTaskList",
+      "file": "src/features/productivity/tasks-panel.tsx",
+      "line": 462,
+      "lines": 49,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "EmptyState",
+        "List",
+        "Skeleton",
+        "Timestamp",
+        "VStack"
+      ],
+      "local": [
+        "RowMenu"
+      ],
+      "renderedBy": [
+        "TasksPanel (src/features/productivity/tasks-panel.tsx)"
+      ]
+    },
+    {
+      "name": "RoutineConversation",
+      "file": "src/features/routines/routine-conversation.tsx",
+      "line": 40,
+      "lines": 66,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "ChatSurface"
+      ],
+      "renderedBy": [
+        "RoutinesContent (src/features/routines/routines-page.tsx)",
+        "TimelineContent (src/features/timeline/timeline-page.tsx)"
+      ]
+    },
+    {
+      "name": "RoutineForm",
+      "file": "src/features/routines/routine-form.tsx",
+      "line": 50,
+      "lines": 32,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "CheckboxInput",
+        "Dialog",
+        "HStack",
+        "Heading",
+        "Layout",
+        "Selector",
+        "Text",
+        "TextArea",
+        "TextInput",
+        "TimeInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RoutinesContent (src/features/routines/routines-page.tsx)"
+      ]
+    },
+    {
+      "name": "RoutineRunDetails",
+      "file": "src/features/routines/routine-runs.tsx",
+      "line": 13,
+      "lines": 12,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "SavedSummary"
+      ],
+      "renderedBy": [
+        "RoutineRuns (src/features/routines/routine-runs.tsx)",
+        "TimelineContent (src/features/timeline/timeline-page.tsx)"
+      ]
+    },
+    {
+      "name": "RoutineRuns",
+      "file": "src/features/routines/routine-runs.tsx",
+      "line": 25,
+      "lines": 27,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Collapsible",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "RoutineRunDetails"
+      ],
+      "renderedBy": [
+        "RoutinesContent (src/features/routines/routines-page.tsx)"
+      ]
+    },
+    {
+      "name": "RoutinesPage",
+      "file": "src/features/routines/routines-page.tsx",
+      "line": 29,
+      "lines": 4,
+      "exported": true,
+      "astryx": [
+        "Text"
+      ],
+      "local": [
+        "RoutinesContent"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "RoutineHeader",
+      "file": "src/features/routines/routines-page.tsx",
+      "line": 69,
+      "lines": 16,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon",
+        "Layout",
+        "MoreMenu",
+        "TabList",
+        "VStack"
+      ],
+      "local": [
+        "PageAction",
+        "PageSubtitle",
+        "PageTitle"
+      ],
+      "renderedBy": [
+        "RoutinesContent (src/features/routines/routines-page.tsx)"
+      ]
+    },
+    {
+      "name": "RoutinesContent",
+      "file": "src/features/routines/routines-page.tsx",
+      "line": 86,
+      "lines": 37,
+      "exported": false,
+      "astryx": [
+        "AlertDialog",
+        "Banner",
+        "Button",
+        "Collapsible",
+        "EmptyState",
+        "Layout",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "RoutineConversation",
+        "RoutineDetails",
+        "RoutineForm",
+        "RoutineHeader",
+        "RoutineIndex",
+        "RoutineRuns"
+      ],
+      "renderedBy": [
+        "RoutinesPage (src/features/routines/routines-page.tsx)"
+      ]
+    },
+    {
+      "name": "RoutineIndex",
+      "file": "src/features/routines/routines-page.tsx",
+      "line": 124,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "List",
+        "TabList",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "GroupedList"
+      ],
+      "renderedBy": [
+        "RoutinesContent (src/features/routines/routines-page.tsx)"
+      ]
+    },
+    {
+      "name": "RoutineDetails",
+      "file": "src/features/routines/routines-page.tsx",
+      "line": 145,
+      "lines": 22,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "RoutinesContent (src/features/routines/routines-page.tsx)"
+      ]
+    },
+    {
+      "name": "SavedSummary",
+      "file": "src/features/routines/saved-summary.tsx",
+      "line": 11,
+      "lines": 13,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Collapsible",
+        "Heading",
+        "List",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "RichMarkdown"
+      ],
+      "renderedBy": [
+        "InsightResult (src/features/insights/insights-page.tsx)",
+        "RoutineRunDetails (src/features/routines/routine-runs.tsx)"
+      ]
+    },
+    {
+      "name": "LoadingRows",
+      "file": "src/features/spaces/all-spaces-page.tsx",
+      "line": 65,
+      "lines": 9,
+      "exported": false,
+      "astryx": [
+        "Skeleton",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "AllSpacesPage (src/features/spaces/all-spaces-page.tsx)",
+        "ArchivedRows (src/features/spaces/all-spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "Members",
+      "file": "src/features/spaces/all-spaces-page.tsx",
+      "line": 75,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "Avatar",
+        "AvatarGroup"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ActiveRows (src/features/spaces/all-spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "ActiveRows",
+      "file": "src/features/spaces/all-spaces-page.tsx",
+      "line": 91,
+      "lines": 27,
+      "exported": false,
+      "astryx": [
+        "Badge",
+        "HStack",
+        "List",
+        "Section",
+        "Timestamp"
+      ],
+      "local": [
+        "Members"
+      ],
+      "renderedBy": [
+        "AllSpacesPage (src/features/spaces/all-spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "ArchivedRows",
+      "file": "src/features/spaces/all-spaces-page.tsx",
+      "line": 120,
+      "lines": 96,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "List",
+        "MoreMenu",
+        "Timestamp"
+      ],
+      "local": [
+        "LoadingRows"
+      ],
+      "renderedBy": [
+        "AllSpacesPage (src/features/spaces/all-spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "AllSpacesPage",
+      "file": "src/features/spaces/all-spaces-page.tsx",
+      "line": 218,
+      "lines": 93,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "HStack",
+        "Icon",
+        "Layout",
+        "SegmentedControl",
+        "Stack",
+        "VStack"
+      ],
+      "local": [
+        "ActiveRows",
+        "ArchivedRows",
+        "CreateSpaceDialog",
+        "LoadingRows",
+        "PageTitle"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "SpaceNameDialog",
+      "file": "src/features/spaces/create-space-controls.tsx",
+      "line": 62,
+      "lines": 100,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "Dialog",
+        "HStack",
+        "Layout",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "CreateSpaceDialog (src/features/spaces/create-space-controls.tsx)",
+        "SpaceHeader (src/features/spaces/space-header.tsx)"
+      ]
+    },
+    {
+      "name": "CreateSpaceDialog",
+      "file": "src/features/spaces/create-space-controls.tsx",
+      "line": 164,
+      "lines": 11,
+      "exported": true,
+      "astryx": [],
+      "local": [
+        "SpaceNameDialog"
+      ],
+      "renderedBy": [
+        "AllSpacesPage (src/features/spaces/all-spaces-page.tsx)",
+        "Shell (src/app/shell.tsx)"
+      ]
+    },
+    {
+      "name": "GroupThreadContent",
+      "file": "src/features/spaces/group-thread-content.tsx",
+      "line": 12,
+      "lines": 28,
+      "exported": true,
+      "astryx": [
+        "Text"
+      ],
+      "local": [
+        "ThreadReader"
+      ],
+      "renderedBy": [
+        "GroupChatPage (src/features/chat/group-chat-page.tsx)"
+      ]
+    },
+    {
+      "name": "HistoryNotice",
+      "file": "src/features/spaces/invite-page.tsx",
+      "line": 32,
+      "lines": 8,
+      "exported": false,
+      "astryx": [
+        "Banner"
+      ],
+      "local": [],
+      "renderedBy": [
+        "InvitePage (src/features/spaces/invite-page.tsx)"
+      ]
+    },
+    {
+      "name": "PreviewCard",
+      "file": "src/features/spaces/invite-page.tsx",
+      "line": 41,
+      "lines": 21,
+      "exported": false,
+      "astryx": [
+        "Heading",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "InvitePage (src/features/spaces/invite-page.tsx)"
+      ]
+    },
+    {
+      "name": "AlreadyMemberMessage",
+      "file": "src/features/spaces/invite-page.tsx",
+      "line": 68,
+      "lines": 4,
+      "exported": false,
+      "astryx": [
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "InvitePage (src/features/spaces/invite-page.tsx)"
+      ]
+    },
+    {
+      "name": "ShellCard",
+      "file": "src/features/spaces/invite-page.tsx",
+      "line": 73,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "Card",
+        "Center",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "InvitePage (src/features/spaces/invite-page.tsx)"
+      ]
+    },
+    {
+      "name": "InvitePage",
+      "file": "src/features/spaces/invite-page.tsx",
+      "line": 87,
+      "lines": 100,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Center",
+        "Heading",
+        "Link",
+        "Spinner",
+        "Text"
+      ],
+      "local": [
+        "AlreadyMemberMessage",
+        "HistoryNotice",
+        "PreviewCard",
+        "ShellCard",
+        "SignIn"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "MemberRow",
+      "file": "src/features/spaces/members-panel.tsx",
+      "line": 82,
+      "lines": 51,
+      "exported": false,
+      "astryx": [
+        "Avatar",
+        "HStack",
+        "List",
+        "MoreMenu",
+        "Token"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MembersPanel (src/features/spaces/members-panel.tsx)"
+      ]
+    },
+    {
+      "name": "InvitationRow",
+      "file": "src/features/spaces/members-panel.tsx",
+      "line": 134,
+      "lines": 32,
+      "exported": false,
+      "astryx": [
+        "Avatar",
+        "List",
+        "MoreMenu",
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MembersPanel (src/features/spaces/members-panel.tsx)"
+      ]
+    },
+    {
+      "name": "InviteForm",
+      "file": "src/features/spaces/members-panel.tsx",
+      "line": 178,
+      "lines": 104,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "HStack",
+        "Selector",
+        "Stack",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "InviteControl (src/features/spaces/members-panel.tsx)"
+      ]
+    },
+    {
+      "name": "InviteControl",
+      "file": "src/features/spaces/members-panel.tsx",
+      "line": 286,
+      "lines": 17,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon"
+      ],
+      "local": [
+        "InviteForm"
+      ],
+      "renderedBy": [
+        "MembersPanel (src/features/spaces/members-panel.tsx)"
+      ]
+    },
+    {
+      "name": "MembersPanel",
+      "file": "src/features/spaces/members-panel.tsx",
+      "line": 306,
+      "lines": 193,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "Banner",
+        "Button",
+        "Heading",
+        "List",
+        "Section",
+        "Skeleton",
+        "Stack",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "InvitationRow",
+        "InviteControl",
+        "MemberRow"
+      ],
+      "renderedBy": [
+        "SpacesPage (src/features/spaces/spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "SpaceHeader",
+      "file": "src/features/spaces/space-header.tsx",
+      "line": 66,
+      "lines": 112,
+      "exported": true,
+      "astryx": [
+        "Avatar",
+        "AvatarGroup",
+        "Button",
+        "HStack",
+        "Heading",
+        "Layout",
+        "MoreMenu",
+        "Stack",
+        "TabList",
+        "Token",
+        "VStack"
+      ],
+      "local": [
+        "PageTitle",
+        "SpaceNameDialog"
+      ],
+      "renderedBy": [
+        "SpacesPage (src/features/spaces/spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "SpacesNav",
+      "file": "src/features/spaces/spaces-nav.tsx",
+      "line": 40,
+      "lines": 54,
+      "exported": true,
+      "astryx": [
+        "Badge",
+        "SideNav"
+      ],
+      "local": [],
+      "renderedBy": [
+        "Shell (src/app/shell.tsx)",
+        "src/app/shell.tsx (as value)"
+      ]
+    },
+    {
+      "name": "Frame",
+      "file": "src/features/spaces/spaces-page.tsx",
+      "line": 41,
+      "lines": 5,
+      "exported": false,
+      "astryx": [
+        "Layout"
+      ],
+      "local": [],
+      "renderedBy": [
+        "SpacesPage (src/features/spaces/spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "SpacesPage",
+      "file": "src/features/spaces/spaces-page.tsx",
+      "line": 50,
+      "lines": 221,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "Banner",
+        "Button",
+        "EmptyState",
+        "Layout",
+        "Skeleton",
+        "VStack"
+      ],
+      "local": [
+        "AgendaPanel",
+        "BobAppsPage",
+        "Frame",
+        "MembersPanel",
+        "NotesPanel",
+        "SpaceHeader",
+        "TasksPanel",
+        "ThreadPanel",
+        "ThreadTitleBar"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "NewThreadForm",
+      "file": "src/features/spaces/thread-panel.tsx",
+      "line": 46,
+      "lines": 62,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "NewThreadControl (src/features/spaces/thread-panel.tsx)",
+        "ThreadPanel (src/features/spaces/thread-panel.tsx)"
+      ]
+    },
+    {
+      "name": "NewThreadControl",
+      "file": "src/features/spaces/thread-panel.tsx",
+      "line": 112,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "Button"
+      ],
+      "local": [
+        "NewThreadForm"
+      ],
+      "renderedBy": [
+        "ThreadPanel (src/features/spaces/thread-panel.tsx)"
+      ]
+    },
+    {
+      "name": "ThreadHeader",
+      "file": "src/features/spaces/thread-panel.tsx",
+      "line": 129,
+      "lines": 125,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Heading",
+        "Icon",
+        "MoreMenu",
+        "Stack",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ThreadTitleBar (src/features/spaces/thread-panel.tsx)"
+      ]
+    },
+    {
+      "name": "ThreadTitleBar",
+      "file": "src/features/spaces/thread-panel.tsx",
+      "line": 296,
+      "lines": 73,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Stack",
+        "Text"
+      ],
+      "local": [
+        "DeviceHeaderControl",
+        "ThreadHeader"
+      ],
+      "renderedBy": [
+        "SpacesPage (src/features/spaces/spaces-page.tsx)"
+      ]
+    },
+    {
+      "name": "Centered",
+      "file": "src/features/spaces/thread-panel.tsx",
+      "line": 370,
+      "lines": 7,
+      "exported": false,
+      "astryx": [
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ThreadPanel (src/features/spaces/thread-panel.tsx)"
+      ]
+    },
+    {
+      "name": "ThreadRow",
+      "file": "src/features/spaces/thread-panel.tsx",
+      "line": 378,
+      "lines": 58,
+      "exported": false,
+      "astryx": [
+        "Badge",
+        "HStack",
+        "Icon",
+        "List",
+        "MoreMenu",
+        "Timestamp"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ThreadList (src/features/spaces/thread-panel.tsx)"
+      ]
+    },
+    {
+      "name": "ThreadList",
+      "file": "src/features/spaces/thread-panel.tsx",
+      "line": 443,
+      "lines": 42,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon",
+        "List",
+        "Stack",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "ThreadRow"
+      ],
+      "renderedBy": [
+        "ThreadPanel (src/features/spaces/thread-panel.tsx)"
+      ]
+    },
+    {
+      "name": "ThreadPanel",
+      "file": "src/features/spaces/thread-panel.tsx",
+      "line": 489,
+      "lines": 95,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "Skeleton",
+        "VStack"
+      ],
+      "local": [
+        "Centered",
+        "DeviceHeaderControl",
+        "NewThreadControl",
+        "NewThreadForm",
+        "ThreadList",
+        "ThreadReader"
+      ],
+      "renderedBy": [
+        "SpacesPage (src/features/spaces/spaces-page.tsx)",
+        "src/features/spaces/spaces-page.tsx (as value)"
+      ]
+    },
+    {
+      "name": "MessageBody",
+      "file": "src/features/spaces/thread-reader.tsx",
+      "line": 60,
+      "lines": 10,
+      "exported": false,
+      "astryx": [
+        "Chat",
+        "Text"
+      ],
+      "local": [
+        "RichMarkdown"
+      ],
+      "renderedBy": [
+        "MessageItem (src/features/spaces/thread-reader.tsx)"
+      ]
+    },
+    {
+      "name": "InlineActions",
+      "file": "src/features/spaces/thread-reader.tsx",
+      "line": 116,
+      "lines": 36,
+      "exported": false,
+      "astryx": [
+        "HStack",
+        "Icon",
+        "IconButton"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MessageItem (src/features/spaces/thread-reader.tsx)"
+      ]
+    },
+    {
+      "name": "MessageItem",
+      "file": "src/features/spaces/thread-reader.tsx",
+      "line": 191,
+      "lines": 135,
+      "exported": false,
+      "astryx": [
+        "Avatar",
+        "Button",
+        "ContextMenu",
+        "HStack",
+        "Text",
+        "TextArea",
+        "VStack"
+      ],
+      "local": [
+        "AssistantAvatar",
+        "InlineActions",
+        "MessageBody",
+        "MessageBubble",
+        "PhoneMoreActions"
+      ],
+      "renderedBy": [
+        "ThreadReader (src/features/spaces/thread-reader.tsx)"
+      ]
+    },
+    {
+      "name": "ThreadReader",
+      "file": "src/features/spaces/thread-reader.tsx",
+      "line": 340,
+      "lines": 290,
+      "exported": true,
+      "astryx": [
+        "AlertDialog",
+        "Chat",
+        "EmptyState",
+        "Section",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "Composer",
+        "MessageItem",
+        "SpokenReplyPlayer",
+        "ThinkingMessage",
+        "VoiceModeBar"
+      ],
+      "renderedBy": [
+        "GroupThreadContent (src/features/spaces/group-thread-content.tsx)",
+        "SharedAppConversation (src/features/bob-apps/app-workspace.tsx)",
+        "SharedWorkspaceSession (src/features/bob-apps/marketing-workspace.tsx)",
+        "ThreadPanel (src/features/spaces/thread-panel.tsx)"
+      ]
+    },
+    {
+      "name": "TimelineRow",
+      "file": "src/features/timeline/timeline-page.tsx",
+      "line": 58,
+      "lines": 5,
+      "exported": false,
+      "astryx": [
+        "List"
+      ],
+      "local": [],
+      "renderedBy": [
+        "TimelineContent (src/features/timeline/timeline-page.tsx)"
+      ]
+    },
+    {
+      "name": "TimelinePage",
+      "file": "src/features/timeline/timeline-page.tsx",
+      "line": 63,
+      "lines": 4,
+      "exported": true,
+      "astryx": [
+        "Text"
+      ],
+      "local": [
+        "TimelineContent"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "TimelineContent",
+      "file": "src/features/timeline/timeline-page.tsx",
+      "line": 71,
+      "lines": 52,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Collapsible",
+        "DateInput",
+        "EmptyState",
+        "HStack",
+        "Heading",
+        "Icon",
+        "IconButton",
+        "Layout",
+        "List",
+        "MoreMenu",
+        "Section",
+        "Selector",
+        "Stack",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "PageSubtitle",
+        "PageTitle",
+        "RoutineConversation",
+        "RoutineRunDetails",
+        "TimelineRow",
+        "WideOnly"
+      ],
+      "renderedBy": [
+        "TimelinePage (src/features/timeline/timeline-page.tsx)"
+      ]
+    },
+    {
+      "name": "ToolRow",
+      "file": "src/features/tools/tool-controls.tsx",
+      "line": 20,
+      "lines": 13,
+      "exported": false,
+      "astryx": [
+        "Button",
+        "Switch",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ToolControlsContent (src/features/tools/tool-controls.tsx)"
+      ]
+    },
+    {
+      "name": "ToolControlsContent",
+      "file": "src/features/tools/tool-controls.tsx",
+      "line": 33,
+      "lines": 46,
+      "exported": false,
+      "astryx": [
+        "Banner",
+        "Button",
+        "Heading",
+        "Skeleton",
+        "Text",
+        "TextInput",
+        "VStack"
+      ],
+      "local": [
+        "ToolRow"
+      ],
+      "renderedBy": [
+        "ToolControls (src/features/tools/tool-controls.tsx)"
+      ]
+    },
+    {
+      "name": "ToolControls",
+      "file": "src/features/tools/tool-controls.tsx",
+      "line": 79,
+      "lines": 9,
+      "exported": true,
+      "astryx": [
+        "Text"
+      ],
+      "local": [
+        "ToolControlsContent"
+      ],
+      "renderedBy": [
+        "ToolControlsDialog (src/features/tools/tool-controls.tsx)",
+        "ToolsPage (src/features/tools/tools-page.tsx)"
+      ]
+    },
+    {
+      "name": "ToolControlsDialog",
+      "file": "src/features/tools/tool-controls.tsx",
+      "line": 88,
+      "lines": 6,
+      "exported": true,
+      "astryx": [
+        "Dialog",
+        "Layout"
+      ],
+      "local": [
+        "ToolControls"
+      ],
+      "renderedBy": [
+        "IntegrationToolsDialog (src/features/integrations/google-accounts-section.tsx)"
+      ]
+    },
+    {
+      "name": "ToolsPage",
+      "file": "src/features/tools/tools-page.tsx",
+      "line": 8,
+      "lines": 13,
+      "exported": true,
+      "astryx": [
+        "Layout",
+        "VStack"
+      ],
+      "local": [
+        "PageSubtitle",
+        "PageTitle",
+        "ToolControls"
+      ],
+      "renderedBy": []
+    },
+    {
+      "name": "ChartTooltip",
+      "file": "src/features/usage/usage-section.tsx",
+      "line": 64,
+      "lines": 23,
+      "exported": false,
+      "astryx": [
+        "Card",
+        "Text",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "MessagesChart (src/features/usage/usage-section.tsx)"
+      ]
+    },
+    {
+      "name": "MessagesChart",
+      "file": "src/features/usage/usage-section.tsx",
+      "line": 88,
+      "lines": 24,
+      "exported": false,
+      "astryx": [
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "ChartTooltip"
+      ],
+      "renderedBy": [
+        "UsageNumbers (src/features/usage/usage-section.tsx)"
+      ]
+    },
+    {
+      "name": "UsageNumbers",
+      "file": "src/features/usage/usage-section.tsx",
+      "line": 113,
+      "lines": 34,
+      "exported": false,
+      "astryx": [
+        "Link",
+        "MetadataList",
+        "Text",
+        "VStack"
+      ],
+      "local": [
+        "MessagesChart"
+      ],
+      "renderedBy": [
+        "UsageSection (src/features/usage/usage-section.tsx)"
+      ]
+    },
+    {
+      "name": "UsageSkeleton",
+      "file": "src/features/usage/usage-section.tsx",
+      "line": 148,
+      "lines": 10,
+      "exported": false,
+      "astryx": [
+        "Skeleton",
+        "VStack"
+      ],
+      "local": [],
+      "renderedBy": [
+        "UsageSection (src/features/usage/usage-section.tsx)"
+      ]
+    },
+    {
+      "name": "UsageSection",
+      "file": "src/features/usage/usage-section.tsx",
+      "line": 164,
+      "lines": 41,
+      "exported": true,
+      "astryx": [
+        "Banner",
+        "Button",
+        "EmptyState",
+        "HStack",
+        "SegmentedControl",
+        "VStack"
+      ],
+      "local": [
+        "UsageNumbers",
+        "UsageSkeleton"
+      ],
+      "renderedBy": [
+        "SettingsPage (src/features/account/account-page.tsx)"
+      ]
+    },
+    {
+      "name": "SpokenReplyPlayer",
+      "file": "src/features/voice/spoken-reply-player.tsx",
+      "line": 19,
+      "lines": 47,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon",
+        "Text"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ChatSurface (src/features/chat/chat-surface.tsx)",
+        "ThreadReader (src/features/spaces/thread-reader.tsx)"
+      ]
+    },
+    {
+      "name": "VoiceModeBar",
+      "file": "src/features/voice/voice-mode-bar.tsx",
+      "line": 15,
+      "lines": 55,
+      "exported": true,
+      "astryx": [
+        "Button",
+        "HStack",
+        "Icon",
+        "StatusDot",
+        "Text",
+        "Toolbar"
+      ],
+      "local": [],
+      "renderedBy": [
+        "ChatSurface (src/features/chat/chat-surface.tsx)",
+        "ThreadReader (src/features/spaces/thread-reader.tsx)"
+      ]
+    },
+    {
+      "name": "UiObservabilityBoundary",
+      "file": "src/lib/observability/ui-observability-boundary.tsx",
+      "line": 6,
+      "lines": 19,
+      "exported": true,
+      "astryx": [],
+      "local": [],
+      "renderedBy": []
+    }
+  ]
+}

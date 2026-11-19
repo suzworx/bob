@@ -1,0 +1,26 @@
+name: Reliability, security, privacy, accessibility, or observability
+description: A cross-cutting production quality issue
+title: "[Quality] "
+labels: ["type: quality"]
+body:
+  - type: dropdown
+    id: quality
+    attributes: { label: Quality attribute, options: ["Reliability", "Security", "Privacy", "Accessibility", "Observability", "Release readiness"] }
+    validations: { required: true }
+  - type: textarea
+    id: risk
+    attributes: { label: Risk, threat, or failure mode }
+    validations: { required: true }
+  - type: textarea
+    id: control
+    attributes: { label: Required control and non-goals }
+    validations: { required: true }
+  - type: textarea
+    id: acceptance
+    attributes: { label: Measurable acceptance and verification }
+    validations: { required: true }
+  - type: textarea
+    id: rollback
+    attributes: { label: Safe rollout and rollback }
+    validations: { required: true }
+

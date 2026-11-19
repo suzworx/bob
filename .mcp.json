@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "astryx": {
+      "type": "http",
+      "url": "https://astryx.atmeta.com/mcp"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@0.0.83"]
+    }
+  }
+}

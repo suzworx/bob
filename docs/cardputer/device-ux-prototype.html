@@ -1,0 +1,3247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bob Cardputer - device UX prototype</title>
+<style>
+  :root {
+    --bg: #111316;
+    --panel: #1a1d21;
+    --panel-2: #22262b;
+    --line: #2f343a;
+    --text: #e9ecef;
+    --muted: #9aa3ad;
+    --orange: #e8742a;
+    --orange-soft: #f3a26b;
+    --shipped: #3fb96b;
+    --planned: #a78bfa;
+    --focus: #7cc4ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.45 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  header.page { padding: 18px 28px 6px; }
+  header.page h1 { margin: 0; font-size: 20px; letter-spacing: .2px; }
+  header.page p { margin: 4px 0 0; color: var(--muted); }
+  main { display: grid; grid-template-columns: minmax(0, 820px) minmax(320px, 440px);
+    gap: 24px; padding: 12px 24px 40px; align-items: start; }
+  @media (max-width: 960px) { main { grid-template-columns: 1fr; } }
+
+  /* ---------- device ---------- */
+  .stage { position: sticky; top: 12px; }
+  .device { width: 100%; max-width: 800px; border-radius: 26px; padding: 18px 22px 22px;
+    background: linear-gradient(160deg, #54585e 0%, #3a3d42 45%, #2b2d31 100%);
+    border: 2px solid #1b1c1f; box-shadow: 0 18px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12); }
+  .device:focus-visible { outline-offset: 4px; }
+  .device-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .brand { font: 600 12px/1 "Segoe UI", sans-serif; letter-spacing: 2px; color: #d6d9dd; text-transform: uppercase; }
+  .brand b { color: var(--orange); }
+  .grille { display: flex; gap: 4px; }
+  .grille i { width: 5px; height: 5px; border-radius: 50%; background: #1e2023; box-shadow: inset 0 1px 1px #000; }
+  .screen-row { display: flex; gap: 18px; align-items: center; }
+  .bezel { flex: 1; background: #0a0a0b; border-radius: 12px; padding: 14px; border: 1px solid #000;
+    box-shadow: inset 0 0 0 2px #17181a; }
+  .lcd { position: relative; width: 100%; aspect-ratio: 240 / 135; background: #000; }
+  .lcd canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transition: filter .4s; }
+  .lcd canvas.dim { filter: brightness(.3); }
+  .lcd::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(0,0,0,.28) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.28) 1px, transparent 1px);
+    background-size: calc(100% / 240) calc(100% / 135); }
+  .side { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 88px; }
+  .btn-go { width: 64px; height: 64px; border-radius: 50%; border: 3px solid #7a3a10; cursor: pointer;
+    background: radial-gradient(circle at 35% 30%, #ffb27d, var(--orange) 55%, #b4521a);
+    box-shadow: 0 5px 0 #6b300c, 0 8px 16px rgba(0,0,0,.5); color: #2a1204; font: 700 11px/1.1 "Segoe UI", sans-serif;
+    touch-action: none; user-select: none; }
+  .btn-go.down { transform: translateY(4px); box-shadow: 0 1px 0 #6b300c, 0 3px 8px rgba(0,0,0,.5); filter: brightness(1.12); }
+  .side small { color: #c9cdd2; font-size: 11px; text-align: center; line-height: 1.2; }
+  .keyboard { margin-top: 16px; display: grid; gap: 6px; }
+  .krow { display: grid; grid-template-columns: repeat(14, 1fr); gap: 6px; }
+  .key { position: relative; height: 44px; border-radius: 8px; border: 1px solid #111214; cursor: pointer;
+    background: linear-gradient(#34373c, #25272b); color: #eef0f2; box-shadow: 0 3px 0 #111214;
+    font: 600 14px/1 "Segoe UI", sans-serif; padding: 0; user-select: none; }
+  .key .sub { position: absolute; top: 4px; right: 6px; font-size: 9px; color: var(--orange-soft); font-weight: 600; }
+  .key.special { color: var(--orange-soft); font-size: 11px; }
+  .key.matters { border-color: #a45a26; box-shadow: 0 3px 0 #111214, inset 0 0 0 1px rgba(232,116,42,.55); }
+  .key.down, .key[aria-pressed="true"] { transform: translateY(3px); box-shadow: 0 0 0 #111214; background: linear-gradient(#f08a45, #c95f1e); color: #1d0d02; }
+  .caption { margin-top: 14px; min-height: 64px; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 12px 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .caption .step { flex: none; font: 700 11px/1 "Segoe UI", sans-serif; color: #0f1113; background: var(--orange);
+    border-radius: 999px; padding: 5px 9px; margin-top: 2px; }
+  .caption .step:empty { display: none; }
+  .caption p { margin: 0; font-size: 15px; }
+  .speech { color: var(--orange-soft); font-style: italic; }
+
+  /* ---------- panel ---------- */
+  .panel { display: flex; flex-direction: column; gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .card h2 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); }
+  .seg { display: inline-flex; flex-wrap: wrap; background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 3px; }
+  .seg label { position: relative; cursor: pointer; }
+  .seg input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+  .seg span { display: block; padding: 7px 12px; border-radius: 8px; color: var(--muted); font-weight: 600; }
+  .seg input:checked + span { background: #34383e; color: var(--text); }
+  .seg input:focus-visible + span { outline: 3px solid var(--focus); }
+  .seg input:disabled + span { opacity: .45; cursor: not-allowed; }
+  .hintline { color: var(--muted); font-size: 12.5px; margin: 8px 0 0; }
+  .scen { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .scen button, .act { width: 100%; text-align: left; display: flex; align-items: center; gap: 8px;
+    background: var(--panel-2); color: var(--text); border: 1px solid var(--line); border-radius: 9px;
+    padding: 8px 10px; cursor: pointer; font: inherit; }
+  .scen button:hover:not(:disabled), .act:hover:not(:disabled) { border-color: #4a5058; background: #292d33; }
+  .scen button[aria-current="true"] { border-color: var(--orange); background: #2e2620; }
+  button:disabled { opacity: .42; cursor: not-allowed; }
+  .scen .t { flex: 1; }
+  .badge { flex: none; font: 700 10.5px/1 "Segoe UI", sans-serif; border-radius: 999px; padding: 4px 7px; letter-spacing: .3px; }
+  .b-shipped { background: rgba(63,185,107,.16); color: #7fe0a2; border: 1px solid rgba(63,185,107,.4); }
+  .b-planned { background: rgba(167,139,250,.14); color: #c9b8ff; border: 1px solid rgba(167,139,250,.45); }
+  .acts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .acts .act { font-size: 13px; }
+  .acts h3 { grid-column: 1 / -1; margin: 6px 0 0; font-size: 12px; color: var(--muted); font-weight: 600; }
+  .toolbar { display: flex; gap: 8px; margin-top: 10px; }
+  .tb { background: var(--panel-2); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; font: inherit; }
+  dl.state { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; }
+  dl.state dt { color: var(--muted); }
+  dl.state dd { margin: 0; font-family: Consolas, "Cascadia Mono", monospace; overflow-wrap: anywhere; }
+  #ro-state { color: var(--orange-soft); font-weight: 700; }
+  table.legend { width: 100%; border-collapse: collapse; font-size: 12.5px; line-height: 1.35; }
+  table.legend td { padding: 3px 6px; border-top: 1px solid var(--line); vertical-align: top; }
+  table.legend td:first-child { white-space: nowrap; font-family: Consolas, monospace; color: var(--orange-soft); }
+  body:not(.planned-on) .planned-only { display: none; }
+  .card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+  .card-head h2 { margin: 0; }
+  .help-btn { background: #2e2620; color: var(--orange-soft); border: 1px solid var(--orange); border-radius: 8px;
+    padding: 4px 10px; cursor: pointer; font: 600 12.5px/1.3 "Segoe UI", sans-serif; }
+  .help-btn:hover:not(:disabled) { background: #3a2c22; }
+  .help-hint { color: var(--orange-soft); font-weight: 600; }
+  kbd { font-family: Consolas, monospace; background: #2a2e34; border: 1px solid #3a3f46; border-radius: 4px; padding: 0 4px; }
+  .notes { margin: 0; padding-left: 18px; color: #c9ced4; font-size: 13px; }
+  .notes li { margin: 4px 0; }
+  .check { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+  .web-form { display: grid; gap: 8px; }
+  .web-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .web-row label { font-weight: 600; }
+  .web-row small { color: var(--muted); display: block; font-weight: 400; }
+  .web-row input[type=range] { width: 170px; }
+  .web-status { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12.5px; margin-top: 8px; }
+  .web-status i { width: 8px; height: 8px; border-radius: 50%; background: #3fb96b; display: inline-block; }
+  .web-status.pending i { background: #f2c14e; }
+  .web-meta { color: var(--muted); font-size: 12.5px; margin: 2px 0 0; }
+  dl.why { margin: 0; font-size: 13px; }
+  dl.why dt { font-weight: 600; margin-top: 8px; }
+  dl.why dt:first-child { margin-top: 0; }
+  dl.why dd { margin: 2px 0 0; color: #c9ced4; }
+</style>
+</head>
+<body>
+<header class="page">
+  <h1>Bob Cardputer: device UX prototype</h1>
+  <p>Clickable mock of the Cardputer ADV's 240x135 screen, keyboard and GO button. <b>Sound and strip review:</b> use the <a href="#sounds">Sounds section</a> to audition unapproved candidates. The strip below previews the new 0.6 s hold and 100 px/s scroll. <b>Connection + Updates:</b> use simulator actions below to review the proposed controls; releases and installations are simulated. Other scenarios remain the older prototype: <b>Shipped</b> (the default) copies the firmware on <code>main3</code> after PR #691 (Setup, Settings, server profiles and reset, #675-#680): every screen, string, colour, key and timing comes from <code>apps/cardputer/src/state.cpp</code>, <code>chrome.cpp</code>, <code>cards.cpp</code>, <code>display.cpp</code> and <code>settings_ui.cpp</code>. <b>Shipped + planned</b> adds what is not built yet, each marked <span class="badge b-planned">Planned</span> with its issue. <span class="help-hint">Help:</span> click the device and press <kbd>h</kbd> on Ready.</p>
+</header>
+<main>
+  <section class="stage" aria-label="Cardputer device">
+    <div class="device" id="device" tabindex="0" role="group"
+         aria-label="Cardputer. When focused, type on your keyboard to press device keys; hold Space to hold GO; press h on Ready for help."
+         aria-describedby="caption-text">
+      <div class="device-top">
+        <span class="brand"><b>M5</b> Cardputer ADV · Bob v2</span>
+        <span class="grille" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="screen-row">
+        <div class="bezel">
+          <div class="lcd">
+            <canvas id="lcd" role="img" aria-label="Device screen"></canvas>
+          </div>
+        </div>
+        <div class="side">
+          <button class="btn-go" id="btn-go" type="button" aria-label="GO button, hold to talk">GO</button>
+          <small id="btn-label">hold to talk<br>(or hold Space)</small>
+        </div>
+      </div>
+      <div class="keyboard" id="keyboard" aria-label="Device keyboard"></div>
+    </div>
+    <div class="caption" role="status" aria-live="polite">
+      <span class="step" id="caption-step"></span>
+      <p id="caption-text">Pick a scenario on the right, or click the device and use it. Hold <kbd>Space</kbd> (or the orange GO) to talk.</p>
+    </div>
+    <p class="sr-only" id="screen-live" aria-live="polite"></p>
+  </section>
+
+  <aside class="panel" aria-label="Prototype controls">
+    <div class="card">
+      <h2>Features shown</h2>
+      <div class="seg" role="radiogroup" aria-label="Which features to show">
+        <label><input type="radio" name="fmode" value="shipped" id="mode-shipped" checked><span>Shipped</span></label>
+        <label><input type="radio" name="fmode" value="planned" id="mode-planned"><span>Shipped + planned</span></label>
+      </div>
+      <p class="hintline">"Shipped" labels the older <code>main3</code> scenarios, not a claim that every scenario matches current firmware. Sound references and strip timing are the current review areas. "Shipped + planned" adds items marked <span class="badge b-planned">Planned</span>: mic off and voice stop (#313), mode picker and mode earcon (#330), earcon setting (#322), low-battery warning and screen dim (#326).</p>
+      <label class="check"><input type="checkbox" id="sound" checked> Play sound (earcons, ring, spoken reply). Starts after your first click.</label>
+      <section aria-label="Sounds" id="sounds">
+        <h3>Sounds — choose the cabin character</h3>
+        <p class="hintline">Choose the cabin character using the real references. Every interaction must ultimately have its own recognisable sound. The earlier synthetic candidates were rejected and removed. These controls play real reference recordings and stop other demo audio. Browser speakers sound different from a Cardputer.</p>
+        <h4>Real cabin references</h4>
+        <p>Airbus A320 interphone — Shamrock132. Includes a handset click at the end.</p>
+        <audio controls preload="none" class="cabin-reference" aria-label="Airbus A320 interphone reference" src="https://cdn.freesound.org/previews/245/245851_1420423-hq.mp3"></audio>
+        <p class="hintline"><a href="https://freesound.org/people/Shamrock132/sounds/245851/" target="_blank" rel="noopener">Listen at source / attribution</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0</a></p>
+        <p>Airplane chime — Sharelk.</p>
+        <audio controls preload="none" class="cabin-reference" aria-label="Airplane chime reference" src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Airplane_Chime_Sound_Effect.ogg"></audio>
+        <p class="hintline"><a href="https://commons.wikimedia.org/wiki/File:Airplane_Chime_Sound_Effect.ogg" target="_blank" rel="noopener">Listen at source / attribution</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0</a>. These references need internet. If playback fails, open the source.</p>
+        <p class="hintline" id="sound-preview-status" role="status">Play a real cabin reference above. Neither has been selected for the device yet.</p>
+        <h4>A320-derived event candidates — not approved</h4>
+        <p class="hintline">Each event has its own pattern. These are synthesized candidates, not the reference recording. The device scenarios below use this same candidate family; hardware listening and your approval are still pending. A reminder plays its full 2.1 s prelude here before speech; device cancellation or buffer pressure can shorten it.</p>
+        <div class="scen" id="event-sounds"></div>
+        <label class="check">Preview volume <input type="range" id="candidate-volume" min="0" max="100" value="50" aria-label="Candidate preview volume"></label>
+        <label class="check">Timer / alarm ring style <select id="candidate-ring"><option value="classic">Classic</option><option value="chime">Chime</option><option value="pulse">Pulse</option></select></label>
+        <button class="act" type="button" id="stop-sound-preview">Stop sound preview</button>
+      </section>
+      <label class="check planned-only"><input type="checkbox" id="earcons" checked> Earcons on <span class="badge b-planned">Planned #322</span></label>
+    </div>
+
+    <div class="card" id="why-card">
+      <h2>Why don't I see…</h2>
+      <dl class="why">
+        <dt>…the listening mode change, or the full shortcut strip?</dt>
+        <dd>They belong to Ready. <kbd>k</kbd>, <kbd>c</kbd>, <kbd>n</kbd>, <kbd>s</kbd>, <kbd>h</kbd> and <kbd>?</kbd> are read on Ready only; on any other screen they do nothing, with no toast. On <b>WS RECONNECT</b> the strip is just "<b style="color:#ffff00">GO</b> try again": press GO (or wait for the automatic retry) and, once the server welcomes the device, Ready and its full strip come back. See the scenario "Device offline → reconnects → Ready".</dd>
+        <dt>…"Hey Bob"?</dt>
+        <dd>The default wake word is "Alexa" (ESPHome's model). "Hey Bob" is a custom-trained model and the backup: <code>w</code> in Ready switches between them, and the choice is kept on the device (<code>include/wake_models.h</code>).</dd>
+        <dt>…volume keys working in help or a list?</dt>
+        <dd><kbd>-</kbd> <kbd>=</kbd> <kbd>m</kbd> work on Ready and while a reply is on its way, nowhere else.</dd>
+        <dt>…a mode picker or alarms through DND?</dt>
+        <dd>Not built. Switch to "Shipped + planned" to see the planned ones. Do not disturb today holds <i>every</i> announcement on the server, alarms included.</dd>
+      </dl>
+    </div>
+
+    <div class="card" id="legend-card">
+      <div class="card-head">
+        <h2>Key legend</h2>
+        <button class="help-btn" type="button" id="open-help" aria-label="Press h on the device (help, on Ready)">Help (h)</button>
+      </div>
+      <table class="legend">
+        <tbody>
+          <tr><td>GO / Space</td><td>Ready: hold to talk, let go to send (Announcements only: a notice instead). While a reply is on its way: stop. Help: back. Announcement: dismiss. WS RECONNECT and errors: try again.</td></tr>
+          <tr><td>- &nbsp; =</td><td>Volume down / up, 0-10 (also <kbd>_</kbd> <kbd>+</kbd>). Ready and during a reply only; the level bar replaces the strip for 1.5 s.</td></tr>
+          <tr><td>m</td><td>Mute or unmute the speaker. Same screens as the volume keys.</td></tr>
+          <tr><td>x</td><td>Stop the reply (waiting, thinking or playing).</td></tr>
+          <tr><td>k</td><td>Ready only: next listening mode, Push to talk → Always awake → Announcements only → Push to talk.</td></tr>
+          <tr><td>c &nbsp; n &nbsp; s</td><td>Ready only: pick a conversation, start a new chat, pick a Space.</td></tr>
+          <tr><td>h &nbsp; ?</td><td>Ready only: the help card. <kbd>;</kbd> <kbd>.</kbd> scroll, <kbd>`</kbd> or GO back.</td></tr>
+          <tr><td>; &nbsp; .</td><td>Up / down in lists; scroll the reply card and help (<kbd>&uarr;</kbd> <kbd>&darr;</kbd>).</td></tr>
+          <tr><td>Enter &nbsp; `</td><td>Select or confirm / back or cancel (<kbd>Esc</kbd> = <kbd>`</kbd>).</td></tr>
+          <tr><td>any key</td><td>Closes the reply card (then does its own job; <kbd>`</kbd> only closes). Dismisses an announcement and ALL SET!. Asks for a new code after pairing was denied.</td></tr>
+          <tr><td>,</td><td>Settings. Ready, the Wi-Fi screens, the pairing screen and the server screen only. GO does nothing in Settings.</td></tr>
+          <tr><td>Tab &nbsp; del</td><td>In a field: show or hide the password; erase (hold to erase more; <kbd>Backspace</kbd>).</td></tr>
+          <tr><td>fn + ` , /</td><td>In a field: cancel, cursor left, cursor right. Every other key types, <kbd>`</kbd> included (on your PC: <kbd>Esc</kbd>, <kbd>&larr;</kbd> <kbd>&rarr;</kbd>).</td></tr>
+          <tr><td>fn + ` at power-on</td><td>Opens Settings on the Wi-Fi list, erasing nothing (Simulate: "Power on holding Fn+Esc"). Never GO: it is the chip's download-mode pin.</td></tr>
+          <tr class="planned-only"><td>fn + m</td><td><span class="badge b-planned">Planned #313</span> microphone off / on (<kbd>Shift</kbd>+<kbd>M</kbd>).</td></tr>
+          <tr class="planned-only"><td>Enter in help</td><td><span class="badge b-planned">Planned #330</span> opens the listening-mode picker.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" id="web-card">
+      <h2>Web Devices page · Kitchen Cardputer settings</h2>
+      <div class="web-form">
+        <div class="web-row"><label for="web-vol">Volume <small id="web-vol-val">6</small></label><input type="range" id="web-vol" min="0" max="10" step="1" value="6"></div>
+        <div class="web-row"><label for="web-mute">Mute <small>Replies and announcements stay silent.</small></label><input type="checkbox" id="web-mute"></div>
+        <div>
+          <label style="font-weight:600">Listening mode <small style="color:var(--muted);font-weight:400">How the device starts listening.</small></label>
+          <div class="seg" role="radiogroup" aria-label="Listening mode" style="margin-top:4px">
+            <label><input type="radio" name="lmode" value="ptt" checked><span>Push to talk</span></label>
+            <label><input type="radio" name="lmode" value="wake"><span>Always awake</span></label>
+            <label><input type="radio" name="lmode" value="announce"><span>Announcements only</span></label>
+          </div>
+        </div>
+        <div class="web-row"><label for="web-dnd">Do not disturb <small>Holds announcements until you turn it off.</small></label><input type="checkbox" id="web-dnd"></div>
+      </div>
+      <div class="web-status" id="web-status" role="status"><i></i><span id="web-status-text">Applied</span></div>
+      <p class="web-meta" id="web-battery">Battery 100%</p>
+      <p class="web-meta">Firmware 0.1.0</p>
+      <p class="hintline">Mirrors the web Devices page (PR #381). A change saves at once and reads "Applying…" until the device reports the same values back (<code>device_state</code>), then "Applied". Volume and mute apply at once, even mid-reply; mode and DND wait for Ready while a turn or an announcement is on. Changes made on the device (<kbd>k</kbd>, <kbd>-</kbd> <kbd>=</kbd> <kbd>m</kbd>) show up here too.</p>
+    </div>
+
+    <div class="card">
+      <h2>Guided scenarios</h2>
+      <ul class="scen" id="scenarios"></ul>
+      <div class="toolbar">
+        <button class="tb" type="button" id="stop-scen">Stop scenario</button>
+        <button class="tb" type="button" id="reset">Reset device</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Simulate</h2>
+      <div class="acts" id="acts"></div>
+    </div>
+
+    <div class="card">
+      <h2>Live state</h2>
+      <dl class="state">
+        <dt>State</dt><dd id="ro-state">WIFI</dd>
+        <dt>Screen</dt><dd id="ro-screen">-</dd>
+        <dt>Strip</dt><dd id="ro-strip">-</dd>
+        <dt>Conversation</dt><dd id="ro-conv">-</dd>
+        <dt>Space</dt><dd id="ro-space">-</dd>
+        <dt>Volume</dt><dd id="ro-vol">-</dd>
+        <dt>Mode</dt><dd id="ro-mode">-</dd>
+        <dt>Microphone</dt><dd id="ro-mic">-</dd>
+        <dt>Announcements</dt><dd id="ro-held">-</dd>
+        <dt>Battery</dt><dd id="ro-bat">-</dd>
+        <dt>Link</dt><dd id="ro-link">-</dd>
+        <dt>Server</dt><dd id="ro-server">-</dd>
+        <dt>Wi-Fi saved</dt><dd id="ro-nets">-</dd>
+      </dl>
+    </div>
+
+    <div class="card">
+      <h2>Notes for review</h2>
+      <ul class="notes">
+        <li>Layout at 240x135: status line rows 0-10 (text at y 2, grey rule at y 10), content 11-123, shortcut strip rows 124-134 (a 2 bpp sprite: black, grey <code>#b0b0b0</code> labels, yellow keys, cyan accents). Pairing screens hide both rows.</li>
+        <li>Strip timing (chrome.cpp): new text holds still 0.6 s, then moves at 100 px/s (elapsed-time position, drawn at most every 40 ms) if it is wider than 232 px, loops with a 36 px gap and holds still again each lap. Toasts (cyan, centred) and the volume bar cover it for 1.5 s; afterwards it starts at the beginning, holds still 0.6 s and scrolls again.</li>
+        <li>Keys inside <code>[ ]</code> are drawn yellow without the brackets, so "[m] mute" reads "m mute"; adjacent keys keep a space, so "[-][=] volume" reads "- = volume".</li>
+        <li>In Always awake the red mic dot and white mode label stay on at Ready: the microphone really runs, feeding only the on-device wake word model. The volume-key beep is silent then (earcons never play over a running mic).</li>
+        <li>If the wake word engine cannot start, the device falls back: toast "Wake word failed. Hold GO to talk", status "PTT (no wake)", the plain Ready strip, and it reports mode=ptt. Entering Always awake again retries.</li>
+        <li>Announcements show over Ready and help only. The server holds them while the device is busy or in DND; the device queues up to 3 more. A reminder chimes, is read out and closes 10 s after; timers and alarms use distinct candidate patterns in the selected Classic, Chime or Pulse style, for 30 seconds in this demo.</li>
+        <li>Follow-up window (follow_up.h, #392): after a reply in Always awake (not DND, not "PTT (no wake)") the listen earcon plays and the mic stays open 6 s: "Listening..." / "(say more, or wait)", strip "Listening... just talk". Speech opens a turn with no wake word and no earcon; silence closes it with its own follow-up-close cue and the reply card shows. Any key only closes it (<kbd>x</kbd> too); GO closes it and talks. At most 2 follow-ups per wake.</li>
+        <li>Timings of the server turn are approximate; the real reply waits for full STT, agent and TTS.</li>
+        <li>Settings (settings_ui.cpp): lists, confirmations and fields reuse the picker, a title-plus-lines screen and a framed field (a cyan cursor, the n/max counter, a red error line at y 96). A password shows each new character for 1 s, then <code>*</code>. Settings closes by itself after 2 minutes idle (Setup never does); the prototype does not model that timeout.</li>
+        <li>The pairing QR code is a stand-in pattern: the device draws a real, scannable code of the verification address (M5GFX <code>qrcode()</code>) in the same white 96 px box.</li>
+        <li>Demo Wi-Fi: HomeNet (password <code>sunflower42</code>), Pixel hotspot (<code>hotspot42</code>), Neighbour-2G (any password fails), Cafe Guest (open), CorpNet (enterprise, "not supported"). "Developer build" (Simulate) is the default <code>m5stack-cardputer-v2-poc</code> env; untick it for the release build, where Server is hidden until you type <code>developer</code> on About.</li>
+      </ul>
+    </div>
+  </aside>
+</main>
+
+<script>
+'use strict';
+(function () {
+  // ---------------------------------------------------------------- firmware constants
+  const W = 240, H = 135, SCALE = 3;
+  // display.h
+  const COL = { black: '#000000', white: '#ffffff', red: '#ff0000', green: '#00ff00',
+    yellow: '#ffff00', cyan: '#00ffff', magenta: '#ff00ff' };
+  const DIM = '#505050', LABEL = '#b0b0b0'; // chrome.cpp kColorDim, kColorLabel
+  const FONT = 'Consolas, "Cascadia Mono", "DejaVu Sans Mono", Menlo, "Courier New", monospace';
+  // chrome.h / chrome.cpp
+  const STATUS_H = 11, STRIP_Y = 124, STRIP_H = 11;
+  const CHAR_W = 6, TEXT_INSET = 4, TEXT_Y = 2, GAP_PX = 6;
+  const STRIP_STATIC_MS = 600, STRIP_FRAME_MS = 40, SCROLL_MS_PER_PX = 10, LOOP_GAP = 36, OVERLAY_MS = 1500, TOAST_MAX = 39;
+  // types.h
+  const VOLUME_MAX = 10, VOLUME_DEFAULT = 4, FW_VERSION = '0.1.0';
+  const BUILD_TAG = 'fw ' + FW_VERSION; // display.cpp drawBuildTag; "dev" = built without git
+  // cards.cpp / cards.h
+  const CARD_TOP = STATUS_H, FIRST_LINE_Y = CARD_TOP + 3, LINE_H = 12, CARD_LEFT = 6, CARD_COLS = 37, CARD_ROWS = 9;
+  // display.cpp
+  const PICKER_HEADER_Y = 16, PICKER_ITEM_Y = 40, PICKER_ROW_H = 12, PICKER_HINT_Y = 110;
+  const PICKER_ROWS = Math.floor((PICKER_HINT_Y - 2 - PICKER_ITEM_Y) / PICKER_ROW_H); // 5
+  // state.cpp / earcons.cpp / config.h
+  const NEW_CONV_TIMEOUT_MS = 5000, SPACE_SELECT_TIMEOUT_MS = 5000, ANNOUNCE_LINGER_MS = 10000,
+    ANNOUNCE_QUEUE_DEPTH = 3, RING_TIMEOUT_MS = 30000,
+    RECONNECT_INITIAL_MS = 1000, RECONNECT_MAX_MS = 30000;
+  const FOLLOW_UP_MS = 6000, FOLLOW_UP_MAX = 2; // follow_up.h kFollowUpWindowMs, kMaxFollowUpsPerWake
+  const WAKE_SHIPPED = 'Alexa';        // default wake word, include/wake_models.h (w switches to Hey Bob)
+  const WAKE_PLANNED = 'Hey Bob';    // the backup model, shipped behind the w key
+  const IDLE_DIM_MS = 20000;           // planned #326 (value is a proposal)
+
+  // ---------------------------------------------------------------- firmware strings
+  // Copied verbatim from state.cpp (kStrip*, toasts) and cards.cpp (kHelpLines).
+  function strips(wake) {
+    return {
+      ready: '[GO] hold to talk  [-][=] volume  [m] mute  [k] mode  [c] chats  ' +
+        '[n] new chat  [s] spaces  [,] settings  [h] help',
+      announceOnly: 'Announcements only  [k] mode  [-][=] volume  [m] mute  [c] chats  ' +
+        '[s] spaces  [h] help',
+      replyCard: '[;][.] scroll  [any key] close  [GO] talk',
+      capturing: 'Let go of [GO] to send',
+      wakeCapturing: 'Listening. Pause to send  [GO] send now',
+      awaiting: '[x] stop  [-][=] volume  [m] mute',
+      picker: '[;] up  [.] down  [Enter] select  [`] back',
+      newChat: '[Enter] start a new chat  [`] cancel',
+      newChatRetry: '[Enter] try again  [`] cancel',
+      newChatPending: '[`] cancel',
+      help: '[;][.] scroll  [`] back',
+      announce: '[Any key] dismiss',
+      ringing: '[Any key] stop ringing',
+      retry: '[GO] try again',
+      connecting: 'Connecting...',
+      wake: 'Say ' + wake + '  [GO] hold to talk  [-][=] volume  [m] mute  ' +
+        '[k] mode  [w] wake word  [c] chats  [n] new chat  [s] spaces  [h] help'
+    };
+  }
+  function toasts(wake) {
+    return {
+      ptt: 'Push to talk: hold GO',
+      wake: 'Always awake. Say ' + wake,
+      announce: 'Announcements only. Mic off',
+      wakeFailed: 'Wake word failed. Hold GO to talk',
+      blocked: 'Announcements only. k changes mode'
+    };
+  }
+  // wake: the phrase while Always awake listens, else null (cards.cpp kAwakeOff).
+  function helpLinesFw(wake) {
+    return [
+      [null, 'Ready'],
+      ['GO', 'Hold to talk, let go to send'],
+      ['Awake', wake ? 'Say ' + wake + ' to talk' : 'Off. k turns it on'],
+      ['- =', 'Volume down / up'],
+      ['m', 'Mute or unmute'],
+      ['k', 'Change listening mode'],
+      ['w', 'Switch the wake word'],
+      ['c', 'Pick a conversation'],
+      ['n', 'Start a new chat'],
+      ['s', 'Pick a space'],
+      ['h ?', 'Show this help'],
+      [',', 'Settings: Wi-Fi, About'],
+      [null, 'While Bob replies'],
+      ['x GO', 'Stop the reply'],
+      ['- = m', 'Volume and mute'],
+      [null, 'Reply card'],
+      ['; .', 'Scroll'],
+      ['Any key', 'Close'],
+      [null, 'Announcements'],
+      ['Any key', 'Dismiss, stop ringing'],
+      [null, 'Lists'],
+      ['; .', 'Move up / down'],
+      ['Enter', 'Select'],
+      ['`', 'Back'],
+      [null, 'This help'],
+      ['; .', 'Scroll'],
+      ['` GO', 'Back'],
+      ['fw', BUILD_TAG]
+    ];
+  }
+  const MODE_LABEL = { ptt: 'Push to talk', wake: 'Always awake', announce: 'Announce only' }; // chrome.cpp modeLabel
+  const WEB_MODE_NAMES = { ptt: 'Push to talk', wake: 'Always awake', announce: 'Announcements only' }; // devices-page.tsx
+  const MODE_ORDER = ['ptt', 'wake', 'announce'];                                                       // onModeKey
+
+  const CONVERSATIONS = ['Grocery run', 'Weekend plans', "Maya's school trip", 'Book club picks',
+    'Tax documents', 'Birthday ideas for mum', 'Garden watering schedule', 'Car service',
+    'Trip to Lisbon', 'Work standup notes'];
+  const SPACES = ['Family', 'Work', 'Book club'];
+  // Settings demo data. The radio's scan, strongest first; WIFI_PASS is what each access point accepts.
+  const SCAN = [{ ssid: 'HomeNet', rssi: -52 }, { ssid: 'Pixel hotspot', rssi: -60 }, { ssid: 'Neighbour-2G', rssi: -70 },
+    { ssid: 'Cafe Guest', rssi: -76, open: true }, { ssid: 'CorpNet', rssi: -80, enterprise: true }];
+  const WIFI_PASS = { HomeNet: 'sunflower42', 'Pixel hotspot': 'hotspot42' };
+  const MAX_NETS = 5, PASS_MIN = 8, REVEAL_MS = 1000; // net_store.h, settings_rules.h, text_field.h
+  const RESULT_LABEL = { ok: 'ok', auth: 'bad pass', noap: 'not found', timeout: 'timeout', never: '' }; // settings_ui.cpp resultLabel
+  const PROFILES = ['prod', 'dev', 'custom'];
+  const PROFILE_NAME = { prod: 'Production', dev: 'Local dev', custom: 'Custom' }; // server_profile.cpp profileDisplayName
+  const SERVER_BADGE = { dev: 'DEV', custom: 'CUSTOM' };                          // state.cpp refreshStatusLine
+  const PROD_ENDPOINT = { host: 'api.heybob.xyz', port: 443, tls: true };
+  const DEV_ENDPOINT = { host: '192.168.0.10', port: 7444, tls: false };           // seeded from secrets.h on a developer build
+
+  const QA = {
+    agenda: { q: "What's on my agenda today?", a: "Two things today: the dentist at 3, then Maya's pickup at 5." },
+    lisbon: { q: 'What did I say about the Lisbon trip?', a: 'You wanted a hotel near Alfama and no flights after 8 pm.' },
+    lisbonFollow: { q: 'Add booking the hotel to my tasks.', a: "Done. 'Book Lisbon hotel' is on your tasks for this week." },
+    milk: { q: 'Add buy milk to the list.', a: () => dev.space ? "Added 'buy milk' to the " + dev.space + ' list.' : "Added 'buy milk' to your tasks." },
+    remember: { q: "Remember the Wi-Fi code at mum's is on the fridge.", a: "Got it. I'll remember the code at mum's is on the fridge." },
+    tasks: { q: "What's left on my tasks?", a: 'Three open tasks. Most urgent: renew the car insurance by Friday.' },
+    down: { q: 'Set the volume to 3.', a: 'Volume set to 3.', control: { volume: 3 } },
+    timer: { q: 'Set a pasta timer for 10 minutes.', a: 'Pasta timer set for 10 minutes.' },
+    long: { q: 'Tell me everything about Saturday.', a: "Here's Saturday. The farmers market opens at 8, so leave by half past 7. " +
+      "Maya's swim class is at 10, then lunch with Priya at 1. In the afternoon you wanted to repot the tomatoes " +
+      'and call the garage about the car service. In the evening there is book club, and you still need to finish chapter 12.' }
+  };
+  const PTT_POOL = [QA.agenda, QA.lisbon, QA.milk, QA.remember, QA.tasks];
+
+  // ---------------------------------------------------------------- device model
+  const dev = {
+    planned: false, state: 'WIFI', status: { title: 'BOB v2', detail: 'Joining HomeNet', color: COL.yellow, hint: '' },
+    wifi: false, ws: false, serverReachable: true,
+    // Kept on the device (net_store, server_profile, device_token): see savedDefaults().
+    nets: [], activeNet: null, profile: 'prod', endpoints: {}, tokens: {}, unlocked: false, devBuild: true,
+    allSet: false, settingsFrom: 'READY',
+    deviceName: 'Kitchen Cardputer', conv: 'Grocery run', space: null,
+    volume: VOLUME_DEFAULT, muted: false, mode: 'ptt', dnd: false, battery: 100, charging: false, wakeFailed: false,
+    cardShown: false, reply: null, cardLines: [], cardScroll: 0, helpScroll: 0,
+    picker: null, newChat: { pending: false, requestId: '', sentAt: 0 }, failNextNewChat: false,
+    pairing: null, pairedName: '',
+    announce: null, announceQueue: [], outbox: [], ringTimer: null, ringStyle: 'classic',
+    wakeTurn: false, turn: null, frames: 0, playing: null, heldControl: null,
+    flow: 0, attemptSeq: 0, attempt: false, nextAttemptAt: 0, reconnectDelay: RECONNECT_INITIAL_MS, wsDeadAt: 0,
+    btnHeld: false, nextQA: null, pttIdx: 0, audioUnlocked: false, stateDirtyTimer: null,
+    // planned
+    micOff: false, followUntil: 0, chain: 0, earconsOn: true, lastInputAt: 0, dimmed: false
+  };
+  function savedDefaults() {
+    return { nets: [{ ssid: 'HomeNet', pass: WIFI_PASS.HomeNet, last: 'ok' }], activeNet: 'HomeNet', profile: 'prod',
+      endpoints: { dev: dev.devBuild ? Object.assign({}, DEV_ENDPOINT) : null, custom: null },
+      tokens: { prod: true, dev: false, custom: false }, unlocked: false, allSet: false };
+  }
+  Object.assign(dev, savedDefaults());
+  const configured = () => dev.nets.length > 0;
+  let assistantName = 'Bob';
+  const assistantTitle = () => assistantName.toUpperCase() + ' v2';
+  const wakePhrase = () => 'Hey ' + assistantName;
+  const S = () => strips(wakePhrase());
+  const T = () => toasts(wakePhrase());
+  const answerOf = (qa) => typeof qa.a === 'function' ? qa.a() : qa.a;
+  const now = () => performance.now();
+  const delay = (ms) => new Promise((r) => setTimeout(r, ms));
+  const trunc = (s, n) => String(s || '').slice(0, n);
+  const plain = (marked) => String(marked).replace(/[[\]]/g, '');
+
+  function transitionTo(state, title, detail, color, hint) {
+    dev.state = state;
+    dev.status = { title, detail, color, hint };
+    if (!['SELECTING', 'SELECTING_MODE'].includes(state)) dev.picker = null;
+    dev.lastInputAt = now(); // planned #326: a screen change counts as activity for the dim timer.
+    const summary = screenName();
+    document.getElementById('screen-live').textContent = 'Screen: ' + summary;
+    describeScreen();
+    updateReadout();
+  }
+  function enterReady() {
+    transitionTo('READY', assistantTitle() + ' READY', 'Hold BTN GO to talk', COL.green, S().ready);
+  }
+  function screenName() {
+    const s = dev.state;
+    if (s === 'HELP') return 'HELP card';
+    if (s === 'SETTINGS' && set) return 'Settings: ' + (set.title || set.screen);
+    if (s === 'READY' && dev.allSet) return 'ALL SET!';
+    if (s === 'ANNOUNCE' && dev.announce) return dev.announce.label + ': ' + dev.announce.title;
+    if (s === 'READY') return dev.cardShown ? 'Reply card' : assistantTitle() + ' READY';
+    if (s === 'SOCKET' && dev.pairedName) return 'PAIRED AS ' + dev.pairedName;
+    if (s === 'PAIRING' && dev.pairing && dev.pairing.kind === 'code') return 'PAIR YOUR BOB ' + dev.pairing.code;
+    if (s === 'PAIRING' && dev.pairing && dev.pairing.kind === 'denied') return 'PAIRING DENIED';
+    if (dev.picker && dev.picker.items) return dev.picker.header;
+    return dev.status.title + (dev.status.detail ? ' / ' + dev.status.detail : '');
+  }
+
+  // ---------------------------------------------------------------- captions
+  function caption(text, step, speech) {
+    const p = document.getElementById('caption-text');
+    p.textContent = '';
+    if (speech) {
+      const s = document.createElement('span');
+      s.className = 'speech';
+      s.textContent = speech + ' ';
+      p.appendChild(s);
+    }
+    p.appendChild(document.createTextNode(text));
+    document.getElementById('caption-step').textContent = step || '';
+  }
+  function note(text, speech) { if (!scen) caption(text, '', speech); }
+
+  // ---------------------------------------------------------------- canvas drawing
+  const canvas = document.getElementById('lcd');
+  const ctx = canvas.getContext('2d');
+  function sizeCanvas() {
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    canvas.width = Math.round(W * SCALE * dpr);
+    canvas.height = Math.round(H * SCALE * dpr);
+    ctx.setTransform(SCALE * dpr, 0, 0, SCALE * dpr, 0, 0);
+  }
+  sizeCanvas();
+  window.addEventListener('resize', sizeCanvas);
+
+  let drawLog = [];
+  let region = 'content';
+  function fillRect(x, y, w, h, c) { ctx.fillStyle = c; ctx.fillRect(x, y, w, h); }
+  function strokeRect(x, y, w, h, c) { ctx.strokeStyle = c; ctx.lineWidth = 1; ctx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1); }
+  // M5GFX circles are centred on a pixel; the canvas pixel centre is +0.5.
+  function fillCircle(x, y, r, c) { ctx.fillStyle = c; ctx.beginPath(); ctx.arc(x + 0.5, y + 0.5, r + 0.5, 0, Math.PI * 2); ctx.fill(); }
+  function strokeCircle(x, y, r, c) { ctx.strokeStyle = c; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(x + 0.5, y + 0.5, r, 0, Math.PI * 2); ctx.stroke(); }
+  // M5GFX print(): 6x8 cell at text size 1, cursor at the cell's top-left, wraps to x = 0.
+  function txt(x, y, size, color, s) {
+    s = String(s == null ? '' : s);
+    drawLog.push({ region, x, y, size, color, s });
+    ctx.font = (10.4 * size) + 'px ' + FONT;
+    ctx.fillStyle = color;
+    ctx.textBaseline = 'alphabetic';
+    const cw = 6 * size, ch = 8 * size;
+    let cx = x, cy = y;
+    for (const c of s) {
+      if (cx + cw > W) { cx = 0; cy += ch; }
+      if (c !== ' ') ctx.fillText(c, cx + 0.3 * size, cy + 7 * size);
+      cx += cw;
+    }
+    return cx;
+  }
+  // M5GFX drawString(): no wrapping (used by the strip sprite).
+  function txtRaw(x, y, color, s) {
+    drawLog.push({ region, x, y, size: 1, color, s });
+    ctx.font = '10.4px ' + FONT;
+    ctx.fillStyle = color;
+    ctx.textBaseline = 'alphabetic';
+    let cx = x;
+    for (const c of s) {
+      if (c !== ' ' && cx > -6 && cx < W) ctx.fillText(c, cx + 0.3, y + 7);
+      cx += 6;
+    }
+  }
+  const mmss = (ms) => { const t = Math.max(0, Math.ceil(ms / 1000)); return String(Math.floor(t / 60)).padStart(2, '0') + ':' + String(t % 60).padStart(2, '0'); };
+
+  // ---------------------------------------------------------------- chrome: status line (chrome.cpp drawStatusLine)
+  function wakeListening() {
+    return dev.ws && dev.state === 'READY' && !followOpen() && dev.mode === 'wake' && !dev.wakeFailed && !(dev.planned && dev.micOff);
+  }
+  const followOpen = () => dev.state === 'READY' && dev.followUntil > 0;
+  function micOpen() { if (now() < cabinUntil) return false; return dev.state === 'CAPTURING' || wakeListening() || followOpen(); }
+  // The short forms leave room for the server badge (#679).
+  function modeLabel() {
+    const short = !!SERVER_BADGE[dev.profile];
+    if (dev.planned && dev.micOff && dev.mode !== 'announce') return 'Mic off';
+    if (dev.mode === 'wake') return dev.wakeFailed ? (short ? 'PTT' : 'PTT (no wake)') : (short ? 'Wake' : 'Always awake');
+    return short ? { ptt: 'PTT', announce: 'Ann.' }[dev.mode] : MODE_LABEL[dev.mode];
+  }
+  function statusSegments() {
+    const segs = [];
+    if (dev.battery >= 0) segs.push([dev.battery + '%' + (dev.charging ? '+' : ''), dev.battery <= 15 ? COL.red : COL.white]);
+    segs.push(dev.muted ? ['Muted', COL.yellow] : ['Vol ' + dev.volume, COL.white]);
+    if (dev.dnd) segs.push(['DND', COL.magenta]);
+    if (!dev.wifi) segs.push(['Offline', COL.red]);
+    return segs;
+  }
+  function drawStatusLine() {
+    region = 'status';
+    fillRect(0, 0, W, STATUS_H, COL.black);
+    fillRect(0, STATUS_H - 1, W, 1, DIM);
+    const open = micOpen();
+    if (dev.mode === 'announce' || (dev.planned && dev.micOff)) strokeCircle(5, 5, 3, DIM);
+    else fillCircle(5, 5, 3, open ? COL.red : DIM);
+    txt(12, TEXT_Y, 1, open ? COL.white : LABEL, modeLabel());
+    let right = W - TEXT_INSET;
+    const badge = SERVER_BADGE[dev.profile];
+    if (badge) {
+      // Black on a yellow block, rightmost, so nobody mistakes dev for prod.
+      const w = badge.length * CHAR_W + 4;
+      right -= w;
+      fillRect(right, 0, w, STATUS_H - 1, COL.yellow);
+      txt(right + 2, TEXT_Y, 1, COL.black, badge);
+      right -= GAP_PX;
+    }
+    for (const [text, color] of statusSegments()) {
+      right -= text.length * CHAR_W;
+      txt(right, TEXT_Y, 1, color, text);
+      right -= GAP_PX;
+    }
+    region = 'content';
+  }
+  function statusLineText() {
+    return modeLabel() + ' | ' + statusSegments().map((s) => s[0]).reverse().join(' ') + (SERVER_BADGE[dev.profile] ? ' ' + SERVER_BADGE[dev.profile] : '');
+  }
+
+  // ---------------------------------------------------------------- chrome: shortcut strip (chrome.cpp)
+  const chrome = { text: '', width: 0, stillSince: 0, offset: 0, lastFrameAt: 0, overlay: null };
+  // Adjacent keys ("[-][=]") are drawn with a space between them (chrome.cpp keysTouch).
+  const markedWidth = (text) => (plain(text).length + text.split('][').length - 1) * CHAR_W;
+  function chromeSetShortcuts(text, t) {
+    if (text === chrome.text) return;
+    chrome.text = text;
+    chrome.width = markedWidth(text);
+    chrome.offset = 0;
+    chrome.stillSince = t;
+  }
+  function chromeToast(text) {
+    chrome.overlay = { kind: 'toast', text: text.slice(0, TOAST_MAX), until: now() + OVERLAY_MS };
+  }
+  function chromeVolumeBar(level, muted) {
+    chrome.overlay = { kind: 'vol', level, muted, until: now() + OVERLAY_MS };
+  }
+  function chromeTick(t) {
+    if (chrome.overlay && t >= chrome.overlay.until) {
+      chrome.overlay = null;
+      chrome.stillSince = t;
+      chrome.offset = 0;
+    }
+    if (chrome.overlay || chrome.width <= W - 2 * TEXT_INSET) return;
+    if (t - chrome.lastFrameAt < STRIP_FRAME_MS) return;
+    chrome.lastFrameAt = t;
+    // Elapsed-time position: delayed frames catch up without slowing the strip.
+    const phase = (t - chrome.stillSince) %
+      (STRIP_STATIC_MS + (chrome.width + LOOP_GAP) * SCROLL_MS_PER_PX);
+    chrome.offset = phase <= STRIP_STATIC_MS ? 0 :
+      Math.floor((phase - STRIP_STATIC_MS) / SCROLL_MS_PER_PX);
+  }
+
+  // Text inside [ ] is a key: yellow. The rest is a label: grey.
+  function drawMarked(text, x) {
+    let run = '', ink = LABEL;
+    const flush = () => { if (!run) return; txtRaw(x, STRIP_Y + TEXT_Y, ink, run); x += run.length * CHAR_W; run = ''; };
+    let prev = '';
+    for (const c of text) {
+      if (c === '[' && prev === ']') run += ' ';
+      prev = c;
+      if (c === '[' || c === ']') { flush(); ink = c === '[' ? COL.yellow : LABEL; }
+      else run += c;
+    }
+    flush();
+  }
+  function drawVolumeBar(o) {
+    const SEG_X = 34, SEG_W = 14, SEG_PITCH = 16;
+    txtRaw(TEXT_INSET, STRIP_Y + TEXT_Y, LABEL, 'Vol');
+    for (let i = 0; i < VOLUME_MAX; i++) {
+      const x = SEG_X + i * SEG_PITCH;
+      if (!o.muted && i < o.level) fillRect(x, STRIP_Y + 2, SEG_W, STRIP_H - 4, COL.cyan);
+      else strokeRect(x, STRIP_Y + 2, SEG_W, STRIP_H - 4, LABEL);
+    }
+    txtRaw(SEG_X + VOLUME_MAX * SEG_PITCH + 4, STRIP_Y + TEXT_Y, o.muted ? COL.yellow : COL.cyan, o.muted ? 'Muted' : String(o.level));
+  }
+  function drawStrip() {
+    region = 'strip';
+    fillRect(0, STRIP_Y, W, STRIP_H, COL.black);
+    ctx.save();
+    ctx.beginPath(); ctx.rect(0, STRIP_Y, W, STRIP_H); ctx.clip();
+    const o = chrome.overlay;
+    if (o && o.kind === 'toast') {
+      const w = o.text.length * CHAR_W;
+      txtRaw(w < W ? Math.trunc((W - w) / 2) : 0, STRIP_Y + TEXT_Y, COL.cyan, o.text);
+    } else if (o && o.kind === 'vol') {
+      drawVolumeBar(o);
+    } else {
+      const x = TEXT_INSET - chrome.offset;
+      drawMarked(chrome.text, x);
+      if (chrome.offset > 0) drawMarked(chrome.text, x + chrome.width + LOOP_GAP);
+    }
+    ctx.restore();
+    region = 'content';
+  }
+
+  // The strip follows the state (state.cpp stripFor / readyStrip).
+  function readyStrip() {
+    const s = S();
+    if (followOpen()) return 'Listening... just talk';
+    if (dev.cardShown) return s.replyCard;
+    if (dev.mode === 'announce') return s.announceOnly;
+    if (dev.mode === 'wake') return dev.wakeFailed ? s.ready : s.wake;
+    return s.ready;
+  }
+  function stripFor() {
+    const s = S();
+    switch (dev.state) {
+      case 'READY': return readyStrip();
+      case 'CAPTURING': return dev.wakeTurn ? s.wakeCapturing : s.capturing;
+      case 'AWAITING': return s.awaiting;
+      case 'SELECTING': return s.picker;
+      case 'HELP': return s.help;
+      case 'ANNOUNCE': return dev.announce && dev.announce.ringing ? s.ringing : s.announce;
+      case 'SETTINGS': return settingsStrip();
+      case 'WIFI': return dev.status.hint || s.connecting;
+      case 'SOCKET': return s.retry;
+      case 'ERROR': return configured() ? s.retry : dev.status.hint;
+      case 'NEWCHAT':
+        if (dev.newChat.pending) return s.newChatPending;
+        return dev.newChat.requestId ? s.newChatRetry : s.newChat;
+      // planned
+      case 'SELECTING_MODE': return s.picker;
+      default: return dev.status.hint || '';
+    }
+  }
+
+  // ---------------------------------------------------------------- content screens
+  function wifiLine() { return 'WiFi: ' + (dev.wifi ? 'OK' : '--') + '  WS: ' + (dev.ws ? 'OK' : '--'); }
+  function drawStatusScreen(v) {
+    txt(8, 16, 2, v.color, v.title);
+    txt(8, 54, 1, COL.white, v.detail);
+    txt(8, 82, 1, COL.white, wifiLine());
+    // Boot and connecting: which firmware is flashed, small and dim.
+    if (['WIFI', 'SOCKET'].includes(dev.state)) txt(8, 110, 1, '#808080', BUILD_TAG);
+  }
+  // display.cpp drawLinesScreen: a title and up to 6 white lines.
+  function drawLines(title, color, lines) {
+    txt(8, 16, 2, color, title);
+    lines.slice(0, 6).forEach((l, i) => txt(8, 40 + i * 12, 1, COL.white, l));
+  }
+  // display.cpp drawFieldScreen: title, subtitle, a framed field with a cyan cursor, counter, error.
+  function drawField(title, subtitle, shown, cursor, counter, error) {
+    txt(8, 16, 2, COL.yellow, title);
+    txt(8, 40, 1, COL.white, subtitle);
+    strokeRect(8, 58, W - 16, 16, COL.white);
+    txt(12, 62, 1, COL.white, shown);
+    fillRect(12 + cursor * CHAR_W, 71, CHAR_W - 1, 1, COL.cyan);
+    txt(W - 8 - counter.length * CHAR_W, 78, 1, LABEL, counter);
+    if (error) txt(8, 96, 1, COL.red, error);
+  }
+  function drawReady() {
+    if (dev.allSet) {
+      drawLines('ALL SET!', COL.green, ['Try it: hold GO and ask', '"What\'s the weather?"', '', 'Press , any time for settings.']);
+      return;
+    }
+    txt(8, 16, 2, COL.green, assistantTitle() + ' READY');
+    const hasName = !!dev.deviceName;
+    if (hasName) txt(8, 50, 1, COL.white, 'paired as ' + trunc(dev.deviceName, 20));
+    const titleY = hasName ? 66 : 50;
+    if (dev.conv) txt(8, titleY, 1, COL.yellow, trunc(dev.conv, 28));
+    else txt(8, titleY, 1, COL.white, 'New conversation');
+    txt(8, titleY + 12, 1, COL.white, 'Space: ');
+    if (dev.space) txt(8 + 7 * 6, titleY + 12, 1, COL.cyan, trunc(dev.space, 28));
+    else txt(8 + 7 * 6, titleY + 12, 1, COL.white, 'none');
+    if (dev.profile !== 'prod') txt(8, 90, 1, COL.cyan, 'Server: ' + PROFILE_NAME[dev.profile]);
+    else txt(8, 90, 1, COL.white, wifiLine());
+  }
+  function pickerTop(count, sel) {
+    const top = sel >= PICKER_ROWS ? sel - PICKER_ROWS + 1 : 0;
+    return top + PICKER_ROWS > count ? (count > PICKER_ROWS ? count - PICKER_ROWS : 0) : top;
+  }
+  function drawPicker(p, t) {
+    if (!p.items) { drawStatusScreen({ title: p.header, detail: 'Loading...', color: COL.yellow }, t); return; }
+    txt(8, PICKER_HEADER_Y, 2, COL.yellow, p.header);
+    const count = p.items.length;
+    if (count === 0) { txt(8, PICKER_ITEM_Y, 1, COL.white, p.empty); return; }
+    const top = pickerTop(count, p.sel);
+    const visible = Math.min(PICKER_ROWS, count - top);
+    for (let i = 0; i < visible; i++) {
+      const y = PICKER_ITEM_Y + i * PICKER_ROW_H, idx = top + i, selected = idx === p.sel;
+      fillRect(0, y, W, PICKER_ROW_H, selected ? COL.white : COL.black);
+      txt(8, y, 1, selected ? COL.black : COL.white, trunc(p.items[idx], 28));
+    }
+    if (count > 1) txt(W - 40, PICKER_HEADER_Y + 2, 1, COL.yellow, (p.sel + 1) + '/' + count);
+    if (p.hint) txt(8, PICKER_HINT_Y, 1, p.hint.color, p.hint.text);
+  }
+  function drawPairing(t) {
+    const p = dev.pairing;
+    if (p && p.kind === 'code') {
+      txt(8, 10, 1, COL.yellow, 'PAIR YOUR BOB');
+      txt(8, 26, 2, COL.white, p.code); // size 2: the code must fit left of the QR
+      txt(8, 52, 1, COL.white, 'On your phone, open');
+      txt(8, 64, 1, COL.white, trunc(p.uri, 22));
+      txt(8, 76, 1, COL.white, 'or scan the code');
+      drawQr(146, 20, 88, p.uri);
+      txt(8, 96, 1, COL.cyan, 'Expires in ' + mmss(p.expiresAt - t));
+      txt(8, 116, 1, COL.white, 'Approve on your phone');
+    } else if (p && p.kind === 'denied') {
+      txt(8, 40, 2, COL.red, 'PAIRING');
+      txt(8, 62, 2, COL.red, 'DENIED');
+      txt(8, 100, 1, COL.white, 'Press any key to retry');
+    } else {
+      drawStatusScreen(dev.status, t);
+    }
+  }
+  // Stand-in for M5GFX qrcode(): same box, version-2 size (25 modules, 3 px each), finder
+  // and timing patterns, and a fixed pseudo-random fill. Not scannable; the device's is.
+  function drawQr(x, y, size, text) {
+    fillRect(x - 4, y - 4, size + 8, size + 8, COL.white);
+    const n = 25, m = Math.floor(size / n), off = Math.floor((size - n * m) / 2);
+    let seed = 0;
+    for (const c of text) seed = (seed * 31 + c.charCodeAt(0)) >>> 0;
+    const finder = (r, c) => {
+      for (const [fr, fc] of [[0, 0], [0, n - 7], [n - 7, 0]]) {
+        const dr = r - fr, dc = c - fc;
+        if (dr >= -1 && dr <= 7 && dc >= -1 && dc <= 7) {
+          const d = Math.max(Math.abs(dr - 3), Math.abs(dc - 3));
+          return d === 3 || d <= 1 ? 1 : 0;
+        }
+      }
+      return -1;
+    };
+    for (let r = 0; r < n; r++) {
+      for (let c = 0; c < n; c++) {
+        seed = (seed * 1103515245 + 12345) >>> 0;
+        let dark = finder(r, c);
+        if (dark < 0) dark = r === 6 || c === 6 ? (r + c + 1) % 2 : (seed >>> 16) & 1;
+        if (dark) fillRect(x + off + c * m, y + off + r * m, m, m, COL.black);
+      }
+    }
+  }
+  function drawPairedAs() {
+    txt(8, 40, 2, COL.yellow, 'PAIRED AS');
+    txt(8, 64, 2, COL.white, trunc(dev.pairedName, 20));
+    txt(8, 100, 1, COL.white, 'Reconnecting...');
+  }
+
+  // cards.cpp
+  function wrapText(text, columns, max) {
+    const out = [];
+    let pos = 0;
+    const len = text.length;
+    while (out.length < max) {
+      while (pos < len && text[pos] === ' ') pos++;
+      if (pos >= len) break;
+      let take = len - pos;
+      if (take > columns) {
+        take = columns;
+        let space = take;
+        while (space > 0 && text[pos + space] !== ' ') space--;
+        if (space > 0) take = space;
+      }
+      out.push(text.substr(pos, take));
+      pos += take;
+    }
+    return out;
+  }
+  const lineY = (row) => FIRST_LINE_Y + row * LINE_H;
+  function drawScrollbar(first, total) {
+    if (total <= CARD_ROWS) return;
+    const trackY = FIRST_LINE_Y, trackH = CARD_ROWS * LINE_H - 4;
+    const thumbH = Math.trunc(trackH * CARD_ROWS / total);
+    const thumbY = trackY + Math.trunc((trackH - thumbH) * first / (total - CARD_ROWS));
+    fillRect(W - 4, trackY, 2, trackH, DIM);
+    fillRect(W - 4, thumbY, 2, thumbH, COL.white);
+  }
+  function helpLines() {
+    const lines = helpLinesFw(dev.mode === 'wake' && !dev.wakeFailed ? wakePhrase() : null);
+    if (dev.planned) lines.push([null, 'Planned (#330)'], ['Enter', 'Pick a listening mode']);
+    return lines;
+  }
+  function drawHelp() {
+    const lines = helpLines();
+    for (let row = 0; row < CARD_ROWS && dev.helpScroll + row < lines.length; row++) {
+      const [key, action] = lines[dev.helpScroll + row];
+      if (key === null) { txt(CARD_LEFT, lineY(row), 1, COL.cyan, action); continue; }
+      if (key === 'fw') { txt(CARD_LEFT, lineY(row), 1, '#808080', action); continue; }
+      txt(CARD_LEFT + 6, lineY(row), 1, COL.yellow, key);
+      txt(CARD_LEFT + 54, lineY(row), 1, COL.white, action);
+    }
+    drawScrollbar(dev.helpScroll, lines.length);
+  }
+  function layoutReplyCard(reply) {
+    const lines = [];
+    if (reply.heard) {
+      lines.push({ kind: 'you' });
+      wrapText(reply.heard, CARD_COLS, 48).forEach((s) => lines.push({ kind: 'heard', s }));
+    }
+    if (reply.reply) {
+      if (lines.length) lines.push({ kind: 'blank' });
+      lines.push({ kind: 'bob' });
+      wrapText(reply.reply, CARD_COLS, 48 - lines.length).forEach((s) => lines.push({ kind: 'reply', s }));
+    }
+    return lines;
+  }
+  function drawReplyCard() {
+    const lines = dev.cardLines;
+    for (let row = 0; row < CARD_ROWS && dev.cardScroll + row < lines.length; row++) {
+      const l = lines[dev.cardScroll + row], y = lineY(row);
+      if (l.kind === 'you') txt(CARD_LEFT, y, 1, COL.cyan, 'You said');
+      else if (l.kind === 'heard') txt(CARD_LEFT, y, 1, LABEL, l.s);
+      else if (l.kind === 'bob') txt(CARD_LEFT, y, 1, COL.green, 'Bob');
+      else if (l.kind === 'reply') txt(CARD_LEFT, y, 1, COL.white, l.s);
+    }
+    drawScrollbar(dev.cardScroll, lines.length);
+  }
+  function drawAnnouncementCard() {
+    const a = dev.announce;
+    txt(CARD_LEFT, lineY(0), 1, a.ringing ? COL.red : COL.yellow, a.label);
+    if (a.ringing) txt(W - CARD_LEFT - 7 * 6, lineY(0), 1, COL.red, 'Ringing');
+    txt(CARD_LEFT, lineY(1) + 2, a.title.length <= 19 ? 2 : 1, COL.white, a.title);
+    wrapText(a.body, CARD_COLS, 5).forEach((s, i) => txt(CARD_LEFT, lineY(3 + i), 1, LABEL, s));
+  }
+
+  // display.cpp indicators, sampled on the firmware's 60 ms repaint cap.
+  function listeningIndicator(t) {
+    const q = t - (t % 60);
+    const phase = (q % 1200) / 1200 * Math.PI * 2;
+    const r = Math.trunc(6 + 12 * (0.5 + 0.5 * Math.sin(phase)));
+    fillCircle(208, 32, r, COL.green);
+  }
+  function playbackIndicator(t) {
+    const q = Math.floor(t - (t % 60));
+    const travel = 32, cyc = q % (travel * 2);
+    const off = cyc < travel ? cyc : travel * 2 - cyc;
+    fillRect(208 - 18 + off, 32 - 18, 4, 36, COL.magenta);
+    txt(8, 68, 1, COL.magenta, 'Frames: ' + dev.frames);
+  }
+
+  function render(t) {
+    drawLog = [];
+    ctx.fillStyle = COL.black;
+    ctx.fillRect(0, 0, W, H);
+    if (dev.state === 'PAIRING') { drawPairing(t); return; } // chromeSetVisible(false)
+    // Factory reset: drawn, then the restart; the chrome is never repainted.
+    if (dev.state === 'RESETTING') { drawLines('RESETTING', COL.red, ['Erasing Wi-Fi, pairing and', 'settings...']); return; }
+    const st = dev.state;
+    if (st === 'SETTINGS') settingsDraw(t);
+    else if (st === 'HELP') drawHelp();
+    else if (st === 'ANNOUNCE' && dev.announce) drawAnnouncementCard();
+    else if (followOpen()) drawStatusScreen({ title: 'Listening...', detail: '(say more, or wait)', color: COL.green });
+    else if (st === 'READY' && dev.cardShown) drawReplyCard(t);
+    else if (st === 'SOCKET' && dev.pairedName) drawPairedAs();
+    else if (st === 'READY') drawReady();
+    else if (dev.picker) drawPicker(dev.picker, t);
+    else drawStatusScreen(dev.status, t);
+    if (st === 'CAPTURING') listeningIndicator(t);
+    else if (st === 'AWAITING') playbackIndicator(t);
+    chromeSetShortcuts(stripFor(), t);
+    chromeTick(t);
+    drawStatusLine();
+    drawStrip();
+  }
+
+  // ---------------------------------------------------------------- audio
+  const audio = { ctx: null, master: null, enabled: true, reply: null, speaking: false };
+  function unlockAudio() {
+    dev.audioUnlocked = true;
+    try {
+      if (!audio.ctx) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        audio.ctx = new AC();
+        audio.master = audio.ctx.createGain();
+        audio.master.gain.value = audio.enabled ? 1 : 0;
+        audio.master.connect(audio.ctx.destination);
+      }
+      if (audio.ctx.state === 'suspended') audio.ctx.resume().catch(() => {});
+    } catch (e) { audio.ctx = null; }
+  }
+  const outGain = () => dev.muted ? 0 : dev.volume / VOLUME_MAX;
+  // Candidate note tuples are [onset ms, Hz, duration ms]. Mirror earcons_wave.h/ring_policy.h.
+  const CABIN_CUES = {
+    listenStart: { label: 'Ready to listen', notes: [[0, 587, 130]] },
+    listenStop: { label: 'Turn sent', notes: [[0, 494, 140], [160, 587, 140]] },
+    chime: { label: 'Reminder', notes: [[0, 587, 1050], [1050, 494, 1050]] },
+    notice: { label: 'Notice', notes: [[0, 494, 480]] },
+    followupClose: { label: 'Follow-up window closes', notes: [[0, 440, 180]] },
+    timer: { label: 'Timer / non-ringing', notes: [[0, 587, 250], [300, 494, 250]] },
+    alarm: { label: 'Alarm / non-ringing', notes: [[0, 494, 250], [300, 659, 250]] },
+    error: { label: 'Error', notes: [[0, 392, 400]] },
+    disconnect: { label: 'Connection lost', notes: [[0, 392, 180], [240, 330, 300]] },
+    volume: { label: 'Volume', notes: [[0, 659, 65]] },
+    timerClassic: { label: 'Timer / Classic', notes: [[0, 587, 1050], [1050, 494, 1050], [2100, 587, 1050]], period: 5200 },
+    alarmClassic: { label: 'Alarm / Classic', notes: [[0, 494, 1050], [1050, 587, 1050], [2100, 494, 1050]], period: 5200 },
+    timerChime: { label: 'Timer / Chime', notes: [[0, 659, 1050], [1050, 494, 1050]], period: 4800 },
+    alarmChime: { label: 'Alarm / Chime', notes: [[0, 494, 1050], [1050, 659, 1050]], period: 4800 },
+    timerPulse: { label: 'Timer / Pulse', notes: [[0, 587, 1050]], period: 3000 },
+    alarmPulse: { label: 'Alarm / Pulse', notes: [[0, 494, 1050]], period: 3000 },
+  };
+  const CABIN_RATE = 4000;
+  const CABIN_GAIN = [0, 20, 40, 64, 92, 124, 148, 168, 184, 200, 212];
+  let cabinSource = null, cabinGain = null, cabinUntil = 0;
+  const cueLength = (cue) => Math.max(...cue.notes.map(([at, hz, ms]) => at + ms));
+  function renderCabinCue(cue) {
+    const samples = new Float64Array(CABIN_RATE * cueLength(cue) / 1000);
+    for (const [at, hz, ms] of cue.notes) {
+      const count = CABIN_RATE * ms / 1000;
+      const offset = CABIN_RATE * at / 1000;
+      const tau = Math.min(0.270, ms / 3000);
+      for (let i = 0; i < count; i++) {
+        const t = i / CABIN_RATE;
+        const attack = Math.sin(Math.PI / 2 * Math.min(1, t / 0.008)) ** 2;
+        const tail = Math.min(1, (count - 1 - i) / (CABIN_RATE * 0.080));
+        samples[offset + i] += 100 * attack * Math.exp(-t / tau) * tail * Math.sin(2 * Math.PI * hz * t);
+      }
+    }
+    return Float32Array.from(samples, (sample) => Math.max(-127, Math.min(127, Math.trunc(sample))) / 128);
+  }
+  function stopCabinCue() {
+    if (cabinSource) { cabinSource.onended = null; try { cabinSource.stop(); } catch (error) { /* already ended */ } }
+    cabinSource = null;
+    cabinGain = null;
+    cabinUntil = 0;
+  }
+  // Pinned Cardputer mixer squares master and channel gain (magnification 16).
+  // This models digital amplitude; browser speakers do not reproduce device SPL.
+  function cabinDeviceGain() {
+    return dev.muted ? 0 : (CABIN_GAIN[dev.volume] ** 2 * 249 ** 2) / (2 ** 31);
+  }
+  function playCabinCue(name, preview = false) {
+    const cue = CABIN_CUES[name];
+    if (!cue || !audio.ctx || !dev.audioUnlocked || (!preview && !audio.enabled)) return false;
+    stopCabinCue();
+    const pcm = renderCabinCue(cue);
+    // Web Audio buffers use the context rate; playback ratio preserves the 4 kHz PCM pitch/timing.
+    const buffer = audio.ctx.createBuffer(1, pcm.length, audio.ctx.sampleRate);
+    buffer.copyToChannel(pcm, 0);
+    const source = audio.ctx.createBufferSource(), gain = audio.ctx.createGain();
+    gain.gain.value = preview ? Number(document.getElementById('candidate-volume').value) / 100 :
+      cabinDeviceGain();
+    source.buffer = buffer;
+    source.playbackRate.value = CABIN_RATE / audio.ctx.sampleRate;
+    source.connect(gain); gain.connect(audio.ctx.destination);
+    cabinSource = source; cabinGain = gain;
+    cabinUntil = now() + cueLength(cue);
+    source.onended = () => { if (cabinSource === source) { cabinSource = null; cabinGain = null; cabinUntil = 0; } };
+    source.start();
+    return true;
+  }
+  // Interaction cues yield to speech and DND; the ready/sent hooks bracket mic handoff.
+  function earcon(name) {
+    if ((dev.planned && !dev.earconsOn) || dev.dnd || dev.muted || dev.volume === 0 || dev.playing || audio.speaking) return;
+    if (name !== 'listenStart' && name !== 'listenStop' && name !== 'followupClose' && micOpen()) return;
+    if (cabinSource) return;
+    playCabinCue(name);
+  }
+  function ringStart() {
+    ringStop();
+    const kind = dev.announce && dev.announce.kind === 'alarm' ? 'alarm' : 'timer';
+    const style = dev.ringStyle[0].toUpperCase() + dev.ringStyle.slice(1);
+    const name = kind + style, cue = CABIN_CUES[name];
+    const started = now();
+    let nextAt = started + cue.period;
+    playCabinCue(name);
+    dev.ringTimer = setInterval(() => {
+      if (now() - started >= RING_TIMEOUT_MS) {
+        ringStop(); if (dev.announce) dev.announce.ringing = false; return;
+      }
+      if (now() >= nextAt) {
+        playCabinCue(name);
+        nextAt = now() + cue.period;
+      }
+    }, 20);
+  }
+  function ringStop() {
+    if (dev.ringTimer) { clearInterval(dev.ringTimer); dev.ringTimer = null; }
+    stopCabinCue();
+  }
+  function speechOk() { return 'speechSynthesis' in window && typeof window.SpeechSynthesisUtterance === 'function'; }
+  function speak(text) {
+    stopCabinCue();
+    audio.speaking = false;
+    if (!speechOk() || !audio.enabled || !dev.audioUnlocked) return;
+    const v = outGain();
+    try {
+      window.speechSynthesis.cancel();
+      if (v <= 0) return;
+      const u = new SpeechSynthesisUtterance(text);
+      u.volume = Math.min(1, v);
+      u.rate = 1.05;
+      u.onend = () => { audio.speaking = false; };
+      u.onerror = () => { audio.speaking = false; };
+      window.speechSynthesis.speak(u);
+      audio.speaking = true;
+    } catch (e) { audio.speaking = false; }
+  }
+  function stopSpeech() { try { if (speechOk()) window.speechSynthesis.cancel(); } catch (e) { /* ignore */ } audio.speaking = false; }
+  function replyLevel() { return outGain() * (audio.speaking ? 0.012 : 0.05); }
+  function startReplyAudio(text) {
+    stopReplyAudio();
+    speak(text);
+    if (!audio.ctx || !dev.audioUnlocked || !audio.enabled) return;
+    const c = audio.ctx, g = c.createGain(), lfo = c.createOscillator(), lfoG = c.createGain();
+    g.gain.value = 0.0001;
+    const oscs = [196, 293.66, 392].map((f, i) => { const o = c.createOscillator(); o.type = 'sine'; o.frequency.value = f; const og = c.createGain(); og.gain.value = [1, 0.6, 0.25][i]; o.connect(og); og.connect(g); o.start(); return o; });
+    lfo.frequency.value = 0.7; lfoG.gain.value = 0.35; lfo.connect(lfoG);
+    const am = c.createGain(); am.gain.value = 1; lfoG.connect(am.gain);
+    g.connect(am); am.connect(audio.master); lfo.start();
+    g.gain.setTargetAtTime(replyLevel(), c.currentTime, 0.15);
+    audio.reply = { g, oscs, lfo };
+  }
+  function updateReplyLevel() {
+    if (cabinGain) cabinGain.gain.value = cabinDeviceGain();
+    if (audio.reply && audio.ctx) audio.reply.g.gain.setTargetAtTime(Math.max(0.0001, replyLevel()), audio.ctx.currentTime, 0.05);
+    if (speechOk() && audio.speaking) { try { dev.muted ? window.speechSynthesis.pause() : window.speechSynthesis.resume(); } catch (e) { /* ignore */ } }
+  }
+  function stopReplyAudio() {
+    stopSpeech();
+    const r = audio.reply;
+    audio.reply = null;
+    if (!r || !audio.ctx) return;
+    const t = audio.ctx.currentTime;
+    r.g.gain.cancelScheduledValues(t);
+    r.g.gain.setTargetAtTime(0.0001, t, 0.03);
+    [...r.oscs, r.lfo].forEach((o) => { try { o.stop(t + 0.2); } catch (e) { /* ignore */ } });
+  }
+
+  // ---------------------------------------------------------------- settings: device side (state.cpp #314/#330)
+  function onVolumeKey(delta) {
+    dev.volume = Math.max(0, Math.min(VOLUME_MAX, dev.volume + delta));
+    dev.muted = false; // changing the level always unmutes.
+    chromeVolumeBar(dev.volume, false);
+    if (!dev.playing) earcon('volume');
+    updateReplyLevel();
+    markDeviceStateDirty();
+  }
+  function onMuteKey() {
+    dev.muted = !dev.muted;
+    chromeVolumeBar(dev.volume, dev.muted);
+    if (!dev.muted && !dev.playing) earcon('volume');
+    updateReplyLevel();
+    markDeviceStateDirty();
+  }
+  function modeToast(mode) {
+    const t = T();
+    if (mode === 'ptt') return t.ptt;
+    if (mode === 'wake') return dev.wakeFailed ? t.wakeFailed : t.wake;
+    return t.announce;
+  }
+  function applyMode(mode, source) {
+    closeFollowUp('mode');
+    const enteringWake = mode === 'wake' && dev.mode !== mode;
+    dev.mode = mode;
+    if (enteringWake) dev.wakeFailed = false; // a fresh entry retries wakeWordBegin().
+    chromeToast(modeToast(mode));
+    // Mode sound remains planned; no candidate is assigned to it yet.
+    if (dev.state === 'READY') enterReady(); // the strip follows the mode.
+    markDeviceStateDirty();
+    updateReadout();
+    if (source === 'key') note('k: ' + WEB_MODE_NAMES[mode] + '. Toast "' + modeToast(mode) + '"; the status line reads "' + modeLabel() + '".');
+  }
+  function onModeKey() {
+    applyMode(dev.mode === 'ptt' ? 'wake' : dev.mode === 'wake' ? 'announce' : 'ptt', 'key');
+  }
+  function failWake() {
+    if (dev.mode !== 'wake') { note('The wake word engine only runs in Always awake. Press k first.'); return; }
+    dev.wakeFailed = true;
+    chromeToast(T().wakeFailed);
+    markDeviceStateDirty();
+    note('wakeWordBegin() failed (no RAM, or the mic): push-to-talk takes over. Status "PTT (no wake)", the plain Ready strip, and the server hears mode=ptt. Entering Always awake again retries.');
+  }
+  const deviceBusy = () => dev.state === 'CAPTURING' || dev.state === 'AWAITING' || dev.state === 'ANNOUNCE';
+  // device_control from the server (web page or a voice tool).
+  function deviceControl(patch) {
+    if (patch.muted !== undefined) dev.muted = patch.muted;
+    if (patch.volume !== undefined) dev.volume = patch.volume;
+    if (patch.volume !== undefined || patch.muted !== undefined) { chromeVolumeBar(dev.volume, dev.muted); updateReplyLevel(); }
+    if ((patch.mode !== undefined || patch.dnd !== undefined) && deviceBusy()) {
+      dev.heldControl = Object.assign(dev.heldControl || {}, pickKeys(patch, ['mode', 'dnd']));
+    } else {
+      applyModeAndDnd(patch);
+    }
+    sendDeviceState();
+  }
+  function pickKeys(o, keys) { const r = {}; keys.forEach((k) => { if (o[k] !== undefined) r[k] = o[k]; }); return r; }
+  function applyModeAndDnd(c) {
+    if (c.mode !== undefined && c.mode !== dev.mode) applyMode(c.mode, 'server');
+    else if (c.mode !== undefined) chromeToast(modeToast(c.mode));
+    if (c.dnd !== undefined && c.dnd !== dev.dnd) { dev.dnd = c.dnd; markDeviceStateDirty(); if (!c.dnd) setTimeout(deliverAnnouncements, 300); }
+  }
+  function report() { return { volume: dev.volume, muted: dev.muted, mode: dev.mode === 'wake' && dev.wakeFailed ? 'ptt' : dev.mode, dnd: dev.dnd }; }
+  function markDeviceStateDirty() {
+    clearTimeout(dev.stateDirtyTimer);
+    dev.stateDirtyTimer = setTimeout(() => { if (dev.ws) sendDeviceState(); }, 400);
+  }
+  function sendDeviceState() {
+    const r = report();
+    setTimeout(() => webReconcile(r), 150);
+  }
+
+  // ---------------------------------------------------------------- settings: web Devices page (PR #381)
+  const web = { settings: report(), pending: false };
+  const sameSettings = (a, b) => a.volume === b.volume && a.muted === b.muted && a.mode === b.mode && a.dnd === b.dnd;
+  function webReconcile(r) {
+    if (web.pending) { if (sameSettings(r, web.settings)) web.pending = false; }
+    else web.settings = Object.assign({}, r);
+    renderWeb();
+  }
+  function webChange(patch) {
+    web.settings = Object.assign({}, web.settings, patch);
+    web.pending = true;
+    renderWeb();
+    setTimeout(() => { if (dev.ws) deviceControl(patch); }, 350);
+  }
+  function renderWeb() {
+    const s = web.settings;
+    document.getElementById('web-vol').value = String(s.volume);
+    document.getElementById('web-vol-val').textContent = String(s.volume);
+    document.getElementById('web-mute').checked = s.muted;
+    document.querySelectorAll('input[name="lmode"]').forEach((el) => { el.checked = el.value === s.mode; });
+    document.getElementById('web-dnd').checked = s.dnd;
+    const st = document.getElementById('web-status');
+    st.classList.toggle('pending', web.pending);
+    document.getElementById('web-status-text').textContent = web.pending ? 'Applying…' + (dev.ws ? '' : ' Applies when the device reconnects.') : 'Applied';
+    document.getElementById('web-battery').textContent = dev.battery < 0 ? 'Battery unknown' : 'Battery ' + dev.battery + '%' + (dev.charging ? ', charging' : '');
+  }
+
+  // ---------------------------------------------------------------- turns (state.cpp beginTurn / endTurn / finishTurn)
+  // quiet: a follow-up turn, the user is already talking (no earcon).
+  function beginTurn(qa, quiet) {
+    dev.allSet = false;
+    if (!dev.ws || dev.state !== 'READY') return false;
+    if (dev.mode === 'announce') {
+      chromeToast(T().blocked);
+      note('Announcements only: GO shows a toast instead of listening. Nothing is sent.');
+      return false;
+    }
+    const f = ++dev.flow;
+    dev.wakeTurn = false;
+    dev.cardShown = false;
+    dev.followUntil = 0;
+    stopReplyAudio();
+    dev.turn = { qa: qa || dev.nextQA || PTT_POOL[dev.pttIdx++ % PTT_POOL.length], flow: f };
+    dev.nextQA = null;
+    dev.chain = 0; // a GO or wake turn begins a chain; wakeTurn counts follow-ups
+    if (!quiet) earcon('listenStart');
+    transitionTo('CAPTURING', 'LISTENING', 'Speak now', COL.green, S().capturing);
+    return true;
+  }
+  function endTurn() {
+    if (dev.state !== 'CAPTURING') return;
+    earcon('listenStop');
+    transitionTo('AWAITING', 'WAITING...', 'Waiting for reply...', COL.cyan, '');
+    runServerTurn(dev.turn.qa, dev.wakeTurn);
+  }
+  async function runServerTurn(qa, viaWake) {
+    const f = ++dev.flow;
+    dev.frames = 0;
+    await delay(800); if (f !== dev.flow) return;
+    transitionTo('AWAITING', 'THINKING', 'Thinking...', COL.cyan, '');
+    await delay(1300); if (f !== dev.flow) return;
+    if (qa.control) {
+      deviceControl(qa.control);
+      note('The set_volume tool sends device_control while the agent works, so the level bar shows on the strip first and the reply plays at the new level.');
+      await delay(1200); if (f !== dev.flow) return;
+    }
+    const answer = answerOf(qa);
+    dev.reply = { heard: trunc(qa.q, 200), reply: trunc(answer, 700) };
+    transitionTo('AWAITING', 'REPLY', 'Playing reply...', COL.magenta, '');
+    const dur = Math.max(2600, Math.min(14000, answer.length * 62));
+    dev.playing = { start: now(), dur, total: Math.max(3, Math.ceil(dur / 1000 * 4)) };
+    startReplyAudio(answer);
+    note('Reply playing.', 'Bob: "' + answer + '"');
+    await delay(dur); if (f !== dev.flow) return;
+    stopReplyAudio();
+    dev.playing = null;
+    finishTurn();
+  }
+  function finishTurn() {
+    dev.cardLines = dev.reply ? layoutReplyCard(dev.reply) : [];
+    dev.cardShown = dev.cardLines.length > 0;
+    dev.cardScroll = 0;
+    // Always awake listens on without the wake word (state.cpp openFollowUp); the card shows once it closes.
+    if (dev.ws && dev.mode === 'wake' && !dev.wakeFailed && !dev.dnd && !(dev.planned && dev.micOff) &&
+        dev.chain < FOLLOW_UP_MAX && !dev.announceQueue.length) {
+      earcon('listenStart');
+      dev.followUntil = now() + FOLLOW_UP_MS;
+    }
+    enterReady();
+    setTimeout(deliverAnnouncements, 300);
+  }
+  // state.cpp closeFollowUp: silence plays the distinct follow-up-close cue; speech keeps the mic for its turn.
+  function closeFollowUp(reason) {
+    if (!dev.followUntil) return;
+    dev.followUntil = 0;
+    if (reason === 'timeout') earcon('followupClose');
+    if (reason !== 'speech' && dev.state === 'READY') enterReady();
+  }
+  function stopReply(source) {
+    if (dev.state !== 'AWAITING') return;
+    ++dev.flow;
+    stopReplyAudio();
+    dev.playing = null;
+    dev.reply = null;
+    enterReady();
+    note('Stopped by ' + source + ': cancel sent, speaker silenced at once, back to Ready. A stopped reply leaves no card.');
+    setTimeout(deliverAnnouncements, 300);
+  }
+
+  // Always awake (#313): the on-device model, then a VAD-ended turn.
+  async function sayWake(qa) {
+    const phrase = wakePhrase();
+    const spoken = 'You: "' + phrase + (qa ? ', ' + qa.q : '...') + '"';
+    if (dev.mode !== 'wake') { note(WEB_MODE_NAMES[dev.mode] + ': the wake word is off, nothing listens. Press k on Ready for Always awake.', spoken); return; }
+    if (dev.wakeFailed) { note('The wake word engine failed ("PTT (no wake)"); hold GO, or enter Always awake again to retry.', spoken); return; }
+    if (dev.planned && dev.micOff) { note('Planned #313: the mic is off (fn+m), so the wake word is ignored.', spoken); return; }
+    if (!wakeListening()) { note('The wake word is only listened for on Ready (reply card included). On this screen the mic is closed.', spoken); return; }
+    await wakeTurn(qa, spoken, false);
+  }
+  async function sayFollowUp(qa) {
+    const spoken = 'You: "' + qa.q + '"';
+    if (!followOpen()) { note('No follow-up window is open, so talking without the wake word does nothing. Say "' + wakePhrase() + '".', spoken); return; }
+    await wakeTurn(qa, spoken, true);
+  }
+  async function wakeTurn(qa, spoken, followUp) {
+    const chain = dev.chain;
+    closeFollowUp('speech');
+    if (!beginTurn(qa || QA.agenda, followUp)) return;
+    if (followUp) dev.chain = chain + 1;
+    dev.wakeTurn = true;
+    const f = dev.flow;
+    if (!qa) {
+      note('Wake word heard, then silence: the VAD hears no speech, so the turn is cancelled and nothing reaches the agent. No toast.', spoken);
+      await delay(3000); if (f !== dev.flow || dev.state !== 'CAPTURING') return;
+      ++dev.flow;
+      dev.wakeTurn = false;
+      enterReady();
+      return;
+    }
+    note(followUp ? 'Follow-up heard in the window: a turn with no wake word and no earcon.' : 'Wake word detected on the device: the same turn as GO, ended by the VAD.', spoken);
+    await delay(1100 + qa.q.length * 40); if (f !== dev.flow || dev.state !== 'CAPTURING') return;
+    endTurn();
+  }
+  function sayStop() {
+    if (!dev.planned) { note('"' + wakePhrase() + ', stop" does not work on main: the wake word only listens on Ready. Use x or GO. Voice stop is planned (#313).'); return; }
+    if (dev.mode !== 'wake' || dev.micOff) { note('Planned #313: voice stop needs Always awake with the mic on. Use x or GO.'); return; }
+    if (dev.state === 'AWAITING') { stopReply('"' + wakePhrase() + ', stop" (planned #313)'); return; }
+    note('Voice stop only matters while a reply is on its way.');
+  }
+
+  // ---------------------------------------------------------------- pickers (state.cpp enterPicker / enterSpacePicker)
+  async function enterPicker() {
+    stopReplyAudio();
+    const f = ++dev.flow;
+    dev.picker = { kind: 'conv', header: 'CONVERSATIONS', empty: 'No conversations', items: null, sel: 0, hint: null };
+    transitionTo('SELECTING', 'CONVERSATIONS', 'Loading...', COL.yellow, ';:up  .:down  Enter:select  `:cancel');
+    await delay(550); if (f !== dev.flow || !dev.picker) return;
+    dev.picker.items = CONVERSATIONS.slice();
+    describeScreen(); updateReadout();
+  }
+  async function enterSpacePicker() {
+    stopReplyAudio();
+    const f = ++dev.flow;
+    dev.picker = { kind: 'space', header: 'SPACES', empty: 'No spaces', items: null, sel: 0, hint: null, pending: false };
+    transitionTo('SELECTING', 'SPACES', 'Loading...', COL.yellow, ';:up  .:down  Enter:select  `:cancel');
+    await delay(550); if (f !== dev.flow || !dev.picker) return;
+    dev.picker.items = ['No space'].concat(SPACES);
+    dev.picker.sel = dev.space ? SPACES.indexOf(dev.space) + 1 : 0;
+    describeScreen(); updateReadout();
+  }
+  async function selectInPicker() {
+    const p = dev.picker;
+    if (!p || !p.items) return;
+    const f = ++dev.flow;
+    if (p.kind === 'conv') {
+      if (!p.items.length) return;
+      const picked = p.items[p.sel];
+      await delay(350); if (f !== dev.flow) return;
+      dev.conv = picked;
+      enterReady();
+      note('Selected "' + picked + '". The next turn continues it, and the web follows along.');
+    } else if (p.kind === 'space') {
+      if (p.pending) return;
+      p.pending = true;
+      p.hint = { text: 'SAVING...', color: COL.yellow };
+      await delay(500); if (f !== dev.flow) return;
+      dev.space = p.sel === 0 ? null : p.items[p.sel];
+      enterReady();
+      note(dev.space ? 'Space set to ' + dev.space + '. Tasks and agenda by voice now go there.' : 'No Space: back to your private tasks.');
+    } else if (p.kind === 'mode') {
+      const mode = MODE_ORDER[p.sel];
+      enterReady();
+      if (mode !== dev.mode) applyMode(mode, 'picker');
+    }
+  }
+  function cancelPicker() { ++dev.flow; enterReady(); }
+
+  // New conversation (state.cpp enterNewConversation)
+  function enterNewConversation() {
+    ++dev.flow;
+    dev.newChat = { pending: false, requestId: '', sentAt: 0 };
+    transitionTo('NEWCHAT', 'NEW CHAT?', 'Next turn starts fresh', COL.yellow, 'Enter:yes  `:cancel');
+  }
+  async function sendNewConversation() {
+    if (dev.newChat.pending) return;
+    if (!dev.newChat.requestId) dev.newChat.requestId = 'newc-' + Math.random().toString(36).slice(2, 8);
+    dev.newChat.pending = true;
+    dev.newChat.sentAt = now();
+    const fail = dev.failNextNewChat;
+    const f = ++dev.flow;
+    transitionTo('NEWCHAT', 'NEW CHAT?', 'Starting...', COL.yellow, '`:cancel');
+    if (fail) { dev.failNextNewChat = false; syncFailBox(); return; } // the timeout check fails it after 5 s
+    await delay(700); if (f !== dev.flow || !dev.newChat.pending) return;
+    dev.newChat = { pending: false, requestId: '', sentAt: 0 };
+    dev.conv = null;
+    enterReady();
+    note('The server cleared the active conversation. Ready shows "New conversation"; the next turn starts fresh.');
+  }
+  function failNewConversation() {
+    dev.newChat.pending = false;
+    transitionTo('NEWCHAT', 'NEW CHAT?', 'Failed - Enter=retry', COL.red, 'Enter:retry  `:cancel');
+    note('No acknowledgement within 5 s: the old conversation is kept and Enter retries the same request.');
+  }
+  function cancelNewConversation() { ++dev.flow; dev.newChat = { pending: false, requestId: '', sentAt: 0 }; enterReady(); }
+
+  // Help (state.cpp openHelp / closeHelp)
+  function openHelp() {
+    dev.cardShown = false;
+    dev.helpScroll = 0;
+    transitionTo('HELP', 'HELP', '', COL.white, S().help);
+  }
+  function closeHelp() { enterReady(); }
+  function openModePicker() {
+    ++dev.flow;
+    dev.picker = { kind: 'mode', header: 'MODE', empty: '', items: MODE_ORDER.map((m) => WEB_MODE_NAMES[m] + (m === dev.mode ? ' (on)' : '')), sel: MODE_ORDER.indexOf(dev.mode), hint: null };
+    transitionTo('SELECTING_MODE', 'MODE', '', COL.yellow, '');
+    note('Planned #330: Enter in help opens a mode picker. Enter picks, ` goes back.');
+  }
+
+  // ---------------------------------------------------------------- announcements (#319-#321)
+  function fireAnnouncement(kind) {
+    const a = kind === 'timer' ? { kind, label: 'Timer', title: 'Pasta', body: '', ring: true }
+      : kind === 'alarm' ? { kind, label: 'Alarm', title: 'Wake up', body: '', ring: true }
+        : { kind: 'reminder', label: 'Reminder', title: 'Call mum', body: 'Call mum', ring: false, speech: 'Reminder: call mum.' };
+    a.id = 'ann-' + Math.random().toString(36).slice(2, 8);
+    dev.outbox.push(a);
+    if (!dev.ws) note('The device is offline: the server keeps the ' + a.label.toLowerCase() + ' and replays it on the next connection.');
+    else if (dev.dnd) note('Do not disturb: the server holds the ' + a.label.toLowerCase() + ' (alarms too) until DND is turned off. Nothing on the device.');
+    else if (serverBusy()) note('The device is busy, so the server holds the ' + a.label.toLowerCase() + ' until the turn ends.');
+    deliverAnnouncements();
+  }
+  const serverBusy = () => dev.state === 'CAPTURING' || dev.state === 'AWAITING' || !!(dev.announce && dev.announce.playing);
+  function deliverAnnouncements() {
+    if (!dev.ws || dev.dnd || serverBusy() || !dev.outbox.length) return;
+    while (dev.outbox.length) {
+      const a = dev.outbox.shift();
+      receiveAnnouncement(a);
+      if (a.speech && !a.ring) break; // the spoken one makes the session busy; the rest follow later.
+    }
+  }
+  const canPresent = () => (dev.state === 'READY' || dev.state === 'HELP') && !dev.playing;
+  function receiveAnnouncement(a) {
+    if (canPresent()) { presentAnnouncement(a); return; }
+    if (dev.announceQueue.length >= ANNOUNCE_QUEUE_DEPTH) { dev.outbox.unshift(a); return; } // not acked: replayed later.
+    dev.announceQueue.push(a);
+    note('The device holds the ' + a.label.toLowerCase() + ' until Ready (queue of ' + ANNOUNCE_QUEUE_DEPTH + ').');
+  }
+  const announcementCue = (kind) => ['notice', 'timer', 'alarm'].includes(kind) ? kind : 'chime';
+  function presentAnnouncement(a) {
+    dev.followUntil = 0; // announcements take priority
+    ++dev.flow;
+    dev.cardShown = false;
+    dev.announce = Object.assign({}, a, { ringing: a.ring, playing: false, playedAt: 0 });
+    transitionTo('ANNOUNCE', '', '', COL.yellow, S().announce);
+    if (a.ring) ringStart(); else earcon(announcementCue(a.kind));
+    if (!a.ring && a.speech) {
+      const f = dev.flow;
+      setTimeout(() => {
+        if (f !== dev.flow || !dev.announce) return;
+        dev.announce.playing = true;
+        dev.playing = { start: now(), dur: 2600, total: 12 };
+        speak(a.speech);
+        setTimeout(() => {
+          if (f !== dev.flow || !dev.announce) return;
+          dev.announce.playing = false;
+          dev.playing = null;
+          dev.announce.playedAt = now();
+        }, 2600);
+      }, Math.max(500, cueLength(CABIN_CUES[announcementCue(a.kind)])));
+    }
+  }
+  function dismissAnnouncement(source) {
+    if (!dev.announce) return;
+    ringStop();
+    stopSpeech();
+    dev.playing = null;
+    dev.announce = null;
+    ++dev.flow;
+    enterReady();
+    note('Dismissed by ' + source + ' and acknowledged to the server.');
+    setTimeout(deliverAnnouncements, 300);
+  }
+  function tickAnnouncement(t) {
+    const a = dev.announce;
+    if (dev.state !== 'ANNOUNCE' || !a) return;
+    if (a.playedAt && t - a.playedAt >= ANNOUNCE_LINGER_MS) {
+      dev.announce = null;
+      enterReady();
+      setTimeout(deliverAnnouncements, 300);
+    }
+  }
+  function presentNextAnnouncement() {
+    if (!dev.announceQueue.length || !canPresent() || dev.state !== 'READY') return;
+    presentAnnouncement(dev.announceQueue.shift());
+  }
+
+  // ---------------------------------------------------------------- connection (state.cpp superviseConnections, onSocketEvent)
+  function releaseAudioForDisconnect() {
+    ++dev.flow;
+    stopReplyAudio();
+    ringStop();
+    dev.playing = null;
+    dev.wakeTurn = false;
+    dev.announce = null;
+    dev.announceQueue = [];
+    dev.cardShown = false;
+    dev.reply = null;
+    dev.followUntil = 0;
+  }
+  function socketClosed(clean) {
+    const wasConnected = dev.ws;
+    dev.ws = false;
+    releaseAudioForDisconnect();
+    dev.newChat.pending = false;
+    if (clean) dev.reconnectDelay = RECONNECT_INITIAL_MS;
+    dev.nextAttemptAt = now() + dev.reconnectDelay;
+    if (!clean) dev.reconnectDelay = Math.min(dev.reconnectDelay * 2, RECONNECT_MAX_MS);
+    transitionTo('SOCKET', 'WS RECONNECT', 'Reconnecting...', COL.yellow, '');
+    if (wasConnected) earcon('disconnect');
+    renderWeb();
+  }
+  function startAttempt() {
+    if (dev.attempt) return;
+    const seq = ++dev.attemptSeq;
+    dev.attempt = true;
+    setTimeout(() => {
+      if (seq !== dev.attemptSeq) return;
+      dev.attempt = false;
+      if (dev.wifi && dev.serverReachable && configured() && ['SOCKET', 'ERROR'].includes(dev.state)) {
+        // The server asks an unknown device to pair (pairing_required); each server profile has its own token.
+        if (dev.tokens[dev.profile]) welcome(); else requestPairing();
+        return;
+      }
+      dev.nextAttemptAt = now() + dev.reconnectDelay;
+      dev.reconnectDelay = Math.min(dev.reconnectDelay * 2, RECONNECT_MAX_MS);
+    }, 500);
+  }
+  function requestSocketRetry() {
+    dev.ws = false;
+    dev.reconnectDelay = RECONNECT_INITIAL_MS;
+    dev.attemptSeq++; dev.attempt = false;
+    startAttempt();
+  }
+  function welcome() {
+    dev.ws = true;
+    dev.pairedName = '';
+    dev.reconnectDelay = RECONNECT_INITIAL_MS;
+    enterReady();
+    sendDeviceState();
+    if (web.pending) setTimeout(() => deviceControl(web.settings), 200);
+    setTimeout(deliverAnnouncements, 400);
+  }
+  function superviseConnections(t) {
+    if (!configured()) return;
+    if (dev.state === 'WIFI' && dev.wifi) {
+      transitionTo('SOCKET', assistantTitle(), 'Connecting WebSocket...', COL.yellow, '');
+      startAttempt();
+    }
+    if (dev.state === 'SOCKET' && !dev.wifi) transitionTo('WIFI', assistantTitle(), 'Wi-Fi lost. Reconnecting...', COL.yellow, '');
+    if (dev.state === 'SOCKET' && dev.wifi && !dev.attempt && t >= dev.nextAttemptAt) startAttempt();
+    // Wi-Fi gone under a live socket: the socket notices a moment later.
+    if (dev.ws && !dev.wifi && t >= dev.wsDeadAt) socketClosed(false);
+  }
+  // state.cpp drawWifiScreen (#676): what the Wi-Fi manager is doing, then the join.
+  function wifiScreen() {
+    dev.wifi = false; dev.ws = false;
+    if (!configured()) { transitionTo('WIFI', 'NO WI-FI SAVED', 'Press , to add your Wi-Fi', COL.red, '[,] add Wi-Fi'); return; }
+    const n = dev.nets.length, first = dev.nets[0].ssid;
+    transitionTo('WIFI', assistantTitle(), 'Joining ' + trunc(first, 20) + (n > 1 ? ' (1 of ' + n + ')' : ''), COL.yellow, '');
+    const f = dev.flow;
+    setTimeout(() => { if (f === dev.flow && dev.state === 'WIFI') { dev.wifi = true; dev.activeNet = first; } }, 1100);
+  }
+  // rescue: Fn + ` held at power-on (state.cpp rescueChordHeld).
+  function boot(rescue) {
+    ++dev.flow; dev.attemptSeq++; dev.attempt = false;
+    releaseAudioForDisconnect();
+    wifiScreen();
+    if (rescue) enterSettings('wifiList');
+    else if (!configured()) enterSettings('setup'); // guided Setup on first boot (#678)
+  }
+  function dropConnection() {
+    clearUpdate();
+    if (!dev.ws) { note('The WebSocket is already down.'); return; }
+    socketClosed(true);
+    note('Server-side close: WS RECONNECT, then the device retries on its own (1 s, doubling to 30 s) and returns to Ready.');
+  }
+  function wifiLost() {
+    clearUpdate();
+    dev.wifi = false;
+    dev.wsDeadAt = now() + 1200;
+    renderWeb();
+    note(dev.ws ? 'Wi-Fi lost: "Offline" in red on the status line at once; the socket drops a moment later.' : 'Wi-Fi lost.');
+  }
+  function wifiBack() { dev.wifi = true; note('Wi-Fi is back: the device reconnects the WebSocket.'); }
+  function serverError() {
+    if (!['CAPTURING', 'AWAITING'].includes(dev.state)) { note('The firmware ignores a server error outside a turn (server_error_ignored). Start a turn first.'); return; }
+    ++dev.flow;
+    stopReplyAudio(); dev.playing = null;
+    stopCabinCue();
+    transitionTo('ERROR', 'V2 ERROR', 'Press GO to try again', COL.red, S().retry);
+    earcon('error');
+  }
+  function wsError() {
+    dev.ws = false;
+    releaseAudioForDisconnect();
+    transitionTo('ERROR', 'WS ERROR', 'Press BTN GO to retry', COL.red, 'BTN GO: retry');
+  }
+  function micError() {
+    if (dev.state !== 'READY') { note('A mic error happens when a turn starts: go to Ready first.'); return; }
+    ++dev.flow;
+    transitionTo('ERROR', 'MIC ERROR', 'Microphone did not start', COL.red, S().retry);
+    note('GO on MIC ERROR retries by reconnecting the WebSocket (requestSocketRetry), then Ready.');
+  }
+  // A device that has never been set up (or was factory reset), with no secrets.h seed.
+  function factoryNew() {
+    Object.assign(dev, savedDefaults(), { nets: [], activeNet: null, tokens: { prod: false, dev: false, custom: false } });
+    boot();
+  }
+
+  // Pairing (state.cpp enterPairing / onPairDenied / handlePaired)
+  async function requestPairing() {
+    dev.attemptSeq++; dev.attempt = false;
+    releaseAudioForDisconnect();
+    const f = ++dev.flow;
+    dev.ws = false;
+    dev.pairing = { kind: 'status' };
+    transitionTo('PAIRING', 'PAIRING', 'Requesting code...', COL.yellow, 'Approve on the web to pair');
+    await delay(1000); if (f !== dev.flow) return;
+    dev.pairing = { kind: 'code', code: 'KTQM-BXPR', uri: 'https://app.heybob.xyz/pair', expiresAt: now() + 600000 };
+    describeScreen();
+  }
+  function approvePairing() {
+    if (dev.state !== 'PAIRING' || !dev.pairing || dev.pairing.kind !== 'code') { note('Approve works while a pairing code is showing (use "Unpair").'); return; }
+    ++dev.flow;
+    dev.pairing = null;
+    dev.tokens[dev.profile] = true;
+    dev.allSet = true; // Ready shows ALL SET! once, until a key or a turn (#678)
+    dev.pairedName = dev.deviceName;
+    transitionTo('SOCKET', 'PAIRED', 'Reconnecting...', COL.green, '');
+    dev.nextAttemptAt = now() + 1200;
+  }
+  function denyPairing() {
+    if (dev.state !== 'PAIRING' || !dev.pairing || dev.pairing.kind !== 'code') { note('Deny works while a pairing code is showing (use "Unpair").'); return; }
+    ++dev.flow;
+    dev.pairing = { kind: 'denied' };
+    transitionTo('PAIRING', 'PAIRING', 'Denied', COL.red, 'Press a key to retry');
+  }
+
+  // Candidate UX: release responses and installations are simulated, without network calls.
+  const updates = { installed: '0.1.0', privateBob: true, result: 'offer', offer: null,
+    message: 'Enter: check for updates', sequence: 0, timerSoon: false, busy: false };
+  function clearUpdate() {
+    updates.sequence++; updates.offer = null; updates.message = 'Enter: check for updates';
+    if (set && ['updateConfirm', 'updateProgress'].includes(set.screen)) go('updates');
+  }
+  function updateBlocker() {
+    if (!dev.wifi || !dev.ws || !dev.tokens[dev.profile] || (set && set.serverChanged)) return 'Connect and pair first';
+    if (!dev.charging && dev.battery < 40) return 'Charge to 40% or plug in';
+    if (updates.timerSoon) return 'Timer due within 5 minutes';
+    if (updates.busy || serverBusy()) return 'Finish the current turn first';
+    return '';
+  }
+  function checkUpdateDemo() {
+    clearUpdate();
+    if (!dev.wifi || !dev.ws || !dev.tokens[dev.profile] || set.serverChanged) { updates.message = 'Connect and pair first'; return; }
+    updates.message = 'Checking...';
+    const sequence = updates.sequence, profile = dev.profile;
+    setTimeout(() => {
+      if (sequence !== updates.sequence || !set || set.screen !== 'updates') return;
+      if (!dev.ws || profile !== dev.profile) { clearUpdate(); return; }
+      if (updates.result === 'timeout') { updates.message = 'Could not check. Try again.'; return; }
+      if (updates.result === 'none') { updates.message = 'No update offered'; return; }
+      updates.offer = { version: '0.1.1', profile, expires: now() + 60000 };
+      updates.message = 'Enter: review install';
+      setTimeout(() => { if (sequence === updates.sequence) { clearUpdate(); updates.message = 'Offer expired. Check again.'; } }, 60000);
+    }, 800);
+  }
+  function installUpdateDemo() {
+    const offer = updates.offer;
+    if (!offer || offer.profile !== dev.profile || now() >= offer.expires) { clearUpdate(); go('updates'); return; }
+    const blocker = updateBlocker();
+    if (blocker) { clearUpdate(); updates.message = blocker; go('updates'); return; }
+    const sequence = updates.sequence;
+    go('updateProgress');
+    note('Simulation only: the real device exits Settings, checks safety conditions, verifies signed firmware, then restarts. Bob is removed only after explicit confirmation.');
+    setTimeout(() => {
+      if (sequence !== updates.sequence || !set || set.screen !== 'updateProgress') return;
+      if (updateBlocker()) { clearUpdate(); updates.message = 'Update cancelled. Check again.'; return; }
+      updates.installed = offer.version; updates.privateBob = false; assistantName = 'Bob';
+      clearUpdate(); updates.message = 'Simulation complete';
+    }, 2000);
+  }
+  function openUpdates(result) {
+    clearUpdate(); updates.result = result; enterSettings('updates');
+    note('Updates preview: versions and network results are simulated. No server request, download or device change occurs.');
+  }
+
+  // ---------------------------------------------------------------- Settings and Setup (settings_ui.cpp, #675-#680)
+  let set = null; // the open Settings session, or null
+  const pad = (str, n) => String(str).padEnd(n);
+  const bars = (rssi) => rssi >= -55 ? 4 : rssi >= -67 ? 3 : rssi >= -75 ? 2 : 1;
+  const meter = (rssi) => '|'.repeat(bars(rssi)).padEnd(4);
+  const rssiOf = (ssid) => (SCAN.find((e) => e.ssid === ssid) || { rssi: -90 }).rssi;
+  const serverVisible = () => dev.devBuild || dev.unlocked;
+  const profileAvailable = (p) => p === 'prod' || (p === 'dev' ? dev.devBuild : dev.devBuild || dev.unlocked);
+  const hostValid = (h) => h.length > 0 && h.length <= 63 && h.split('.').every((l) => /^[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?$/.test(l));
+  const passValid = (p) => p.length === 0 || (p.length >= PASS_MIN && p.length <= 63) || /^[0-9a-fA-F]{64}$/.test(p);
+  function endpointCheck(p, e) {
+    if (!hostValid(e.host)) return 'Use a name like host.example.com';
+    if (!(e.port >= 1 && e.port <= 65535)) return 'Port 1-65535';
+    if (!e.tls && !dev.devBuild) return 'This build needs TLS on';
+    return '';
+  }
+  function endpointLoad(p) {
+    if (p === 'prod') return PROD_ENDPOINT;
+    const e = dev.endpoints[p];
+    return e && !endpointCheck(p, e) ? e : null;
+  }
+
+  function enterSettings(entry) {
+    stopReplyAudio();
+    dev.cardShown = false;
+    dev.settingsFrom = dev.state;
+    set = { screen: entry === 'setup' ? 'welcome' : entry, sel: 0, setup: entry === 'setup', seq: 0, field: null,
+      title: '', pendingSsid: '', pendingPass: '', pendingHidden: false, net: null, purpose: 'add', joinResult: 'never',
+      savedOldRank: 0, editProfile: 'prod', edit: null, editUsed: false, serverError: '', resetScope: '', resetDone: false,
+      aboutTyped: '', listChanged: false, linkChanged: false, serverChanged: false,
+      activeNet: dev.wifi ? dev.activeNet : null, socketUp: dev.ws };
+    transitionTo('SETTINGS', '', '', COL.white, '');
+  }
+  function go(screen, sel) { set.screen = screen; set.sel = sel || 0; set.seq++; }
+  function openField(screen, max, masked, initial) {
+    const text = initial || '';
+    set.field = { text, cursor: text.length, max, masked, shown: false, revealUntil: 0, digitsOnly: false };
+    go(screen);
+  }
+  const fieldOpen = () => !!(set && set.field && ['name', 'password', 'host', 'port', 'factory'].includes(set.screen));
+  function wipeSecrets() { set.pendingPass = ''; if (set.field) set.field.text = ''; }
+
+  // text_field.cpp fieldApply: 'submit', 'cancel' or null.
+  function fieldApply(f, k) {
+    if (k === 'enter') return 'submit';
+    if (k === 'fn+`') return 'cancel';
+    if (k === 'fn+,') { if (f.cursor > 0) f.cursor--; return null; }
+    if (k === 'fn+/') { if (f.cursor < f.text.length) f.cursor++; return null; }
+    if (k === 'tab') { if (f.masked) f.shown = !f.shown; return null; }
+    if (k === 'del') { if (f.cursor > 0) { f.text = f.text.slice(0, f.cursor - 1) + f.text.slice(f.cursor); f.cursor--; } return null; }
+    if (k.length !== 1 || f.text.length >= f.max || (f.digitsOnly && !/[0-9]/.test(k))) return null;
+    f.text = f.text.slice(0, f.cursor) + k + f.text.slice(f.cursor);
+    f.cursor++;
+    f.revealUntil = now() + REVEAL_MS;
+    return null;
+  }
+  // text_field.cpp fieldRender: a 36-column window around the cursor; masked shows the new character for 1 s.
+  function showField(title, subtitle, t, error) {
+    const f = set.field, cols = 36;
+    const start = f.cursor >= cols ? f.cursor - cols + 1 : 0;
+    let shown = '';
+    for (let i = start; i < Math.min(f.text.length, start + cols); i++) {
+      shown += !f.masked || f.shown || (f.revealUntil > t && i === f.cursor - 1) ? f.text[i] : '*';
+    }
+    drawField(title, subtitle, shown, f.cursor - start, f.text.length + '/' + f.max, error);
+  }
+  function showPicker(header, items, hint, empty) {
+    drawPicker({ header, items, sel: set.sel, empty: empty || '', hint: hint ? { text: hint, color: LABEL } : null });
+  }
+
+  function homeRows() { return ['wifi'].concat(serverVisible() ? ['server'] : [], ['reset', 'about', 'wake', 'connection', 'updates']); }
+  function resetRows() { return ['wifi'].concat(serverVisible() ? ['server'] : [], ['unpair', 'factory']); }
+  const serverRows = () => PROFILES.filter(profileAvailable);
+  function wifiRowCount() { return dev.nets.length + (dev.nets.length < MAX_NETS ? 1 : 0); }
+  function detailActions() {
+    const rank = dev.nets.indexOf(set.net), a = [];
+    if (set.net.ssid !== set.activeNet) a.push('connect');
+    a.push('password');
+    if (rank > 0) a.push('up');
+    if (rank + 1 < dev.nets.length) a.push('down');
+    a.push('forget');
+    return a;
+  }
+  const scanRowCount = () => SCAN.length + 3;
+
+  function settingsDraw(t) {
+    const s = set;
+    const lines = (title, color, l) => { s.title = title; drawLines(title, color, l); };
+    const picker = (header, items, hint, empty) => { s.title = header; showPicker(header, items, hint, empty); };
+    const field = (title, sub, err) => { s.title = title; showField(title, sub, t, err); };
+    switch (s.screen) {
+      case 'welcome': return lines("HI, I'M " + assistantName.toUpperCase(), COL.green, ["Let's get you online.", 'It takes about 2 minutes.', '', "You'll need your Wi-Fi password", 'and your phone.']);
+      case 'home': return picker('SETTINGS', homeRows().map((r) => ({ wifi: 'Wi-Fi networks', server: 'Server       ' + PROFILE_NAME[dev.profile], reset: 'Reset', about: 'About', wake: 'Wake word    ' + assistantName, connection: 'Connection', updates: 'Updates' })[r]), '');
+      case 'wifiList': {
+        const items = dev.nets.map((n, r) => (r + 1) + (n.ssid === s.activeNet ? '*' : ' ') + ' ' + pad(trunc(n.ssid, 16), 16) + ' ' + RESULT_LABEL[n.last]);
+        if (dev.nets.length < MAX_NETS) items.push('+ Add network (' + dev.nets.length + ' of ' + MAX_NETS + ')');
+        return picker('WI-FI', items, dev.nets.some((n) => n.ssid === s.activeNet) ? '* connected now' : '', 'No saved networks');
+      }
+      case 'detail': {
+        const names = { connect: 'Connect now', password: 'Change password', up: 'Move up', down: 'Move down', forget: 'Forget' };
+        return picker(trunc(s.net.ssid, 18), detailActions().map((a) => names[a]),
+          'Priority ' + (dev.nets.indexOf(s.net) + 1) + ' of ' + dev.nets.length + '  last: ' + (s.net.last === 'never' ? '-' : RESULT_LABEL[s.net.last]));
+      }
+      case 'confirmForget': {
+        const active = s.net.ssid === s.activeNet;
+        return lines('FORGET?', COL.red, [trunc(s.net.ssid, 32), '', 'The password is deleted from', 'this device.'].concat(active ? ["You're on it now: Bob will", 'switch to your other networks.'] : []));
+      }
+      case 'scanning': return lines('LOOKING', COL.yellow, ['Looking for Wi-Fi...']);
+      case 'scanList': {
+        const items = SCAN.map((e) => e.enterprise ? pad(trunc(e.ssid, 14), 14) + ' not supported'
+          : pad(trunc(e.ssid, 18), 18) + ' ' + meter(e.rssi) + ' ' + (e.open ? 'open' : 'lock'));
+        return picker('CHOOSE WI-FI', items.concat(['+ Type a network name', "? My network isn't listed", 'Scan again']), 'Only 2.4 GHz networks show here');
+      }
+      case 'notListed': return lines('NOT LISTED?', COL.yellow, ['Bob sees 2.4 GHz Wi-Fi only.', 'Turn on 2.4 GHz on your router,', 'or pick "Type a network name"', 'for a hidden network.']);
+      case 'name': return field('NETWORK NAME', 'Exactly as it appears on your router', '');
+      case 'password': {
+        const n = s.field.text.length;
+        return field('PASSWORD', 'for ' + trunc(s.pendingSsid, 26), n === 0 && s.pendingHidden ? 'Empty = open network' : n > 0 && n < PASS_MIN ? 'At least 8 characters' : '');
+      }
+      case 'joining': return lines('CONNECTING', COL.yellow, [trunc(s.pendingSsid, 32), '', 'Joining Wi-Fi...']);
+      case 'joinFailed': {
+        const why = s.joinResult === 'auth' ? 'Check the password and try again.' : s.joinResult === 'noap' ? "Can't find it. Is it on and near?" : "It didn't answer in time.";
+        return lines("COULDN'T JOIN", COL.red, [trunc(s.pendingSsid, 32), '', why, '', 'Nothing was saved.']);
+      }
+      case 'saved': {
+        const first = dev.nets.indexOf(s.net) === 0 && dev.nets.length > 1;
+        return lines(s.purpose === 'connect' ? 'CONNECTED' : 'SAVED', COL.green, [trunc(s.net.ssid, 32), 'Saved (' + dev.nets.length + ' of ' + MAX_NETS + ').', first ? "It's first in line now." : '']);
+      }
+      case 'wake': return picker('WAKE WORD', (updates.privateBob ? ['Bob', 'Bob'] : ['Bob']).map((name) => 'Hey ' + name + (name === assistantName ? ' *' : '')), 'Changes the assistant name too');
+      case 'connection': return lines('CONNECTION', COL.white, ['Server: ' + dev.profile.toUpperCase(), 'Wi-Fi: ' + (dev.wifi ? 'connected' : 'not connected'), 'Server: ' + (dev.ws ? 'connected' : 'not connected'), dev.tokens[dev.profile] ? 'Pairing saved' : 'Needs pairing', (endpointLoad(dev.profile) || {}).tls ? 'Encrypted connection' : 'Local unencrypted connection']);
+      case 'updates': return lines('UPDATES', COL.white, ['Installed: ' + updates.installed, updates.offer ? 'Available: ' + updates.offer.version : '', updates.message, updates.privateBob ? 'Bob: automatic updates off' : 'Signed public updates']);
+      case 'updateConfirm': return lines('INSTALL ' + updates.offer.version + '?', COL.yellow, ['Bob-only firmware', updates.privateBob ? 'This removes Bob.' : '', updateBlocker() || 'Review this version', 'Keep power connected.']);
+      case 'updateProgress': return lines('UPDATE DEMO', COL.yellow, ['Simulated signature / hash check', 'Inactive slot, then restart', '', 'No device firmware is changed.']);
+      case 'about': {
+        const net = s.activeNet && dev.wifi ? 'Wi-Fi   ' + trunc(s.activeNet, 18) + ' ' + meter(rssiOf(s.activeNet)) : 'Wi-Fi   not connected';
+        return lines('ABOUT', COL.white, ['Bob   fw ' + updates.installed, 'Name    ' + (dev.deviceName || '-'), 'Server  ' + PROFILE_NAME[dev.profile], net,
+          'Online  ' + (dev.wifi ? 'ok' : '--') + '   Bob  ' + (s.socketUp ? 'ok' : '--')]);
+      }
+      case 'server': {
+        const rows = serverRows();
+        const sel = rows[Math.min(s.sel, rows.length - 1)], e = endpointLoad(sel);
+        const hint = sel === 'prod' ? 'Bob cloud (secure)' : e ? trunc(e.host, 24) + ':' + e.port + ' ' + (e.tls ? '' : 'plain') : 'Not set up yet: [e] edit';
+        return picker('SERVER', rows.map((p) => pad(PROFILE_NAME[p], 10) + ' ' + (p === dev.profile ? '*' : ' ') + ' ' + (dev.tokens[p] ? 'paired' : 'needs pairing')), hint);
+      }
+      case 'serverEdit': {
+        const e = s.edit;
+        return picker(PROFILE_NAME[s.editProfile], ['Host   ' + trunc(e.host || '-', 20), 'Port   ' + e.port, 'Secure (TLS)  ' + (e.tls ? 'On' : 'Off'), 'Save'],
+          s.serverError || (!dev.devBuild ? 'This build connects securely only' : e.tls ? '' : 'Plain works on developer builds only'));
+      }
+      case 'host': return field('SERVER HOST', 'A name or an IP, no http://', '');
+      case 'port': return field('PORT', '1-65535', '');
+      case 'confirmSwitch': return lines('SWITCH SERVER?', COL.yellow, ['Use ' + PROFILE_NAME[s.editProfile] + '?', '', 'Bob reconnects when you leave', 'Settings. Your other pairings', 'are kept.']);
+      case 'reset': return picker('RESET', resetRows().map((r) => ({ wifi: 'Forget all Wi-Fi', server: 'Server back to Production', unpair: 'Unpair this device', factory: 'Factory reset' })[r]), 'Each option clears only what it says');
+      case 'confirmReset':
+        if (s.resetScope === 'wifi') return lines('FORGET ALL WI-FI?', COL.red, ['Every saved network and its', 'password is deleted from this', 'device. Setup starts again.']);
+        if (s.resetScope === 'server') return lines('PRODUCTION?', COL.yellow, ['Local dev and Custom are cleared', 'and Bob uses Production.', 'Every pairing is kept.']);
+        return lines('UNPAIR?', COL.red, ['Unpair from ' + PROFILE_NAME[dev.profile] + '?', "You'll need a new code to use it.", '', 'Also remove it at app.heybob.xyz', '> Devices.']);
+      case 'factory': return field('FACTORY RESET', 'Erases everything. Type RESET:', 'Giving it away? Remove it on the web');
+    }
+  }
+
+  function settingsStrip() {
+    const s = set;
+    if (!s) return '';
+    switch (s.screen) {
+      case 'welcome': return '[Enter] start  [s] set up later';
+      case 'home': return '[;] up  [.] down  [Enter] open  [`] back to Ready';
+      case 'wifiList': return '[Enter] open  [a] add  [;][.] move  [`] back';
+      case 'detail': case 'scanList': case 'reset': return '[;] up  [.] down  [Enter] select  [`] back';
+      case 'confirmForget': return '[Enter] forget  [`] keep';
+      case 'scanning': return 'Looking for Wi-Fi...';
+      case 'notListed': return '[Enter] scan again  [`] back';
+      case 'name': return '[Enter] next  [Fn+`] cancel  [Fn+,][Fn+/] move';
+      case 'password': return '[Enter] connect  [Tab] show  [Fn+`] cancel';
+      case 'joining': return 'Connecting...';
+      case 'joinFailed': return s.purpose === 'connect' ? '[`] back' : '[Enter] try again  [`] back';
+      case 'saved': return s.setup ? '[Enter] continue' : s.purpose === 'add' ? '[Enter] ok  [k] keep old order' : '[Enter] ok';
+      case 'connection': return dev.profile === 'prod' ? '[`] back' : '[Enter] use Production  [`] back';
+      case 'wake': return '[;][.] move  [Enter] use  [`] back';
+      case 'updates': return updates.offer ? '[Enter] review install  [c] check again  [`] back' : '[Enter] check for updates  [`] back';
+      case 'updateConfirm': return '[Enter] install  [`] cancel';
+      case 'updateProgress': return '[`] cancel simulation';
+      case 'about': return '[`] back';
+      case 'server': return '[Enter] use  [e] edit  [;][.] move  [`] back';
+      case 'serverEdit': return '[Enter] edit  [;][.] move  [`] back without saving';
+      case 'host': return '[Enter] ok  [Fn+`] cancel  [Fn+,][Fn+/] move';
+      case 'port': return '[Enter] ok  [Fn+`] cancel';
+      case 'confirmSwitch': return '[Enter] switch  [`] back';
+      case 'confirmReset': return '[Enter] yes  [`] no';
+      case 'factory': return '[Enter] confirm  [Fn+`] cancel';
+    }
+    return '';
+  }
+
+  // The radio (wifi_manager.cpp): a scan, and a test join before anything is saved.
+  function startScan() {
+    go('scanning');
+    const seq = set.seq;
+    setTimeout(() => { if (set && set.seq === seq) go('scanList'); }, 1200);
+  }
+  function startJoin(purpose) {
+    set.purpose = purpose;
+    set.linkChanged = true;
+    go('joining');
+    const seq = set.seq, ssid = set.pendingSsid, pass = set.pendingPass;
+    setTimeout(() => {
+      if (!set || set.seq !== seq) return;
+      const ap = SCAN.find((e) => e.ssid === ssid);
+      set.joinResult = !ap ? 'noap' : ap.open || WIFI_PASS[ssid] === pass ? 'ok' : 'auth';
+      if (set.joinResult === 'ok') commitJoin(); else { wipeSecrets(); go('joinFailed'); }
+    }, 1500);
+  }
+  function commitJoin() {
+    let net = set.net;
+    if (set.purpose === 'add') {
+      net = dev.nets.find((n) => n.ssid === set.pendingSsid);
+      if (!net) { net = { ssid: set.pendingSsid, pass: '', last: 'never' }; dev.nets.push(net); }
+      net.pass = set.pendingPass;
+      set.savedOldRank = dev.nets.indexOf(net);
+      dev.nets.splice(set.savedOldRank, 1); dev.nets.unshift(net); // the network chosen now goes first
+    } else {
+      if (set.purpose === 'password') net.pass = set.pendingPass;
+      set.savedOldRank = dev.nets.indexOf(net);
+    }
+    net.last = 'ok';
+    set.net = net;
+    set.activeNet = net.ssid;
+    set.listChanged = true;
+    wipeSecrets();
+    go('saved');
+  }
+  function moveNet(net, to) { dev.nets.splice(dev.nets.indexOf(net), 1); dev.nets.splice(to, 0, net); set.listChanged = true; }
+  function openServerEdit(p) {
+    set.editProfile = p;
+    set.serverError = '';
+    const e = endpointLoad(p);
+    set.edit = e ? Object.assign({}, e) : { host: '', port: dev.devBuild ? 7444 : 443, tls: !dev.devBuild };
+    go('serverEdit');
+  }
+  function applySwitch() {
+    if (set.editUsed) dev.endpoints[set.editProfile] = Object.assign({}, set.edit);
+    dev.profile = set.editProfile;
+    clearUpdate();
+    set.serverChanged = true;
+    go('server');
+  }
+  // Wi-Fi, server and unpair apply here; factory reset is applied on the way out.
+  function applyReset() {
+    const scope = set.resetScope;
+    set.resetDone = true;
+    if (scope === 'wifi') { dev.nets = []; dev.activeNet = null; set.linkChanged = true; return true; }
+    if (scope === 'server') {
+      Object.assign(dev, { profile: 'prod', endpoints: { dev: null, custom: null }, unlocked: false });
+      set.serverChanged = true;
+      chromeToast('Server set to Production');
+      go('home');
+      return false;
+    }
+    if (scope === 'unpair') { dev.tokens[dev.profile] = false; set.serverChanged = true; }
+    return true;
+  }
+
+  // settingsKeys / onScreenKeys / onListKeys: k is 'enter', 'del', 'tab', 'fn+x' or one character.
+  function settingsKey(k) {
+    const s = set;
+    const up = k === ';', down = k === '.', back = k === '`', select = k === 'enter';
+    const move = (rows) => {
+      if (up && s.sel > 0) { s.sel--; return true; }
+      if (down && s.sel + 1 < rows) { s.sel++; return true; }
+      return false;
+    };
+    const close = () => leaveSettings();
+    if (fieldOpen()) {
+      const action = fieldApply(s.field, k), text = s.field.text;
+      if (s.screen === 'name' || s.screen === 'password') {
+        if (action === 'cancel') { wipeSecrets(); go(s.purpose === 'password' ? 'detail' : 'scanList'); }
+        else if (action === 'submit' && s.screen === 'name') { if (text.length >= 1 && text.length <= 32) { s.pendingSsid = text; openField('password', 64, true); } }
+        else if (action === 'submit') {
+          // An empty password only for a network typed by name (an open one).
+          if (!passValid(text) || (text.length === 0 && !s.pendingHidden)) return;
+          s.pendingPass = text;
+          startJoin(s.purpose);
+        }
+      } else if (s.screen === 'host' || s.screen === 'port') {
+        const row = s.screen === 'host' ? 0 : 1;
+        if (action === 'submit' && row === 0) s.edit.host = text;
+        if (action === 'submit' && row === 1) s.edit.port = Number(text) <= 65535 ? Number(text) : 0;
+        if (action) go('serverEdit', row);
+      } else if (action === 'cancel') go('reset');
+      else if (action === 'submit' && text.toUpperCase() === 'RESET') { applyReset(); close(); } // anything else typed does nothing
+      return;
+    }
+    switch (s.screen) {
+      case 'welcome':
+        if (select) startScan();
+        if (k === 's') close(); // set up later: offline
+        return;
+      case 'home': {
+        if (back) return close();
+        if (move(homeRows().length) || !select) return;
+        const row = homeRows()[s.sel];
+        if (row === 'about') s.aboutTyped = '';
+        go({ wifi: 'wifiList', server: 'server', reset: 'reset', about: 'about', wake: 'wake', connection: 'connection', updates: 'updates' }[row]);
+        return;
+      }
+      case 'connection':
+        if (back) return go('home');
+        if (select && dev.profile !== 'prod') { s.editProfile = 'prod'; s.editUsed = false; go('confirmSwitch'); }
+        return;
+      case 'wake':
+        if (back) return go('home');
+        if (move(updates.privateBob ? 2 : 1) || !select) return;
+        assistantName = s.sel === 1 && updates.privateBob ? 'Bob' : 'Bob'; return go('home');
+      case 'updates':
+        if (back) { clearUpdate(); return go('home'); }
+        if (k === 'c' || (select && !updates.offer)) return checkUpdateDemo();
+        if (select) return go('updateConfirm');
+        return;
+      case 'updateConfirm':
+        if (back) { clearUpdate(); return go('updates'); }
+        if (select) return installUpdateDemo();
+        return;
+      case 'updateProgress':
+        if (back) { clearUpdate(); return go('updates'); }
+        return;
+      case 'wifiList':
+        if (back) return go('home');
+        if (k === 'a' && dev.nets.length < MAX_NETS) return startScan();
+        if (move(wifiRowCount()) || !select) return;
+        if (s.sel < dev.nets.length) { s.net = dev.nets[s.sel]; go('detail'); } else startScan();
+        return;
+      case 'detail': {
+        if (back) return go('wifiList', dev.nets.indexOf(s.net));
+        const actions = detailActions();
+        if (move(actions.length) || !select) return;
+        const a = actions[s.sel];
+        s.pendingSsid = s.net.ssid;
+        if (a === 'connect') { s.pendingPass = s.net.pass; startJoin('connect'); }
+        else if (a === 'password') { s.purpose = 'password'; openField('password', 64, true); }
+        else if (a === 'up' || a === 'down') { moveNet(s.net, dev.nets.indexOf(s.net) + (a === 'up' ? -1 : 1)); s.sel = 0; }
+        else go('confirmForget');
+        return;
+      }
+      case 'confirmForget':
+        if (back) return go('detail');
+        if (!select) return;
+        dev.nets.splice(dev.nets.indexOf(s.net), 1);
+        s.listChanged = true;
+        if (s.net.ssid === s.activeNet) { s.linkChanged = true; s.activeNet = null; }
+        go('wifiList');
+        return;
+      case 'scanList': {
+        if (back) return go(s.setup ? 'welcome' : 'wifiList');
+        if (move(scanRowCount()) || !select) return;
+        const e = SCAN[s.sel];
+        s.purpose = 'add';
+        if (e) {
+          if (e.enterprise) return;
+          s.pendingSsid = e.ssid;
+          s.pendingHidden = false;
+          if (e.open) { s.pendingPass = ''; startJoin('add'); } else openField('password', 64, true);
+        } else if (s.sel === SCAN.length) { s.pendingHidden = true; openField('name', 32, false); }
+        else if (s.sel === SCAN.length + 1) go('notListed');
+        else startScan();
+        return;
+      }
+      case 'notListed':
+        if (back) go('scanList'); else if (select) startScan();
+        return;
+      case 'joinFailed':
+        if (back) { wipeSecrets(); go(s.purpose === 'add' ? 'scanList' : 'detail'); }
+        else if (select && s.purpose !== 'connect') openField('password', 64, true); // try again, typed fresh
+        return;
+      case 'saved':
+        if (k === 'k' && s.purpose === 'add') moveNet(s.net, s.savedOldRank);
+        if (s.setup && (select || back)) return close(); // Setup is done: connect, then pair
+        if (select || back || k === 'k') go('wifiList', dev.nets.indexOf(s.net));
+        return;
+      case 'about':
+        if (back || select) return go('home');
+        // Typing `developer` toggles developer options on a build without them (#679).
+        if (k.length !== 1) return;
+        s.aboutTyped = 'developer'.startsWith(s.aboutTyped + k) ? s.aboutTyped + k : k === 'd' ? 'd' : '';
+        if (s.aboutTyped === 'developer') {
+          s.aboutTyped = '';
+          if (dev.devBuild) return;
+          dev.unlocked = !dev.unlocked;
+          chromeToast(dev.unlocked ? 'Developer options on' : 'Developer options off');
+        }
+        return;
+      case 'server': {
+        if (back) return go('home');
+        const rows = serverRows();
+        if (move(rows.length)) return;
+        const p = rows[s.sel];
+        if (k === 'e' && p !== 'prod') return openServerEdit(p);
+        if (!select || p === dev.profile) return;
+        if (p !== 'prod' && !endpointLoad(p)) return openServerEdit(p); // nothing stored yet: set it up first
+        s.editProfile = p;
+        s.editUsed = false;
+        go('confirmSwitch');
+        return;
+      }
+      case 'serverEdit':
+        if (back) return go('server');
+        if (move(4) || !select) return;
+        s.serverError = '';
+        if (s.sel === 0) openField('host', 63, false, s.edit.host);
+        else if (s.sel === 1) { openField('port', 5, false, String(s.edit.port)); s.field.digitsOnly = true; }
+        else if (s.sel === 2) { if (dev.devBuild) s.edit.tls = !s.edit.tls; }
+        else {
+          s.serverError = endpointCheck(s.editProfile, s.edit);
+          if (!s.serverError) { s.editUsed = true; go('confirmSwitch'); }
+        }
+        return;
+      case 'confirmSwitch':
+        if (back) go(s.editUsed ? 'serverEdit' : 'server'); else if (select) applySwitch();
+        return;
+      case 'reset':
+        if (back) return go('home');
+        if (move(resetRows().length) || !select) return;
+        s.resetScope = resetRows()[s.sel];
+        if (s.resetScope === 'factory') openField('factory', 8, false); else go('confirmReset');
+        return;
+      case 'confirmReset':
+        if (back) go('reset'); else if (select && applyReset()) close();
+        return;
+    }
+  }
+
+  // state.cpp leaveSettings: where the device goes once Settings closes.
+  function leaveSettings() {
+    clearUpdate();
+    const s = set;
+    set = null;
+    if (s.resetDone && s.resetScope === 'factory') {
+      // Everything goes, then the device starts as new: the firmware's only restart.
+      transitionTo('RESETTING', 'RESETTING', '', COL.red, '');
+      const f = ++dev.flow;
+      setTimeout(() => { if (f === dev.flow) factoryNew(); }, 500);
+      return;
+    }
+    if (s.resetDone && s.resetScope === 'wifi') { wifiScreen(); enterSettings('setup'); return; } // straight into Setup
+    if (s.serverChanged) {
+      // The new profile's token decides pair or connect; the old server's code never resumes.
+      dev.ws = false; dev.pairing = null; dev.pairedName = '';
+      if (!s.linkChanged && dev.wifi) {
+        dev.reconnectDelay = RECONNECT_INITIAL_MS;
+        transitionTo('SOCKET', assistantTitle(), 'Connecting to the server...', COL.yellow, '');
+        requestSocketRetry();
+        return;
+      }
+      wifiScreen();
+      return;
+    }
+    if (!s.linkChanged && dev.ws) { enterReady(); return; }
+    if (!s.linkChanged && dev.settingsFrom === 'PAIRING') {
+      if (dev.pairing && dev.pairing.kind !== 'status') transitionTo('PAIRING', 'PAIRING', dev.pairing.kind === 'denied' ? 'Denied' : 'Pairing...', COL.yellow, '');
+      else requestPairing();
+      return;
+    }
+    if (!s.linkChanged && dev.settingsFrom === 'SOCKET') {
+      transitionTo('SOCKET', assistantTitle(), 'Connecting WebSocket...', COL.yellow, '');
+      requestSocketRetry(); // reconnect now, not after the backoff
+      return;
+    }
+    wifiScreen();
+  }
+
+  // Battery (settings.cpp batteryPoll; planned #326 warning)
+  function setBattery(pct) {
+    const was = dev.battery;
+    dev.battery = pct;
+    if (dev.planned && pct <= 15 && was > 15) chromeToast('Battery low. Charge soon'); // planned #326
+    markDeviceStateDirty();
+    renderWeb(); updateReadout();
+  }
+
+  // ---------------------------------------------------------------- input (state.cpp dispatchKeys / handlePttAndReply)
+  const READY_ONLY_KEYS = new Set(['c', 'n', 's', 'k', 'h', '?']);
+  function noteIgnored(k) {
+    if (READY_ONLY_KEYS.has(k)) note('"' + k + '" does nothing on this screen: the firmware reads c, n, s, k, h and ? on Ready only.');
+    else if (['-', '=', 'm'].includes(k)) note('"' + k + '" does nothing here: volume and mute work on Ready and while a reply is on its way.');
+  }
+  function wakeScreen() {
+    dev.lastInputAt = now();
+    if (dev.dimmed) { dev.dimmed = false; canvas.classList.remove('dim'); return true; }
+    return false;
+  }
+  function handleKey(k) {
+    if (wakeScreen() && dev.planned) { note('Planned #326: the first key only wakes the dimmed screen.'); return; }
+    const st = dev.state;
+    if (st === 'ANNOUNCE') { dismissAnnouncement('a key'); return; }
+    if (st === 'SETTINGS') { settingsKey(k); return; }
+    // [,] opens Settings from the Wi-Fi, pairing and server screens (#677, #679).
+    if (['WIFI', 'PAIRING', 'SOCKET'].includes(st) && k === ',') { enterSettings('home'); return; }
+    if (st === 'WIFI') return;
+    if (k === '_') k = '-';
+    if (k === '+') k = '=';
+    // Any key closes the follow-up window and does nothing else; x is the stop key.
+    if (followOpen()) { closeFollowUp(k === 'x' ? 'stop' : 'key'); return; }
+    if (st === 'READY' && dev.allSet) { dev.allSet = false; enterReady(); return; }
+    if (st === 'READY' && dev.cardShown) {
+      if (k === ';' || k === '.') {
+        const max = Math.max(0, dev.cardLines.length - CARD_ROWS);
+        dev.cardScroll = k === ';' ? Math.max(0, dev.cardScroll - 1) : Math.min(max, dev.cardScroll + 1);
+        return;
+      }
+      dev.cardShown = false;
+      enterReady();
+      if (k === '`') return;
+    }
+    if (st === 'READY' || st === 'AWAITING') {
+      if (k === '-') { onVolumeKey(-1); return; }
+      if (k === '=') { onVolumeKey(1); return; }
+      if (k === 'm') { onMuteKey(); return; }
+      if (k === 'x' && st === 'AWAITING') { stopReply('the x key'); return; }
+    }
+    switch (st) {
+      case 'HELP': {
+        const max = Math.max(0, helpLines().length - CARD_ROWS);
+        if (k === ';') dev.helpScroll = Math.max(0, dev.helpScroll - 1);
+        else if (k === '.') dev.helpScroll = Math.min(max, dev.helpScroll + 1);
+        else if (k === '`') closeHelp();
+        else if (k === 'enter' && dev.planned) openModePicker();
+        else noteIgnored(k);
+        return;
+      }
+      case 'READY':
+        if (k === 'c') enterPicker();
+        else if (k === 'n') enterNewConversation();
+        else if (k === 's') enterSpacePicker();
+        else if (k === 'k') onModeKey();
+        else if (k === 'h' || k === '?') openHelp();
+        else if (k === ',') enterSettings('home');
+        else if (k === 'fn+m' && dev.planned) { dev.micOff = !dev.micOff; chromeToast(dev.micOff ? 'Mic off' : 'Mic on'); note('Planned #313: fn+m turns the microphone ' + (dev.micOff ? 'off' : 'on') + '.'); }
+        return;
+      case 'NEWCHAT':
+        if (k === '`') cancelNewConversation();
+        else if (k === 'enter') sendNewConversation();
+        else noteIgnored(k);
+        return;
+      case 'PAIRING':
+        if (dev.pairing && dev.pairing.kind === 'denied') requestPairing();
+        return;
+      case 'SELECTING':
+      case 'SELECTING_MODE': {
+        const p = dev.picker;
+        if (k === '`') { cancelPicker(); return; }
+        if (!p || !p.items) { noteIgnored(k); return; }
+        if (k === 'enter') selectInPicker();
+        else if (k === ';' && p.sel > 0) p.sel--;
+        else if (k === '.' && p.sel + 1 < p.items.length) p.sel++;
+        else noteIgnored(k);
+        updateReadout();
+        return;
+      }
+      default:
+        noteIgnored(k);
+    }
+  }
+
+  function btnDown() {
+    if (dev.btnHeld) return;
+    dev.btnHeld = true;
+    document.getElementById('btn-go').classList.add('down');
+    if (wakeScreen() && dev.planned) { note('Planned #326: GO wakes the dimmed screen.'); return; }
+    const st = dev.state;
+    if (st === 'READY') { closeFollowUp('key'); beginTurn(); } // GO closes the window, then talks
+    else if (st === 'AWAITING') stopReply('GO');
+    else if (st === 'HELP') closeHelp();
+    else if (st === 'ANNOUNCE') dismissAnnouncement('GO');
+    else if (st === 'ERROR' || st === 'SOCKET') { requestSocketRetry(); note(dev.serverReachable && dev.wifi && configured() ? 'GO: retry now. The WebSocket reconnects, the server welcomes the device, and Ready returns.' : 'GO: retry now (backoff reset). The server still cannot be reached, so the screen stays.'); }
+    else if (st === 'CAPTURING' && dev.wakeTurn) endTurn(); // GO sends a wake-word turn now.
+  }
+  function btnUp() {
+    if (!dev.btnHeld) return;
+    dev.btnHeld = false;
+    document.getElementById('btn-go').classList.remove('down');
+    if (dev.state === 'CAPTURING' && !dev.wakeTurn) endTurn();
+  }
+
+  // ---------------------------------------------------------------- keyboard UI
+  const ROWS = [
+    [['`', 'esc'], ['1'], ['2'], ['3'], ['4'], ['5'], ['6'], ['7'], ['8'], ['9'], ['0'], ['-'], ['='], ['del', '', 'special']],
+    [['tab', '', 'special'], ['q'], ['w'], ['e'], ['r'], ['t'], ['y'], ['u'], ['i'], ['o'], ['p'], ['['], [']'], ['\\']],
+    [['fn', '', 'special'], ['aa', '', 'special'], ['a'], ['s'], ['d'], ['f'], ['g'], ['h'], ['j'], ['k'], ['l'], [';', '↑'], ["'"], ['enter', '', 'special']],
+    [['ctrl', '', 'special'], ['opt', '', 'special'], ['alt', '', 'special'], ['z'], ['x'], ['c'], ['v'], ['b'], ['n'], ['m'], [',', '←'], ['.', '↓'], ['/', '→'], ['space', '', 'special']]
+  ];
+  const MATTERS = new Set(['`', ';', '.', 'enter', 'c', 'n', 's', 'k', 'h', '-', '=', 'm', 'x', ',', 'fn', 'tab', 'del']);
+  const KEY_NAMES = { h: 'h, help', k: 'k, listening mode', '`': 'backtick, back', ';': 'semicolon, up', '.': 'period, down', ',': 'comma, settings', '/': 'slash, right', '-': 'minus, volume down', '=': 'equals, volume up', m: 'm, mute', x: 'x, stop', aa: 'shift', del: 'delete' };
+  const keyEls = {};
+  const kb = document.getElementById('keyboard');
+  ROWS.forEach((row) => {
+    const r = document.createElement('div');
+    r.className = 'krow';
+    row.forEach(([k, sub, cls]) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'key' + (cls ? ' ' + cls : '') + (MATTERS.has(k) ? ' matters' : '');
+      b.dataset.key = k;
+      b.tabIndex = -1;
+      b.setAttribute('aria-label', 'Key ' + (KEY_NAMES[k] || k));
+      if (k === 'fn') b.setAttribute('aria-pressed', 'false');
+      b.textContent = k === 'aa' ? 'shift' : k;
+      if (sub) { const s = document.createElement('span'); s.className = 'sub'; s.textContent = sub; b.appendChild(s); }
+      b.addEventListener('click', (e) => { userTookOver(e); pressKey(k); });
+      keyEls[k] = b;
+      r.appendChild(b);
+    });
+    kb.appendChild(r);
+  });
+
+  function flashKey(k) {
+    const el = keyEls[k];
+    if (!el) return;
+    el.classList.add('down');
+    setTimeout(() => el.classList.remove('down'), 170);
+  }
+  let fnDown = false;
+  function setFn(on) { fnDown = on; keyEls.fn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+  // Single entry for every key press (on-screen, physical, scenario).
+  function pressKey(k) {
+    if (k === 'fn') { setFn(!fnDown); return; }
+    if (k.startsWith('fn+')) { flashKey('fn'); flashKey(k.slice(3)); setFn(false); handleKey(k); return; }
+    flashKey(k);
+    if (fnDown && ['m', '`', ',', '/'].includes(k)) { setFn(false); handleKey('fn+' + k); return; }
+    setFn(false);
+    if (k === 'space') { handleKey(' '); return; }
+    handleKey(k);
+  }
+
+  const deviceEl = document.getElementById('device');
+  const panelEl = document.querySelector('.panel');
+  function inPanelControl(t) { return panelEl.contains(t) && /^(BUTTON|INPUT|SELECT|TEXTAREA|A|AUDIO)$/.test(t.tagName); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey) return;
+    if (inPanelControl(e.target)) return;
+    let k = null;
+    const field = fieldOpen();
+    if (e.key === ' ' && !field) {
+      e.preventDefault();
+      if (!e.repeat) { userTookOver(e); btnDown(); }
+      return;
+    }
+    if (e.key === 'Enter') k = 'enter';
+    else if (e.key === 'Escape') k = field ? 'fn+`' : '`';
+    else if (field && e.key === 'Tab') k = 'tab';
+    else if (field && e.key === 'ArrowLeft') k = 'fn+,';
+    else if (field && e.key === 'ArrowRight') k = 'fn+/';
+    else if (field && e.key.length === 1) k = e.key; // a field types what you type, case and all
+    else if (e.key === 'Backspace') k = 'del';
+    else if (e.key === 'ArrowUp') k = ';';
+    else if (e.key === 'ArrowDown') k = '.';
+    else if (e.key === 'M' || (e.altKey && e.key.toLowerCase() === 'm')) k = 'fn+m';
+    else if (e.key.length === 1) k = e.key === '?' || e.key === '+' || e.key === '_' ? e.key : e.key.toLowerCase();
+    if (!k) return;
+    if (e.target.classList && e.target.classList.contains('btn-go') && k === 'enter') return;
+    e.preventDefault();
+    if (e.repeat && !['-', '=', ';', '.', 'del'].includes(k)) return;
+    userTookOver(e);
+    pressKey(k);
+  });
+  document.addEventListener('keyup', (e) => {
+    if (e.key === ' ' && !inPanelControl(e.target)) { e.preventDefault(); btnUp(); }
+  });
+  window.addEventListener('blur', btnUp);
+
+  const btnGo = document.getElementById('btn-go');
+  btnGo.addEventListener('pointerdown', (e) => { e.preventDefault(); userTookOver(e); if (btnGo.setPointerCapture) btnGo.setPointerCapture(e.pointerId); btnDown(); });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach((ev) => btnGo.addEventListener(ev, btnUp));
+  btnGo.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.repeat) { e.preventDefault(); userTookOver(e); btnDown(); } });
+  btnGo.addEventListener('keyup', (e) => { if (e.key === 'Enter') btnUp(); });
+
+  // Audio unlock on the first real gesture (autoplay rules).
+  ['pointerdown', 'keydown'].forEach((ev) => document.addEventListener(ev, (e) => { if (e.isTrusted) unlockAudio(); }, { capture: true }));
+  document.getElementById('sound').addEventListener('change', (e) => {
+    audio.enabled = e.target.checked;
+    if (audio.master) audio.master.gain.value = audio.enabled ? 1 : 0;
+    if (!audio.enabled) { stopSpeech(); stopCabinCue(); }
+  });
+  const candidateStatus = () => document.getElementById('sound-preview-status');
+  function pauseReferences() {
+    for (const reference of document.querySelectorAll('.cabin-reference')) reference.pause();
+  }
+  function silenceDemoForPreview() {
+    stopScenario(false);
+    ++dev.flow; // cancel pending simulated speech while auditioning.
+    dev.playing = null;
+    dev.followUntil = 0;
+    stopReplyAudio();
+    ringStop();
+  }
+  for (const [name, cue] of Object.entries(CABIN_CUES)) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = cue.label;
+    button.addEventListener('click', () => {
+      unlockAudio();
+      pauseReferences();
+      silenceDemoForPreview();
+      const played = playCabinCue(name, true);
+      candidateStatus().textContent = played ? 'Playing candidate: ' + cue.label + '. Not approved; hardware listening pending.' :
+        'Audio could not start. Click the candidate again.';
+    });
+    document.getElementById('event-sounds').appendChild(button);
+  }
+  document.getElementById('candidate-ring').addEventListener('change', (event) => {
+    ringStop();
+    dev.ringStyle = event.target.value;
+  });
+  document.getElementById('candidate-volume').addEventListener('input', (event) => {
+    if (cabinGain) cabinGain.gain.value = Number(event.target.value) / 100;
+  });
+  // Public CC0 references are remote; no recorded audio is embedded in this file.
+  for (const reference of document.querySelectorAll('.cabin-reference')) {
+    reference.volume = 0.5;
+    reference.addEventListener('play', () => {
+      silenceDemoForPreview();
+      for (const other of document.querySelectorAll('.cabin-reference')) {
+        if (other !== reference) other.pause();
+      }
+      candidateStatus().textContent = 'Playing real cabin reference. No final cue selected.';
+    });
+    reference.addEventListener('ended', () => {
+      candidateStatus().textContent = 'Reference finished. No final cue selected.';
+    });
+    reference.addEventListener('error', () => {
+      candidateStatus().textContent = 'Reference could not load. Use its source link above to listen.';
+    });
+  }
+  document.getElementById('stop-sound-preview').addEventListener('click', () => {
+    stopCabinCue();
+    pauseReferences();
+    candidateStatus().textContent = 'Preview stopped.';
+  });
+  document.getElementById('earcons').addEventListener('change', (e) => { dev.earconsOn = e.target.checked; });
+
+  // ---------------------------------------------------------------- readout
+  let screenSummary = '';
+  function describeScreen() {
+    screenSummary = screenName();
+    const strip = dev.state === 'PAIRING' ? '' : plain(stripFor());
+    canvas.setAttribute('aria-label', 'Device screen: ' + screenSummary + '. Status line: ' + statusLineText() + (strip ? '. Strip: ' + strip : ''));
+  }
+  function updateReadout() {
+    const set = (id, t) => { const el = document.getElementById(id); if (el && el.textContent !== t) el.textContent = t; };
+    set('ro-state', dev.state);
+    set('ro-screen', screenName());
+    set('ro-strip', dev.state === 'PAIRING' ? '(hidden on pairing screens)' : stripFor());
+    set('ro-conv', dev.conv || 'New conversation');
+    set('ro-space', dev.space || 'none');
+    set('ro-vol', dev.muted ? 'Muted (level ' + dev.volume + ')' : dev.volume + ' / 10');
+    set('ro-mode', WEB_MODE_NAMES[dev.mode] + (dev.wakeFailed && dev.mode === 'wake' ? ' (fallback: PTT, no wake)' : '') + (dev.dnd ? ' + DND' : ''));
+    set('ro-mic', dev.state === 'CAPTURING' ? 'open, streaming the turn' : followOpen() ? 'open, follow-up window (speech opens a turn)' : wakeListening() ? 'open, on-device wake word only (nothing sent)'
+      : dev.mode === 'announce' ? 'never opens (announcements only)' : dev.planned && dev.micOff ? 'off (planned #313)' : 'closed until GO');
+    set('ro-held', 'server ' + dev.outbox.length + (dev.dnd ? ' (DND)' : '') + ', device queue ' + dev.announceQueue.length);
+    set('ro-bat', dev.battery + '%' + (dev.charging ? ' charging' : ''));
+    set('ro-link', wifiLine() + (dev.serverReachable ? '' : ' (server unreachable)'));
+    set('ro-server', PROFILE_NAME[dev.profile] + (dev.tokens[dev.profile] ? ', paired' : ', needs pairing') + (dev.devBuild ? ' (developer build)' : dev.unlocked ? ' (developer options on)' : ''));
+    set('ro-nets', dev.nets.length ? dev.nets.map((n) => n.ssid).join(' > ') : 'none');
+    const bl = document.getElementById('btn-label');
+    const blText = dev.mode === 'announce' ? 'announcements only' : 'hold to talk (or hold Space)';
+    if (bl.textContent !== blText) bl.textContent = blText;
+  }
+
+  // ---------------------------------------------------------------- main loop
+  let lastRo = 0;
+  function frame(t) {
+    if (dev.playing && dev.state === 'AWAITING') dev.frames = Math.min(dev.playing.total, Math.floor((t - dev.playing.start) / 250));
+    superviseConnections(t);
+    if (dev.state === 'NEWCHAT' && dev.newChat.pending && t - dev.newChat.sentAt >= NEW_CONV_TIMEOUT_MS) failNewConversation();
+    tickAnnouncement(t);
+    if (followOpen() && t >= dev.followUntil) closeFollowUp('timeout');
+    if (dev.state === 'READY' && dev.heldControl) { const c = dev.heldControl; dev.heldControl = null; applyModeAndDnd(c); sendDeviceState(); }
+    if (dev.state === 'READY') presentNextAnnouncement();
+    if (dev.planned && dev.state === 'READY' && !dev.cardShown && !dev.dimmed && t - dev.lastInputAt > IDLE_DIM_MS) { dev.dimmed = true; canvas.classList.add('dim'); }
+    render(t);
+    if (t - lastRo > 250) { lastRo = t; updateReadout(); describeScreen(); }
+    requestAnimationFrame(frame);
+  }
+
+  // ---------------------------------------------------------------- scenarios
+  class Abort extends Error {}
+  let scen = null;
+  function scenarioCtx(token, total) {
+    let n = 0;
+    const chk = () => { if (token.aborted) throw new Abort(); };
+    return {
+      say(text, speech) { chk(); n++; caption(text, 'Step ' + n + '/' + total, speech); },
+      async sp(ms) { await delay(ms); chk(); },
+      async key(k) { chk(); pressKey(k); await delay(420); chk(); },
+      async type(str) { for (const c of str) { chk(); pressKey(c); await delay(160); } chk(); },
+      down() { chk(); btnDown(); },
+      up() { chk(); btnUp(); },
+      async tap() { chk(); btnDown(); await delay(180); btnUp(); chk(); },
+      async until(fn, ms) {
+        const end = now() + (ms || 15000);
+        while (!fn()) { await delay(50); chk(); if (now() > end) throw new Error('Scenario timed out waiting for the device (state ' + dev.state + ')'); }
+      },
+      async start(opts) {
+        chk();
+        resetDevice(true);
+        if (opts && opts.mode) { dev.mode = opts.mode; enterReady(); sendDeviceState(); }
+        chrome.overlay = null;
+        await delay(600); chk();
+      }
+    };
+  }
+  const isCard = () => dev.state === 'READY' && dev.cardShown && !followOpen();
+  const title = () => dev.status.title;
+
+  const SCENARIOS = [
+    { id: 'ptt', title: 'Push-to-talk question', badge: ['shipped', 'Shipped'], steps: 7, async run(x) {
+      await x.start();
+      x.say('Ready. Status line: grey mic dot and "Push to talk" on the left; "Vol 6" and "100%" on the right. Then the paired name, the conversation (yellow), the Space line, "WiFi: OK  WS: OK", and the shortcut strip.');
+      await x.sp(3600);
+      dev.nextQA = QA.agenda;
+      x.down();
+      x.say('Hold GO: a short cabin-style ready ding, LISTENING / "Speak now", the pulsing green circle, the red mic dot. Strip: "Let go of GO to send".', 'You: "' + QA.agenda.q + '"');
+      await x.sp(2800);
+      x.up();
+      x.say('Let go: the distinct sent chime and WAITING... in cyan. The magenta bar and "Frames: 0" show for the whole wait. Strip: "x stop  - = volume  m mute".');
+      await x.until(() => title() === 'THINKING');
+      await x.sp(200);
+      x.say('THINKING: the server transcribes and the agent checks your agenda.');
+      await x.until(() => title() === 'REPLY');
+      x.say('REPLY: frames stream in and the speaker plays the answer.', 'Bob: "' + QA.agenda.a + '"');
+      await x.until(isCard, 20000);
+      x.say('The reply card: "You said" (cyan) and "Bob" (green). Strip: "; . scroll  any key close  GO talk". It stays until a key or the next turn.');
+      await x.sp(3800);
+      await x.key('`');
+      x.say('` only closes the card. Any other key closes it and then does its own job.');
+      await x.sp(1800);
+    } },
+    { id: 'offline', title: 'Device offline → reconnects → Ready', badge: ['shipped', 'Shipped'], steps: 7, async run(x) {
+      await x.start();
+      x.say('Ready with the full strip: it holds still for 0.6 s, then scrolls at 100 px/s because it is wider than the screen.');
+      await x.sp(3400);
+      dev.serverReachable = false; syncReachBox();
+      socketClosed(false);
+      x.say('The server goes away: WS RECONNECT (yellow), "Reconnecting...", "WiFi: OK  WS: --". The status line still reads "Push to talk" and "Vol 6 100%". The strip is only "GO try again". This is the screen in the photo.');
+      await x.sp(4200);
+      await x.key('k');
+      await x.key('h');
+      x.say('k and h do nothing here: no toast, no mode change, no help. The firmware reads k, c, n, s, h and ? on Ready only.');
+      await x.sp(3000);
+      await x.tap();
+      x.say('GO retries at once and resets the backoff. The server is still down, so the screen stays; retries continue on their own (1 s, doubling to 30 s).');
+      await x.sp(2600);
+      wifiLost();
+      x.say('Wi-Fi drops too: "BOB v2 / Wi-Fi lost. Reconnecting...", "Offline" in red on the status line, and the strip "Connecting..." has no keys.');
+      await x.until(() => dev.state === 'WIFI', 5000);
+      await x.sp(3000);
+      dev.serverReachable = true; syncReachBox();
+      wifiBack();
+      x.say('Wi-Fi is back: "Connecting WebSocket..." and the strip is "GO try again" again...');
+      await x.until(() => dev.state === 'READY', 12000);
+      x.say('...the server welcomes the device: Ready, and the full strip returns. k works again here.');
+      await x.sp(3500);
+    } },
+    { id: 'modes', title: 'Switch listening modes', badge: ['shipped', 'Shipped'], steps: 10, async run(x) {
+      await x.start();
+      x.say('Push to talk (the default): grey dot, "Push to talk", and the strip leads with "GO hold to talk".');
+      await x.sp(3000);
+      await x.key('k');
+      x.say('k: toast "Always awake. Say ' + wakePhrase() + '". The dot turns red and the label white: the mic runs for the on-device wake word model. The strip starts "Say ' + wakePhrase() + '".');
+      await x.sp(3400);
+      sayWake(QA.agenda);
+      x.say('The wake word opens a turn exactly like GO; nothing is sent before it.', 'You: "' + wakePhrase() + ', ' + QA.agenda.q + '"');
+      await x.until(isCard, 20000);
+      await x.key('`');
+      await x.key('k');
+      x.say('k again: toast "Announcements only. Mic off", status "Announce only" with a hollow dot, and a shorter strip without GO or n.');
+      await x.sp(3000);
+      await x.tap();
+      x.say('GO shows the toast "Announcements only. k changes mode" instead of listening.');
+      await x.sp(2400);
+      await x.key('c');
+      await x.key('k');
+      x.say('In a list, k does nothing: modes change on Ready only.');
+      await x.sp(2200);
+      await x.key('`');
+      webChange({ dnd: true });
+      x.say('Do not disturb switched on from the web Devices page: "DND" in magenta on the status line.');
+      await x.sp(2600);
+      fireAnnouncement('reminder');
+      x.say('A reminder falls due: the server holds it. The device shows nothing.');
+      await x.sp(2600);
+      webChange({ dnd: false });
+      x.say('DND off: the server delivers the held reminder at once (chime, card, read out).');
+      await x.until(() => dev.state === 'ANNOUNCE', 6000);
+      await x.sp(2800);
+      await x.key('enter');
+      await x.key('k');
+      x.say('Dismiss it, then k once more: "Push to talk: hold GO". The web control followed every change.');
+      await x.sp(2400);
+    } },
+    { id: 'wake', title: 'Wake word turn and follow-up', badge: ['shipped', 'Shipped'], steps: 7, async run(x) {
+      await x.start({ mode: 'wake' });
+      x.say('Always awake: red mic dot and white "Always awake". The mic feeds the on-device model only; nothing leaves before a detection. Strip: "Say ' + wakePhrase() + '  GO hold to talk ...".');
+      await x.sp(3800);
+      sayWake(QA.lisbon);
+      x.say('Wake word heard: the listening earcon and LISTENING. Strip: "Listening. Pause to send  GO send now".', 'You: "' + wakePhrase() + ', ' + QA.lisbon.q + '"');
+      await x.until(() => dev.state === 'AWAITING');
+      x.say('The VAD ends the turn when you stop talking. No button needed.');
+      await x.until(followOpen, 20000);
+      x.say('The reply has played: the listening earcon, then the follow-up window. "Listening..." / "(say more, or wait)", strip "Listening... just talk"; the mic stays open 6 s.');
+      await x.sp(2400);
+      sayFollowUp(QA.lisbonFollow);
+      x.say('Just keep talking: a turn with no wake word and no earcon.', 'You: "' + QA.lisbonFollow.q + '"');
+      await x.until(() => dev.state === 'AWAITING', 8000);
+      await x.until(followOpen, 20000);
+      x.say('Answered, and the window opens again (at most 2 follow-ups per wake). Say nothing: after 6 s the follow-up-close cue plays and the reply card shows.');
+      await x.until(isCard, 10000);
+      await x.sp(1800);
+      await x.key('`');
+      sayWake(null);
+      x.say('Wake word, then silence: the VAD hears no speech, the turn is cancelled and nothing is sent. Back to Ready, no toast.', 'You: "' + wakePhrase() + '..." (silence)');
+      await x.until(() => dev.state === 'READY', 8000);
+      await x.sp(1800);
+    } },
+    { id: 'conv', title: 'Switch conversation', badge: ['shipped', 'Shipped'], steps: 5, async run(x) {
+      await x.start();
+      x.say('From Ready, press c: CONVERSATIONS / "Loading..." until the list arrives.');
+      await x.sp(1200);
+      await x.key('c');
+      await x.until(() => dev.picker && dev.picker.items);
+      x.say('Up to 10 recent conversations, 5 rows visible, position n/m top right. Strip: "; up  . down  Enter select  ` back".');
+      await x.sp(2800);
+      x.say('. moves down (; up). The list scrolls past the fifth row.');
+      for (let i = 0; i < 7; i++) await x.key('.');
+      await x.sp(900);
+      x.say('Enter selects "' + CONVERSATIONS[7] + '".');
+      await x.key('enter');
+      await x.until(() => dev.state === 'READY');
+      x.say('Ready shows that conversation in yellow; the next turn continues it.');
+      await x.sp(2800);
+    } },
+    { id: 'newchat', title: 'New conversation', badge: ['shipped', 'Shipped'], steps: 6, async run(x) {
+      await x.start();
+      x.say('Press n on Ready to start a new conversation.');
+      await x.sp(1300);
+      await x.key('n');
+      x.say('NEW CHAT? / "Next turn starts fresh". Strip: "Enter start a new chat  ` cancel".');
+      await x.sp(2600);
+      await x.key('enter');
+      x.say('"Starting..." while the server clears the active conversation. Strip: "` cancel".');
+      await x.until(() => dev.state === 'READY');
+      x.say('Acknowledged: Ready shows "New conversation".');
+      await x.sp(2600);
+      dev.failNextNewChat = true; syncFailBox();
+      await x.key('n'); await x.key('enter');
+      x.say('If the server never answers, the device gives up after the 5 s timeout...');
+      await x.until(() => dev.status.detail === 'Failed - Enter=retry', 9000);
+      x.say('"Failed - Enter=retry" in red; strip "Enter try again  ` cancel". The old conversation is kept; Enter resends the same request.');
+      await x.sp(2800);
+      await x.key('enter');
+      await x.until(() => dev.state === 'READY');
+      await x.sp(1500);
+    } },
+    { id: 'space', title: 'Pick a Space', badge: ['shipped', 'Shipped'], steps: 5, async run(x) {
+      await x.start();
+      x.say('Press s on Ready to choose a Space.');
+      await x.sp(1400);
+      await x.key('s');
+      await x.until(() => dev.picker && dev.picker.items);
+      x.say('SPACES: "No space" first, then the Spaces you belong to; the cursor starts on the active one.');
+      await x.sp(2400);
+      await x.key('.');
+      await x.key('enter');
+      x.say('Enter: "SAVING..." in yellow at the bottom of the list until the server confirms.');
+      await x.until(() => dev.state === 'READY');
+      x.say('Ready shows "Space: Family" in cyan.');
+      await x.sp(2400);
+      dev.nextQA = QA.milk;
+      x.down(); await x.sp(1600); x.up();
+      x.say('Tasks by voice now go to that Space.', 'You: "' + QA.milk.q + '"');
+      await x.until(isCard, 20000);
+      await x.sp(2600);
+    } },
+    { id: 'help', title: 'Help and the shortcut strip', badge: ['shipped', 'Shipped'], steps: (P) => P ? 7 : 6, async run(x) {
+      await x.start();
+      x.say('The strip holds still 0.6 s, then scrolls right to left at 100 px/s, with a 36 px gap before it repeats.');
+      await x.sp(5200);
+      await x.key('h');
+      x.say('h (or ?) opens the help card over the whole content area. Cyan headings, yellow keys. Strip: "; . scroll  ` back".');
+      await x.sp(3000);
+      await x.key('.'); await x.key('.'); await x.key('.');
+      x.say('. and ; scroll 28 lines; the thin bar on the right shows where you are.');
+      await x.sp(2000);
+      if (dev.planned) {
+        await x.key('enter');
+        x.say('Planned #330: Enter in help opens the listening-mode picker.');
+        await x.sp(2600);
+        await x.key('`');
+        await x.key('h');
+      }
+      await x.key('`');
+      x.say('` (or GO) goes back to Ready.');
+      await x.sp(1600);
+      await x.key('c');
+      await x.until(() => dev.picker && dev.picker.items);
+      x.say('Each screen has its own strip: in a list it is up, down, select, back.');
+      await x.sp(2400);
+      await x.key('h');
+      x.say('h does nothing in a list: help opens from Ready only.');
+      await x.sp(2200);
+      await x.key('`');
+      await x.sp(800);
+    } },
+    { id: 'volkeys', title: 'Volume keys during a reply', badge: ['shipped', 'Shipped'], steps: 4, async run(x) {
+      await x.start();
+      dev.nextQA = QA.long;
+      x.down();
+      x.say('Ask something with a long answer.', 'You: "' + QA.long.q + '"');
+      await x.sp(1800);
+      x.up();
+      await x.until(() => title() === 'REPLY');
+      x.say('During the reply, - and = change the level live: the strip becomes "Vol" + ten cyan segments + the level for 1.5 s.');
+      await x.sp(1200);
+      await x.key('-'); await x.key('-'); await x.sp(1200);
+      await x.key('='); await x.sp(1300);
+      x.say('m mutes (outlined segments, "Muted" in yellow, "Muted" on the status line) and m unmutes. The reply keeps playing.');
+      await x.key('m'); await x.sp(1800);
+      await x.key('m'); await x.sp(1200);
+      x.say('x stops the reply.');
+      await x.key('x');
+      await x.sp(1500);
+    } },
+    { id: 'voicevol', title: 'Change the volume by voice', badge: ['shipped', 'Shipped'], steps: 4, async run(x) {
+      await x.start({ mode: 'wake' });
+      x.say('Volume is ' + dev.volume + ' ("Vol ' + dev.volume + '" on the status line).');
+      await x.sp(2200);
+      sayWake(QA.down);
+      x.say('Ask for it by voice.', 'You: "' + wakePhrase() + ', ' + QA.down.q + '"');
+      await x.until(() => chrome.overlay && chrome.overlay.kind === 'vol', 15000);
+      x.say('The set_volume tool sends device_control while the agent works: the level bar drops to 3 on the strip...');
+      await x.until(() => title() === 'REPLY');
+      x.say('...and the confirmation plays at the new level.', 'Bob: "' + QA.down.a + '"');
+      await x.until(isCard, 15000);
+      await x.sp(1800);
+    } },
+    { id: 'stop', title: 'Stop a long answer', badge: ['shipped', 'Shipped'], steps: (P) => P ? 4 : 3, async run(x) {
+      await x.start({ mode: dev.planned ? 'wake' : 'ptt' });
+      dev.nextQA = QA.long;
+      x.down();
+      x.say('Ask a question and get a long answer.', 'You: "' + QA.long.q + '"');
+      await x.sp(1800);
+      x.up();
+      await x.until(() => title() === 'REPLY');
+      await x.sp(2400);
+      await x.key('x');
+      x.say('x stops it: cancel to the server, the speaker silenced, straight back to Ready. A stopped reply leaves no card.');
+      await x.sp(2600);
+      dev.nextQA = QA.long;
+      await x.tap();
+      await x.until(() => title() === 'REPLY');
+      await x.sp(1500);
+      await x.tap();
+      x.say('GO does the same while a reply is on its way.');
+      await x.sp(2200);
+      if (dev.planned) {
+        dev.nextQA = QA.long;
+        await x.tap();
+        await x.until(() => title() === 'REPLY');
+        await x.sp(1200);
+        sayStop();
+        x.say('Planned #313: "' + wakePhrase() + ', stop" does the same by voice.', 'You: "' + wakePhrase() + ', stop"');
+        await x.sp(2400);
+      }
+    } },
+    { id: 'timer', title: 'Timer rings', badge: ['shipped', 'Shipped'], steps: 4, async run(x) {
+      await x.start();
+      dev.nextQA = QA.timer;
+      x.down(); await x.sp(1600); x.up();
+      x.say('Set a timer by voice. The timer runs on the server; the device shows nothing while it counts down.', 'You: "' + QA.timer.q + '"');
+      await x.until(isCard, 20000);
+      await x.sp(1200);
+      await x.key('`');
+      x.say('(Demo: the timer fires now instead of in 10 minutes.)');
+      await x.sp(1500);
+      fireAnnouncement('timer');
+      x.say('"Timer" and "Ringing" in red, the label in big text. The selected cabin-style timer pattern repeats for 30 seconds; alarms have a different pattern. Strip: "Any key stop ringing".');
+      await x.sp(4200);
+      await x.key('enter');
+      x.say('Any key or GO stops it and acknowledges the server.');
+      await x.sp(1800);
+    } },
+    { id: 'reminder', title: 'Reminder due during a reply', badge: ['shipped', 'Shipped'], steps: 3, async run(x) {
+      await x.start();
+      dev.nextQA = QA.tasks;
+      await x.tap();
+      await x.until(() => title() === 'REPLY');
+      fireAnnouncement('reminder');
+      x.say('A reminder falls due while a reply plays. The server holds it; it is not dropped.');
+      await x.until(() => dev.state === 'ANNOUNCE', 20000);
+      x.say('Reply finished: chime, then the card ("Reminder" in yellow) and it is read out. Strip: "Any key dismiss". Left alone it closes 10 s after it was read.', 'Bob: "Reminder: call mum."');
+      await x.sp(4200);
+      await x.tap();
+      x.say('GO (or any key) dismisses it.');
+      await x.sp(1800);
+    } },
+    { id: 'errors', title: 'Server error during a turn', badge: ['shipped', 'Shipped'], steps: 4, async run(x) {
+      await x.start();
+      dev.nextQA = QA.agenda;
+      await x.tap();
+      await x.until(() => title() === 'THINKING');
+      serverError();
+      x.say('The server fails mid-turn: the low error earcon and V2 ERROR / "Press GO to try again" in red. Strip: "GO try again".');
+      await x.sp(3000);
+      await x.tap();
+      x.say('GO retries by reconnecting the WebSocket; the welcome brings Ready back.');
+      await x.until(() => dev.state === 'READY', 8000);
+      await x.sp(1600);
+      dropConnection();
+      x.say('A server restart: WS RECONNECT, then an automatic reconnect after 1 s.');
+      await x.until(() => dev.state === 'READY', 8000);
+      x.say('Back on Ready.');
+      await x.sp(1600);
+    } },
+    { id: 'pair', title: 'Pair a device', badge: ['shipped', 'Shipped'], steps: 4, async run(x) {
+      await x.start();
+      x.say('An unpaired device asks for a code. Pairing screens hide the status line and the strip.');
+      requestPairing();
+      await x.until(() => dev.pairing && dev.pairing.kind === 'code');
+      x.say('PAIR YOUR BOB: the code, the web address, a QR code of it and a live countdown. Approve it on your phone.');
+      await x.sp(4200);
+      approvePairing();
+      x.say('Approved: PAIRED AS with the name, "Reconnecting..." (the status line and "GO try again" are back).');
+      await x.until(() => dev.state === 'READY', 8000);
+      x.say('Paired: ALL SET! once. Any key goes on to Ready, which shows "paired as Kitchen Cardputer".');
+      await x.sp(2400);
+      await x.key('enter');
+      await x.sp(1600);
+    } },
+    { id: 'webset', title: 'Settings from the web Devices page', badge: ['shipped', 'Shipped'], steps: 5, async run(x) {
+      await x.start();
+      x.say('The Web Devices page card (right) mirrors the real page: Volume, Mute, Listening mode, Do not disturb, "Applied", battery and firmware.');
+      await x.sp(3200);
+      webChange({ mode: 'wake' });
+      x.say('Listening mode set to Always awake on the web: "Applying…" until the device reports it back...');
+      await x.until(() => !web.pending, 5000);
+      x.say('...the device shows the toast and "Always awake"; the page says "Applied".');
+      await x.sp(2600);
+      dev.nextQA = QA.long;
+      x.down(); await x.sp(1400); x.up();
+      await x.until(() => title() === 'REPLY');
+      webChange({ mode: 'ptt', volume: 4 });
+      x.say('Mid-reply: volume applies at once (the bar on the strip), but the mode waits for Ready, so the page stays on "Applying…".');
+      await x.sp(2800);
+      await x.key('x');
+      await x.until(() => !web.pending, 5000);
+      x.say('Back on Ready the held mode applies ("Push to talk: hold GO") and the page reads "Applied".');
+      await x.sp(2600);
+    } },
+    { id: 'setup', title: 'First boot: Setup, pairing, ALL SET!', badge: ['shipped', 'Shipped'], steps: 8, async run(x) {
+      await x.start();
+      factoryNew();
+      x.say('A new device (no saved Wi-Fi, no pairing) opens the guided Setup: HI, I\'M BOB. Strip: "Enter start  s set up later".');
+      await x.sp(3600);
+      await x.key('enter');
+      x.say('LOOKING, then CHOOSE WI-FI: strongest first, a signal meter, open or lock; an enterprise network is "not supported". Below them: Type a network name, My network isn\'t listed, Scan again.');
+      await x.until(() => set && set.screen === 'scanList');
+      await x.sp(3600);
+      await x.key('enter');
+      x.say('PASSWORD for HomeNet: each character shows for 1 s, then *. The counter reads n/64; under 8 characters a red line says so.');
+      await x.type('sunflower42');
+      await x.sp(900);
+      await x.key('tab');
+      x.say('Tab shows what you typed (Tab again hides it). Enter connects.');
+      await x.sp(2400);
+      await x.key('enter');
+      x.say('CONNECTING: a test join, and nothing is saved until it works. Then SAVED (1 of 5); strip "Enter continue".');
+      await x.until(() => set && set.screen === 'saved');
+      await x.sp(2400);
+      await x.key('enter');
+      x.say('Setup closes: Bob joins HomeNet, reaches the server, and the server asks it to pair.');
+      await x.until(() => dev.pairing && dev.pairing.kind === 'code', 12000);
+      x.say('PAIR YOUR BOB: the code, "On your phone, open" the address or scan the QR code, and a live countdown. No status line or strip here.');
+      await x.sp(4600);
+      approvePairing();
+      await x.until(() => dev.state === 'READY', 8000);
+      x.say('Approved on the phone: PAIRED AS, then ALL SET! with a first thing to try. Any key, or a turn, goes on to Ready.');
+      await x.sp(3800);
+      await x.key('enter');
+      await x.sp(1600);
+    } },
+    { id: 'settings', title: 'Settings: Wi-Fi networks', badge: ['shipped', 'Shipped'], steps: 7, async run(x) {
+      await x.start();
+      x.say('Press , on Ready: SETTINGS lists Wi-Fi networks, Server (developer builds), Reset and About. Voice and GO are off while it is open.');
+      await x.key(',');
+      await x.sp(3000);
+      await x.key('enter');
+      x.say('WI-FI: saved networks in the order Bob tries them, * on the one in use, the last result, and "+ Add network (1 of 5)".');
+      await x.sp(3200);
+      await x.key('a');
+      await x.until(() => set && set.screen === 'scanList');
+      await x.key('.');
+      await x.key('enter');
+      x.say('a adds one: pick Pixel hotspot and type its password.');
+      await x.type('hotspot42');
+      await x.key('enter');
+      await x.until(() => set && set.screen === 'saved');
+      x.say('SAVED (2 of 5), "It\'s first in line now." Strip: "Enter ok  k keep old order".');
+      await x.sp(3000);
+      await x.key('k');
+      x.say('k puts it back second. Enter opens its actions: Change password, Move up, Forget (Connect now shows for a network not in use).');
+      await x.key('enter');
+      await x.sp(3400);
+      x.say('Forget asks first. This is the network in use, so FORGET? adds that Bob will switch to the others.');
+      await x.key('.'); await x.key('.'); await x.key('enter');
+      await x.sp(3400);
+      await x.key('enter');
+      x.say('Gone. ` goes back twice; leaving Settings re-plans the Wi-Fi and reconnects.');
+      await x.key('`'); await x.key('`');
+      await x.until(() => dev.state === 'READY', 12000);
+      await x.sp(1600);
+    } },
+    { id: 'server', title: 'Switch server (developer build)', badge: ['shipped', 'Shipped'], steps: 6, async run(x) {
+      setDevBuild(true);
+      await x.start();
+      x.say('A developer build lists Server in Settings, showing the one in use. Press , and pick Server.');
+      await x.key(','); await x.key('.');
+      await x.sp(2200);
+      await x.key('enter');
+      x.say('SERVER: Production (* in use, paired), Local dev and Custom, each with its own pairing. The grey line says where the selected one points.');
+      await x.sp(3600);
+      await x.key('.');
+      x.say('Local dev: "192.168.1.20:7444 plain". e edits host, port and TLS; Enter uses it.');
+      await x.sp(3000);
+      await x.key('enter');
+      x.say('SWITCH SERVER? "Bob reconnects when you leave Settings. Your other pairings are kept."');
+      await x.sp(3200);
+      await x.key('enter'); await x.key('`'); await x.key('`');
+      x.say('Local dev has never seen this device, so it asks for a code. Production\'s pairing is kept for later.');
+      await x.until(() => dev.pairing && dev.pairing.kind === 'code', 8000);
+      await x.sp(2600);
+      approvePairing();
+      await x.until(() => dev.state === 'READY', 8000);
+      await x.sp(1800);
+      await x.key('enter');
+      x.say('Ready on Local dev: a black-on-yellow DEV badge at the right of the status line (the mode shortens to "PTT") and "Server: Local dev" in cyan.');
+      await x.sp(3800);
+    } },
+    { id: 'reset', title: 'Reset options and factory reset', badge: ['shipped', 'Shipped'], steps: 5, async run(x) {
+      await x.start();
+      x.say('Settings, Reset: each option clears only what it says. Forget all Wi-Fi, Server back to Production (developer options only), Unpair this device, Factory reset.');
+      await x.key(',');
+      for (let i = 0; i < homeRows().indexOf('reset'); i++) await x.key('.');
+      await x.key('enter');
+      await x.sp(3800);
+      for (let i = 0; i < resetRows().indexOf('unpair'); i++) await x.key('.');
+      await x.key('enter');
+      x.say('Unpair asks first: "Unpair from Production? You\'ll need a new code to use it." ` says no.');
+      await x.sp(3400);
+      await x.key('`');
+      for (let i = 0; i < resetRows().indexOf('factory'); i++) await x.key('.');
+      await x.key('enter');
+      x.say('Factory reset only goes ahead once RESET is typed (any case); anything else typed does nothing.');
+      await x.sp(2400);
+      await x.type('RESET');
+      await x.sp(1200);
+      x.say('Enter: RESETTING, Wi-Fi, pairings and settings are erased, and the device restarts...');
+      await x.key('enter');
+      await x.until(() => set && set.screen === 'welcome', 6000);
+      x.say('...as new: HI, I\'M BOB, the guided Setup.');
+      await x.sp(3000);
+    } },
+    { id: 'rescue', title: 'Moved house: Fn+Esc at power-on', badge: ['shipped', 'Shipped'], steps: 3, async run(x) {
+      await x.start();
+      x.say('Hold Fn and Esc (`) while switching Bob on: it starts in Settings on the Wi-Fi list, erasing nothing. Never hold GO: that is the chip\'s download mode.');
+      boot(true);
+      await x.sp(4400);
+      x.say('Add the new network with a, or fix one with Enter. ` goes back to SETTINGS...');
+      await x.key('`');
+      await x.sp(2400);
+      x.say('...and ` again leaves: Bob joins the saved network and reconnects.');
+      await x.key('`');
+      await x.until(() => dev.state === 'READY', 12000);
+      await x.sp(1600);
+    } },
+    { id: 'mic', title: 'Microphone off', badge: ['planned', 'Planned #313'], planned: true, steps: 3, async run(x) {
+      await x.start({ mode: 'wake' });
+      x.say('Planned #313: fn + m turns the microphone off. The status line reads "Mic off" with a hollow dot.');
+      await x.key('fn+m');
+      await x.sp(2800);
+      x.say('The wake word is ignored while the mic is off. GO still works.', 'You: "' + wakePhrase() + '..."');
+      sayWake(QA.agenda);
+      await x.sp(2800);
+      x.say('fn + m again turns listening back on.');
+      await x.key('fn+m');
+      await x.sp(2400);
+    } },
+    { id: 'battery', title: 'Low battery and screen dim', badge: ['planned', 'Planned #326'], planned: true, steps: 4, async run(x) {
+      await x.start();
+      setBattery(16);
+      x.say('Battery at 16%: the status line shows it in white.');
+      await x.sp(2400);
+      setBattery(15);
+      x.say('At 15% it turns red (shipped). Planned #326 adds a one-off toast: "Battery low. Charge soon".');
+      await x.sp(3000);
+      dev.lastInputAt = now() - IDLE_DIM_MS + 1500;
+      x.say('Planned #326: after a while idle on Ready the screen dims (demo: 1.5 s).');
+      await x.until(() => dev.dimmed, 6000);
+      await x.sp(1800);
+      await x.key('k');
+      x.say('The first key only wakes the screen; it is not acted on.');
+      await x.sp(2200);
+    } }
+  ];
+
+  async function runScenario(id) {
+    const def = SCENARIOS.find((s) => s.id === id);
+    if (!def) throw new Error('unknown scenario ' + id);
+    if (def.planned && !dev.planned) { caption('Switch to "Shipped + planned" to run this scenario.'); return false; }
+    stopScenario(true);
+    const token = { aborted: false };
+    scen = { id, token };
+    markScenario(id);
+    const total = typeof def.steps === 'function' ? def.steps(dev.planned) : def.steps;
+    try {
+      await def.run(scenarioCtx(token, total));
+      if (!token.aborted) caption('Scenario "' + def.title + '" finished. Try it yourself, or pick another.', 'Done');
+      return true;
+    } catch (e) {
+      if (e instanceof Abort) return false;
+      console.error(e);
+      caption('Scenario stopped: ' + e.message);
+      throw e;
+    } finally {
+      if (scen && scen.token === token) { scen = null; markScenario(null); }
+    }
+  }
+  function stopScenario(quiet) {
+    if (!scen) return;
+    scen.token.aborted = true;
+    scen = null;
+    markScenario(null);
+    if (dev.btnHeld) btnUp();
+    if (!quiet) caption('Scenario stopped. The device is yours.');
+  }
+  function userTookOver(e) {
+    if (e && e.isTrusted && scen) stopScenario(false);
+  }
+
+  function resetDevice(ready) {
+    clearUpdate();
+    ++dev.flow; dev.attemptSeq++; dev.attempt = false;
+    releaseAudioForDisconnect();
+    if (dev.btnHeld) btnUp();
+    clearTimeout(dev.stateDirtyTimer);
+    set = null;
+    Object.assign(dev, savedDefaults(), { conv: 'Grocery run', space: null, volume: VOLUME_DEFAULT, muted: false, mode: 'ptt', dnd: false,
+      battery: 100, charging: false, wakeFailed: false, micOff: false, picker: null, pairing: null, pairedName: '',
+      outbox: [], announceQueue: [], heldControl: null, failNextNewChat: false, nextQA: null,
+      serverReachable: true, wifi: true, ws: true, newChat: { pending: false, requestId: '', sentAt: 0 },
+      reconnectDelay: RECONNECT_INITIAL_MS, dimmed: false, lastInputAt: now() });
+    canvas.classList.remove('dim');
+    chrome.overlay = null;
+    web.pending = false;
+    web.settings = report();
+    renderWeb();
+    setFn(false);
+    syncFailBox(); syncReachBox();
+    if (ready) enterReady(); else boot();
+  }
+
+  // ---------------------------------------------------------------- panel wiring
+  const scenList = document.getElementById('scenarios');
+  const scenButtons = {};
+  SCENARIOS.forEach((s) => {
+    const li = document.createElement('li');
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = '<span class="t"></span><span class="badge"></span>';
+    b.querySelector('.t').textContent = s.title;
+    const badge = b.querySelector('.badge');
+    badge.className = 'badge b-' + s.badge[0];
+    badge.textContent = s.badge[1];
+    b.setAttribute('aria-label', 'Play scenario: ' + s.title + ' (' + s.badge[1] + ')');
+    b.dataset.planned = s.planned ? '1' : '';
+    b.addEventListener('click', (e) => { unlockAudio(); runScenario(s.id).catch(() => {}); refocus(e); });
+    scenButtons[s.id] = b;
+    li.appendChild(b);
+    scenList.appendChild(li);
+  });
+  function markScenario(id) {
+    Object.entries(scenButtons).forEach(([k, b]) => b.setAttribute('aria-current', k === id ? 'true' : 'false'));
+  }
+
+  const ACTIONS = [
+    { h: 'Voice (Always awake)' },
+    { label: () => 'Say "' + wakePhrase() + ', …"', fn: () => sayWake(PTT_POOL[dev.pttIdx++ % PTT_POOL.length]) },
+    { label: () => 'Say "' + wakePhrase() + '", then nothing', fn: () => sayWake(null) },
+    { label: () => 'Say "' + wakePhrase() + ', volume 3"', fn: () => sayWake(QA.down) },
+    { label: () => 'Say "' + wakePhrase() + ', pasta timer"', fn: () => sayWake(QA.timer) },
+    { label: 'Say a follow-up (no wake word)', fn: () => sayFollowUp(QA.lisbonFollow) },
+    { label: () => 'Say "' + wakePhrase() + ', stop"', fn: sayStop },
+    { h: 'Server events' },
+    { label: 'Timer fires', fn: () => fireAnnouncement('timer') },
+    { label: 'Alarm fires', fn: () => fireAnnouncement('alarm') },
+    { label: 'Reminder due', fn: () => fireAnnouncement('reminder') },
+    { label: 'Server error (in a turn)', fn: serverError },
+    { h: 'Connection' },
+    { label: 'Drop WebSocket', fn: dropConnection },
+    { label: 'Wi-Fi lost', fn: wifiLost },
+    { label: 'Wi-Fi back', fn: wifiBack },
+    { label: 'WebSocket error', fn: wsError },
+    { check: 'reach' },
+    { h: 'Connection + Updates (simulation)' },
+    { label: 'Open Connection settings', fn: () => enterSettings('connection') },
+    { label: 'Choose Bob / Bob', fn: () => enterSettings('wake') },
+    { label: 'Updates: available release', fn: () => openUpdates('offer') },
+    { label: 'Updates: no offer', fn: () => openUpdates('none') },
+    { label: 'Updates: server timeout', fn: () => openUpdates('timeout') },
+    { label: 'Update safety: timer due soon on/off', fn: () => { updates.timerSoon = !updates.timerSoon; note('Update timer blocker: ' + updates.timerSoon); } },
+    { label: 'Update safety: active turn on/off', fn: () => { updates.busy = !updates.busy; note('Update turn blocker: ' + updates.busy); } },
+    { label: 'Reset private Bob update simulation', fn: () => { clearUpdate(); updates.installed = '0.1.0'; updates.privateBob = true; assistantName = 'Bob'; } },
+    { h: 'Device' },
+    { label: 'Wake word engine fails', fn: failWake },
+    { label: 'Mic error', fn: micError },
+    { label: 'Battery -10%', fn: () => setBattery(dev.battery <= 10 ? 100 : dev.battery - 10) },
+    { label: 'Charger on / off', fn: () => { dev.charging = !dev.charging; markDeviceStateDirty(); renderWeb(); } },
+    { label: 'Reboot', fn: () => resetDevice(false) },
+    { label: 'Factory-new (first boot)', fn: factoryNew },
+    { label: 'Power on holding Fn+Esc', fn: () => boot(true) },
+    { label: 'Unpair (show code)', fn: requestPairing },
+    { label: 'Approve pairing on web', fn: approvePairing },
+    { label: 'Deny pairing on web', fn: denyPairing },
+    { check: 'newchat' },
+    { check: 'devbuild' }
+  ];
+  const actsEl = document.getElementById('acts');
+  const plannedActs = [], labelledActs = [];
+  ACTIONS.forEach((a) => {
+    if (a.h) { const h = document.createElement('h3'); h.textContent = a.h; actsEl.appendChild(h); return; }
+    if (a.check) {
+      const l = document.createElement('label');
+      l.className = 'check';
+      l.style.gridColumn = '1 / -1';
+      if (a.check === 'newchat') {
+        l.innerHTML = '<input type="checkbox" id="fail-newchat"> Server does not answer the next new-chat (5 s timeout)';
+        l.querySelector('input').addEventListener('change', (e) => { dev.failNextNewChat = e.target.checked; });
+      } else if (a.check === 'devbuild') {
+        l.innerHTML = '<input type="checkbox" id="devbuild" checked> Developer build (BOB_DEV_OPTIONS: Server menu, Local dev, plain ws://)';
+        l.querySelector('input').addEventListener('change', (e) => setDevBuild(e.target.checked));
+      } else {
+        l.innerHTML = '<input type="checkbox" id="unreachable"> Server unreachable (reconnects fail)';
+        l.querySelector('input').addEventListener('change', (e) => { dev.serverReachable = !e.target.checked; updateReadout(); });
+      }
+      actsEl.appendChild(l);
+      return;
+    }
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'act';
+    b.textContent = typeof a.label === 'function' ? a.label() : a.label;
+    b.addEventListener('click', (e) => { userTookOver(e); unlockAudio(); a.fn(); refocus(e); });
+    if (a.planned) plannedActs.push(b);
+    if (typeof a.label === 'function') labelledActs.push([b, a.label]);
+    actsEl.appendChild(b);
+  });
+  function syncFailBox() { const el = document.getElementById('fail-newchat'); if (el) el.checked = dev.failNextNewChat; }
+  // A different build keeps what is saved; a profile the new build cannot use falls back to Production.
+  function setDevBuild(on) {
+    dev.devBuild = on;
+    if (!profileAvailable(dev.profile)) dev.profile = 'prod';
+    const el = document.getElementById('devbuild');
+    if (el) el.checked = on;
+    updateReadout();
+  }
+  function syncReachBox() { const el = document.getElementById('unreachable'); if (el) el.checked = !dev.serverReachable; }
+  // After a mouse click in the panel, give keyboard focus back to the device so typing keeps working.
+  function refocus(e) { if (e && e.detail > 0) deviceEl.focus({ preventScroll: true }); }
+
+  document.getElementById('open-help').addEventListener('click', (e) => { userTookOver(e); pressKey('h'); refocus(e); });
+  document.getElementById('stop-scen').addEventListener('click', (e) => { stopScenario(false); refocus(e); });
+  document.getElementById('reset').addEventListener('click', (e) => { stopScenario(true); resetDevice(false); caption('Device rebooted.'); refocus(e); });
+
+  document.getElementById('web-vol').addEventListener('input', (e) => { document.getElementById('web-vol-val').textContent = e.target.value; });
+  document.getElementById('web-vol').addEventListener('change', (e) => { userTookOver(e); webChange({ volume: Number(e.target.value) }); });
+  document.getElementById('web-mute').addEventListener('change', (e) => { userTookOver(e); webChange({ muted: e.target.checked }); });
+  document.querySelectorAll('input[name="lmode"]').forEach((el) => el.addEventListener('change', (e) => {
+    if (e.target.checked) { userTookOver(e); unlockAudio(); webChange({ mode: e.target.value }); }
+  }));
+  document.getElementById('web-dnd').addEventListener('change', (e) => { userTookOver(e); webChange({ dnd: e.target.checked }); });
+
+  function setPlanned(on) {
+    dev.planned = on;
+    document.body.classList.toggle('planned-on', on);
+    plannedActs.forEach((b) => { b.disabled = !on; b.title = on ? '' : 'Planned feature: switch to "Shipped + planned"'; });
+    labelledActs.forEach(([b, fn]) => { b.textContent = fn(); });
+    Object.values(scenButtons).forEach((b) => { if (b.dataset.planned) { b.disabled = !on; b.title = on ? '' : 'Planned scenario: switch to "Shipped + planned"'; } });
+    if (!on) {
+      if (scen && SCENARIOS.find((s) => s.id === scen.id).planned) stopScenario(false);
+      dev.micOff = false; dev.dimmed = false; canvas.classList.remove('dim');
+      if (dev.state === 'SELECTING_MODE') { ++dev.flow; dev.picker = null; enterReady(); }
+    }
+    dev.lastInputAt = now();
+    updateReadout(); describeScreen();
+  }
+  document.querySelectorAll('input[name="fmode"]').forEach((r) => r.addEventListener('change', (e) => {
+    if (e.target.checked) setPlanned(e.target.value === 'planned');
+  }));
+
+  // Test / review hook.
+  window.bobPrototype = {
+    runScenario,
+    scenarios: SCENARIOS.map((s) => ({ id: s.id, title: s.title, planned: !!s.planned })),
+    get state() {
+      return { state: dev.state, screen: screenName(), strip: dev.state === 'PAIRING' ? null : chrome.text, stripPlain: plain(chrome.text),
+        stripOffset: chrome.offset, overlay: chrome.overlay && chrome.overlay.until > now() ? (chrome.overlay.text || 'vol ' + chrome.overlay.level) : null,
+        statusLine: statusLineText(), mode: dev.mode, volume: dev.volume, muted: dev.muted, dnd: dev.dnd, space: dev.space, conv: dev.conv,
+        cardShown: dev.cardShown, helpScroll: dev.helpScroll, web: Object.assign({ pending: web.pending }, web.settings), planned: dev.planned };
+    },
+    frameText: () => drawLog.slice(),
+    fw: { strips: strips(WAKE_SHIPPED), toasts: toasts(WAKE_SHIPPED), help: helpLinesFw(WAKE_SHIPPED), modeLabels: MODE_LABEL,
+      wakePhrase: WAKE_SHIPPED, layout: { STATUS_H, STRIP_Y, STRIP_H, PICKER_ROWS, CARD_ROWS, CARD_COLS } },
+    pressKey, btnDown, btnUp, setPlanned, socketClosed, wifiLost, wifiBack, fireAnnouncement, webChange,
+    setReachable: (v) => { dev.serverReachable = v; syncReachBox(); }
+  };
+
+  renderWeb();
+  setPlanned(false);
+  boot();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

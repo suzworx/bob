@@ -1,0 +1,30 @@
+name: Story or enabler
+description: One bounded, independently verifiable delivery outcome
+title: "[Story] "
+labels: ["type: story"]
+body:
+  - type: input
+    id: parent
+    attributes: { label: Parent epic, placeholder: "#123" }
+    validations: { required: true }
+  - type: textarea
+    id: outcome
+    attributes: { label: Outcome and non-goals }
+    validations: { required: true }
+  - type: textarea
+    id: scope
+    attributes: { label: Component scope and dependencies }
+    validations: { required: true }
+  - type: textarea
+    id: acceptance
+    attributes: { label: Acceptance criteria, description: Use observable Given/When/Then statements including failure cases. }
+    validations: { required: true }
+  - type: textarea
+    id: quality
+    attributes: { label: Security, privacy, accessibility, and observability checks }
+    validations: { required: true }
+  - type: textarea
+    id: verification
+    attributes: { label: Verification and rollback }
+    validations: { required: true }
+

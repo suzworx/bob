@@ -1,0 +1,14 @@
+{
+  "id": "speech-tts-cap",
+  "agent": "bob-speech",
+  "commit": "c35fc58f",
+  "base": "c35fc58f^",
+  "prompt": "A very long reply (about 1,700 characters) hit the 30-second timeout on the text-to-speech request and failed the whole turn with no audio at all. Nothing limits how much text we send to speech synthesis, and the timeout is a hard-coded number. Cap the text sent to speech at a configurable length, 700 characters by default, trimming at the last sentence boundary so the reply ends on a complete thought, and fall back to an ellipsis when no boundary is late enough to keep the reply substantial. The cap must be hard, ellipsis included. Make the speech-to-text and text-to-speech timeouts configurable too, with text-to-speech defaulting to 45 seconds and speech-to-text to 30.",
+  "hiddenTests": [
+    "apps/api/tests/reply-limits.test.ts"
+  ],
+  "gates": [
+    "npx vitest run --root apps/api tests/reply-limits.test.ts"
+  ],
+  "maxBudgetUsd": 3
+}

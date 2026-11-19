@@ -1,0 +1,14 @@
+{
+  "id": "memory-reconcile",
+  "agent": "bob-memory",
+  "commit": "e7b179ed",
+  "base": "e7b179ed^",
+  "prompt": "The memory judge now stops new duplicates, but memories stored before it still sit side by side, for example the same fact about my wife's name saved once in the first person and once in the third. Add a reconcile step that, per account, pairs current facts and preferences that are close in embedding space (closest first), and asks the judge about the newer one against the older. If the judge says they are the same, keep the older row; if the newer one is an update, keep the newer row. Retire the other one by marking it superseded by the kept row, under the account's memory lock and only while both are still current; never delete anything, and never pair a row that is already retired. It must be a dry run by default, with an explicit apply option, a single-account or all-accounts mode, and output that carries only ids, verdicts and distances.",
+  "hiddenTests": [
+    "apps/api/tests/modules/memory/memory-reconcile.db.test.ts"
+  ],
+  "gates": [
+    "npx vitest run --config apps/api/vitest.db.config.ts apps/api/tests/modules/memory/memory-reconcile.db.test.ts"
+  ],
+  "maxBudgetUsd": 3
+}

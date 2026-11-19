@@ -1,0 +1,44 @@
+{
+  "_readme": [
+    "Bob games blocklist (safety.md S2, S8). A child-safety CONTENT filter, never a language-understanding rule.",
+    "Source: a subset of the LDNOOBW English list (List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words,",
+    "https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words, CC-BY 4.0), plus Bob",
+    "additions for a kids' product (violence, drugs, scary and adult themes).",
+    "Review: every entry must be read by a human before merge; record the reviewer and date in 'review'.",
+    "How matching works (word-filter.ts): input is NFKC-folded, lower-cased, stripped of accents, homoglyphs and",
+    "leetspeak are folded, and repeated letters are squashed. 'words' then match a WHOLE token (or the joined",
+    "tokens, which catches 'f u c k'), also after stripping a plural or verb suffix (-s, -es, -ed, -ing, -er, -y).",
+    "'substrings' match anywhere, so only list roots that no common benign English word contains",
+    "('cunt' is NOT a substring entry because of 'Scunthorpe'; 'ass' is not because of 'grass' and 'assist').",
+    "To extend: add the lower-case base form to 'words' (no plurals needed), add a benign word that must still",
+    "pass to the table in apps/api/tests/games-engine.test.ts, and run that test."
+  ],
+  "review": { "status": "pending human review before merge", "reviewer": null, "date": null },
+  "substrings": [
+    "fuck", "shit", "bitch", "porn", "motherf", "jizz", "bollock", "nigger", "nigga", "faggot",
+    "whore", "cocksuck", "blowjob", "handjob", "dildo", "masturbat", "orgasm", "pedophil", "paedophil"
+  ],
+  "exceptions": [
+    "shiitake", "shitake", "matsushita", "snigger", "sniggers", "sniggered", "sniggering", "niggard", "niggardly"
+  ],
+  "words": [
+    "fuk", "fuker", "fck", "fvck", "wank", "wanker", "wanking", "dumbass", "smartass", "fatass", "badass",
+    "anal", "anus", "arse", "arsehole", "ass", "asshole", "asshat", "assface", "bastard", "bdsm", "bimbo",
+    "bitch", "bollocks", "bondage", "boner", "boob", "boobie", "booby", "bugger", "bullshit", "butthole",
+    "buttplug", "clit", "clitoris", "cock", "coon", "crap", "cum", "cumming", "cunnilingus", "cunt", "damn",
+    "deepthroat", "dick", "dickhead", "dildo", "dyke", "ejaculate", "erection", "erotic", "fag", "fellatio",
+    "feltch", "fisting", "gangbang", "genital", "genitals", "goddamn", "gook", "hentai", "honky",
+    "hooker", "horny", "incest", "jackass", "jerkoff", "kike", "kinky", "milf", "molest", "nazi", "nipple",
+    "nude", "nudity", "nympho", "orgy", "penis", "pervert", "piss", "pissed", "prick", "pube", "pubic",
+    "pussy", "queef", "rape", "raped", "rapist", "rectum", "retard", "rimjob", "scrotum", "semen", "sex",
+    "sexy", "slut", "smut", "sodomy", "spic", "spunk", "strapon", "stripper", "tit", "tits", "titty",
+    "testicle", "threesome", "tranny", "twat", "vagina", "vibrator", "voyeur", "vulva", "wetback", "whore",
+    "xxx",
+    "kill", "killer", "murder", "murderer", "suicide", "stab", "stabbed", "shooter", "rifle", "bomb",
+    "terrorist", "behead", "blood", "bloody", "gore", "corpse", "dead", "death", "torture", "weapon",
+    "drug", "drugs", "cocaine", "heroin", "meth", "weed", "stoned", "drunk", "beer", "vodka", "whisky",
+    "whiskey", "cigarette", "vape",
+    "hell", "satan", "demon", "zombie", "poop", "pee", "fart", "butt", "idiot", "stupid", "dumb", "moron",
+    "loser", "ugly", "fatso"
+  ]
+}

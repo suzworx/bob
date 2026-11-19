@@ -1,0 +1,16 @@
+{
+  "id": "platform-device-settings-fold",
+  "agent": "bob-platform",
+  "commit": "050ba214",
+  "base": "050ba214^",
+  "prompt": "Device settings live one row per device in their own table, so every read of a device's settings joins two tables, and account erasure and data export have to touch two places for what is really one device record. Make the settings simpler to read, with fewer joins and one place to erase and export, while keeping every /api/devices contract unchanged: same routes, same request and response shapes, same defaults for a device that never saved a setting.",
+  "hiddenTests": [
+    "apps/api/tests/platform/device-settings-expand.test.ts",
+    "apps/api/tests/contract/device-settings-contract.test.ts"
+  ],
+  "gates": [
+    "npx vitest run --root apps/api tests/platform/device-settings-expand.test.ts",
+    "npx vitest run --root apps/api tests/contract/device-settings-contract.test.ts"
+  ],
+  "maxBudgetUsd": 3
+}

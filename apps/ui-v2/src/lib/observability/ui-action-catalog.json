@@ -1,0 +1,5547 @@
+[
+  {
+    "id": "app.app.module.button.reload.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.app.session-gate.button.back-to-home.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.app.session-gate.shell.sign-out.sign-out",
+    "trigger": "onSignOut",
+    "category": "action"
+  },
+  {
+    "id": "app.appearance-control.appearance-control.segmented-control.appearance.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "app.page-width.page-action.menu.on-click.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.page-width.page-action.menu.on-click.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.account-footer.side-nav-item.on-open.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.account-footer.menu.settings.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.account-footer.menu.admin.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.account-footer.menu.sign-out.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.devices-nav-item.side-nav-item.devices.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.rail-nav.side-nav-item.new-chat.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.rail-nav.side-nav-item.search.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.rail-nav.devices-nav-item.on-open-page.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.rail-nav.side-nav-item.on-open-page.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.phone-top-bar.icon-button.new-chat.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.menu.id.message-appended",
+    "trigger": "onMessageAppended",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.menu.reload.conversation-updated",
+    "trigger": "onConversationUpdated",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.menu.dispatch-event.conversation-deleted",
+    "trigger": "onConversationDeleted",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.menu.announce-active-changed.active-changed",
+    "trigger": "onActiveChanged",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.menu.notify-devices-changed.device-changed",
+    "trigger": "onDeviceChanged",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.menu.notify-devices-changed.active-space-changed",
+    "trigger": "onActiveSpaceChanged",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.menu.dispatch-event.space-access-changed",
+    "trigger": "onSpaceAccessChanged",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.menu.announce-thread-message.thread-message-appended",
+    "trigger": "onThreadMessageAppended",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.menu.dispatch-event.reconnect",
+    "trigger": "onReconnect",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.side-nav-heading.prevent-default.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.account-footer.on-sign-out.sign-out",
+    "trigger": "onSignOut",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.account-footer.open-page.open",
+    "trigger": "onOpen",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.rail-nav.on-devices-page.devices-page",
+    "trigger": "onDevicesPage",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.rail-nav.new-chat.new-chat",
+    "trigger": "onNewChat",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.rail-nav.open-page-link.open-page",
+    "trigger": "onOpenPage",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.spaces-nav.open-page.open",
+    "trigger": "onOpen",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.spaces-nav.set-creating-space.create-space",
+    "trigger": "onCreateSpace",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.rail-conversations.open-page.select-shared",
+    "trigger": "onSelectShared",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.rail-conversations.select-conversation.select",
+    "trigger": "onSelect",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.rail-conversations.handle-deleted.deleted",
+    "trigger": "onDeleted",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.phone-top-bar.new-chat.new-chat",
+    "trigger": "onNewChat",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.chat-surface.handle-touched.conversation-touched",
+    "trigger": "onConversationTouched",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.chat-surface.handle-created.conversation-created",
+    "trigger": "onConversationCreated",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.chat-surface.handle-busy-change.busy-change",
+    "trigger": "onBusyChange",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.create-space-dialog.set-creating-space.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.create-space-dialog.create-space.create",
+    "trigger": "onCreate",
+    "category": "action"
+  },
+  {
+    "id": "app.shell.shell.create-space-dialog.open-page.created",
+    "trigger": "onCreated",
+    "category": "action"
+  },
+  {
+    "id": "account.account-delete-section.delete-account-section.button.delete-account.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-delete-section.delete-account-section.button.open-spaces.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-delete-section.delete-account-section.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-delete-section.delete-account-section.text-input.type-your-email-to-confirm.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "account.account-delete-section.delete-account-section.button.delete-account.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-delete-section.delete-account-section.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-delete-section.delete-account-section.alert-dialog.busy.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "account.account-delete-section.delete-account-section.alert-dialog.remove.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.expandable-row.button.edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.expandable-row.button.save.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.expandable-row.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.profile-section.expandable-row.display-name.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.profile-section.expandable-row.display-name.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.profile-section.expandable-row.display-name.cancel",
+    "trigger": "onCancel",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.profile-section.retry-banner.save.retry",
+    "trigger": "onRetry",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.profile-section.text-input.display-name.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "account.account-page.profile-section.text-input.display-name.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.time-zone-section.expandable-row.time-zone.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.time-zone-section.expandable-row.time-zone.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.time-zone-section.expandable-row.time-zone.cancel",
+    "trigger": "onCancel",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.time-zone-section.retry-banner.save.retry",
+    "trigger": "onRetry",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.time-zone-section.typeahead.your-time-zone.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.sign-in-security-section.button.email-me-a-reset-link.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.sign-in-security-section.retry-banner.send-reset.retry",
+    "trigger": "onRetry",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.sign-in-security-section.button.sign-out-everywhere.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.sign-in-security-section.retry-banner.confirm-sign-out-everywhere.retry",
+    "trigger": "onRetry",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.sign-in-security-section.alert-dialog.signing-out-everywhere.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.sign-in-security-section.alert-dialog.confirm-sign-out-everywhere.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.export-section.button.export-my-data.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.export-section.retry-banner.run-export.retry",
+    "trigger": "onRetry",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.retry-banner.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.settings-page.link.in-app-link.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.account-page.settings-page.link.open-integrations.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.reset-page.reset-page.button.go-to-settings.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.reset-page.reset-page.button.send-a-new-link.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.reset-page.reset-page.button.continue-to-bob.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.reset-page.reset-page.form.submit.submit",
+    "trigger": "onSubmit",
+    "category": "action"
+  },
+  {
+    "id": "account.reset-page.reset-page.text-input.new-password.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "account.reset-page.reset-page.text-input.confirm-new-password.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "account.sign-in.dev-sign-in.button.dev-sign-in-local-only.click-action",
+    "trigger": "clickAction",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.text-input.email.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.text-input.email.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.button.send-reset-link.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.button.back-to-sign-in.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.text-input.email.change.2",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.text-input.email.enter.2",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.text-input.six-digit-code.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.text-input.six-digit-code.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.text-input.password.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.text-input.password.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.button.run.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.button.send-a-new-code.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.button.i-have-a-code.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.button.toggle-mode.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.button.forgot-password.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "account.sign-in.ready-sign-in.link.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.menu-items.menu.choose.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.menu-items.menu.choose.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.menu-items.menu.choose.click.3",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-management.text-input.search-by-email-prefix.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "admin.account-management.account-management.text-input.search-by-email-prefix.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-management.button.search-accounts.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-management.button.refresh-accounts.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-management.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-management.button.previous-page.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-management.button.next-page.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-management.account-confirmation.set-selection.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-management.account-confirmation.run.confirm",
+    "trigger": "onConfirm",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-confirmation.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "admin.account-management.account-confirmation.alert-dialog.on-confirm.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.add-person-dialog.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.add-person-dialog.dialog-header.pending.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.add-person-dialog.text-input.email-address.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "admin.admin-page.add-person-dialog.text-input.email-address.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.add-person-dialog.button.submit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.add-person-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.add-person-dialog.button.send-invite.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.admin-page.button.add-person.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.admin-page.tab-list.navigate-to.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.admin-page.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.admin-page.waitlist-management.set-revision.invited",
+    "trigger": "onInvited",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.admin-page.add-person-dialog.set-adding.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "admin.admin-page.admin-page.add-person-dialog.set-revision.account-added",
+    "trigger": "onAccountAdded",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-table.button.invite.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.text-input.search-waitlist-by-email-prefix.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.text-input.search-waitlist-by-email-prefix.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.selector.waitlist-status.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.button.search-waitlist.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.button.refresh-waitlist.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.button.retry-invite.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.waitlist-table.invite.invite",
+    "trigger": "onInvite",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.button.previous-waitlist-page.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "admin.waitlist-management.waitlist-management.button.next-waitlist-page.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.regular-items.menu.app-details.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.regular-items.menu.duplicate-app.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.regular-items.menu.export-json.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.regular-items.menu.undo-last-change.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.regular-items.menu.mutate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.app-actions.menu.share-view-as-image.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.app-actions.menu.mutate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.app-actions.menu.delete-app.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.app-actions.alert-dialog.busy.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-actions.app-actions.alert-dialog.perform.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.refresh-form.selector.tasks-from-space.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.refresh-form.selector.replace-table.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.refresh-form.checkbox-input.set-config.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.refresh-form.time-input.refresh-at.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.refresh-form.text-input.refresh-time-zone.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "bob-apps.app-refresh.refresh-form.checkbox-input.let-bob-read-these-tasks-and-replace-this-table-on-this-schedule.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.refresh-form.button.enable-automatic-updates.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.refresh-form.button.cancel-schedule.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.app-refresh.button.retry-update-settings.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.app-refresh.button.configure-automatic-updates.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.app-refresh.button.pause-automatic-updates.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.app-refresh.refresh-form.save.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-refresh.app-refresh.refresh-form.set-editing.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.slides.button.previous-slide.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.slides.button.next-slide.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.remove-record.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.remove-record.alert-dialog.confirm.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.record-list.checkbox-input.on-toggle.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.view-header.button.on-add.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.row-menu.menu.edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.row-menu.menu.remove.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.edit-record.record-editor.on-save.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.edit-record.record-editor.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.record-view-panel.row-menu.set-editing.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.record-view-panel.row-menu.set-removing.remove",
+    "trigger": "onRemove",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.record-view-panel.record-list.toggle.toggle",
+    "trigger": "onToggle",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.record-view-panel.view-header.set-editing.add",
+    "trigger": "onAdd",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.record-view-panel.edit-record.on-action.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.record-view-panel.edit-record.set-editing.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.record-view-panel.remove-record.on-action.remove",
+    "trigger": "onRemove",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.record-view-panel.remove-record.set-removing.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.app-renderer.tab-list.select.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.app-renderer.record-view-panel.image.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-renderer.app-renderer.slides.select.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-view-image.image-preview.dialog.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-view-image.image-preview.dialog-header.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-view-image.image-preview.button.export-json.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-view-image.image-preview.button.prepare-image.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-workspace.private-app-conversation.button.retry-app-conversation.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-workspace.private-app-conversation.chat-surface.created.conversation-created",
+    "trigger": "onConversationCreated",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-workspace.private-app-conversation.chat-surface.on-changed.conversation-touched",
+    "trigger": "onConversationTouched",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-workspace.shared-app-conversation.thread-reader.on-changed.invocation-complete",
+    "trigger": "onInvocationComplete",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-workspace.app-workspace.shared-app-conversation.on-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.app-workspace.app-workspace.private-app-conversation.on-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.app-workspace.load.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.button.use-this-app.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.button.apply-changes.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.app-renderer.set-selection.selection-change",
+    "trigger": "onSelectionChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.app-renderer.lifecycle.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.button.change-with-bob.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.app-actions.set-details.details",
+    "trigger": "onDetails",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.app-actions.set-sharing.share-image",
+    "trigger": "onShareImage",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.app-view-image.set-sharing.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.app-refresh.set-refresh.state",
+    "trigger": "onState",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-details.app-refresh.load.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.marketing-content.button.retry-app-catalog.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.marketing-content.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.marketing-content.button.retry-app-catalog.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.marketing-content.app-actions.reload.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.marketing-content.marketing-workspace.reload.installation-changed",
+    "trigger": "onInstallationChanged",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.no-apps-shown.button.create-with-bob.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.your-apps.segmented-control.which-apps-to-show.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.your-apps.list-item.navigate-to.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.your-apps.button.load-more-apps.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-catalog.button.create-with-bob.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-catalog.marketing-install.set-install-failed.failure",
+    "trigger": "onFailure",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-catalog.marketing-install.reload.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.app-catalog.list-item.on-start.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.space-apps-header.button.all-apps.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.apps-header.button.all-apps.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.apps-header.menu.create-with-bob.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.apps-header.button.create-with-bob.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.bob-apps-page.button.reload-latest-data.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.bob-apps-page.bob-apps-page.app-catalog.start.start",
+    "trigger": "onStart",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-config.marketing-config.button.preview-changes.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-config.marketing-config.button.apply-changes.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-config.marketing-config.button.discard-proposal.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-config.marketing-config.button.act.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-config.marketing-config.button.load-older-versions.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-draft.draft-editor.button.keep-my-edits-against-latest-draft.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-draft.draft-editor.text-area.change.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "bob-apps.marketing-draft.draft-editor.text-area.image-description.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "bob-apps.marketing-draft.draft-editor.text-input.pillar.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "bob-apps.marketing-draft.draft-editor.button.save.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-draft.draft-editor.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-draft.draft-editor.button.keep-editing.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-draft.draft-editor.button.discard-edits.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-draft.copy-post.button.then.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-draft.marketing-draft.button.edit-draft.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-draft.marketing-draft.button.ask-bob-to-change-it.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-install.marketing-install.button.installed.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-review.marketing-review-panel.button.add-a-review-note.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-review.marketing-review-panel.button.approve-this-plan.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-review.marketing-review-panel.button.refresh-plan-review.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.story.collapsible.set-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.story.marketing-review-panel.on-note.note",
+    "trigger": "onNote",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.week-heading.selector.show-posts-for.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.week-heading.toggle-button-group.show-posts-for.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.week-board.week-heading.on-channel.channel",
+    "trigger": "onChannel",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.week-board.marketing-draft.on-ask.ask",
+    "trigger": "onAsk",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.first-post.token.current.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.lifecycle-notice.button.on-lifecycle.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.marketing-chat.button.retry-conversation.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.marketing-chat.chat-surface.created.conversation-created",
+    "trigger": "onConversationCreated",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.marketing-chat.chat-surface.on-changed.conversation-touched",
+    "trigger": "onConversationTouched",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.marketing-chat.chat-surface.on-busy-change.busy-change",
+    "trigger": "onBusyChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.shared-workspace-session.thread-reader.on-changed.invocation-complete",
+    "trigger": "onInvocationComplete",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.shared-workspace-session.thread-reader.on-busy-change.busy-change",
+    "trigger": "onBusyChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.read-notice.button.retry-workspace.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.campaign-board.story.on-note.note",
+    "trigger": "onNote",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-bar.menu.improve-this-app.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-bar.menu.pause-app.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-bar.menu.brand-skills.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-bar.menu.app-history.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-bar.selector.campaign.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-bar.button.back-to-posts.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.workspace-bar.choose-campaign.choose",
+    "trigger": "onChoose",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.workspace-bar.set-improving.improving",
+    "trigger": "onImproving",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.workspace-bar.change-lifecycle.pause",
+    "trigger": "onPause",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.workspace-bar.set-brand.brand",
+    "trigger": "onBrand",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.lifecycle-notice.change-lifecycle.lifecycle",
+    "trigger": "onLifecycle",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.read-notice.changed.retry",
+    "trigger": "onRetry",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.marketing-config.changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.campaign-board.current.note",
+    "trigger": "onNote",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.campaign-board.set-channel.channel",
+    "trigger": "onChannel",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.campaign-board.ask-about.ask",
+    "trigger": "onAsk",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.menu.chat-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.marketing-workspace.workspace-session.menu.set-busy.busy-change",
+    "trigger": "onBusyChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.post-creative.creative.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.prepared-image.prepared-image.thumbnail.allow-expand.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.prepared-image.prepared-image.lightbox.set-viewing-file.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.prepared-image.prepared-image.button.share-image.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.prepared-image.prepared-image.button.download-image.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.form-frame.bottom-sheet.on-open-change.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.form-frame.dialog.on-open-change.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.form-frame.dialog-header.on-dismiss.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.fields.checkbox-input.on-value.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.fields.number-input.on-focus-number.focus",
+    "trigger": "onFocus",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.fields.number-input.on-blur-number.blur",
+    "trigger": "onBlur",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.fields.number-input.on-enter.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.fields.number-input.on-value.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.fields.text-input.on-enter.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.fields.text-input.on-value.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.button.keep-my-edits-against-latest-data.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.fields.set-value.value",
+    "trigger": "onValue",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.fields.focus-number.focus-number",
+    "trigger": "onFocusNumber",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.fields.blur-number.blur-number",
+    "trigger": "onBlurNumber",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.fields.save.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.button.save.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.form-frame.ask-to-close.dismiss",
+    "trigger": "onDismiss",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.alert-dialog.set-confirming-discard.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "bob-apps.record-editor.record-editor.alert-dialog.on-close.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "chat.app-proposal.app-proposal.proposal-content.accept.accept",
+    "trigger": "onAccept",
+    "category": "action"
+  },
+  {
+    "id": "chat.app-proposal.app-proposal.proposal-content.set-read-version.retry",
+    "trigger": "onRetry",
+    "category": "action"
+  },
+  {
+    "id": "chat.app-proposal.proposal-content.button.on-accept.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.app-proposal.proposal-content.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.app-proposal.proposal-content.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-landing.today-glance.button.see-all.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-landing.today-glance.list-item.navigate-to.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-landing.chat-landing.token.on-prompt.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-landing.chat-landing.button.add-your-name.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-notices.notice-region.button.on-press.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.menu.current.error",
+    "trigger": "onError",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.menu.is-error.finish",
+    "trigger": "onFinish",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.versions-for.menu.set-version-state.select",
+    "trigger": "onSelect",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.menu.see-usage.press",
+    "trigger": "onPress",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.menu.retry.press",
+    "trigger": "onPress",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.menu.retry.press.2",
+    "trigger": "onPress",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.menu.dismiss.press",
+    "trigger": "onPress",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.menu.on-pointer-down.pointer-down",
+    "trigger": "onPointerDown",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.menu.on-capture-unavailable.capture-unavailable",
+    "trigger": "onCaptureUnavailable",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.button.tools.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.button.add-people.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.composer-with-notices.voice-mode-bar.stop.stop",
+    "trigger": "onStop",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.composer-with-notices.voice-mode-bar.mute.mute",
+    "trigger": "onMute",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.composer-with-notices.voice-mode-bar.unmute.unmute",
+    "trigger": "onUnmute",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.composer-with-notices.voice-mode-bar.resume.resume",
+    "trigger": "onResume",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.composer-with-notices.composer.send.send",
+    "trigger": "onSend",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.composer-with-notices.composer.stop.stop",
+    "trigger": "onStop",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.composer-with-notices.collaborate-dialog.set-collaborate-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.chat-landing.current.prompt",
+    "trigger": "onPrompt",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.button.load-earlier-messages.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.message-view.index.regenerate",
+    "trigger": "onRegenerate",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.message-view.edit.edit-resend",
+    "trigger": "onEditResend",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.message-view.conversation-id.delete-from",
+    "trigger": "onDeleteFrom",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.message-view.copy-failed.copy-failure",
+    "trigger": "onCopyFailure",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.message-view.copied.copied",
+    "trigger": "onCopied",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.alert-dialog.confirm-delete.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "chat.chat-surface.chat-surface.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.collaborate-button.collaborate-dialog.dialog.change-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.collaborate-button.collaborate-dialog.dialog-header.change-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.collaborate-button.collaborate-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.collaborate-button.collaborate-dialog.button.create.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.collaborate-button.collaborate-button.button.add-people.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.collaborate-button.collaborate-button.collaborate-dialog.set-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.command-palette.palette-dialog.palette-list.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "chat.command-palette.palette-list.menu.command-palette-search.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "chat.command-palette.palette-list.astryx-command-palette.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.command-palette.palette-list.astryx-command-palette.run.value-change",
+    "trigger": "onValueChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.command-palette.command-palette.menu.set-is-open.toggle",
+    "trigger": "onToggle",
+    "category": "action"
+  },
+  {
+    "id": "chat.command-palette.command-palette.menu.set-is-open.open",
+    "trigger": "onOpen",
+    "category": "action"
+  },
+  {
+    "id": "chat.command-palette.command-palette.palette-dialog.set-is-open.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.send-control.chat-send-button.text-empty.send",
+    "trigger": "onSend",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.menu.input.text",
+    "trigger": "onText",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.menu.mode.recording-change",
+    "trigger": "onRecordingChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.dropdown-menu-item.insert-mention.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.button.attach.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.button.on-pointer-down.pointer-down",
+    "trigger": "onPointerDown",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.button.toggle.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.button.on-pointer-down.pointer-down.2",
+    "trigger": "onPointerDown",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.button.state.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.input.upload-files.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.chat-composer.handle-submit.submit",
+    "trigger": "onSubmit",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.chat-composer.on-stop.stop",
+    "trigger": "onStop",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.chat-composer.can-attach.drag-over",
+    "trigger": "onDragOver",
+    "category": "activity"
+  },
+  {
+    "id": "chat.composer.composer.chat-composer.can-attach.drop",
+    "trigger": "onDrop",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.thumbnail.remove.remove",
+    "trigger": "onRemove",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.token.remove.remove",
+    "trigger": "onRemove",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.chat-composer-input.current.composition-start-capture",
+    "trigger": "onCompositionStartCapture",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.chat-composer-input.current.composition-end-capture",
+    "trigger": "onCompositionEndCapture",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.chat-composer-input.remember-draft.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "chat.composer.composer.chat-composer-input.can-attach.files",
+    "trigger": "onFiles",
+    "category": "action"
+  },
+  {
+    "id": "chat.composer.composer.chat-composer-input.send-images-on-enter.key-down",
+    "trigger": "onKeyDown",
+    "category": "activity"
+  },
+  {
+    "id": "chat.composer.composer.send-control.handle-submit.submit",
+    "trigger": "onSubmit",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.row-menu.more-menu.set-is-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.rename-dialog.dialog.rename-chat.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.rename-dialog.dialog-header.on-close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.rename-dialog.text-input.chat-name.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "chat.conversation-nav.rename-dialog.text-input.chat-name.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.rename-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.rename-dialog.button.save.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.archive-conversation.button.undo.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.row-items.menu.unpin.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.row-items.menu.pin.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.row-items.menu.rename.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.row-items.menu.download.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.row-items.menu.archive.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.row-items.menu.delete.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.archived-items.menu.unarchive.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.archived-items.menu.download.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.archived-items.menu.delete.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.render-row.side-nav-item.select-link.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.side-nav-item.select-link.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.side-nav-item.couldn-t-load-your-chats-retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.button.retry.click-action",
+    "trigger": "clickAction",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.side-nav-item.show-more.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.menu.set-archived-open.collapsed-change",
+    "trigger": "onCollapsedChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.side-nav-item.select-link.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.rename-dialog.set-renaming.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.rename-dialog.save-rename.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.conversation-nav.conversation-nav.alert-dialog.confirm-delete.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.button.people.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.dialog.busy.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.dialog-header.busy.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.text-input.chat-name.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.button.save-name.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.text-input.email-address.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.button.send-invitation.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.button.act.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.button.copy-link.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.button.disable-invite-links.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.button.set-confirm.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.button.keep-participant.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-controls.group-chat-controls.button.confirm-departure.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-invite-page.group-chat-invite-page.button.join-chat.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-invite-page.group-chat-invite-page.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-page.group-chat-page.button.people.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-page.group-chat-page.group-chat-controls.refresh.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-page.group-chat-page.group-chat-controls.set-people-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.group-chat-page.group-chat-page.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.mentions.build-mention-trigger.menu.mention-item.select",
+    "trigger": "onSelect",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.reply-feedback.icon-button.helpful-response.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.reply-feedback.icon-button.unhelpful-response.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.version-selector.icon-button.previous-version.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.version-selector.icon-button.next-version.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.assistant-actions.icon-button.regenerate-reply.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.assistant-actions.icon-button.copy.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.reply-menu-items.menu.copy.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.reply-menu-items.menu.regenerate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.reply-menu-items.menu.helpful.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-actions.reply-menu-items.menu.unhelpful.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.resource-chips.token.navigate-to.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.user-menu-items.menu.edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.user-menu-items.menu.delete-from-here.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.user-message-view.text-area.edit-your-message.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "chat.message-view.user-message-view.text-area.edit-your-message.key-down",
+    "trigger": "onKeyDown",
+    "category": "activity"
+  },
+  {
+    "id": "chat.message-view.user-message-view.button.cancel-edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.user-message-view.button.send-edited-message.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.user-message-view.icon-button.edit-and-resend-this-message.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.user-message-view.menu.delete-from-here.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.user-message-view.menu.on-edit-resend.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.user-message-view.menu.on-delete-from.delete-from",
+    "trigger": "onDeleteFrom",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.assistant-footer.assistant-actions.on-regenerate.regenerate",
+    "trigger": "onRegenerate",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.assistant-footer.assistant-actions.on-copy-failure.copy-failure",
+    "trigger": "onCopyFailure",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.assistant-message-view.menu.on-regenerate.regenerate",
+    "trigger": "onRegenerate",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.assistant-message-view.menu.on-copy-failure.copy-failure",
+    "trigger": "onCopyFailure",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.assistant-message-view.menu.on-copied.copied",
+    "trigger": "onCopied",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.assistant-message-view.menu.on-regenerate.regenerate.2",
+    "trigger": "onRegenerate",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.assistant-message-view.menu.on-copy-failure.copy-failure.2",
+    "trigger": "onCopyFailure",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.message-view.user-message-view.on-edit-resend.edit-resend",
+    "trigger": "onEditResend",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.message-view.user-message-view.on-delete-from.delete-from",
+    "trigger": "onDeleteFrom",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.message-view.assistant-message-view.on-regenerate.regenerate",
+    "trigger": "onRegenerate",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.message-view.assistant-message-view.on-copy-failure.copy-failure",
+    "trigger": "onCopyFailure",
+    "category": "action"
+  },
+  {
+    "id": "chat.message-view.message-view.assistant-message-view.on-copied.copied",
+    "trigger": "onCopied",
+    "category": "action"
+  },
+  {
+    "id": "chat.rich-markdown.app-link.link.open.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.rich-markdown.markdown-link.link.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "chat.use-mention-picker.use-mention-picker.menu.on-value-change.value-change",
+    "trigger": "onValueChange",
+    "category": "action"
+  },
+  {
+    "id": "chat.use-mention-picker.use-mention-picker.menu.on-key-down.key-down",
+    "trigger": "onKeyDown",
+    "category": "activity"
+  },
+  {
+    "id": "devices.conversation-picker.new-in-space.menu.on-create.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.row.list-item.on-pick.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.picker-rows.list-item.new-conversation.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.conversation-picker.dialog.on-open-change.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.conversation-picker.dialog-header.on-open-change.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.conversation-picker.space-threads.on-threads.threads",
+    "trigger": "onThreads",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.conversation-picker.selector.device.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.conversation-picker.text-input.search-conversations.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "devices.conversation-picker.conversation-picker.button.dismiss.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.conversation-picker.picker-rows.pick.pick",
+    "trigger": "onPick",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.conversation-picker.new-in-space.create-in.create",
+    "trigger": "onCreate",
+    "category": "action"
+  },
+  {
+    "id": "devices.conversation-picker.conversation-picker.button.done.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-header-control.device-header-control.menu.new-conversation-on-cardputer.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-header-control.device-header-control.menu.change-device-conversation.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-header-control.device-header-control.button.use.click-action",
+    "trigger": "clickAction",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-header-control.device-header-control.conversation-picker.set-picking.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-quick-actions.announce-dialog.dialog.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-quick-actions.announce-dialog.dialog-header.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-quick-actions.announce-dialog.text-input.title.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "devices.device-quick-actions.announce-dialog.text-area.message.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "devices.device-quick-actions.announce-dialog.button.retry.click-action",
+    "trigger": "clickAction",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-quick-actions.announce-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-quick-actions.announce-dialog.button.announce.click-action",
+    "trigger": "clickAction",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-quick-actions.device-quick-actions.button.test-speaker.click-action",
+    "trigger": "clickAction",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-quick-actions.device-quick-actions.button.announce.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-quick-actions.device-quick-actions.announce-dialog.set-announcing.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-quick-actions.device-quick-actions.announce-dialog.send.send",
+    "trigger": "onSend",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-recent.activity-row.list-item.navigate-to.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-recent.device-recent.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-settings-groups.use-settled-volume.menu.set-drag.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-settings-groups.use-settled-volume.menu.on-change-end.change-end",
+    "trigger": "onChangeEnd",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-settings-groups.device-settings-groups.slider.volume.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-settings-groups.device-settings-groups.slider.volume.change-end",
+    "trigger": "onChangeEnd",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-settings-groups.device-settings-groups.selector.ring-sound.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-settings-groups.device-settings-groups.selector.timer-ring-length.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.device-settings-groups.device-settings-groups.selector.listening-mode.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.device-menu.more-menu.set-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.device-menu.menu.rename.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.device-menu.menu.remove-device.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.device-list-row.list-item.navigate-to.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.rename-dialog.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.rename-dialog.dialog-header.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.rename-dialog.text-input.device-name.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "devices.devices-page.rename-dialog.text-input.device-name.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.rename-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.rename-dialog.button.save.click-action",
+    "trigger": "clickAction",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.remove-dialog.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.remove-dialog.alert-dialog.remove.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.device-detail.icon-button.back-to-devices.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.device-detail.device-quick-actions.on-saved.settings-saved",
+    "trigger": "onSettingsSaved",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.device-detail.selector.new-conversations-start-in.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.device-detail.device-settings-groups.on-saved.saved",
+    "trigger": "onSaved",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-dialogs.pair-dialog.is-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-dialogs.pair-dialog.toast.paired",
+    "trigger": "onPaired",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-dialogs.rename-dialog.on-close-rename.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-dialogs.rename-dialog.update-stored-device.renamed",
+    "trigger": "onRenamed",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-dialogs.remove-dialog.on-close-remove.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-dialogs.remove-dialog.forget-stored-device.removed",
+    "trigger": "onRemoved",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.list-header.button.pair-a-device.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.list-body.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.list-body.button.back-to-devices.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.list-body.button.pair-a-device.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-page.menu.set-renaming.rename",
+    "trigger": "onRename",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-page.menu.set-removing.remove",
+    "trigger": "onRemove",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-page.devices-dialogs.set-just-paired.paired",
+    "trigger": "onPaired",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-page.devices-dialogs.close-pairing.close-pairing",
+    "trigger": "onClosePairing",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-page.devices-dialogs.set-renaming.close-rename",
+    "trigger": "onCloseRename",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-page.devices-dialogs.set-removing.close-remove",
+    "trigger": "onCloseRemove",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-page.list-header.start-pairing.pair",
+    "trigger": "onPair",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-page.list-body.start-pairing.pair",
+    "trigger": "onPair",
+    "category": "action"
+  },
+  {
+    "id": "devices.devices-page.devices-page.list-body.refresh.retry",
+    "trigger": "onRetry",
+    "category": "action"
+  },
+  {
+    "id": "devices.now-talking-card.now-talking-card.list-item.chat-path.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.now-talking-card.now-talking-card.button.change.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.now-talking-card.now-talking-card.conversation-picker.set-picking.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.pair-dialog.pair-dialog.dialog.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.pair-dialog.pair-dialog.dialog-header.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "devices.pair-dialog.pair-dialog.text-input.code-on-the-screen.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "devices.pair-dialog.pair-dialog.text-input.code-on-the-screen.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "devices.pair-dialog.pair-dialog.text-input.name.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "devices.pair-dialog.pair-dialog.text-input.name.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "devices.pair-dialog.pair-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.pair-dialog.pair-dialog.button.pair.click-action",
+    "trigger": "clickAction",
+    "category": "action"
+  },
+  {
+    "id": "devices.use-device-conversation.use-device-conversation.menu.use-on-cardputer.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.use-device-conversation.use-device-conversation.menu.use-on-cardputer.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "devices.use-device-conversation.use-device-conversation.menu.new-conversation-on-cardputer.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "insights.insight-refresh.insight-refresh.button.retry-accounts.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "insights.insight-refresh.insight-refresh.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "insights.insight-refresh.insight-refresh.button.navigate.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "insights.insight-refresh.insight-refresh.selector.google-account.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "insights.insight-refresh.insight-refresh.button.prepare.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "insights.insights-page.insights-content.tab-list.navigate-to.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "insights.insights-page.insights-content.tab.button.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "insights.insights-page.insight-results.insight-refresh.set-retry.prepared",
+    "trigger": "onPrepared",
+    "category": "action"
+  },
+  {
+    "id": "insights.insights-page.insight-results.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-account-name-dialog.google-account-name-dialog.dialog.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-account-name-dialog.google-account-name-dialog.dialog-header.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-account-name-dialog.google-account-name-dialog.text-input.integration-name.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "integrations.google-account-name-dialog.google-account-name-dialog.text-input.integration-name.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-account-name-dialog.google-account-name-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-account-name-dialog.google-account-name-dialog.button.save-name.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.integration-tools-dialog.tool-controls-dialog.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.banner.set-return-problem.dismiss",
+    "trigger": "onDismiss",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.button.connect-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.banner.set-action-error.dismiss",
+    "trigger": "onDismiss",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.button.connect-google.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.more-menu.set-open-menu.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.menu.tools.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.menu.rename.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.menu.calendars.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.menu.make-default.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.menu.set-consent.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.menu.remove.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.button.connect-another-google-account.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.integration-tools-dialog.set-tool-account.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.google-consent-dialog.set-consent.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.google-account-name-dialog.set-renaming.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.google-account-name-dialog.current.saved",
+    "trigger": "onSaved",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.google-calendar-selection.set-calendar-account.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.google-calendar-selection.account.reconnect",
+    "trigger": "onReconnect",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-accounts-section.google-accounts-content.alert-dialog.removing.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-agenda-row.google-agenda-row.button.set-open.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-agenda-row.google-agenda-row.dialog.set-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-agenda-row.google-agenda-row.dialog-header.set-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-agenda-row.google-agenda-status.button.fix-in-integrations.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-calendar-selection.calendar-selection-form.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-calendar-selection.calendar-selection-form.dialog-header.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-calendar-selection.calendar-selection-form.button.reconnect.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-calendar-selection.calendar-selection-form.multi-selector.calendars-in-your-agenda.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-calendar-selection.calendar-selection-form.button.load-more-calendars.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-calendar-selection.calendar-selection-form.button.save-calendars.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-consent-dialog.google-consent-dialog.dialog.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-consent-dialog.google-consent-dialog.dialog-header.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-consent-dialog.google-consent-dialog.radio-list.calendar.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-consent-dialog.google-consent-dialog.radio-list.gmail.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-consent-dialog.google-consent-dialog.checkbox-list.additional-gmail-actions.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-consent-dialog.google-consent-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "integrations.google-consent-dialog.google-consent-dialog.button.continue-with-google.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.delete-all-memories.delete-all-memories-section.button.delete-all-memories.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.delete-all-memories.delete-all-memories-section.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.delete-all-memories.delete-all-memories-section.alert-dialog.next.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "memory.delete-all-memories.delete-all-memories-section.alert-dialog.confirm.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-row-menu.menu.edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-row-menu.menu.view-conversation.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-row-menu.menu.delete.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-row-menu.more-menu.set-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-row.memory-row-menu.on-edit.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-row.memory-row-menu.on-delete.delete",
+    "trigger": "onDelete",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-lists.memory-row.on-edit.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-lists.memory-row.on-delete.delete",
+    "trigger": "onDelete",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-lists.memory-row-menu.on-delete.delete",
+    "trigger": "onDelete",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-text-dialog.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-text-dialog.dialog-header.on-close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-text-dialog.text-area.set-draft.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "memory.memory-page.memory-text-dialog.segmented-control.kind.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-text-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-text-dialog.button.submit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.page-action.add-memory.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.text-input.search-memories.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "memory.memory-page.memory-page.tab-list.set-tab.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.button.clear-search.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.memory-lists.set-editing.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.memory-lists.set-pending-delete.delete",
+    "trigger": "onDelete",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.button.show-more.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.memory-text-dialog.set-adding.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.memory-text-dialog.create.submit",
+    "trigger": "onSubmit",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.memory-text-dialog.set-editing.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.memory-text-dialog.save-edit.submit",
+    "trigger": "onSubmit",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "memory.memory-page.memory-page.alert-dialog.target.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "metrics.metrics-page.active-lens.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "metrics.metrics-page.metrics-view.segmented-control.time-range.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "metrics.metrics-page.metrics-view.tab-list.set-lens.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "metrics.metrics-page.metrics-page.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "metrics.metrics-page.metrics-page.button.back-to-chat.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notification-settings.notification-settings-section.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notification-settings.notification-settings-section.switch.save.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notification-settings.notification-settings-section.switch.save.change.2",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notification-list.list-item.target.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.bell-trigger.icon-button.on-click.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notifications-bell.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notifications-bell.notification-list.open-item.open",
+    "trigger": "onOpen",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notifications-bell.button.retry.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notifications-bell.button.show-older.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notifications-bell.button.mark-all-read.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notifications-bell.button.notification-settings.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notifications-bell.bell-trigger.is-touch.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notifications-bell.bottom-sheet.notifications.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "notifications.notifications-bell.notifications-bell.popover.notifications.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.agenda-panel.event-row.icon-button.on-edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.agenda-panel.event-row.icon-button.on-view.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.agenda-panel.agenda-panel.button.new-event.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.agenda-panel.agenda-panel.calendar-grid.set-selected-key.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.agenda-panel.agenda-panel.calendar-grid.set-month-key.focus-date-change",
+    "trigger": "onFocusDateChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.agenda-panel.agenda-panel.event-row.set-dialog.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "productivity.agenda-panel.agenda-panel.event-row.set-dialog.view",
+    "trigger": "onView",
+    "category": "action"
+  },
+  {
+    "id": "productivity.agenda-panel.agenda-panel.event-dialog.set-dialog.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.agenda-panel.agenda-panel.event-dialog.reload.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-grid.calendar-grid.calendar.picked.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-grid.calendar-grid.calendar.on-focus-date-change.focus-date-change",
+    "trigger": "onFocusDateChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.undoable.button.undo.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.menu.task.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.menu.reminder.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.menu.event.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.ask-cancel.menu.hide.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.row-menu.menu.edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.row-menu.menu.complete.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.row-menu.menu.edit.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.row-menu.menu.details.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.row-menu.menu.edit.click.3",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.row-menu.menu.snooze-one.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.row-menu.menu.cancel-reminder.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.render-row.item-row.complete.complete",
+    "trigger": "onComplete",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.render-row.item-row.open-row.open",
+    "trigger": "onOpen",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.reminder-dialog.set-reminder-dialog.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.reminder-dialog.refresh.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.event-dialog.set-event-dialog.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.event-dialog.refresh.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.task-edit-dialog.save-task.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.task-edit-dialog.set-editing-task.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.button.retry.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.button.retry.click.3",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.calendar-grid.set-day.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.calendar-page.button.new-event.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.today-layout.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.today-layout.button.add.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.today-layout.menu.add-as-task.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.today-layout.menu.mark-done.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.today-layout.menu.dismiss.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.item-row.list-item.on-open.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.item-row.checkbox-input.on-complete.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.calendar-page.running-timers.button.cancel.click-action",
+    "trigger": "clickAction",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog-delete-step.delete-event-step.dialog-header.on-close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog-delete-step.delete-event-step.radio-list.delete-which-events.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog-delete-step.delete-event-step.button.back.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog-delete-step.delete-event-step.button.delete.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.dialog-header.on-close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.text-input.title.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.selector.space.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.switch.all-day.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.date-input.starts.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.date-input.ends.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.date-time-input.starts.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.date-time-input.ends.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.text-input.location.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.text-area.notes.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.create-event-dialog.button.save-event.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.dialog-header.on-close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.button.close.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.dialog.open.open-change.2",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.delete-event-step.set-step.back",
+    "trigger": "onBack",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.delete-event-step.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.delete-event-step.on-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.dialog.open.open-change.3",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.dialog-header.on-close.open-change.2",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.text-input.title.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.switch.all-day.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.date-input.starts.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.date-input.ends.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.date-time-input.starts.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.date-time-input.ends.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.text-input.location.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.text-area.notes.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.radio-list.change-which-events.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.event-people.on-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.button.delete-event.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.edit-event-dialog.button.save-changes.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.dialog-header.on-close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.button.close.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.dialog.open.open-change.2",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.delete-event-step.set-step.back",
+    "trigger": "onBack",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.delete-event-step.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.delete-event-step.on-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.dialog.open.open-change.3",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.dialog-header.on-close.open-change.2",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.event-people.on-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.button.delete-event.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.view-event-dialog.button.close.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.event-dialog.edit-event-dialog.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.event-dialog.edit-event-dialog.on-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.event-dialog.view-event-dialog.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.event-dialog.view-event-dialog.on-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.event-dialog.create-event-dialog.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-dialog.event-dialog.create-event-dialog.on-changed.changed",
+    "trigger": "onChanged",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-people.event-people.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-people.event-people.icon-button.remove.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-people.event-people.selector.invite-someone.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.event-people.event-people.segmented-control.your-answer.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.trash.button.undo.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-items.menu.unpin.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-items.menu.pin.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-items.menu.copy-to-another-space.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-items.menu.move-to-trash.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.render-note-item.list-item.row-click.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.button.back-to-notes.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.form.prevent-default.submit",
+    "trigger": "onSubmit",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.text-input.new-note-title.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.text-input.new-note-title.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.menu.set-view.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.text-input.search-notes.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.menu.restore.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.button.retry.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.note-editor.save-note.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.note-editor.toggle-pin.pin",
+    "trigger": "onPin",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.note-editor.trash.trash",
+    "trigger": "onTrash",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.note-editor.can-copy.copy",
+    "trigger": "onCopy",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.note-editor.set-selected-id.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.note-editor.list-revisions.list-revisions",
+    "trigger": "onListRevisions",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.copy-note-dialog.set-copying.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.notes-panel.copy-note-dialog.set-copying.copied",
+    "trigger": "onCopied",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.copy-note-dialog.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.copy-note-dialog.dialog-header.on-close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.copy-note-dialog.selector.space.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.copy-note-dialog.switch.include-the-body.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.copy-note-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.copy-note-dialog.button.copy.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.menu.unpin.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.menu.pin.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.menu.toggle-history.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.menu.copy-to-another-space.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.menu.move-to-trash.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.button.close-note.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.text-input.note-title.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.text-area.note-body.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.button.save.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.button.discard-changes.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.notes-panel.note-editor.list-item.set-shown-revision.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.dialog-header.on-close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.text-input.title.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.selector.space.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.date-time-input.when.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.selector.repeat.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.number-input.every.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.time-input.from.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.time-input.until.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.checkbox-list.remind.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.reminder-dialog.reminder-dialog.button.save-reminder.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-checklist.task-checklist.checkbox-input.toggle-item.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-checklist.task-checklist.icon-button.move.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-checklist.task-checklist.icon-button.move.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-checklist.task-checklist.icon-button.remove-item.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-checklist.task-checklist.text-input.new-checklist-item.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.task-checklist.task-checklist.text-input.new-checklist-item.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-checklist.task-checklist.button.add-item.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-dialog.dialog.edit-task.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-dialog.task-edit-form.on-save.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-dialog.task-edit-form.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-dialog.task-edit-form.on-delete.delete",
+    "trigger": "onDelete",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.due-fields.date-input.due-date.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.due-fields.time-input.time.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.notify-switch.switch.notify-me-about-changes.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.dialog-header.on-close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.text-input.title.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.text-area.notes.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.due-fields.set-due.due",
+    "trigger": "onDue",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.due-fields.set-time.time",
+    "trigger": "onTime",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.selector.assignee.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.notify-switch.set-notify.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.button.delete.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-edit-dialog.task-edit-form.button.save.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.task-row-menu.row-menu.more-menu.set-is-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.undoable.button.undo.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.row-items.menu.edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.row-items.menu.move.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.row-items.menu.delete.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.button.back-to-tasks.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.form.prevent-default.submit",
+    "trigger": "onSubmit",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.text-input.new-task.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.text-input.new-task.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.date-input.due-date-for-new-task.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.selector.assignee-for-new-task.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.segmented-control.show-tasks.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.selector.sort-tasks.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.menu.recently-deleted.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.button.add-a-task.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.list-item.row-click.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.checkbox-input.toggle.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.deleted-task-list.restore-from-trash.restore",
+    "trigger": "onRestore",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.task-edit-dialog.update-task.save",
+    "trigger": "onSave",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.task-edit-dialog.set-editing-id.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.tasks-panel.task-edit-dialog.remove.delete",
+    "trigger": "onDelete",
+    "category": "action"
+  },
+  {
+    "id": "productivity.tasks-panel.deleted-task-list.menu.restore.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-conversation.routine-conversation.button.retry-conversation.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-conversation.routine-conversation.chat-surface.created.conversation-created",
+    "trigger": "onConversationCreated",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-conversation.routine-conversation.chat-surface.on-turn-finished.conversation-touched",
+    "trigger": "onConversationTouched",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-conversation.routine-conversation.chat-surface.set-busy.busy-change",
+    "trigger": "onBusyChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-conversation.routine-conversation.button.new-conversation.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-conversation.routine-conversation.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.dialog.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.dialog-header.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.text-input.routine-name.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "routines.routine-form.routine-form.selector.google-account.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.text-input.email-filter.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "routines.routine-form.routine-form.text-area.what-should-bob-focus-on.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "routines.routine-form.routine-form.selector.summary-detail.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.checkbox-input.email-me-when-a-recap-is-ready.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.checkbox-input.set-config.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.time-input.run-at.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.text-input.time-zone.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "routines.routine-form.routine-form.checkbox-input.let-bob-read-this-account-s-emails-on-this-schedule.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-form.routine-form.button.save.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-runs.routine-runs.button.refresh-runs.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routine-runs.routine-runs.button.retry-runs.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-header.button.all-routines.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-header.page-action.new-routine.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-header.menu.daily-timeline.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-header.menu.refresh.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-header.button.new-routine.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-header.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-header.button.refresh.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-header.tab-list.set-tab.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-header.set-editing.new",
+    "trigger": "onNew",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-header.load.refresh",
+    "trigger": "onRefresh",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-index.set-tab.select",
+    "trigger": "onSelect",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-details.set-editing.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-details.set-removing.remove",
+    "trigger": "onRemove",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-details.set-tab.runs",
+    "trigger": "onRuns",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-details.perform.toggle",
+    "trigger": "onToggle",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.collapsible.set-chat-opened.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-conversation.turn-finished.turn-finished",
+    "trigger": "onTurnFinished",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-form.set-editing.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.routine-form.set-editing.saved",
+    "trigger": "onSaved",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routines-content.alert-dialog.remove.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-index.tab-list.set-view.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-index.list-item.on-select.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-details.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-details.button.navigate.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-details.button.on-toggle.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-details.button.configure-routine.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-details.button.run-history.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.routines-page.routine-details.button.archive.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "routines.saved-summary.saved-summary.list-item.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.active-rows.list-item.navigate-to.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.restore.button.open.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.archived-rows.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.items.menu.restore.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.archived-rows.more-menu.set-open-menu.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.all-spaces-page.segmented-control.show.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.all-spaces-page.button.new-space.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.all-spaces-page.archived-rows.list-archived-spaces.list",
+    "trigger": "onList",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.all-spaces-page.archived-rows.restore-space.restore",
+    "trigger": "onRestore",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.all-spaces-page.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.all-spaces-page.create-space-dialog.set-creating.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.all-spaces-page.create-space-dialog.create-space.create",
+    "trigger": "onCreate",
+    "category": "action"
+  },
+  {
+    "id": "spaces.all-spaces-page.all-spaces-page.create-space-dialog.failed-invites.created",
+    "trigger": "onCreated",
+    "category": "action"
+  },
+  {
+    "id": "spaces.create-space-controls.space-name-dialog.dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.create-space-controls.space-name-dialog.dialog-header.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.create-space-controls.space-name-dialog.text-input.set-name.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "spaces.create-space-controls.space-name-dialog.text-input.submit.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "spaces.create-space-controls.space-name-dialog.text-input.invite.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "spaces.create-space-controls.space-name-dialog.button.cancel.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.create-space-controls.space-name-dialog.button.submit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.create-space-controls.create-space-dialog.space-name-dialog.on-close.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "spaces.create-space-controls.create-space-dialog.space-name-dialog.on-create.create",
+    "trigger": "onCreate",
+    "category": "action"
+  },
+  {
+    "id": "spaces.create-space-controls.create-space-dialog.space-name-dialog.on-created.created",
+    "trigger": "onCreated",
+    "category": "action"
+  },
+  {
+    "id": "spaces.invite-page.invite-page.button.go-to-your-space.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.invite-page.invite-page.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.invite-page.invite-page.button.try-again.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.invite-page.invite-page.button.accept.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.invite-page.invite-page.link.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.member-menu-items.menu.on-change-role.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.member-menu-items.menu.make-owner.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.member-menu-items.menu.leave-space.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.member-menu-items.menu.remove.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.items.menu.on-change-role.change-role",
+    "trigger": "onChangeRole",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.items.menu.on-make-owner.make-owner",
+    "trigger": "onMakeOwner",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.items.menu.on-remove.remove",
+    "trigger": "onRemove",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.member-row.more-menu.set-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invitation-row.more-menu.set-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invitation-row.menu.revoke-invitation.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invite-form.form.prevent-default.submit",
+    "trigger": "onSubmit",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invite-form.text-input.invite-email.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "spaces.members-panel.invite-form.text-input.invite-email.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invite-form.selector.role.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invite-form.button.cancel-invite.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invite-form.button.copy-link.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invite-control.button.invite-people.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invite-control.invite-form.on-invite.invite",
+    "trigger": "onInvite",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.invite-control.invite-form.set-open.cancel",
+    "trigger": "onCancel",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.revoke.button.undo.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.revoke.menu.undone.hide",
+    "trigger": "onHide",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.members-panel.invite-control.invite.invite",
+    "trigger": "onInvite",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.members-panel.member-row.is-self.remove",
+    "trigger": "onRemove",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.members-panel.member-row.set-pending-owner.make-owner",
+    "trigger": "onMakeOwner",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.members-panel.member-row.then.change-role",
+    "trigger": "onChangeRole",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.members-panel.invitation-row.revoke.revoke",
+    "trigger": "onRevoke",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.members-panel.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.members-panel.alert-dialog.confirm-transfer.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.members-panel.alert-dialog.open.open-change.2",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.members-panel.members-panel.alert-dialog.confirm-remove.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.items.menu.tools.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.items.menu.invite-people.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.items.menu.rename.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.items.menu.archive.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.items.menu.leave-space.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.space-header.space-name-dialog.on-rename.rename",
+    "trigger": "onRename",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.space-header.space-name-dialog.set-renaming.close",
+    "trigger": "onClose",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.space-header.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.space-header.avatar-group-overflow.on-select-section.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.space-header.more-menu.space-actions.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.space-header.space-header.tab-list.on-select-section.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-nav.spaces-nav.side-nav-item.couldn-t-load-spaces-retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-nav.spaces-nav.side-nav-item.open-link.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-nav.spaces-nav.side-nav-item.all-spaces.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-nav.spaces-nav.side-nav-item.new-space.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.button.all-spaces.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.archive.button.undo.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.thread-panel.navigate-to.open-thread",
+    "trigger": "onOpenThread",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.members-panel.set-confirm-leave.leave",
+    "trigger": "onLeave",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.members-panel.refresh.space-changed",
+    "trigger": "onSpaceChanged",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.thread-title-bar.navigate-to.back",
+    "trigger": "onBack",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.thread-title-bar.navigate-to.archived",
+    "trigger": "onArchived",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.thread-title-bar.navigate-to.undo-archive",
+    "trigger": "onUndoArchive",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.space-header.navigate-to.select-section",
+    "trigger": "onSelectSection",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.space-header.rename-space.rename",
+    "trigger": "onRename",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.space-header.archive.archive",
+    "trigger": "onArchive",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.space-header.set-confirm-leave.leave",
+    "trigger": "onLeave",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.space-header.set-invite-open.invite",
+    "trigger": "onInvite",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.spaces-page.spaces-page.alert-dialog.confirm-leave-space.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.new-thread-form.text-input.new-thread-title.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "spaces.thread-panel.new-thread-form.text-input.new-thread-title.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.new-thread-form.button.create.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.new-thread-form.button.cancel-new-thread.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.new-thread-control.button.start-a-thread.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.new-thread-control.new-thread-form.set-open.cancel",
+    "trigger": "onCancel",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.new-thread-control.new-thread-form.on-created.created",
+    "trigger": "onCreated",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-header.text-input.thread-title.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "spaces.thread-panel.thread-header.text-input.thread-title.enter",
+    "trigger": "onEnter",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-header.text-input.thread-title.key-down",
+    "trigger": "onKeyDown",
+    "category": "activity"
+  },
+  {
+    "id": "spaces.thread-panel.thread-header.button.save.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-header.button.cancel-renaming-thread.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.items.menu.rename.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.items.menu.archive.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-header.button.back-to-threads.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-header.more-menu.set-menu-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.use-archive-thread.button.undo.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.use-archive-thread.menu.undone.hide",
+    "trigger": "onHide",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-title-bar.menu.tools.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-title-bar.thread-header.rename-thread.rename",
+    "trigger": "onRename",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-title-bar.thread-header.archive.request-archive",
+    "trigger": "onRequestArchive",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-title-bar.thread-header.on-back.back",
+    "trigger": "onBack",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-title-bar.thread-header.set-rename-conflict.conflict",
+    "trigger": "onConflict",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-title-bar.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.items.menu.archive.click.2",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-row.list-item.contains.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-row.more-menu.set-open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-list.button.new-thread.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-list.thread-row.on-open-thread.open",
+    "trigger": "onOpen",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-list.thread-row.archive.archive",
+    "trigger": "onArchive",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-panel.new-thread-form.on-open-thread.cancel",
+    "trigger": "onCancel",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-panel.new-thread-form.on-open-thread.created",
+    "trigger": "onCreated",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-panel.new-thread-control.on-open-thread.created",
+    "trigger": "onCreated",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-panel.button.retry.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-panel.thread-list.on-open-thread.open-thread",
+    "trigger": "onOpenThread",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-panel.thread-panel.button.back-to-threads.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.inline-actions.icon-button.on-copy.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.inline-actions.icon-button.edit-this-message.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.inline-actions.icon-button.delete-this-message.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.phone-menu-items.menu.edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.phone-menu-items.menu.delete.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.message-item.inline-actions.copy.copy",
+    "trigger": "onCopy",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.message-item.inline-actions.start-edit.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.message-item.inline-actions.on-delete.delete",
+    "trigger": "onDelete",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.message-item.menu.on-delete.delete",
+    "trigger": "onDelete",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.message-item.text-area.edit-message.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "spaces.thread-reader.message-item.button.cancel-edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.message-item.button.save-edit.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.menu.on-pointer-down.pointer-down",
+    "trigger": "onPointerDown",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.voice-mode-bar.stop.stop",
+    "trigger": "onStop",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.voice-mode-bar.mute.mute",
+    "trigger": "onMute",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.voice-mode-bar.unmute.unmute",
+    "trigger": "onUnmute",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.voice-mode-bar.resume.resume",
+    "trigger": "onResume",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.composer.submit-message.send",
+    "trigger": "onSend",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.message-item.set-edit-conflict.conflict",
+    "trigger": "onConflict",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.message-item.then.edit",
+    "trigger": "onEdit",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.message-item.set-pending-delete.delete",
+    "trigger": "onDelete",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.alert-dialog.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "spaces.thread-reader.thread-reader.alert-dialog.confirm-delete-message.action",
+    "trigger": "onAction",
+    "category": "action"
+  },
+  {
+    "id": "spaces.use-threads.use-threads.menu.messages-key.mutate",
+    "trigger": "onMutate",
+    "category": "action"
+  },
+  {
+    "id": "spaces.use-threads.use-threads.menu.previous.error",
+    "trigger": "onError",
+    "category": "action"
+  },
+  {
+    "id": "spaces.use-threads.use-threads.menu.provisional.success",
+    "trigger": "onSuccess",
+    "category": "action"
+  },
+  {
+    "id": "spaces.use-threads.use-threads.menu.provisional.settled",
+    "trigger": "onSettled",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-row.menu.on-run.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.date-input.day.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.icon-button.previous-day.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.icon-button.next-day.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.menu.today.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.menu.set-kind.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.button.previous-day.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.button.next-day.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.button.today.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.selector.show.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.button.retry-timeline.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.timeline-row.open-run.run",
+    "trigger": "onRun",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.button.show-earlier-activity.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.button.close-recap.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.button.navigate.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.collapsible.open.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "timeline.timeline-page.timeline-content.routine-conversation.set-revision.turn-finished",
+    "trigger": "onTurnFinished",
+    "category": "action"
+  },
+  {
+    "id": "tools.tool-controls.tool-row.switch.save.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "tools.tool-controls.tool-row.button.save.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "tools.tool-controls.tool-controls-content.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "tools.tool-controls.tool-controls-content.text-input.find-a-tool.change",
+    "trigger": "onChange",
+    "category": "edit"
+  },
+  {
+    "id": "tools.tool-controls.tool-controls-dialog.dialog.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "tools.tool-controls.tool-controls-dialog.dialog-header.close.open-change",
+    "trigger": "onOpenChange",
+    "category": "action"
+  },
+  {
+    "id": "usage.usage-section.usage-numbers.link.prevent-default.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "usage.usage-section.usage-section.segmented-control.range.change",
+    "trigger": "onChange",
+    "category": "action"
+  },
+  {
+    "id": "usage.usage-section.usage-section.button.try-again.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "voice.mode.use-conversation-mode.use-conversation-mode.menu.current.speech-start",
+    "trigger": "onSpeechStart",
+    "category": "action"
+  },
+  {
+    "id": "voice.mode.use-conversation-mode.use-conversation-mode.menu.current.speech-end",
+    "trigger": "onSpeechEnd",
+    "category": "action"
+  },
+  {
+    "id": "voice.mode.use-conversation-mode.use-conversation-mode.menu.current.misfire",
+    "trigger": "onMisfire",
+    "category": "action"
+  },
+  {
+    "id": "voice.mode.vad.create-vad.menu.on-speech-start.speech-start",
+    "trigger": "onSpeechStart",
+    "category": "action"
+  },
+  {
+    "id": "voice.mode.vad.create-vad.menu.on-speech-end.speech-end",
+    "trigger": "onSpeechEnd",
+    "category": "action"
+  },
+  {
+    "id": "voice.mode.vad.create-vad.menu.on-misfire.vadmisfire",
+    "trigger": "onVADMisfire",
+    "category": "action"
+  },
+  {
+    "id": "voice.spoken-reply-player.spoken-reply-player.audio.spoken-reply.play",
+    "trigger": "onPlay",
+    "category": "action"
+  },
+  {
+    "id": "voice.spoken-reply-player.spoken-reply-player.audio.spoken-reply.pause",
+    "trigger": "onPause",
+    "category": "action"
+  },
+  {
+    "id": "voice.spoken-reply-player.spoken-reply-player.audio.spoken-reply.ended",
+    "trigger": "onEnded",
+    "category": "action"
+  },
+  {
+    "id": "voice.spoken-reply-player.spoken-reply-player.audio.spoken-reply.loaded-metadata",
+    "trigger": "onLoadedMetadata",
+    "category": "action"
+  },
+  {
+    "id": "voice.spoken-reply-player.spoken-reply-player.audio.spoken-reply.duration-change",
+    "trigger": "onDurationChange",
+    "category": "action"
+  },
+  {
+    "id": "voice.spoken-reply-player.spoken-reply-player.button.play-or-pause-the-spoken-reply.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "voice.use-chat-voice.use-chat-voice.menu.id.trace",
+    "trigger": "onTrace",
+    "category": "action"
+  },
+  {
+    "id": "voice.use-chat-voice.use-chat-voice.menu.on-state.state",
+    "trigger": "onState",
+    "category": "action"
+  },
+  {
+    "id": "voice.use-chat-voice.use-chat-voice.menu.error.error",
+    "trigger": "onError",
+    "category": "action"
+  },
+  {
+    "id": "voice.use-chat-voice.use-chat-voice.menu.send-clip.utterance",
+    "trigger": "onUtterance",
+    "category": "action"
+  },
+  {
+    "id": "voice.use-chat-voice.use-chat-voice.menu.see-usage.press",
+    "trigger": "onPress",
+    "category": "action"
+  },
+  {
+    "id": "voice.use-chat-voice.use-chat-voice.menu.pause-spoken-reply.pointer-down",
+    "trigger": "onPointerDown",
+    "category": "action"
+  },
+  {
+    "id": "voice.use-chat-voice.use-chat-voice.menu.set-error.capture-unavailable",
+    "trigger": "onCaptureUnavailable",
+    "category": "action"
+  },
+  {
+    "id": "voice.voice-mode-bar.voice-mode-bar.button.resume.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "voice.voice-mode-bar.voice-mode-bar.button.unmute.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "voice.voice-mode-bar.voice-mode-bar.button.mute.click",
+    "trigger": "onClick",
+    "category": "action"
+  },
+  {
+    "id": "voice.voice-mode-bar.voice-mode-bar.button.stop.click",
+    "trigger": "onClick",
+    "category": "action"
+  }
+]

@@ -1,0 +1,1 @@
+{"v":1,"type":"device_control","id":"dctl_0123456789abcdef0123","payload":{"volume":10,"muted":true,"mode":"announce_only","dnd":true,"ring_seconds":120,"ring_sound":"pulse"}}

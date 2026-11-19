@@ -1,0 +1,814 @@
+[
+  {
+    "method": "POST",
+    "path": "/api/telemetry/anonymous"
+  },
+  {
+    "method": "GET",
+    "path": "/api/public-config"
+  },
+  {
+    "method": "GET",
+    "path": "/api/google-accounts/native/return"
+  },
+  {
+    "method": "GET",
+    "path": "/api/version"
+  },
+  {
+    "method": "POST",
+    "path": "/api/test-token"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operator/firmware"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operator/firmware/channel"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operator/firmware/halt"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operator/firmware/ingest"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/package"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/install"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations/:id"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:id/lifecycle"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/selection"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations/:installationId/overview"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations/:installationId/conversations/:conversationId/selection"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:installationId/conversations/:conversationId/selection"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations/:installationId/campaigns"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:installationId/campaigns"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations/:installationId/campaigns/:campaignId"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/bob-apps/marketing/installations/:installationId/campaigns/:campaignId"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:installationId/campaigns/:campaignId/sections"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations/:installationId/campaigns/:campaignId/review"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:installationId/campaigns/:campaignId/review/approve"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations/:installationId/drafts"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:installationId/drafts"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations/:installationId/drafts/:draftId"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/bob-apps/marketing/installations/:installationId/drafts/:draftId"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/marketing/installations/:id/config"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:id/config/proposals"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:id/config/apply"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:id/config/discard"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/marketing/installations/:id/config/restore"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/:id/conversation"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/:id/export"
+  },
+  {
+    "method": "POST",
+    "path": "/api/bob-apps/:id/actions"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/bob-apps/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/bob-apps/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/:id/refresh"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/bob-apps/:id/refresh"
+  },
+  {
+    "method": "GET",
+    "path": "/api/bob-apps/:id/runs"
+  },
+  {
+    "method": "GET",
+    "path": "/api/timeline"
+  },
+  {
+    "method": "GET",
+    "path": "/api/tools"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/tools/preferences"
+  },
+  {
+    "method": "POST",
+    "path": "/api/chat"
+  },
+  {
+    "method": "POST",
+    "path": "/api/chat/stop"
+  },
+  {
+    "method": "GET",
+    "path": "/api/conversations"
+  },
+  {
+    "method": "GET",
+    "path": "/api/conversations/:id"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/conversations/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/conversations/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/active"
+  },
+  {
+    "method": "POST",
+    "path": "/api/conversations/:id/activate"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/conversations/:id/messages/:messageId"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/conversations/:id/messages/:messageId"
+  },
+  {
+    "method": "POST",
+    "path": "/api/telemetry"
+  },
+  {
+    "method": "POST",
+    "path": "/api/voice"
+  },
+  {
+    "method": "POST",
+    "path": "/api/speech"
+  },
+  {
+    "method": "POST",
+    "path": "/api/pair/lookup"
+  },
+  {
+    "method": "POST",
+    "path": "/api/pair/approve"
+  },
+  {
+    "method": "POST",
+    "path": "/api/pair/deny"
+  },
+  {
+    "method": "GET",
+    "path": "/api/devices"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/devices/active-space"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/devices/active-conversation"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/devices/:id/settings"
+  },
+  {
+    "method": "GET",
+    "path": "/api/devices/:id/activity"
+  },
+  {
+    "method": "POST",
+    "path": "/api/devices/:id/announce"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/devices/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/devices/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/events"
+  },
+  {
+    "method": "GET",
+    "path": "/api/memories"
+  },
+  {
+    "method": "POST",
+    "path": "/api/memories"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/memories/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/memories/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/memories"
+  },
+  {
+    "method": "GET",
+    "path": "/api/action-items"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/action-items/:id"
+  },
+  {
+    "method": "POST",
+    "path": "/api/google-accounts/native/authorize"
+  },
+  {
+    "method": "POST",
+    "path": "/api/google-accounts/native/complete"
+  },
+  {
+    "method": "POST",
+    "path": "/api/google-accounts/native/cancel"
+  },
+  {
+    "method": "GET",
+    "path": "/api/google-accounts"
+  },
+  {
+    "method": "POST",
+    "path": "/api/google-accounts/authorize"
+  },
+  {
+    "method": "POST",
+    "path": "/api/google-accounts/callback"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/google-accounts/:id"
+  },
+  {
+    "method": "POST",
+    "path": "/api/google-accounts/:id/select"
+  },
+  {
+    "method": "GET",
+    "path": "/api/google-accounts/smoke"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/google-accounts/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/routines"
+  },
+  {
+    "method": "POST",
+    "path": "/api/routines"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/routines/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/routines/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/routines/timeline"
+  },
+  {
+    "method": "GET",
+    "path": "/api/routines/:id/runs/:runId"
+  },
+  {
+    "method": "GET",
+    "path": "/api/routines/:id/runs"
+  },
+  {
+    "method": "GET",
+    "path": "/api/insights"
+  },
+  {
+    "method": "POST",
+    "path": "/api/insights/refresh"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces"
+  },
+  {
+    "method": "POST",
+    "path": "/api/spaces"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces/:id"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/spaces/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/spaces/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces/:id/members"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/spaces/:id/members/:userId"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/spaces/:id/members/:userId"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/spaces/:id/owner"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces/:id/invitations"
+  },
+  {
+    "method": "POST",
+    "path": "/api/spaces/:id/invitations"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/invitations/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/invitations/:token"
+  },
+  {
+    "method": "POST",
+    "path": "/api/invitations/:token/accept"
+  },
+  {
+    "method": "GET",
+    "path": "/api/group-chats"
+  },
+  {
+    "method": "POST",
+    "path": "/api/group-chats"
+  },
+  {
+    "method": "GET",
+    "path": "/api/group-chats/invitations/:token"
+  },
+  {
+    "method": "POST",
+    "path": "/api/group-chats/invitations/:token/accept"
+  },
+  {
+    "method": "GET",
+    "path": "/api/group-chats/:id"
+  },
+  {
+    "method": "POST",
+    "path": "/api/group-chats/:id/links"
+  },
+  {
+    "method": "POST",
+    "path": "/api/group-chats/:id/invitations"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/group-chats/:id/links"
+  },
+  {
+    "method": "GET",
+    "path": "/api/group-chats/:id/members"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/group-chats/:id/members/:userId"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces/:spaceId/threads"
+  },
+  {
+    "method": "POST",
+    "path": "/api/spaces/:spaceId/threads"
+  },
+  {
+    "method": "GET",
+    "path": "/api/threads/:id"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/threads/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/threads/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/threads/:id/messages"
+  },
+  {
+    "method": "POST",
+    "path": "/api/threads/:id/messages"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/messages/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/messages/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/messages/:id/revisions"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/threads/:id/read"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces/:spaceId/tasks"
+  },
+  {
+    "method": "POST",
+    "path": "/api/spaces/:spaceId/tasks"
+  },
+  {
+    "method": "GET",
+    "path": "/api/tasks/:id"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/tasks/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/tasks/:id"
+  },
+  {
+    "method": "POST",
+    "path": "/api/tasks/:id/restore"
+  },
+  {
+    "method": "GET",
+    "path": "/api/tasks/:id/items"
+  },
+  {
+    "method": "POST",
+    "path": "/api/tasks/:id/items"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/tasks/:id/items/:itemId"
+  },
+  {
+    "method": "GET",
+    "path": "/api/tasks/:id/subscribers"
+  },
+  {
+    "method": "POST",
+    "path": "/api/tasks/:id/subscribers"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/tasks/:id/subscribers/:userId"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces/:spaceId/reminders"
+  },
+  {
+    "method": "GET",
+    "path": "/api/reminders/preview"
+  },
+  {
+    "method": "POST",
+    "path": "/api/spaces/:spaceId/reminders"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/reminders/:id"
+  },
+  {
+    "method": "POST",
+    "path": "/api/reminders/:id/cancel"
+  },
+  {
+    "method": "POST",
+    "path": "/api/reminders/:id/occurrences/snooze"
+  },
+  {
+    "method": "GET",
+    "path": "/api/timers"
+  },
+  {
+    "method": "GET",
+    "path": "/api/timers/notification-state"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/timers/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces/:spaceId/calendars"
+  },
+  {
+    "method": "POST",
+    "path": "/api/spaces/:spaceId/calendars"
+  },
+  {
+    "method": "GET",
+    "path": "/api/calendars/:id/events"
+  },
+  {
+    "method": "POST",
+    "path": "/api/calendars/:id/events"
+  },
+  {
+    "method": "GET",
+    "path": "/api/events/:id"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/events/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/events/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/events/:id/attendees"
+  },
+  {
+    "method": "POST",
+    "path": "/api/events/:id/attendees"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/events/:id/attendees"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/events/:id/rsvp"
+  },
+  {
+    "method": "GET",
+    "path": "/api/agenda"
+  },
+  {
+    "method": "POST",
+    "path": "/api/threads/:id/invocations"
+  },
+  {
+    "method": "GET",
+    "path": "/api/invocations/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/invocations/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces/:spaceId/notes"
+  },
+  {
+    "method": "POST",
+    "path": "/api/spaces/:spaceId/notes"
+  },
+  {
+    "method": "GET",
+    "path": "/api/notes/:id"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/notes/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/notes/:id"
+  },
+  {
+    "method": "POST",
+    "path": "/api/notes/:id/restore"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/notes/:id/pin"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/notes/:id/pin"
+  },
+  {
+    "method": "GET",
+    "path": "/api/notes/:id/revisions"
+  },
+  {
+    "method": "GET",
+    "path": "/api/spaces/:spaceId/notes/search"
+  },
+  {
+    "method": "POST",
+    "path": "/api/approvals"
+  },
+  {
+    "method": "GET",
+    "path": "/api/approvals/:id"
+  },
+  {
+    "method": "POST",
+    "path": "/api/approvals/:id/approve"
+  },
+  {
+    "method": "POST",
+    "path": "/api/approvals/:id/decline"
+  },
+  {
+    "method": "POST",
+    "path": "/api/notes/:id/publish"
+  },
+  {
+    "method": "POST",
+    "path": "/api/memories/:id/promote"
+  },
+  {
+    "method": "GET",
+    "path": "/api/notifications"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/notifications/read"
+  },
+  {
+    "method": "GET",
+    "path": "/api/notification-preferences"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/notification-preferences"
+  },
+  {
+    "method": "POST",
+    "path": "/api/push/devices"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/push/devices/:installationId"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/account"
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/export"
+  },
+  {
+    "method": "GET",
+    "path": "/api/search"
+  },
+  {
+    "method": "GET",
+    "path": "/api/me/usage"
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/accounts/search"
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/waitlist/search"
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/accounts/manage"
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/access"
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/accounts"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operator/access"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operator/metrics/:page"
+  }
+]

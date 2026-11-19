@@ -1,0 +1,94 @@
+#!/bin/sh
+# Two jobs, in order (enabled by `npm install`: scripts/install-hooks.mjs sets
+# core.hooksPath):
+#
+# 1. Firmware gate (scripts/hil/push-gate.mjs). A push that changes any
+#    Cardputer firmware input (apps/cardputer/{src,include,lib},
+#    platformio.ini) is REFUSED unless data/hil-pass.json records a passing
+#    hardware-in-the-loop run of exactly that firmware on a real device
+#    (`node scripts/hil/run.mjs`, docs/cardputer/hil.md).
+# 2. Publishes the local validate PASS for the commit being pushed, so CI skips
+#    a suite this machine already ran (scripts/validate-attest.mjs).
+#
+#   BOB_HOOK_STRICT=1  run the validate gate here when no pass is recorded,
+#                        and block the push if it fails
+#   BOB_SKIP_HOOKS=1   skip this hook; untested firmware is still let through
+#                        but with a loud warning (the firmware-hil PR check
+#                        will fail without an attested run)
+set -e
+
+root=$(git rev-parse --show-toplevel)
+cd "$root"
+
+# git feeds "<local ref> <local sha> <remote ref> <remote sha>" per ref on
+# stdin; both jobs need it, so read it once.
+refs=$(cat)
+
+if ! printf '%s\n' "$refs" | node scripts/hil/push-gate.mjs; then
+  exit 1
+fi
+
+[ "$BOB_SKIP_HOOKS" = "1" ] && exit 0
+
+# Deleting a remote branch pushes no content, so there is nothing to attest.
+# A deletion has an all-zeros local sha.
+content=0
+while read -r _ local_sha _ _; do
+  case "$local_sha" in *[!0]*) content=1 ;; esac
+done <<EOF
+$refs
+EOF
+[ "$content" = "0" ] && exit 0
+
+# A HIL pass on file: publish it as local/device-hil for the firmware-hil PR
+# check once GitHub has the commit. device-attest.mjs itself refuses unless the
+# pass matches HEAD's firmware, so a stale record posts nothing.
+if [ -f data/hil-pass.json ]; then
+  hil_sha=$(git rev-parse HEAD)
+  (
+    i=0
+    while [ "$i" -lt 30 ]; do
+      sleep 2
+      if gh api "repos/suzworx/Bob/commits/$hil_sha" --jq .sha >/dev/null 2>&1; then
+        node scripts/device-attest.mjs >/dev/null 2>&1
+        exit 0
+      fi
+      i=$((i + 1))
+    done
+  ) >/dev/null 2>&1 &
+fi
+
+if [ -n "$(git status --porcelain)" ]; then
+  echo "pre-push: uncommitted changes, so this push is not attested; CI will run the full suite."
+  exit 0
+fi
+
+tree=$(git rev-parse HEAD^{tree})
+if ! grep -q "\"tree\": \"$tree\"" data/validate-pass.json 2>/dev/null; then
+  if [ "$BOB_HOOK_STRICT" = "1" ]; then
+    echo "pre-push: no recorded pass for this content; running the gate."
+    npm run validate -- --skip-firmware || { echo "pre-push: validate failed; push aborted."; exit 1; }
+  else
+    echo "pre-push: no local validate PASS for this content; CI will run the full suite."
+    echo "          Run 'npm run validate' then 'npm run attest' to skip it next time."
+    exit 0
+  fi
+fi
+
+# The status can only be attached once GitHub has the commit, which is after
+# this hook returns. Wait for the push to land, then attest, without holding
+# the terminal.
+sha=$(git rev-parse HEAD)
+(
+  i=0
+  while [ "$i" -lt 30 ]; do
+    sleep 2
+    if gh api "repos/suzworx/Bob/commits/$sha" --jq .sha >/dev/null 2>&1; then
+      npm run attest >/dev/null 2>&1 && exit 0
+    fi
+    i=$((i + 1))
+  done
+) >/dev/null 2>&1 &
+
+echo "pre-push: attesting $(echo "$sha" | cut -c1-12) in the background; CI will skip the suite."
+exit 0

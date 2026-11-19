@@ -1,0 +1,1 @@
+{"v":1,"type":"hello","id":"hello_123456_v2","payload":{"format_id":1,"fw_version":"0.0.0-dev","caps":["device_control","announce","reply_text","timers_state","ota","device_log","turn_conversation","assistant_name","scene","turn_timing","end_of_turn"]}}

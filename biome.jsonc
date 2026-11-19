@@ -1,0 +1,69 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.14/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "formatter": {
+    "enabled": false
+  },
+  "assist": {
+    "enabled": false
+  },
+  "files": {
+    "includes": [
+      "apps/*/src/**",
+      "apps/*/scripts/**",
+      "apps/ui-v2/e2e/**",
+      "scripts/**",
+      "supabase/functions/**",
+      "!**/*.json"
+    ]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": false,
+      "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "error",
+          "options": {
+            "maxAllowedComplexity": 15
+          }
+        },
+        "noUselessCatch": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "error",
+        "noDoubleEquals": "error",
+        "noImplicitAnyLet": "error",
+        "noAssignInExpressions": "error",
+        "noFallthroughSwitchClause": "error"
+      },
+      "style": {
+        "noNonNullAssertion": "error"
+      },
+      "correctness": {
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
+      }
+    }
+  },
+  // Deno code is linted by `deno lint` (with its own suppressions); the email catalog needs `any` for a
+  // heterogeneous template list (see catalog.ts).
+  "overrides": [
+    {
+      "includes": [
+        "supabase/functions/**"
+      ],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noExplicitAny": "off"
+          }
+        }
+      }
+    }
+  ]
+}

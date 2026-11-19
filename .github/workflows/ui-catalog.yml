@@ -1,0 +1,147 @@
+name: UI catalog
+
+# Builds the UI catalog (docs/ui-v2/ux-catalog/README.md) nightly and on demand.
+# It is too slow (~16 min a run) for every PR, and its own workflow on
+# schedule/dispatch never joins a commit's check suite. The merge gate is
+# unchanged: the registry staleness check (`npm run check:ui-catalog`) still
+# runs in `validate`.
+#
+# Failures are reported, not hidden. In ci.yml, 18 of 73 runs timed out; a
+# timeout ends the job "cancelled", which continue-on-error does not cover, and
+# main CI runs with such a job ended cancelled or red (e.g. c6cc948, 7128eea).
+# Here a failed or timed-out nightly run opens (or comments on) one tracking
+# issue, and the next green nightly run closes it.
+#
+# A scheduled run's check suite lands on main's tip commit, so a red catalog
+# would turn main red. So the catalog job is continue-on-error and its UI catalog step
+# times out before the job does (every step is bounded and the job deadline
+# exceeds their sum plus cleanup headroom, so only a step limit can fire): a broken catalog leaves the suite green and
+# reports through `ok` and the issue instead. needs.<job>.result reads
+# "success" under continue-on-error, so `report` reads `ok`, never the result.
+
+on:
+  schedule:
+    - cron: '23 8 * * *' # 08:23 UTC, off the hour
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ui-catalog
+  cancel-in-progress: false
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    # Every step below is bounded; the budgets sum to 56 min, so 65 leaves
+    # more than the 3 min of post-job cleanup headroom a job timeout would eat.
+    # A step timeout fails the job (green under continue-on-error); the job
+    # timeout would cancel it and redden main's suite.
+    timeout-minutes: 65
+    continue-on-error: true # reported by `report`, see the header
+    outputs:
+      ok: ${{ steps.done.outputs.ok }}
+    steps:
+      - uses: actions/checkout@v7
+        timeout-minutes: 3
+      - uses: actions/setup-node@v7
+        timeout-minutes: 5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+        timeout-minutes: 8
+      # Step limits keep a slow setup a failure, not a job timeout (see the header).
+      - name: Start the full local Supabase stack
+        timeout-minutes: 6
+        run: |
+          npx supabase start || {
+            echo "::warning::supabase start failed once; retrying after a clean stop"
+            npx supabase stop --no-backup || true
+            npx supabase start
+          }
+      - name: Install Chromium
+        timeout-minutes: 5
+        run: npx playwright install --with-deps chromium
+      - name: Start the app (stub AI)
+        timeout-minutes: 2
+        # A full capture makes more /api calls than the 120/min per-IP default allows.
+        env:
+          BOB_RATE_LIMIT_API_RPM: '100000'
+        run: npm run dev:offline -- --stub-ai &
+      - name: Wait for servers
+        timeout-minutes: 4
+        run: |
+          for i in {1..180}; do
+            curl -sf http://localhost:7444/health >/dev/null && curl -sf http://localhost:5173 >/dev/null && break
+            sleep 1
+          done
+      - name: UI catalog
+        # bash for pipefail: a failed catalog must fail here, not hide behind tee.
+        # Median 13 min; its cap and every other step's sum well inside the job's 65.
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          mkdir -p data
+          npm run ui:catalog | tee data/ui-catalog.log
+      - name: Catalog built
+        id: done
+        timeout-minutes: 1
+        run: echo "ok=true" >> "$GITHUB_OUTPUT"
+      - name: Summary
+        if: always()
+        timeout-minutes: 2
+        run: |
+          { echo '### UI catalog'; grep '^screens ' data/ui-catalog.log || echo 'no catalog built'
+            echo; echo 'Components without a mapping entry:'
+            node -e "const r=require('./docs/ui-v2/ux-catalog/registry.json'),m=require('./docs/ui-v2/ux-catalog/mapping.json');for(const c of r.bob)if(!m.components[c.name])console.log('- '+c.name+' ('+c.file+')')"
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v7
+        if: always()
+        timeout-minutes: 5
+        # Diagnostics only: a full artifact storage quota (every upload failed from 2026-10-19)
+        # must not fail the catalog; short retention keeps the account's store small.
+        continue-on-error: true
+        with:
+          name: ui-catalog
+          path: data/ui-catalog/
+          retention-days: 2
+
+  # A separate job so a timeout (which cancels the catalog job's own steps)
+  # still reports. Nightly runs only: a manual run's result is seen by whoever
+  # started it. One open issue for the whole workflow, whatever the commit.
+  report:
+    needs: catalog
+    if: always() && github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    # One 5 min step plus 3 min cleanup headroom.
+    timeout-minutes: 10
+    # A gh hiccup must not turn main's tip red either; it still shows in the log.
+    continue-on-error: true
+    permissions:
+      issues: write
+    steps:
+      - name: Open, update or close the tracking issue
+        timeout-minutes: 5
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OK: ${{ needs.catalog.outputs.ok }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Nightly UI catalog failing"
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"${title}\"" --json number --jq '.[0].number // empty')
+          if [ "$OK" = true ]; then
+            if [ -n "$existing" ]; then
+              gh issue close "$existing" --repo "$GITHUB_REPOSITORY" --comment "Green again: ${RUN_URL}"
+            fi
+            exit 0
+          fi
+          echo "::error::The UI catalog did not build; see the catalog job log"
+          body="The nightly UI catalog did not build (a failed step or a timeout). Run: ${RUN_URL}"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body" \
+              --label bug --label area:ui --label github_actions
+          fi

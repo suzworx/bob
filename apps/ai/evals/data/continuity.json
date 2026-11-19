@@ -1,0 +1,102 @@
+[
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "My favorite color is teal." },
+        { "role": "assistant", "content": "Teal is a lovely choice." }
+      ],
+      "question": "What is my favorite color?"
+    },
+    "expected": "teal"
+  },
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "I have a meeting on Friday at 3pm." },
+        { "role": "assistant", "content": "I will remember that." }
+      ],
+      "question": "When is my meeting?"
+    },
+    "expected": "Friday at 3pm"
+  },
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "My dog's name is Biscuit." },
+        { "role": "assistant", "content": "Biscuit is a great name for a dog." }
+      ],
+      "question": "What is my dog called?"
+    },
+    "expected": "Biscuit"
+  },
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "I prefer tea over coffee." },
+        { "role": "assistant", "content": "Tea it is." }
+      ],
+      "question": "Do I prefer tea or coffee?"
+    },
+    "expected": "tea"
+  },
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "The project deadline is the end of the month." },
+        { "role": "assistant", "content": "Got it, end of the month." }
+      ],
+      "question": "When is the project due?"
+    },
+    "expected": "end of the month"
+  },
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "My flight leaves at 6am tomorrow." },
+        { "role": "assistant", "content": "Early start." }
+      ],
+      "question": "What time does my flight leave?"
+    },
+    "expected": "6am"
+  },
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "I am learning Spanish." },
+        { "role": "assistant", "content": "Good luck with that." }
+      ],
+      "question": "What language am I learning?"
+    },
+    "expected": "Spanish"
+  },
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "My sister lives in Berlin." },
+        { "role": "assistant", "content": "Nice city." }
+      ],
+      "question": "Where does my sister live?"
+    },
+    "expected": "Berlin"
+  },
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "I am allergic to peanuts." },
+        { "role": "assistant", "content": "Noted." }
+      ],
+      "question": "What am I allergic to?"
+    },
+    "expected": "peanuts"
+  },
+  {
+    "input": {
+      "turns": [
+        { "role": "user", "content": "The wifi password is correct-horse." },
+        { "role": "assistant", "content": "Stored." }
+      ],
+      "question": "What is the wifi password?"
+    },
+    "expected": "correct-horse"
+  }
+]

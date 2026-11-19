@@ -1,0 +1,33 @@
+{
+ "front": "playful.png",
+ "logo_box": [
+  140,
+  162,
+  183,
+  77
+ ],
+ "head_tilt": {
+  "helper": 0.0,
+  "curious": 0.0,
+  "thoughtful": 0.0,
+  "playful": 0.0
+ },
+ "origin": {
+  "helper": [
+   15,
+   3
+  ],
+  "curious": [
+   26,
+   3
+  ],
+  "thoughtful": [
+   53,
+   3
+  ],
+  "playful": [
+   0,
+   3
+  ]
+ }
+}

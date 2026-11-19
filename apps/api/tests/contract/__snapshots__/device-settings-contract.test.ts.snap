@@ -1,0 +1,1119 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GET /api/devices settings contract > a device that reported ring support > ring reported 1`] = `
+{
+  "body": {
+    "active_conversation": null,
+    "active_space": null,
+    "devices": [
+      {
+        "active_conversation_id": null,
+        "active_space_id": null,
+        "connected": false,
+        "id": "<uuid-1>",
+        "last_seen_at": null,
+        "live": {
+          "battery_pct": null,
+          "charging": null,
+          "connected": false,
+          "fw_version": null,
+        },
+        "model": "M5Stack Cardputer",
+        "name": "Desk",
+        "paired_at": "<epoch-ms>",
+        "pending": false,
+        "ring_settings_supported": true,
+        "settings": {
+          "dnd": true,
+          "mode": "wake",
+          "muted": true,
+          "ring_seconds": 90,
+          "ring_sound": "chime",
+          "volume": 3,
+          "wake_word": "bob",
+        },
+        "settings_supported": true,
+        "wake_word_supported": false,
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`GET /api/devices settings contract > a device with no stored settings shows the firmware defaults > no stored settings 1`] = `
+{
+  "body": {
+    "active_conversation": null,
+    "active_space": null,
+    "devices": [
+      {
+        "active_conversation_id": null,
+        "active_space_id": null,
+        "connected": false,
+        "id": "<uuid-1>",
+        "last_seen_at": null,
+        "live": {
+          "battery_pct": null,
+          "charging": null,
+          "connected": false,
+          "fw_version": null,
+        },
+        "model": "M5Stack Cardputer",
+        "name": "Desk",
+        "paired_at": "<epoch-ms>",
+        "pending": false,
+        "ring_settings_supported": false,
+        "settings": {
+          "dnd": false,
+          "mode": "ptt",
+          "muted": false,
+          "ring_seconds": 30,
+          "ring_sound": "classic",
+          "volume": 6,
+          "wake_word": "bob",
+        },
+        "settings_supported": false,
+        "wake_word_supported": false,
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`GET /api/devices settings contract > a pending push from a web change > pending push 1`] = `
+{
+  "body": {
+    "active_conversation": null,
+    "active_space": null,
+    "devices": [
+      {
+        "active_conversation_id": null,
+        "active_space_id": null,
+        "connected": false,
+        "id": "<uuid-1>",
+        "last_seen_at": null,
+        "live": {
+          "battery_pct": null,
+          "charging": null,
+          "connected": false,
+          "fw_version": null,
+        },
+        "model": "M5Stack Cardputer",
+        "name": "Desk",
+        "paired_at": "<epoch-ms>",
+        "pending": true,
+        "ring_settings_supported": false,
+        "settings": {
+          "dnd": false,
+          "mode": "ptt",
+          "muted": true,
+          "ring_seconds": 30,
+          "ring_sound": "classic",
+          "volume": 8,
+          "wake_word": "bob",
+        },
+        "settings_supported": false,
+        "wake_word_supported": false,
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`GET /api/devices settings contract > a revoked device drops out of the list > revoked 1`] = `
+{
+  "body": {
+    "active_conversation": null,
+    "active_space": null,
+    "devices": [],
+  },
+  "status": 200,
+}
+`;
+
+exports[`GET /api/devices settings contract > stored non-default settings the device reported (no ring keys) > stored, device reported, no ring 1`] = `
+{
+  "body": {
+    "active_conversation": null,
+    "active_space": null,
+    "devices": [
+      {
+        "active_conversation_id": null,
+        "active_space_id": null,
+        "connected": false,
+        "id": "<uuid-1>",
+        "last_seen_at": null,
+        "live": {
+          "battery_pct": null,
+          "charging": null,
+          "connected": false,
+          "fw_version": null,
+        },
+        "model": "M5Stack Cardputer",
+        "name": "Desk",
+        "paired_at": "<epoch-ms>",
+        "pending": false,
+        "ring_settings_supported": false,
+        "settings": {
+          "dnd": true,
+          "mode": "wake",
+          "muted": true,
+          "ring_seconds": 30,
+          "ring_sound": "classic",
+          "volume": 3,
+          "wake_word": "bob",
+        },
+        "settings_supported": true,
+        "wake_word_supported": false,
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > 200 {"dnd":false} 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": false,
+      "mode": "announce_only",
+      "muted": false,
+      "ring_seconds": 90,
+      "ring_sound": "chime",
+      "volume": 10,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > 200 {"mode":"announce_only"} 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": true,
+      "mode": "announce_only",
+      "muted": false,
+      "ring_seconds": 90,
+      "ring_sound": "chime",
+      "volume": 10,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > 200 {"muted":false} 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": true,
+      "mode": "wake",
+      "muted": false,
+      "ring_seconds": 90,
+      "ring_sound": "chime",
+      "volume": 10,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > 200 {"ring_seconds":10} 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": false,
+      "mode": "announce_only",
+      "muted": false,
+      "ring_seconds": 10,
+      "ring_sound": "chime",
+      "volume": 10,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > 200 {"ring_seconds":120} 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": false,
+      "mode": "announce_only",
+      "muted": false,
+      "ring_seconds": 120,
+      "ring_sound": "chime",
+      "volume": 10,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > 200 {"ring_sound":"pulse"} 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": false,
+      "mode": "announce_only",
+      "muted": false,
+      "ring_seconds": 120,
+      "ring_sound": "pulse",
+      "volume": 10,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > 200 {"volume":0} 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": true,
+      "mode": "wake",
+      "muted": true,
+      "ring_seconds": 90,
+      "ring_sound": "chime",
+      "volume": 0,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > 200 {"volume":4,"muted":true,"mode":"ptt","dnd":true,"ring_seconds":45,"ring_sound":"classic"} 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": true,
+      "mode": "ptt",
+      "muted": true,
+      "ring_seconds": 45,
+      "ring_sound": "classic",
+      "volume": 4,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > 200 {"volume":10} 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": true,
+      "mode": "wake",
+      "muted": true,
+      "ring_seconds": 90,
+      "ring_sound": "chime",
+      "volume": 10,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 200 for each field, merged and pending > list after the patches 1`] = `
+{
+  "body": {
+    "active_conversation": null,
+    "active_space": null,
+    "devices": [
+      {
+        "active_conversation_id": null,
+        "active_space_id": null,
+        "connected": false,
+        "id": "<uuid-1>",
+        "last_seen_at": null,
+        "live": {
+          "battery_pct": null,
+          "charging": null,
+          "connected": false,
+          "fw_version": null,
+        },
+        "model": "M5Stack Cardputer",
+        "name": "Desk",
+        "paired_at": "<epoch-ms>",
+        "pending": true,
+        "ring_settings_supported": true,
+        "settings": {
+          "dnd": true,
+          "mode": "ptt",
+          "muted": true,
+          "ring_seconds": 45,
+          "ring_sound": "classic",
+          "volume": 4,
+          "wake_word": "bob",
+        },
+        "settings_supported": true,
+        "wake_word_supported": false,
+      },
+    ],
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 [] 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"dnd":1} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "dnd",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"mode":"loud"} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "mode",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"muted":"yes"} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "muted",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"ring_seconds":9} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "ring_seconds",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"ring_seconds":30.5} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "ring_seconds",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"ring_seconds":121} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "ring_seconds",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"ring_sound":"siren"} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "ring_sound",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"unknown":1} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "unknown",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"volume":"5"} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "volume",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"volume":-1} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "volume",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"volume":1.5} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "volume",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"volume":5,"extra":true} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "extra",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {"volume":11} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [
+        "volume",
+      ],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 400 for each out-of-range value and bad body > 400 {} 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "invalid_request",
+      "fields": [],
+    },
+  },
+  "status": 400,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 404 for a foreign, revoked, unknown and malformed id > 404 foreign 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "not_found",
+    },
+  },
+  "status": 404,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 404 for a foreign, revoked, unknown and malformed id > 404 malformed 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "not_found",
+    },
+  },
+  "status": 404,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 404 for a foreign, revoked, unknown and malformed id > 404 revoked 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "not_found",
+    },
+  },
+  "status": 404,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 404 for a foreign, revoked, unknown and malformed id > 404 unknown 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "not_found",
+    },
+  },
+  "status": 404,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 409 ring_unsupported before the device reports ring support, nothing written > 200 non-ring patch still works 1`] = `
+{
+  "body": {
+    "delivered": false,
+    "id": "<uuid-1>",
+    "pending": true,
+    "settings": {
+      "dnd": true,
+      "mode": "wake",
+      "muted": true,
+      "ring_seconds": 30,
+      "ring_sound": "classic",
+      "volume": 9,
+      "wake_word": "bob",
+    },
+  },
+  "status": 200,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 409 ring_unsupported before the device reports ring support, nothing written > 409 no settings row 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "ring_unsupported",
+    },
+  },
+  "status": 409,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 409 ring_unsupported before the device reports ring support, nothing written > 409 old firmware row 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "ring_unsupported",
+    },
+  },
+  "status": 409,
+}
+`;
+
+exports[`PATCH /api/devices/:id/settings contract > 409 ring_unsupported before the device reports ring support, nothing written > 409 ring + volume 1`] = `
+{
+  "body": {
+    "error": {
+      "code": "ring_unsupported",
+    },
+  },
+  "status": 409,
+}
+`;
+
+exports[`settings-store contract > getAccountTimeZone is null without user_metadata > account time zone 1`] = `
+{
+  "value": null,
+}
+`;
+
+exports[`settings-store contract > getDeviceSettings: missing row is null, then stored, pending, ring reported > getDeviceSettings states 1`] = `
+{
+  "afterOldReport": {
+    "value": {
+      "deviceReported": true,
+      "dnd": true,
+      "mode": "wake",
+      "muted": true,
+      "pendingPush": false,
+      "ringReported": false,
+      "ring_seconds": 30,
+      "ring_sound": "classic",
+      "updatedAt": "<epoch-ms>",
+      "volume": 3,
+      "wakeWordPending": false,
+      "wakeWordReported": false,
+    },
+  },
+  "afterRingReport": {
+    "value": {
+      "deviceReported": true,
+      "dnd": true,
+      "mode": "wake",
+      "muted": true,
+      "pendingPush": false,
+      "ringReported": true,
+      "ring_seconds": 90,
+      "ring_sound": "chime",
+      "updatedAt": "<epoch-ms>",
+      "volume": 3,
+      "wakeWordPending": false,
+      "wakeWordReported": false,
+    },
+  },
+  "afterWebPatch": {
+    "value": {
+      "deviceReported": false,
+      "dnd": false,
+      "mode": "ptt",
+      "muted": false,
+      "pendingPush": true,
+      "ringReported": false,
+      "ring_seconds": 30,
+      "ring_sound": "classic",
+      "updatedAt": "<epoch-ms>",
+      "volume": 9,
+      "wakeWordPending": false,
+      "wakeWordReported": false,
+    },
+  },
+  "missing": {
+    "value": null,
+  },
+}
+`;
+
+exports[`settings-store contract > patchDeviceSettings: every return value > patchDeviceSettings results 1`] = `
+{
+  "finalStore": {
+    "value": {
+      "deviceReported": true,
+      "dnd": true,
+      "mode": "wake",
+      "muted": false,
+      "pendingPush": true,
+      "ringReported": true,
+      "ring_seconds": 30,
+      "ring_sound": "pulse",
+      "updatedAt": "<epoch-ms>",
+      "volume": 6,
+      "wakeWordPending": false,
+      "wakeWordReported": false,
+    },
+  },
+  "firstPatchMergesDefaults": {
+    "value": {
+      "dnd": false,
+      "mode": "wake",
+      "muted": false,
+      "ring_seconds": 30,
+      "ring_sound": "classic",
+      "volume": 6,
+    },
+  },
+  "foreign": {
+    "value": null,
+  },
+  "malformed": {
+    "value": null,
+  },
+  "mergeAfterRingSupport": {
+    "value": {
+      "dnd": true,
+      "mode": "wake",
+      "muted": false,
+      "ring_seconds": 30,
+      "ring_sound": "pulse",
+      "volume": 6,
+    },
+  },
+  "modeCheckViolation": {
+    "error": "StoreError: patchDeviceSettings: PostgresError",
+  },
+  "revoked": {
+    "value": null,
+  },
+  "ringBeforeSupport": {
+    "value": "ring_unsupported",
+  },
+  "ringCheckViolation": {
+    "error": "StoreError: patchDeviceSettings: PostgresError",
+  },
+  "unknown": {
+    "value": null,
+  },
+  "volumeCheckViolation": {
+    "error": "StoreError: patchDeviceSettings: PostgresError",
+  },
+}
+`;
+
+exports[`settings-store contract > pure helpers: defaults, pickSettings, forFirmware > pure helpers 1`] = `
+{
+  "defaults": {
+    "dnd": false,
+    "mode": "ptt",
+    "muted": false,
+    "ring_seconds": 30,
+    "ring_sound": "classic",
+    "volume": 6,
+  },
+  "forOldFirmware": {
+    "dnd": false,
+    "mode": "ptt",
+    "muted": false,
+    "volume": 6,
+  },
+  "forRingFirmware": {
+    "dnd": false,
+    "mode": "ptt",
+    "muted": false,
+    "ring_seconds": 99,
+    "ring_sound": "classic",
+    "volume": 6,
+  },
+  "picked": {
+    "dnd": false,
+    "mode": "ptt",
+    "muted": false,
+    "ring_seconds": 30,
+    "ring_sound": "classic",
+    "volume": 2,
+  },
+}
+`;
+
+exports[`settings-store contract > setDeviceSettings: stored, synced, kept_pending, device_override, old firmware, refused > setDeviceSettings results 1`] = `
+{
+  "deviceOverride": {
+    "value": {
+      "changed": [
+        "volume",
+      ],
+      "outcome": "device_override",
+      "pendingPush": false,
+      "ringReported": true,
+      "settings": {
+        "dnd": true,
+        "mode": "wake",
+        "muted": true,
+        "ring_seconds": 90,
+        "ring_sound": "chime",
+        "volume": 1,
+      },
+      "wakeWordPending": false,
+    },
+  },
+  "firstReportStored": {
+    "value": {
+      "changed": [
+        "dnd",
+        "mode",
+        "muted",
+        "volume",
+      ],
+      "outcome": "stored",
+      "pendingPush": false,
+      "ringReported": false,
+      "settings": {
+        "dnd": true,
+        "mode": "wake",
+        "muted": true,
+        "ring_seconds": 30,
+        "ring_sound": "classic",
+        "volume": 3,
+      },
+      "wakeWordPending": false,
+    },
+  },
+  "foreignStoreUntouched": {
+    "value": null,
+  },
+  "keptPending": {
+    "value": {
+      "changed": [],
+      "outcome": "kept_pending",
+      "pendingPush": true,
+      "ringReported": true,
+      "settings": {
+        "dnd": true,
+        "mode": "wake",
+        "muted": true,
+        "ring_seconds": 90,
+        "ring_sound": "chime",
+        "volume": 8,
+      },
+      "wakeWordPending": false,
+    },
+  },
+  "oldFirmwareKeepsRing": {
+    "value": {
+      "changed": [
+        "volume",
+      ],
+      "outcome": "stored",
+      "pendingPush": false,
+      "ringReported": false,
+      "settings": {
+        "dnd": true,
+        "mode": "wake",
+        "muted": true,
+        "ring_seconds": 30,
+        "ring_sound": "classic",
+        "volume": 4,
+      },
+      "wakeWordPending": false,
+    },
+  },
+  "refusedBadVolume": {
+    "error": "StoreError: setDeviceSettings: PostgresError",
+  },
+  "refusedForeign": {
+    "error": "StoreError: setDeviceSettings: PostgresError",
+  },
+  "refusedRevoked": {
+    "error": "StoreError: setDeviceSettings: PostgresError",
+  },
+  "ringReportStored": {
+    "value": {
+      "changed": [
+        "ring_seconds",
+        "ring_sound",
+        "volume",
+      ],
+      "outcome": "stored",
+      "pendingPush": false,
+      "ringReported": true,
+      "settings": {
+        "dnd": true,
+        "mode": "wake",
+        "muted": true,
+        "ring_seconds": 90,
+        "ring_sound": "chime",
+        "volume": 3,
+      },
+      "wakeWordPending": false,
+    },
+  },
+  "stillPending": {
+    "value": {
+      "deviceReported": true,
+      "dnd": true,
+      "mode": "wake",
+      "muted": true,
+      "pendingPush": true,
+      "ringReported": true,
+      "ring_seconds": 90,
+      "ring_sound": "chime",
+      "updatedAt": "<epoch-ms>",
+      "volume": 8,
+      "wakeWordPending": false,
+      "wakeWordReported": false,
+    },
+  },
+  "syncedOnMatch": {
+    "value": {
+      "changed": [],
+      "outcome": "synced",
+      "pendingPush": false,
+      "ringReported": true,
+      "settings": {
+        "dnd": true,
+        "mode": "wake",
+        "muted": true,
+        "ring_seconds": 90,
+        "ring_sound": "chime",
+        "volume": 7,
+      },
+      "wakeWordPending": false,
+    },
+  },
+}
+`;
+
+exports[`two-account isolation > account B gets 404 or nothing for account A's device on every route and store call > account B versus account A 1`] = `
+{
+  "aListStillOwn": {
+    "body": {
+      "active_conversation": null,
+      "active_space": null,
+      "devices": [
+        {
+          "active_conversation_id": null,
+          "active_space_id": null,
+          "connected": false,
+          "id": "<uuid-2>",
+          "last_seen_at": null,
+          "live": {
+            "battery_pct": null,
+            "charging": null,
+            "connected": false,
+            "fw_version": null,
+          },
+          "model": "M5Stack Cardputer",
+          "name": "Desk",
+          "paired_at": "<epoch-ms>",
+          "pending": true,
+          "ring_settings_supported": true,
+          "settings": {
+            "dnd": true,
+            "mode": "wake",
+            "muted": true,
+            "ring_seconds": 90,
+            "ring_sound": "chime",
+            "volume": 8,
+            "wake_word": "bob",
+          },
+          "settings_supported": true,
+          "wake_word_supported": false,
+        },
+      ],
+    },
+    "status": 200,
+  },
+  "bGet": {
+    "value": null,
+  },
+  "bList": {
+    "body": {
+      "active_conversation": null,
+      "active_space": null,
+      "devices": [
+        {
+          "active_conversation_id": null,
+          "active_space_id": null,
+          "connected": false,
+          "id": "<uuid-1>",
+          "last_seen_at": null,
+          "live": {
+            "battery_pct": null,
+            "charging": null,
+            "connected": false,
+            "fw_version": null,
+          },
+          "model": "M5Stack Cardputer",
+          "name": "Desk",
+          "paired_at": "<epoch-ms>",
+          "pending": false,
+          "ring_settings_supported": false,
+          "settings": {
+            "dnd": false,
+            "mode": "ptt",
+            "muted": false,
+            "ring_seconds": 30,
+            "ring_sound": "classic",
+            "volume": 6,
+            "wake_word": "bob",
+          },
+          "settings_supported": false,
+          "wake_word_supported": false,
+        },
+      ],
+    },
+    "status": 200,
+  },
+  "bPatch": {
+    "value": null,
+  },
+  "bPatchRing": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "bPatchSettings": {
+    "body": {
+      "error": {
+        "code": "not_found",
+      },
+    },
+    "status": 404,
+  },
+  "bRingPatch": {
+    "value": null,
+  },
+  "bSet": {
+    "error": "StoreError: setDeviceSettings: PostgresError",
+  },
+}
+`;

@@ -1,0 +1,952 @@
+{
+  "domains": [
+    {
+      "name": "speech",
+      "summary": "Server speech: speech-to-text, text-to-speech, audio encoding (wav, mp3), the speech ports, cache and template assets.",
+      "owns": [
+        "apps/api/src/voice/{speech-adapters,speech-assets,speech-assets-manifest,speech-assets-remote,speech-cache,speech-port}.ts",
+        "apps/api/src/voice/audio/**",
+        "apps/ai/src/tools.ts",
+        "apps/ai/src/stream-transcribe.ts",
+        "apps/api/scripts/{record-speech-pack,speech-coverage,upload-speech-pack}.ts",
+        "apps/api/scripts/speech-packs/**",
+        "scripts/generate-speech-assets.mjs"
+      ],
+      "tests": [
+        "apps/api/tests/voice/{audio,mp3,provider,speech-assets,speech-assets-remote,speech-cache,speech-port,speech-reply-splitter,upload-speech-pack-script,wav}.test.ts",
+        "apps/api/tests/voice/audio/speech-clip.test.ts",
+        "apps/api/tests/integration/{speech-assets,speech-assets-url}.integration.ts",
+        "apps/api/tests/integration/speech-assets-turn.ts",
+        "scripts/generate-speech-assets.test.mjs"
+      ],
+      "skills": [
+        "bob-dev",
+        "ai-sdk",
+        "vitest",
+        "tdd",
+        "bob-character"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/architecture.md",
+        "docs/observability.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit"
+      ]
+    },
+    {
+      "name": "turn-pipeline",
+      "summary": "The voice turn: the device session and its control-message dispatch, transcribe, generate, announce, playback, pacing, abort and the turn journal.",
+      "owns": [
+        "apps/api/src/voice/{session,session-handlers,turn-core,turn-journal,turn-start-conversation}.ts",
+        "apps/api/src/voice/turn/{abort,announce,device-timing,downlink,context,deps,end-of-turn,failure,generate,metrics,pacing,persist,playback,speculate,stream-stt,tools,transcribe,turn-root,uplink}.ts",
+        "apps/api/src/turn/**"
+      ],
+      "tests": [
+        "apps/api/tests/voice/{announce-delivery,announce,cancel,device-timing,journal-vocabulary,paired-turn-invariants,session-ordering,session-spaces,session-threads,session-two-devices,session,turn-core,turn-game-resume,turn-journal,turn-metrics,turn-prep-parallel,turn-prompt-layout,turn-reply-style,turn-short-audio,turn-speakable,turn-stages,turn-tool-policy,turn-streaming-sdk,turn-streaming,turn-tts-ahead,turn,end-of-turn,turn-stream-stt,turn-speculation}.test.ts",
+        "apps/api/tests/turn/**"
+      ],
+      "skills": [
+        "bob-dev",
+        "websocket-development",
+        "ai-sdk",
+        "vitest",
+        "tdd",
+        "bob-character"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/architecture.md",
+        "docs/log-reference.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit"
+      ]
+    },
+    {
+      "name": "wire-protocol",
+      "summary": "The device wire: message schemas and framing shared by the server socket and the Cardputer (protocol, USB packets, control queue).",
+      "owns": [
+        "apps/api/src/voice/{device-socket,protocol-base,protocol-ota,protocol-timing,protocol}.ts",
+        "apps/cardputer/include/{protocol,usb_packet,control_queue,device_log}.h",
+        "apps/cardputer/src/protocol.cpp"
+      ],
+      "tests": [
+        "apps/api/tests/voice/{device-control-schemas,firmware-version,schemas-pairing,schemas,wire-compat,wire-fixtures}.test.ts",
+        "apps/cardputer/test/host/test_{olx2,usb_packet,control_queue,device_log,parsers,builders}*.cpp"
+      ],
+      "skills": [
+        "bob-dev",
+        "websocket-development",
+        "esp32-firmware-engineer",
+        "embedded-systems",
+        "vitest",
+        "tdd",
+        "bob-scenes"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/architecture.md",
+        "docs/cardputer"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:firmware",
+        "npm run device:compile"
+      ]
+    },
+    {
+      "name": "web-voice",
+      "summary": "Voice in the web app: conversation mode, VAD and endpointing, echo guard, spoken reply playback and the voice tools.",
+      "owns": [
+        "apps/api/src/voice/voice-tools.ts",
+        "apps/ui-v2/src/features/voice/**",
+        "apps/ai/src/voice-tools.ts"
+      ],
+      "tests": [
+        "apps/api/tests/voice/web-voice.test.ts",
+        "apps/ui-v2/src/features/voice/**/*.test.{ts,tsx}",
+        "apps/ai/tests/voice-tools.test.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "conversational-ux",
+        "playwright-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd",
+        "bob-character"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/architecture.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "cardputer-audio",
+      "summary": "Cardputer audio: microphone capture, uplink framing, end-of-speech detection, MP3/PCM playback and earcons.",
+      "owns": [
+        "apps/cardputer/{src,include}/audio_capture*",
+        "apps/cardputer/include/level_meter.h",
+        "apps/cardputer/{src,include}/audio_playback*",
+        "apps/cardputer/{src,include}/earcons*",
+        "apps/cardputer/{src,include}/{frame_ring,uplink_queue,end_of_speech,mp3_ring_source,ring_policy}.h",
+        "apps/cardputer/{src,include}/audio_hang*",
+        "apps/cardputer/include/capture_stall.h",
+        "apps/cardputer/include/speaker_test.h",
+        "apps/cardputer/include/echo_canceller.h",
+        "apps/cardputer/{src,include}/audio_duplex*"
+      ],
+      "tests": [
+        "apps/cardputer/test/host/test_{frame_ring,uplink_queue,end_of_speech,mp3_*,pcm_playback,ring_policy,quiet,announcement_prelude,speaker_test}*.cpp"
+      ],
+      "skills": [
+        "bob-dev",
+        "esp32-firmware-engineer",
+        "embedded-systems",
+        "tdd",
+        "bob-character"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/cardputer",
+        "docs/cardputer/cabin-sounds.md"
+      ],
+      "gates": [
+        "npm run test:firmware",
+        "npm run device:compile"
+      ]
+    },
+    {
+      "name": "cardputer-wake",
+      "summary": "Cardputer wake word: model selection, detection, wake statistics and the wake state.",
+      "owns": [
+        "apps/cardputer/{src,include}/wake_word*",
+        "apps/cardputer/{src,include}/{wake_models,wake_stats}.h",
+        "apps/cardputer/src/state_wake.cpp",
+        "apps/cardputer/include/barge_policy.h"
+      ],
+      "tests": [
+        "apps/cardputer/test/host/test_wake_*.cpp"
+      ],
+      "skills": [
+        "bob-dev",
+        "esp32-firmware-engineer",
+        "embedded-systems",
+        "tdd",
+        "bob-character"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/cardputer"
+      ],
+      "gates": [
+        "npm run test:firmware",
+        "npm run device:compile"
+      ]
+    },
+    {
+      "name": "ota",
+      "summary": "Over-the-air firmware updates: the signed release bundle, the server firmware module (releases, channels, offers, download) and the device OTA policy, manifest parser and client.",
+      "owns": [
+        "apps/api/src/firmware/**",
+        "apps/cardputer/{src,include}/ota_*",
+        "apps/cardputer/src/state_update.cpp",
+        "apps/cardputer/include/fw_keys.h",
+        "scripts/release/fw-*",
+        "docs/cardputer/ota-*"
+      ],
+      "tests": [
+        "apps/api/tests/firmware/**",
+        "apps/cardputer/test/host/test_ota_*.cpp",
+        "scripts/release/fw-*.test.mjs"
+      ],
+      "skills": [
+        "bob-dev",
+        "esp32-firmware-engineer",
+        "embedded-systems",
+        "tdd"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/cardputer"
+      ],
+      "gates": [
+        "npx vitest run --root apps/api tests/firmware",
+        "npm run test:firmware",
+        "npm run device:compile"
+      ]
+    },
+    {
+      "name": "cardputer-connectivity",
+      "summary": "Cardputer connectivity: Wi-Fi join and manager, network socket, reconnect backoff, server profile, TLS roots, device token and pairing.",
+      "owns": [
+        "apps/cardputer/{src,include}/network*",
+        "apps/cardputer/{src,include}/wifi_*",
+        "apps/cardputer/{src,include}/net_store*",
+        "apps/cardputer/{src,include}/server_profile*",
+        "apps/cardputer/{src,include}/device_token*",
+        "apps/cardputer/{src,include}/{reconnect_backoff,ca_roots,probe_task}.h",
+        "apps/cardputer/src/{state_connection,state_pairing}.cpp"
+      ],
+      "tests": [
+        "apps/cardputer/test/host/test_{net_store,reconnect_backoff,probe_task,wifi_join,pairing,hello_fallback}*.cpp"
+      ],
+      "skills": [
+        "bob-dev",
+        "esp32-firmware-engineer",
+        "embedded-systems",
+        "websocket-development",
+        "tdd"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/cardputer"
+      ],
+      "gates": [
+        "npm run test:firmware",
+        "npm run device:compile"
+      ]
+    },
+    {
+      "name": "cardputer-ui",
+      "summary": "Cardputer screen: display, chrome, cards, settings UI, text field, timers view, pickers and volume.",
+      "owns": [
+        "apps/cardputer/{src,include}/display*",
+        "apps/cardputer/{src,include}/chrome*",
+        "apps/cardputer/{src,include}/cards*",
+        "apps/cardputer/{src,include}/settings_ui*",
+        "apps/cardputer/{src,include}/text_field*",
+        "apps/cardputer/{src,include}/timers_view*",
+        "apps/cardputer/{src,include}/round_ui*",
+        "apps/cardputer/{src,include}/round_fonts*",
+        "apps/cardputer/scripts/font_build.py",
+        "apps/cardputer/lib/fonts/**",
+        "apps/cardputer/{src,include}/round_ring*",
+        "apps/cardputer/{src,include}/round_touch*",
+        "apps/cardputer/{src,include}/round_keyboard*",
+        "apps/cardputer/include/touch_policy.h",
+        "apps/cardputer/include/{round_feedback,turn_trouble}.h",
+        "apps/cardputer/{src,include}/bob_art*",
+        "apps/cardputer/{src,include}/bob_motion*",
+        "apps/cardputer/{src,include}/bob_emotions*",
+        "apps/cardputer/{src,include}/bob_face*",
+        "apps/cardputer/{src,include}/scene_*",
+        "libs/bob-device/**",
+        "apps/cardputer/src/bob_board.cpp",
+        "apps/cardputer/scripts/bob_rig*.py",
+        "apps/cardputer/include/bob_icons.h",
+        "apps/cardputer/scripts/{bob_tokens.json,icons_build.py}",
+        "apps/cardputer/include/bob_visor.h",
+        "apps/cardputer/include/bob_visor_poses.h",
+        "apps/cardputer/scripts/bob_emotions_preview.py",
+        "tools/bob-sim/**",
+        "apps/cardputer/{src,include}/scene_*",
+        "apps/cardputer/src/state_scene.cpp",
+        "apps/cardputer/{src,include}/{card_policy,picker_window,volume_policy}.h",
+        "apps/cardputer/src/{state_cards,state_pickers,state_volume}.cpp"
+      ],
+      "tests": [
+        "apps/cardputer/test/host/test_{card_policy,chrome,picker_window,text_field,timers_view,volume_policy,spaces,round_ring,bob_rig,bob_visor,bob_life,scene,touch_policy,turn_trouble}*.cpp"
+      ],
+      "skills": [
+        "bob-dev",
+        "esp32-firmware-engineer",
+        "embedded-systems",
+        "tdd",
+        "bob-character",
+        "bob-feelings",
+        "bob-moves",
+        "bob-scenes"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/cardputer"
+      ],
+      "gates": [
+        "npm run test:firmware",
+        "npm run device:compile"
+      ]
+    },
+    {
+      "name": "cardputer-core",
+      "summary": "Cardputer core: main loop, state machine core and turn state, settings and their migration, persistence, journal, reset and the test console.",
+      "owns": [
+        "apps/cardputer/{src,include}/main*",
+        "apps/cardputer/{src,include}/state_core*",
+        "apps/cardputer/{src,include}/state_turn*",
+        "apps/cardputer/include/turn_timing.h",
+        "apps/cardputer/src/state_device_log.cpp",
+        "apps/cardputer/{src,include}/board*",
+        "apps/cardputer/{src,include}/ws185_*",
+        "apps/cardputer/bringup/**",
+        "apps/cardputer/{src,include}/{state_internal,state,follow_up,persist_policy,config,build_id,secrets.example}.h",
+        "apps/cardputer/{src,include}/settings.{h,cpp}",
+        "apps/cardputer/{src,include}/settings_migration*",
+        "apps/cardputer/{src,include}/settings_rules*",
+        "apps/cardputer/{src,include}/device_settings*",
+        "apps/cardputer/{src,include}/kv_store*",
+        "apps/cardputer/{src,include}/nvs_kv*",
+        "apps/cardputer/{src,include}/reset_actions*",
+        "apps/cardputer/{src,include}/journal*",
+        "apps/cardputer/{src,include}/test_console*",
+        "apps/cardputer/{src,include}/types*",
+        "apps/cardputer/platformio.ini"
+      ],
+      "tests": [
+        "apps/cardputer/test/host/test_{follow_up,persist_policy,reset_scopes,settings_migration,device_features,bounds,main}*.cpp"
+      ],
+      "skills": [
+        "bob-dev",
+        "esp32-firmware-engineer",
+        "embedded-systems",
+        "tdd",
+        "bob-character"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/cardputer"
+      ],
+      "gates": [
+        "npm run test:firmware",
+        "npm run device:compile"
+      ]
+    },
+    {
+      "name": "agent-core",
+      "summary": "The assistant agent: agents, prompts and prompt cache, the stub agent, agent errors, the agent port and the agent turn step, with their evals.",
+      "owns": [
+        "apps/api/src/voice/{agent-adapters,agent-port}.ts",
+        "apps/api/src/voice/turn/agent.ts",
+        "apps/ai/src/{agents,gateway,specialists,prompts,prompt-cache,stub-agent,errors}.ts",
+        "apps/ai/src/marketing-{pack,pack-digests,skills,agent,research}.ts",
+        "apps/ai/evals/{quality,advice,voice-reply,tools}.eval.ts",
+        "apps/ai/src/routine-summary.ts",
+        "apps/ai/src/document-processing.ts",
+        "apps/ai/evals/documents.eval.ts"
+      ],
+      "tests": [
+        "apps/api/tests/voice/{agent-port,agent-usage-fields,ai-stub,turn-prompt-layout}.test.ts",
+        "apps/ai/tests/{prompt-*,specialists,stub-agent,tool-descriptions,capability-tools,gateway-keepalive}.test.ts",
+        "apps/ai/tests/marketing-{pack,skills,agent,research}.test.ts",
+        "apps/ai/tests/routine-summary.test.ts",
+        "apps/ai/tests/document-processing.test.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "ai-sdk",
+        "conversational-ux",
+        "vitest",
+        "tdd",
+        "bob-character",
+        "bob-feelings"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/architecture.md",
+        "docs/observability.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run eval:tools",
+        "npm run eval:advice"
+      ]
+    },
+    {
+      "name": "memory",
+      "summary": "Personal memory: extraction, judging, safety, style, embeddings, retrieval, the memory API module and the memory page.",
+      "owns": [
+        "apps/api/src/memory/**",
+        "apps/ai/src/memory-*.ts",
+        "apps/ai/src/embeddings.ts",
+        "apps/ui-v2/src/features/memory/**",
+        "apps/ai/evals/{memory,continuity}*.eval.ts"
+      ],
+      "tests": [
+        "apps/api/tests/memory/**",
+        "apps/ai/tests/memory-*.test.ts",
+        "apps/ui-v2/src/features/memory/**/*.test.{ts,tsx}",
+        "apps/ui-v2/e2e/memory*.e2e.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "ai-sdk",
+        "supabase-postgres-best-practices",
+        "playwright-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/architecture.md",
+        "docs/privacy"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:e2e",
+        "npm run eval:memory"
+      ]
+    },
+    {
+      "name": "games",
+      "summary": "Voice games: the game engine, registry, kid-safe word filtering, content, game tools and the games store.",
+      "owns": [
+        "apps/api/src/voice/{game-tools,games-store}.ts",
+        "apps/ai/src/games/**"
+      ],
+      "tests": [
+        "apps/api/tests/conversations/{games-store,web-chat-games}.test.ts",
+        "apps/api/tests/voice/{game-animal-riddles,game-modes,game-simon-says,game-tools,games-scope,games-store.db,turn-game-resume}.test.ts",
+        "apps/ui-v2/e2e/riddles.e2e.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "conversational-ux",
+        "ai-sdk",
+        "vitest",
+        "tdd",
+        "bob-character",
+        "bob-feelings"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/architecture.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit"
+      ]
+    },
+    {
+      "name": "chat",
+      "summary": "Conversations and chat: the conversations module (chat streaming, messages, threads, search, invocations, scope) and the chat UI.",
+      "owns": [
+        "apps/api/src/conversations/**",
+        "apps/ui-v2/src/features/chat/**"
+      ],
+      "tests": [
+        "apps/api/tests/conversations/{active-conversation-thread.db,active-device-pointer,active-pointer-unified.db,cardputer-conversation,chat-first-text,chat-reply-style,chat-turn-metrics,conversation-unify-rls.db,delete-messages-from,e2e-device-flow,event-zone,games-store,general-scope.db,group-chat-invocations,group-chat-reply-race.db,heard-portion,memory-turn-hooks,scope.db,space-members-tool,store-conversations-flags-fallback,store-conversations-pg,store-conversations-recent-history,store-conversations,task-due-zone,thread-store.db,thread-store,web-attachments,web-chat-device-tools,web-chat-disconnect,web-chat-games,web-chat-trace,web-chat,web-conversations-flags,web-conversations,web-invocations}.test.ts",
+        "apps/ui-v2/src/features/chat/**/*.test.{ts,tsx}",
+        "apps/ui-v2/e2e/{chat,thread-pointer}*.e2e.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "ai-sdk",
+        "supabase-postgres-best-practices",
+        "playwright-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd",
+        "bob-character"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/architecture.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:db",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "tasks-notes",
+      "summary": "Tasks, notes and action items: their API modules, the productivity tools for the assistant and the tasks and notes UI.",
+      "owns": [
+        "apps/api/src/notes/**",
+        "apps/api/src/tasks/**",
+        "apps/ai/src/productivity-tools.ts",
+        "apps/ui-v2/src/features/productivity/{tasks-*,notes-*,task-*,use-tasks*,use-notes*,use-task-items*}"
+      ],
+      "tests": [
+        "apps/api/tests/conversations/crud-matrix.db.test.ts",
+        "apps/api/tests/notes/**",
+        "apps/api/tests/reminders/voice-tools.test.ts",
+        "apps/api/tests/tasks/{store-tasks-race,store-tasks,web-tasks}.test.ts",
+        "apps/ui-v2/src/features/productivity/{tasks-*,notes-*,task-*,use-tasks*,use-notes*,use-task-items*}.test.{ts,tsx}",
+        "apps/ui-v2/e2e/task-chip.e2e.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "supabase-postgres-best-practices",
+        "playwright-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/architecture.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:db",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "calendar-reminders",
+      "summary": "Calendars, reminders and timers: event expansion and recurrence, reminder fanout, the timer scheduler and tools, and the calendar and agenda UI.",
+      "owns": [
+        "apps/api/src/calendar/**",
+        "apps/api/src/reminders/**",
+        "apps/api/src/timers/**",
+        "apps/ai/src/timer-tools.ts",
+        "apps/ui-v2/src/features/productivity/{calendar-*,agenda-*,event-*,reminder-*,rsvp-*,use-events*,use-agenda*,use-reminders*,use-timers*,use-today*}"
+      ],
+      "tests": [
+        "apps/api/tests/calendar/**",
+        "apps/api/tests/reminders/{reminders-travel,store-reminders-catchup,store-reminders-rls,store-reminders-rrule-object.db,store-reminders,web-reminders}.test.ts",
+        "apps/api/tests/timers/{store-timers,timer-scheduler,timer-tools,web-timers}.test.ts",
+        "apps/api/tests/voice/device-timers.test.ts",
+        "apps/ui-v2/src/features/productivity/{calendar-*,agenda-*,event-*,reminder-*,rsvp-*,use-events*,use-agenda*,use-reminders*,use-timers*,use-today*}.test.{ts,tsx}",
+        "apps/ui-v2/e2e/calendar*.e2e.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "supabase-postgres-best-practices",
+        "playwright-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/architecture.md",
+        "docs/email-catalog.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:db",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "spaces",
+      "summary": "Shared spaces: collaboration module (spaces, members, invitations, handles, threads, mentions, publication) and the spaces UI.",
+      "owns": [
+        "apps/api/src/spaces/**",
+        "apps/ui-v2/src/features/spaces/**"
+      ],
+      "tests": [
+        "apps/api/tests/conversations/{core-invocations-stub,core-invocations,thread-archive-pointer,web-threads}.test.ts",
+        "apps/api/tests/spaces/{core-mentions,group-chat-http,group-chats,isolation-matrix.db,publication,store-active-space,store-invitations,store-spaces,turn-space,web-invitation-guard-exemption,web-spaces}.test.ts",
+        "apps/ui-v2/src/features/spaces/**/*.test.{ts,tsx}",
+        "apps/ui-v2/e2e/thread-composer.e2e.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "supabase-postgres-best-practices",
+        "playwright-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/architecture.md",
+        "docs/privacy"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:db",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "notifications",
+      "summary": "Notifications: notify channels (inbox, email), preferences, the notifications API and the notifications menu and settings.",
+      "owns": [
+        "apps/api/src/notifications/**",
+        "apps/ui-v2/src/features/notifications/**",
+        "supabase/functions/notify-email/**",
+        "supabase/functions/_shared/email/catalog.ts",
+        "supabase/functions/_shared/email/templates/activity.ts",
+        "docs/email-catalog.md"
+      ],
+      "tests": [
+        "apps/api/tests/notifications/{email-client,email-notifications,isolation-notifications.db,notifications-http,notify-assignment,notify-channel,notify-mentions,notify-types,notify,reminder-fanout,space-emails,store-notifications,task-follow,workflow-coverage}.test.ts",
+        "apps/ui-v2/src/features/notifications/**/*.test.{ts,tsx}",
+        "supabase/functions/notify-email/handler.test.ts",
+        "supabase/functions/_shared/email/catalog.test.ts",
+        "supabase/functions/_shared/email/templates/activity.test.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "supabase-postgres-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/email-catalog.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "identity",
+      "summary": "Accounts and auth: sign-in, sessions, account provisioning, erasure, account events, the dev account and the account UI.",
+      "owns": [
+        "apps/api/src/account/**",
+        "apps/ui-v2/src/features/account/{account-*,settings-sidebar.tsx,sign-in*,reset-*,waitlist.ts}",
+        "apps/ui-v2/src/lib/auth/**",
+        "apps/ui-v2/src/features/usage/**",
+        "apps/ui-v2/src/features/admin/**"
+      ],
+      "tests": [
+        "apps/api/tests/account/{account-events-bus,account-provisioning,auth-admin-compat.db,dev-account,erasure-gaps.db,group-chat-erasure.db,web-account-optional-tables,web-account,web-auth-jwt,web-auth,web-events}.test.ts",
+        "apps/api/tests/notifications/notify-account.test.ts",
+        "apps/api/tests/voice/{isolation,journal-privacy}.test.ts",
+        "apps/ui-v2/src/features/account/{account-*,sign-in*,reset-*,waitlist}.test.{ts,tsx}",
+        "apps/ui-v2/src/features/usage/**/*.test.{ts,tsx}",
+        "apps/ui-v2/e2e/sign-in*.e2e.ts",
+        "apps/api/tests/account/admin*.test.ts",
+        "apps/ui-v2/src/features/admin/**/*.test.{ts,tsx}",
+        "apps/ui-v2/e2e/admin.e2e.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "supabase",
+        "security-requirement-extraction",
+        "playwright-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/privacy",
+        "docs/architecture.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:db",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "connectors",
+      "summary": "External account integrations, scheduled routines, daily activity timelines, saved insights and their web pages.",
+      "owns": [
+        "apps/api/src/integrations/**",
+        "apps/api/src/routines/**",
+        "apps/ui-v2/src/features/integrations/**",
+        "apps/ui-v2/src/features/{insights,routines,timeline}/**",
+        "apps/api/src/timeline/**"
+      ],
+      "tests": [
+        "apps/api/tests/integrations/**",
+        "apps/api/tests/routines/**",
+        "apps/ui-v2/src/features/integrations/*.test.{ts,tsx}",
+        "apps/ui-v2/src/features/{insights,routines,timeline}/*.test.{ts,tsx}",
+        "apps/api/tests/timeline/**"
+      ],
+      "skills": [
+        "bob-dev",
+        "security-requirement-extraction",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/google-connect.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "devices",
+      "summary": "Devices: pairing, device auth, device registry and settings, device sessions and conversation, device tools and the devices UI.",
+      "owns": [
+        "apps/api/src/devices/**",
+        "apps/api/src/voice/{cardputer-conversation,device-sessions,device-thread,device-tools,session-board,device-caps,scene-table}.ts",
+        "apps/api/src/voice/turn/scenes.ts",
+        "apps/ai/src/device-tools.ts",
+        "apps/ai/src/express.ts",
+        "apps/ui-v2/src/features/devices/**"
+      ],
+      "tests": [
+        "apps/api/tests/conversations/{device-thread,web-device-conversation}.test.ts",
+        "apps/api/tests/voice/device-board.test.ts",
+        "apps/api/tests/devices/**",
+        "apps/api/tests/voice/{device-auth-legacy,device-control-e2e,device-control-schemas,device-control-turn,device-control,device-log,device-persist,device-spans,device-timers,device-tool-history,device-tools-per-device,schemas-pairing}.test.ts",
+        "apps/ui-v2/src/features/devices/**/*.test.{ts,tsx}",
+        "apps/ui-v2/e2e/{devices,cardputer,use-on-cardputer}*.e2e.ts"
+      ],
+      "skills": [
+        "bob-dev",
+        "websocket-development",
+        "security-requirement-extraction",
+        "playwright-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd",
+        "bob-character",
+        "bob-scenes"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/architecture.md",
+        "docs/cardputer"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run test:unit",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "observability",
+      "summary": "Logging, metrics and analytics: the server logger and journal, Braintrust telemetry, the per-turn turn_metrics recorder, the operator metrics API and its operator gate, the operator Metrics page and its lenses, the tested Supabase report SQL, and the log reference. Aggregates only: never audio, transcripts, agent text, prompts, ids, emails, credentials or URLs, and any distinct-user count under 3 is hidden. A new migration, guard test or domain file needs the repo gates (typecheck, check:quality, lint:dead, the ownership and agent-double tests) before a PR.",
+      "owns": [
+        "apps/api/src/platform/logger.ts",
+        "apps/api/src/platform/observability/**",
+        "apps/api/src/voice/{control-diagnostics,socket-diagnostics}.ts",
+        "apps/ai/src/telemetry.ts",
+        "apps/ai/src/telemetry-export.ts",
+        "apps/ai/src/journal.ts",
+        "apps/ai/src/telemetry-metadata.ts",
+        "apps/ai/src/observation-metrics.ts",
+        "apps/ai/src/{speech-observability,tool-observability}.ts",
+        "apps/ai/src/intents.ts",
+        "apps/ui-v2/src/features/metrics/**",
+        "apps/ui-v2/src/lib/observability/**",
+        "apps/ui-v2/scripts/ui-action-instrumentation.ts",
+        "apps/ui-v2/scripts/generate-ui-action-catalog.ts",
+        "apps/ui-v2/scripts/ui-listener-coverage.ts",
+        "docs/log-reference.md",
+        "docs/observability.md",
+        "scripts/hil/journal-privacy.mjs"
+      ],
+      "tests": [
+        "apps/api/tests/log-reference.test.ts",
+        "apps/api/tests/platform/{http-coverage,http-diagnostics,http-route-inventory,logger,metrics,module-journal,observation-metrics,operator-gate,operator-metrics-more-sql,operator-metrics-route,operator-metrics-sql,supabase-report-sql,telemetry,turn-metrics-recorder,ui-telemetry,workflow-diagnostics}.test.ts",
+        "apps/api/tests/voice/{control-diagnostics,socket-diagnostics}.test.ts",
+        "apps/ui-v2/src/features/metrics/**/*.test.{ts,tsx}",
+        "apps/ai/tests/{telemetry-context,model-telemetry,telemetry-export,telemetry-vendor-neutral,journal}.test.ts",
+        "apps/ai/tests/{speech-observability,tool-observability}.test.ts",
+        "scripts/hil/journal-privacy.test.mjs"
+      ],
+      "skills": [
+        "bob-dev",
+        "security-requirement-extraction",
+        "vitest",
+        "tdd",
+        "supabase-postgres-best-practices",
+        "postgresql-table-design"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/log-reference.md",
+        "docs/observability.md",
+        "docs/privacy",
+        "docs/observability"
+      ],
+      "gates": [
+        "npx vitest run --root apps/api tests/platform/logger.test.ts tests/platform/metrics.test.ts tests/platform/telemetry.test.ts tests/log-reference.test.ts",
+        "npx vitest run scripts/hil/journal-privacy.test.mjs",
+        "npm run typecheck",
+        "npm run check:quality",
+        "npm run lint:dead",
+        "npx vitest run scripts/check-agents.test.mjs scripts/no-agent-doubles.test.mjs"
+      ]
+    },
+    {
+      "name": "platform",
+      "summary": "Shared seams: server startup and wiring, platform (db, http, cache, outbox), shared domain types, the split modules' shared files, the tool registry, the ai package surface and the web app shell.",
+      "owns": [
+        "apps/api/src/*",
+        "apps/api/tests/contract/**",
+        "apps/api/src/platform/{commit,id-schemas,ids,unambiguous-match}.ts",
+        "apps/api/src/platform/cache/**",
+        "apps/api/src/platform/db/**",
+        "apps/api/src/platform/http/**",
+        "apps/api/src/platform/outbox/**",
+        "apps/api/src/voice/{http,tool-providers,tool-registry}.ts",
+        "apps/ai/src/{index,schemas,config,testing,debug,test,eval-scorers,eval-judge,key-guard}.ts",
+        "supabase/migrations/**",
+        "apps/ui-v2/src/app/**",
+        "apps/ui-v2/src/lib/*",
+        "apps/ui-v2/src/{main.tsx,base.css,test-setup.ts,vite-env.d.ts}",
+        "apps/api/src/platform/jobs/**",
+        "apps/api/src/tools/**",
+        "apps/api/src/bob-apps/**",
+        "apps/api/src/workflows/**",
+        "apps/ui-v2/src/features/bob-apps/**",
+        "apps/ui-v2/src/features/tools/**"
+      ],
+      "tests": [
+        "apps/api/tests/*.test.ts",
+        "apps/api/tests/platform/{api-docs,group-chat-boundaries,ids-sql,ids}.test.ts",
+        "apps/api/tests/voice/{provider,server,tool-registry}.test.ts",
+        "apps/ai/tests/tool-registry.test.ts",
+        "apps/ui-v2/src/{app,lib}/**/*.test.{ts,tsx}",
+        "apps/ui-v2/e2e/{a11y,navigation,fresh-state}.e2e.ts",
+        "apps/api/tests/platform/jobs/**",
+        "apps/ui-v2/e2e/routines-demo.e2e.ts",
+        "apps/api/tests/tools/**",
+        "apps/api/tests/bob-apps/**",
+        "apps/ui-v2/src/features/bob-apps/**/*.test.{ts,tsx}",
+        "apps/ui-v2/e2e/bob-apps*.e2e.ts",
+        "apps/ui-v2/src/features/tools/*.test.{ts,tsx}"
+      ],
+      "skills": [
+        "bob-dev",
+        "codebase-design",
+        "supabase-postgres-best-practices",
+        "playwright-best-practices",
+        "ux-writing",
+        "web-design-guidelines",
+        "vitest",
+        "tdd"
+      ],
+      "mcp": [
+        "astryx",
+        "playwright"
+      ],
+      "docs": [
+        "docs/architecture.md",
+        "docs/deploy.md",
+        "docs/testing.md"
+      ],
+      "gates": [
+        "npm run typecheck",
+        "npm run check:boundaries",
+        "npm run test:unit",
+        "npm run test:db",
+        "npm run test:e2e"
+      ]
+    },
+    {
+      "name": "native-ios",
+      "summary": "Native iPhone app: SwiftUI navigation and screens, BobKit API clients and state, native voice, design system and iOS tests.",
+      "owns": [
+        "apps/ios/**"
+      ],
+      "tests": [
+        "apps/ios/BobKit/Tests/**"
+      ],
+      "skills": [
+        "bob-dev",
+        "bob-ios-ui",
+        "mobile-ios-design",
+        "swiftui-expert-skill",
+        "swiftui-navigation"
+      ],
+      "mcp": [],
+      "docs": [
+        "docs/architecture.md"
+      ],
+      "gates": [
+        "swift test --package-path apps/ios/BobKit",
+        "npm run validate -- --skip-firmware"
+      ]
+    }
+  ]
+}

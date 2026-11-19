@@ -1,0 +1,260 @@
+{
+  "about": "The states the flash gate compares, in REST mode: the approved demo (?freeze=rest) and the firmware (bob-sim, -DBOBSIM_FREEZE=1) both draw Bob in the rest pose of the state and emotion, with no idle motion and the ring and props at phase 0, captured atMs after the state starts (a whole number of the sim's 33 ms frames, so timers such as the pairing countdown agree). A scene is a move at a named key pose: t is the normalised time in the move (anticipation 0.15, apex 0.5, landing 0.85). scale and rise place Bob in that view, as the demo's states do (the Bob mask and the logo search use them).",
+  "frameMs": 33,
+  "targets": {
+    "circle": 0.92,
+    "bob": 0.9,
+    "status": 0.9,
+    "caption": 0.9,
+    "ring": 0.9
+  },
+  "margin": 0.03,
+  "cases": [
+    {
+      "id": "pairing",
+      "kind": "state",
+      "state": "pairing",
+      "atMs": 1980,
+      "scale": 0.68,
+      "rise": -90
+    },
+    {
+      "id": "ready",
+      "kind": "state",
+      "state": "ready",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "listening",
+      "kind": "state",
+      "state": "listening",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "thinking",
+      "kind": "state",
+      "state": "thinking",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "speaking",
+      "kind": "state",
+      "state": "speaking",
+      "atMs": 1980,
+      "scale": 0.56,
+      "rise": -133
+    },
+    {
+      "id": "reply",
+      "kind": "state",
+      "state": "reply",
+      "atMs": 1980,
+      "scale": 0.56,
+      "rise": -133
+    },
+    {
+      "id": "error",
+      "kind": "state",
+      "state": "error",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "offline",
+      "kind": "state",
+      "state": "offline",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "updating",
+      "kind": "state",
+      "state": "updating",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "emotion-happy",
+      "kind": "emotion",
+      "state": "ready",
+      "emotion": "Happy",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "emotion-love",
+      "kind": "emotion",
+      "state": "ready",
+      "emotion": "Love",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "emotion-curious",
+      "kind": "emotion",
+      "state": "ready",
+      "emotion": "Curious",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "emotion-sleepy",
+      "kind": "emotion",
+      "state": "ready",
+      "emotion": "Sleepy",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "emotion-surprised",
+      "kind": "emotion",
+      "state": "ready",
+      "emotion": "Surprised",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "emotion-shy",
+      "kind": "emotion",
+      "state": "ready",
+      "emotion": "Shy",
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-wave-anticipation",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "wave",
+      "key": "anticipation",
+      "t": 0.15,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-wave-apex",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "wave",
+      "key": "apex",
+      "t": 0.5,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-wave-landing",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "wave",
+      "key": "landing",
+      "t": 0.85,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-hop-anticipation",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "hop",
+      "key": "anticipation",
+      "t": 0.15,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-hop-apex",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "hop",
+      "key": "apex",
+      "t": 0.5,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-hop-landing",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "hop",
+      "key": "landing",
+      "t": 0.85,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-clap-anticipation",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "clap",
+      "key": "anticipation",
+      "t": 0.15,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-clap-apex",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "clap",
+      "key": "apex",
+      "t": 0.5,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-clap-landing",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "clap",
+      "key": "landing",
+      "t": 0.85,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-arms-up-anticipation",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "arms-up",
+      "key": "anticipation",
+      "t": 0.15,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-arms-up-apex",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "arms-up",
+      "key": "apex",
+      "t": 0.5,
+      "atMs": 1980,
+      "scale": 1
+    },
+    {
+      "id": "scene-arms-up-landing",
+      "kind": "scene",
+      "rigOnly": true,
+      "state": "ready",
+      "move": "arms-up",
+      "key": "landing",
+      "t": 0.85,
+      "atMs": 1980,
+      "scale": 1
+    }
+  ]
+}

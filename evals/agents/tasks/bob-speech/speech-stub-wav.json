@@ -1,0 +1,14 @@
+{
+  "id": "speech-stub-wav",
+  "agent": "bob-speech",
+  "commit": "d512d55c",
+  "base": "d512d55c^",
+  "prompt": "In system-test mode the text-to-speech stub returns headerless zeros labelled as WAV, which the MP3 re-encode cannot read, so the device integration harness has to pay for real speech synthesis. Make the stub return a valid WAV file instead: a sine tone whose length comes from a system-test setting for the number of seconds. The output must be byte-identical every time for the same length, so runs can be compared frame for frame. Real synthesis must still be used whenever system-test mode is off.",
+  "hiddenTests": [
+    "apps/api/tests/provider.test.ts"
+  ],
+  "gates": [
+    "npx vitest run --root apps/api tests/provider.test.ts"
+  ],
+  "maxBudgetUsd": 3
+}

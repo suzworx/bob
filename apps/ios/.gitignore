@@ -1,0 +1,8 @@
+# Xcode and Swift build output; never commit per-user state
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+.build/
+.swiftpm/
+.DS_Store

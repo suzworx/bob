@@ -1,0 +1,48 @@
+{
+  "name": "@bob/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "debug": "tsx --inspect src/server.ts",
+    "start": "tsx src/server.ts",
+    "build": "tsc -p tsconfig.json --pretty false",
+    "check": "npm run test",
+    "deploy": "node scripts/deploy.mjs",
+    "typecheck": "tsc -p tsconfig.json --pretty false",
+    "test": "vitest run --config ../../vitest.config.ts && npm run typecheck",
+    "test:live": "vitest run --config vitest.live.config.ts",
+    "test:db": "vitest run --config vitest.db.config.ts",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:watch": "vitest --config ../../vitest.config.ts"
+  },
+  "dependencies": {
+    "@breezystack/lamejs": "^1.2.7",
+    "@bob/ai": "*",
+    "@opentelemetry/api": "^1.9.1",
+    "@types/ws": "^8.18.1",
+    "ai": "^7.0.127",
+    "express": "^5.2.1",
+    "htmlparser2": "12.0.0",
+    "jose": "6.2.12",
+    "pg-boss": "12.38.0",
+    "postgres": "3.4.9",
+    "swagger-ui-dist": "^5.33.3",
+    "tsx": "^4.23.1",
+    "websocket-express": "^4.1.0",
+    "word-extractor": "^1.0.4",
+    "ws": "^8.21.3",
+    "yauzl": "^2.10.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@ai-sdk/gateway": "^4.0.103",
+    "@opentelemetry/context-async-hooks": "^2.11.0",
+    "@opentelemetry/sdk-metrics": "^2.11.0",
+    "@opentelemetry/sdk-trace-base": "^2.11.0",
+    "@types/express": "^5.0.6",
+    "music-metadata": "^11.15.0",
+    "vitest": "^4.1.10"
+  }
+}

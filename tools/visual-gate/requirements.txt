@@ -1,0 +1,4 @@
+# Pinned deps for tools/visual-gate/diff.py (it refuses to run on other versions).
+# py -3.11 -m pip install -r tools/visual-gate/requirements.txt
+numpy==2.4.6
+pillow==12.3.0
