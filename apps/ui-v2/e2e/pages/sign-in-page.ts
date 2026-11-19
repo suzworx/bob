@@ -18,7 +18,7 @@ export class SignInPage {
     this.page = page;
     this.heading = page.getByRole('heading', { name: 'Sign in' });
     this.email = page.getByLabel('Email');
-    this.haveCodeButton = page.getByRole('button', { name: 'I already have a code' });
+    this.haveCodeButton = page.getByRole('button', { name: 'I have a code' });
     this.code = page.getByLabel('Six-digit code');
     this.verifyButton = page.getByRole('button', { name: 'Verify' });
     this.wrongCodeError = page.getByText('That code is wrong or has expired. Request a new code.');

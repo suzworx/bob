@@ -533,8 +533,11 @@ jobs:
   # dependency would otherwise skip this job too, so the conditions are explicit.
   release:
     needs: [changes, validate, firmware, docker]
+    # Opt-in: set the repository variable BOB_FW_RELEASE=on (and the
+    # BOB_FW_SIGNING_KEY secret) to publish signed firmware releases. Forks skip.
     if: >-
-      always() && github.event_name == 'push' && github.ref == 'refs/heads/main' &&
+      always() && vars.BOB_FW_RELEASE == 'on' &&
+      github.event_name == 'push' && github.ref == 'refs/heads/main' &&
       needs.validate.result == 'success' && needs.firmware.result == 'success' &&
       (needs.docker.result == 'success' ||
        (needs.docker.result == 'skipped' && needs.changes.outputs.docker == 'false'))
