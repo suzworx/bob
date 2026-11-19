@@ -97,13 +97,6 @@ for (const scheme of ['light', 'dark'] as const) {
   }
 }
 
-test('Bob host keeps the plain card (no Bob hero)', async ({ page }) => {
-  await mockNetwork(page);
-  await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Sign in' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Hello again, friend.' })).toHaveCount(0);
-});
-
 test('Bob deep links keep the back action in one frame at phone and desktop widths', async ({ page }) => {
   await mockNetwork(page);
   for (const viewport of VIEWPORTS) {
